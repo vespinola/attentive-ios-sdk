@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'AttentiveMobileGamesSDK'
+  s.name             = 'mobile-sdk'
   s.version          = '0.1.0'
   s.summary          = 'A short description of mobile-sdk.'
 
@@ -25,12 +25,12 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Ivan Loughman-Pawelko' => 'iloughman@attentivemobile.com' }
-  s.source           = { :git => 'https://github.com/attentive-mobile/mobile-sdk.git', :tag => s.version.to_s }
+  s.source           = { :git => 'git@github.com:attentive-mobile/mobile-sdk.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'mobile-sdk/Classes/**/*'
+  s.source_files = 'Creative/**/*'
   
   # s.resource_bundles = {
   #   'mobile-sdk' => ['mobile-sdk/Assets/*.png']
