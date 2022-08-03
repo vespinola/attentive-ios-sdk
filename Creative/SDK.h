@@ -13,16 +13,15 @@
 @property(strong,nonatomic) WKWebView *webView;
 @property (strong, nonatomic) NSString *creativePageUrl;
 @property (strong, nonatomic) NSString * domain;
+@property (strong, nonatomic) NSString * domain;
 
 - (id)initWithDomain:(NSString *)domain;
 
+- (id)initWithDomainAndMode:(NSString *)domain mode:(NSString *)mode;
+
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId;
 
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId debug:(NSString *)debug;
-
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset;
-
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset debug:(NSString *)debug;
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
 

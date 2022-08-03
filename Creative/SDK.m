@@ -15,23 +15,32 @@
     return [super init];
 }
 
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId {
-    [self trigger:theView appUserId:appUserId xOffset:0 yOffset:0 debug:@""];
+- (id)initWithDomainAndMode:(NSString *)domain mode:(NSString *)mode {
+    self.domain = domain;
+    self.mode = mode;
+    return [super init];
 }
 
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId debug:(NSString *)debug {
-    [self trigger:theView appUserId:appUserId xOffset:0 yOffset:0 debug:debug];
+- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId {
+    [self trigger:theView appUserId:appUserId xOffset:0 yOffset:0];
 }
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
-    [self trigger:theView appUserId:appUserId xOffset:xOffset yOffset:yOffset debug:@""];
+    [self trigger:theView appUserId:appUserId xOffset:xOffset yOffset:yOffset];
 }
 
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset debug:(NSString *)debug {
+- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
     self.parentView = theView;
     NSLog(@"Called showWebView in creativeSDK with domain: %@", self.domain);
-    self.creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=%@", self.domain, appUserId, debug];
+    
+    if ([self.mode isEqual:@"debug"]) {
+        self.creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=matter-trip-grass-symbol", self.domain, appUserId];
+    } else {
+        self.creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@", self.domain, appUserId];
+    }
 
+    NSLog(@"Requesting creative page url: %@", self.creativePageUrl);
+    
     NSURL *url = [NSURL URLWithString:self.creativePageUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
@@ -48,6 +57,10 @@
     _webView = [[WKWebView alloc] initWithFrame:frame configuration:wkWebViewConfiguration];
     _webView.navigationDelegate = self;
     [_webView loadRequest:request ];
+    
+    if ([self.mode isEqual:@"debug"]) {
+        [self.parentView addSubview:_webView];
+    }
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
@@ -61,7 +74,7 @@
     "return iframe;";
 
     [webView callAsyncJavaScript:asyncJs arguments:nil inFrame:nil inContentWorld:WKContentWorld.defaultClientWorld completionHandler:^(NSString *id, NSError *error) {
-        if ([id isEqual:@"attentive_creative"]) {
+        if ([id isEqual:@"attentive_creative"] && ![self.mode isEqual:@"debug"]) {
             [self.parentView addSubview:webView];
         }
     }];
