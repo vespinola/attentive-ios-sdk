@@ -1,24 +1,55 @@
 # mobile-sdk
 
-[![CI Status](https://img.shields.io/travis/Ivan Loughman-Pawelko/mobile-sdk.svg?style=flat)](https://travis-ci.org/Ivan Loughman-Pawelko/mobile-sdk)
-[![Version](https://img.shields.io/cocoapods/v/mobile-sdk.svg?style=flat)](https://cocoapods.org/pods/mobile-sdk)
-[![License](https://img.shields.io/cocoapods/l/mobile-sdk.svg?style=flat)](https://cocoapods.org/pods/mobile-sdk)
-[![Platform](https://img.shields.io/cocoapods/p/mobile-sdk.svg?style=flat)](https://cocoapods.org/pods/mobile-sdk)
+The Attentive Mobile Gaming SDK is intended to be used to render creative units in mobile gaming applications.
 
-## Example
+## Static landing page to render creative
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+The SDK works by rendering a web view that loads an index.html page stored [here](https://s3.console.aws.amazon.com/s3/object/attn.tv?prefix=mobile-gaming%2Findex.html&region=us-east-1#). This index.html page dynamically loads the dtag.js for whatever company domain is passed as a query param to the request for the index.html page. We also include logic to set the `__attentive_client_user_id` browser cookie to whatever query param is passed to `app_user_id` and to hash this id to a visitorId (the `__attentive_id` browser cookie) so that we can be sure properly handle fatigue for user that have already subscribed.
 
-## Requirements
+## Installation and Example of calling the SDK trigger function
 
-## Installation
+The mobile-sdk is available through [CocoaPods](https://cocoapods.org). To install the SDK in a separate project using Cocoapods, simply run:
 
-mobile-sdk is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'mobile-sdk'
 ```
+> pod install mobile-sdk
+```
+
+Additionally, if a new version of the SDK is available, it can be updated using:
+
+```
+> pod update AttentiveMobileGamesSDK
+```
+
+To make the SDK available, you need to import the header file after installing the SDK:
+
+```
+#import "AttentiveMobileGamesSDK/AttentiveMobileGamesSDK-umbrella.h"
+```
+
+The SDK can then be initialized and called for a specific company domain:
+
+```
+SDK *creativeSDK = [[SDK alloc] initWithDomain:@"pocket7games"];
+[creativeSDK trigger:self.view appUserId:@"myAppUserId" xOffset:50 yOffset:50];
+```
+
+Before attaching the web view to whatever view is passed to trigger function, we first identify whether or not the creative is loaded in the web view. This allows us to decide whether or not to attach the web view based of the fatigue of the creative.
+
+## Publishing the SDK 
+
+In order to publish the SDK first register your user:
+
+```
+> pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+```
+
+and then run
+
+```
+> pod trunk push --allow-warnings
+```
+
+It is necessary to have created a release tag/version prior to publishing and to update the podspec file in the SDK. The release tag/version can be done directly in github under releases. 
 
 ## Author
 
@@ -27,3 +58,5 @@ Ivan Loughman-Pawelko, iloughman@attentivemobile.com
 ## License
 
 mobile-sdk is available under the MIT license. See the LICENSE file for more info.
+
+
