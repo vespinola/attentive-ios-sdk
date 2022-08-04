@@ -23,7 +23,7 @@ Additionally, if a new version of the SDK is available, it can be updated using:
 To make the SDK available, you need to import the header file after installing the SDK:
 
 ```
-#import "AttentiveMobileGamesSDK/AttentiveMobileGamesSDK-umbrella.h"
+#import "mobile_sdk/mobile-sdk-umbrella.h"
 ```
 
 The SDK can then be initialized and called for a specific company domain:
