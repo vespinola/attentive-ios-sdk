@@ -40,7 +40,7 @@ Before attaching the web view to whatever view is passed to trigger function, we
 In order to publish the SDK first register your user:
 
 ```
-> pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
+> pod trunk register ${email}@attentivemobile.com '${Your Name}' --description='macbook air'
 ```
 
 and then run
