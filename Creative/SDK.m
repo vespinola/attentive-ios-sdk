@@ -10,6 +10,8 @@
 
 @implementation SDK
 
+UIView *parentView;
+
 - (id)initWithDomain:(NSString *)domain {
     self.domain = domain;
     return [super init];
@@ -26,7 +28,7 @@
 }
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
-    self.parentView = theView;
+    parentView = theView;
     NSLog(@"Called showWebView in creativeSDK with domain: %@", self.domain);
     NSString* creativePageUrl;
     if ([self.mode isEqual:@"debug"]) {
@@ -55,7 +57,7 @@
     [_webView loadRequest:request ];
     
     if ([self.mode isEqual:@"debug"]) {
-        [self.parentView addSubview:_webView];
+        [parentView addSubview:_webView];
     }
 }
 
@@ -71,7 +73,7 @@
 
     [webView callAsyncJavaScript:asyncJs arguments:nil inFrame:nil inContentWorld:WKContentWorld.defaultClientWorld completionHandler:^(NSString *id, NSError *error) {
         if ([id isEqual:@"attentive_creative"] && ![self.mode isEqual:@"debug"]) {
-            [self.parentView addSubview:webView];
+            [parentView addSubview:webView];
         }
     }];
 }
