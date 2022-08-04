@@ -17,7 +17,7 @@ The mobile-sdk is available through [CocoaPods](https://cocoapods.org). To insta
 Additionally, if a new version of the SDK is available, it can be updated using:
 
 ```
-> pod update AttentiveMobileGamesSDK
+> pod update mobile-sdk
 ```
 
 To make the SDK available, you need to import the header file after installing the SDK:

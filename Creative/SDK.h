@@ -11,9 +11,8 @@
 
 @property(strong, nonatomic) UIView *parentView;
 @property(strong,nonatomic) WKWebView *webView;
-@property (strong, nonatomic) NSString *creativePageUrl;
 @property (strong, nonatomic) NSString * domain;
-@property (strong, nonatomic) NSString * domain;
+@property (strong, nonatomic) NSString * mode;
 
 - (id)initWithDomain:(NSString *)domain;
 

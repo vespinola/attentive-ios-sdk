@@ -26,22 +26,18 @@
 }
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
-    [self trigger:theView appUserId:appUserId xOffset:xOffset yOffset:yOffset];
-}
-
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
     self.parentView = theView;
     NSLog(@"Called showWebView in creativeSDK with domain: %@", self.domain);
-    
+    NSString* creativePageUrl;
     if ([self.mode isEqual:@"debug"]) {
-        self.creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=matter-trip-grass-symbol", self.domain, appUserId];
+        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=matter-trip-grass-symbol", self.domain, appUserId];
     } else {
-        self.creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@", self.domain, appUserId];
+        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@", self.domain, appUserId];
     }
 
-    NSLog(@"Requesting creative page url: %@", self.creativePageUrl);
+    NSLog(@"Requesting creative page url: %@", creativePageUrl);
     
-    NSURL *url = [NSURL URLWithString:self.creativePageUrl];
+    NSURL *url = [NSURL URLWithString:creativePageUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
     WKWebViewConfiguration *wkWebViewConfiguration = [[WKWebViewConfiguration alloc] init];
