@@ -29,8 +29,8 @@ To make the SDK available, you need to import the header file after installing t
 The SDK can then be initialized and called for a specific company domain:
 
 ```
-SDK *creativeSDK = [[SDK alloc] initWithDomain:@"pocket7games"];
-[creativeSDK trigger:self.view appUserId:@"myAppUserId" xOffset:50 yOffset:50];
+SDK *sdk = [[SDK alloc] initWithDomain:@"${companyDomain}"];
+[sdk trigger:self.view appUserId:@"${appUserId}" xOffset:50 yOffset:50];
 ```
 
 Before attaching the web view to whatever view is passed to trigger function, we first identify whether or not the creative is loaded in the web view. This allows us to decide whether or not to attach the web view based of the fatigue of the creative.
