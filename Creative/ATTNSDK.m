@@ -6,9 +6,9 @@
 //
 
 #import <WebKit/WebKit.h>
-#import "SDK.h"
+#import "ATTNSDK.h"
 
-@implementation SDK
+@implementation ATTNSDK
 
 UIView *parentView;
 

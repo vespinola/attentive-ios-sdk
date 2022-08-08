@@ -7,7 +7,7 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-@interface SDK : UIViewController <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
+@interface ATTNSDK : UIViewController <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 
 @property(strong,nonatomic) WKWebView *webView;
 @property (strong, nonatomic) NSString * domain;
