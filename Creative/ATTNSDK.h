@@ -19,6 +19,4 @@
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId;
 
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset;
-
 @end

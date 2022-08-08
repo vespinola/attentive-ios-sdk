@@ -24,10 +24,6 @@ UIView *parentView;
 }
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId {
-    [self trigger:theView appUserId:appUserId xOffset:0 yOffset:0];
-}
-
-- (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId xOffset:(int)xOffset yOffset:(int)yOffset {
     parentView = theView;
     NSLog(@"Called showWebView in creativeSDK with domain: %@", self.domain);
     NSString* creativePageUrl;
@@ -51,8 +47,7 @@ UIView *parentView;
     WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
     [[wkWebViewConfiguration userContentController] addUserScript:wkUserScript];
     
-    CGRect frame = CGRectMake((xOffset)/2, (yOffset)/2, theView.frame.size.width - xOffset, theView.frame.size.height - yOffset);
-    _webView = [[WKWebView alloc] initWithFrame:frame configuration:wkWebViewConfiguration];
+    _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
     _webView.navigationDelegate = self;
     [_webView loadRequest:request ];
     
