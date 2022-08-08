@@ -11,26 +11,30 @@
 @implementation ATTNSDK
 
 UIView *parentView;
+WKWebView *webView;
+NSString * domain;
+NSString * mode;
+
 
 - (id)initWithDomain:(NSString *)domain {
-    self.domain = domain;
+    domain = domain;
     return [super init];
 }
 
-- (id)initWithDomainAndMode:(NSString *)domain mode:(NSString *)mode {
-    self.domain = domain;
-    self.mode = mode;
+- (id)initWithDomain:(NSString *)domain mode:(NSString *)mode {
+    domain = domain;
+    mode = mode;
     return [super init];
 }
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId {
     parentView = theView;
-    NSLog(@"Called showWebView in creativeSDK with domain: %@", self.domain);
+    NSLog(@"Called showWebView in creativeSDK with domain: %@", domain);
     NSString* creativePageUrl;
-    if ([self.mode isEqual:@"debug"]) {
-        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=matter-trip-grass-symbol", self.domain, appUserId];
+    if ([mode isEqual:@"debug"]) {
+        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@&debug=matter-trip-grass-symbol", domain, appUserId];
     } else {
-        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@", self.domain, appUserId];
+        creativePageUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-gaming/index.html?domain=%@&app_user_id=%@", domain, appUserId];
     }
 
     NSLog(@"Requesting creative page url: %@", creativePageUrl);
@@ -47,12 +51,12 @@ UIView *parentView;
     WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
     [[wkWebViewConfiguration userContentController] addUserScript:wkUserScript];
     
-    _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
-    _webView.navigationDelegate = self;
-    [_webView loadRequest:request ];
+    webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
+    webView.navigationDelegate = self;
+    [webView loadRequest:request ];
     
-    if ([self.mode isEqual:@"debug"]) {
-        [parentView addSubview:_webView];
+    if ([mode isEqual:@"debug"]) {
+        [parentView addSubview:webView];
     }
 }
 
@@ -67,7 +71,7 @@ UIView *parentView;
     "return iframe;";
 
     [webView callAsyncJavaScript:asyncJs arguments:nil inFrame:nil inContentWorld:WKContentWorld.defaultClientWorld completionHandler:^(NSString *id, NSError *error) {
-        if ([id isEqual:@"attentive_creative"] && ![self.mode isEqual:@"debug"]) {
+        if ([id isEqual:@"attentive_creative"] && ![mode isEqual:@"debug"]) {
             [parentView addSubview:webView];
         }
     }];
@@ -77,7 +81,7 @@ UIView *parentView;
 - (void)userContentController:(WKUserContentController *)userContentController
     didReceiveScriptMessage:(WKScriptMessage *)message {
     if ([message.body isEqual:@"CLOSE"]) {
-        [_webView removeFromSuperview];
+        [webView removeFromSuperview];
     }
 }
 

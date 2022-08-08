@@ -9,13 +9,9 @@
 
 @interface ATTNSDK : UIViewController <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 
-@property(strong,nonatomic) WKWebView *webView;
-@property (strong, nonatomic) NSString * domain;
-@property (strong, nonatomic) NSString * mode;
-
 - (id)initWithDomain:(NSString *)domain;
 
-- (id)initWithDomainAndMode:(NSString *)domain mode:(NSString *)mode;
+- (id)initWithDomain:(NSString *)domain mode:(NSString *)mode;
 
 - (void)trigger:(UIView *)theView appUserId:(NSString *)appUserId;
 
