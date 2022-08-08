@@ -7,7 +7,7 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 
-@interface ATTNSDK : UIViewController <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
+@interface ATTNSDK : NSObject <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 
 - (id)initWithDomain:(NSString *)domain;
 
