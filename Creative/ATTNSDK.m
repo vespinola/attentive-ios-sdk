@@ -62,10 +62,15 @@
     
     _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
     _webView.navigationDelegate = self;
+
     [_webView loadRequest:request ];
     
     if ([_mode isEqual:@"debug"]) {
         [_parentView addSubview:_webView];
+    }
+    else {
+        _webView.opaque = NO;
+        _webView.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -80,8 +85,8 @@
     "return iframe;";
 
     [webView callAsyncJavaScript:asyncJs arguments:nil inFrame:nil inContentWorld:WKContentWorld.defaultClientWorld completionHandler:^(NSString *id, NSError *error) {
-        if ([id isEqual:@"attentive_creative"] && ![_mode isEqual:@"debug"]) {
-            [_parentView addSubview:webView];
+        if ([id isEqual:@"attentive_creative"] && ![self->_mode isEqual:@"debug"]) {
+            [self->_parentView addSubview:webView];
         }
     }];
 }
