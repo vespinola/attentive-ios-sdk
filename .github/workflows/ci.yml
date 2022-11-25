@@ -4,15 +4,9 @@ on:
   push:
     branches:
       - test
-    paths:
-      - "Sources/**"
-      - "Tests/**"
   pull_request:
     branches: 
       - test
-    paths:
-      - "Sources/**"
-      - "Tests/**"
 
 concurrency:
   group: ${{ github.ref_name }}
