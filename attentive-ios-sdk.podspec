@@ -30,7 +30,7 @@ The Attentive IOS SDK provides the functionality to render Attentive signup unit
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Creative/**/*'
+  s.source_files = 'Sources/**/*'
   
   # s.resource_bundles = {
   #   'attentive-ios-sdk' => ['attentive-ios-sdk/Assets/*.png']
