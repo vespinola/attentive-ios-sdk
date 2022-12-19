@@ -3,12 +3,10 @@ name: Xcode - Build and Analyze
 on:
   push:
     branches:
-      - main
-      - feature/*
+      - testing
   pull_request:
     branches: 
-      - main
-      - feature/*
+      - testing
   workflow_dispatch:
 
 concurrency:
