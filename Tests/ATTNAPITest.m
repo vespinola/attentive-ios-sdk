@@ -9,6 +9,8 @@
 #import "ATTNAPI.h"
 #import "ATTNUserIdentity.h"
 #import "ATTNPurchaseEvent.h"
+#import "ATTNAddToCartEvent.h"
+#import "ATTNProductViewEvent.h"
 #import "ATTNEvent.h"
 #import "ATTNItem.h"
 #import "ATTNOrder.h"
@@ -16,6 +18,7 @@
 #import "ATTNCart.h"
 
 static NSString* const TEST_DOMAIN = @"some-domain";
+static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 
 @interface ATTNAPI (Testing)
 
@@ -24,6 +27,8 @@ static NSString* const TEST_DOMAIN = @"some-domain";
 - (void)getGeoAdjustedDomain:(NSString *)domain completionHandler:(void (^)(NSString* _Nullable, NSError* _Nullable))completionHandler;
 
 - (NSURL*)constructUserIdentityUrl:(ATTNUserIdentity *)userIdentity domain:(NSString *)domain;
+
+- (NSString*)getCachedGeoAdjustedDomain;
 
 @end
 
@@ -78,7 +83,7 @@ static NSString* const TEST_DOMAIN = @"some-domain";
     if ([[url absoluteString] containsString:@"cdn.attn.tv"]) {
         _didCallDtag = true;
         return [[NSURLSessionDataTaskMock alloc] initWithHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
-            completionHandler([@"window.__attentive_domain='some-domain.attn.tv'" dataUsingEncoding:NSUTF8StringEncoding], [[NSHTTPURLResponse alloc] initWithURL:url statusCode:200 HTTPVersion:nil headerFields:nil], nil);
+            completionHandler([[NSString stringWithFormat:@"window.__attentive_domain='%@.attn.tv'", TEST_GEO_ADJUSTED_DOMAIN] dataUsingEncoding:NSUTF8StringEncoding], [[NSHTTPURLResponse alloc] initWithURL:url statusCode:200 HTTPVersion:nil headerFields:nil], nil);
         }];
     }
     
@@ -156,6 +161,8 @@ static NSString* const TEST_DOMAIN = @"some-domain";
     XCTAssertEqualObjects(purchase.items[0].category, metadata[@"category"]);
     XCTAssertEqualObjects(purchase.items[0].productImage, metadata[@"image"]);
     XCTAssertEqualObjects(purchase.items[0].name, metadata[@"name"]);
+    NSString* quantity = [NSString stringWithFormat:@"%d", purchase.items[0].quantity];
+    XCTAssertEqualObjects(quantity, metadata[@"quantity"]);
     XCTAssertEqualObjects(purchase.order.orderId, metadata[@"orderId"]);
     XCTAssertEqualObjects(purchase.cart.cartId, metadata[@"cartId"]);
     XCTAssertEqualObjects(purchase.cart.cartCoupon, metadata[@"cartCoupon"]);
@@ -237,6 +244,105 @@ static NSString* const TEST_DOMAIN = @"some-domain";
     XCTAssertEqualObjects(@"oc", queryItems3[@"t"]);
 }
 
+- (void)testSendEvent_validAddToCartEvent_urlContainsExpectedMetadata {
+    // Arrange
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    ATTNAddToCartEvent* addToCart = [self buildAddToCart];
+    ATTNUserIdentity* userIdentity = [self buildUserIdentity];
+    
+    // Act
+    [api sendEvent:addToCart userIdentity:userIdentity];
+    
+    // Assert
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(2, sessionMock.urlCalls.count);
+    NSURL* addToCartUrl = sessionMock.urlCalls[1];
+    NSDictionary<NSString*, NSString*>* queryItems = [self getQueryItemsFromUrl:addToCartUrl];
+    NSString* queryItemsString = queryItems[@"m"];
+    NSDictionary* metadata = [NSJSONSerialization JSONObjectWithData:[queryItemsString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    
+    XCTAssertEqualObjects(@"c", queryItems[@"t"]);
+    
+    XCTAssertEqualObjects(addToCart.items[0].productId, metadata[@"productId"]);
+    XCTAssertEqualObjects(addToCart.items[0].productVariantId, metadata[@"subProductId"]);
+    XCTAssertEqualObjects(addToCart.items[0].price.price, [[NSDecimalNumber alloc] initWithString: metadata[@"price"]]);
+    XCTAssertEqualObjects(addToCart.items[0].price.currency, metadata[@"currency"]);
+    XCTAssertEqualObjects(addToCart.items[0].category, metadata[@"category"]);
+    XCTAssertEqualObjects(addToCart.items[0].productImage, metadata[@"image"]);
+    XCTAssertEqualObjects(addToCart.items[0].name, metadata[@"name"]);
+    NSString* quantity = [NSString stringWithFormat:@"%d", addToCart.items[0].quantity];
+    XCTAssertEqualObjects(quantity, metadata[@"quantity"]);
+}
+
+- (void)testSendEvent_validProductViewEvent_urlContainsExpectedMetadata {
+    // Arrange
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    ATTNProductViewEvent* productView = [self buildProductView];
+    ATTNUserIdentity* userIdentity = [self buildUserIdentity];
+    
+    // Act
+    [api sendEvent:productView userIdentity:userIdentity];
+    
+    // Assert
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(2, sessionMock.urlCalls.count);
+    NSURL* url = sessionMock.urlCalls[1];
+    NSDictionary<NSString*, NSString*>* queryItems = [self getQueryItemsFromUrl:url];
+    NSString* queryItemsString = queryItems[@"m"];
+    NSDictionary* metadata = [NSJSONSerialization JSONObjectWithData:[queryItemsString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    
+    XCTAssertEqualObjects(@"d", queryItems[@"t"]);
+    
+    XCTAssertEqualObjects(productView.items[0].productId, metadata[@"productId"]);
+    XCTAssertEqualObjects(productView.items[0].productVariantId, metadata[@"subProductId"]);
+    XCTAssertEqualObjects(productView.items[0].price.price, [[NSDecimalNumber alloc] initWithString: metadata[@"price"]]);
+    XCTAssertEqualObjects(productView.items[0].price.currency, metadata[@"currency"]);
+    XCTAssertEqualObjects(productView.items[0].category, metadata[@"category"]);
+    XCTAssertEqualObjects(productView.items[0].productImage, metadata[@"image"]);
+    XCTAssertEqualObjects(productView.items[0].name, metadata[@"name"]);
+    NSString* quantity = [NSString stringWithFormat:@"%d", productView.items[0].quantity];
+    XCTAssertEqualObjects(quantity, metadata[@"quantity"]);
+}
+
+- (void)testSendEvent_multipleEventsSent_onlyGetsGeoAdjustedDomainOnce {
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    ATTNAddToCartEvent* addToCart1 = [self buildAddToCart];
+    ATTNAddToCartEvent* addToCart2 = [self buildAddToCart];
+    ATTNUserIdentity* userIdentity = [self buildUserIdentity];
+    
+    [api sendEvent:addToCart1 userIdentity:userIdentity];
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(2, sessionMock.urlCalls.count);
+    
+    [api sendEvent:addToCart2 userIdentity:userIdentity];
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(3, sessionMock.urlCalls.count);
+    
+    int numberOfGeoAdjustedDomainCalls = 0;
+    for (NSURL* urlCall in sessionMock.urlCalls) {
+        if ([urlCall.host isEqualToString:@"cdn.attn.tv"]) {
+            numberOfGeoAdjustedDomainCalls++;
+        }
+    }
+    XCTAssertEqual(1, numberOfGeoAdjustedDomainCalls);
+}
+
+- (void)testGetGeoAdjustedDomain_notCachedYet_savesTheCorrectDomainValue {
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    
+    XCTAssertNil([api getCachedGeoAdjustedDomain]);
+    
+    [api getGeoAdjustedDomain:TEST_DOMAIN completionHandler:^(NSString * _Nullable geoAdjustedDomain, NSError * _Nullable error) {
+        XCTAssertEqualObjects(TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain);
+    }];
+    
+    XCTAssertEqualObjects(TEST_GEO_ADJUSTED_DOMAIN, [api getCachedGeoAdjustedDomain]);
+}
+
 - (NSDictionary*)getMetadataFromUrl:(NSURL*)url {
     NSDictionary<NSString*, NSString*>* queryItems = [self getQueryItemsFromUrl:url];
     NSString* queryItemsString = queryItems[@"m"];
@@ -265,6 +371,26 @@ static NSString* const TEST_DOMAIN = @"some-domain";
     ATTNPurchaseEvent* purchaseEvent = [[ATTNPurchaseEvent alloc] initWithItems:@[item] order:order];
     purchaseEvent.cart = cart;
     return purchaseEvent;
+}
+
+- (ATTNAddToCartEvent*)buildAddToCart {
+    ATTNItem* item = [self buildItem];
+    ATTNAddToCartEvent* event = [[ATTNAddToCartEvent alloc] initWithItems:@[item]];
+    return event;
+}
+
+- (ATTNProductViewEvent*)buildProductView {
+    ATTNItem* item = [self buildItem];
+    ATTNProductViewEvent* event = [[ATTNProductViewEvent alloc] initWithItems:@[item]];
+    return event;
+}
+
+- (ATTNItem*)buildItem {
+    ATTNItem* item = [[ATTNItem alloc] initWithProductId:@"222" productVariantId:@"55555" price:[[ATTNPrice alloc] initWithPrice:[[NSDecimalNumber alloc] initWithString:@"15.99"] currency:@"USD"]];
+    item.category = @"someCategory";
+    item.productImage = @"someImage";
+    item.name = @"someName";
+    return item;
 }
 
 - (ATTNPurchaseEvent*)buildPurchaseWithTwoItems {
