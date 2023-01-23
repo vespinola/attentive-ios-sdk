@@ -68,6 +68,8 @@ See the [`ATTNUserIdentity`](Creative/ATTNUserIdentity.m) file for all possible 
 
 ### Record user events
 
+The SDK currently supports `ATTNPurchaseEvent`, `ATTNAddToCartEvent`, and `ATTNProductViewEvent`.
+
 ```objectiveC
 // Create the Item(s) that was/were purchased
 ATTNItem* item = [[ATTNItem alloc] initWithProductId:@"222" productVariantId:@"55555" price:[[ATTNPrice alloc] initWithPrice:[[NSDecimalNumber alloc] initWithString:@"15.99"] currency:@"USD"]];
