@@ -74,7 +74,7 @@
     _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
     _webView.navigationDelegate = self;
 
-    [_webView loadRequest:request];
+    [_webView loadRequest:request ];
     
     if ([_mode isEqualToString:@"debug"]) {
         [_parentView addSubview:_webView];
