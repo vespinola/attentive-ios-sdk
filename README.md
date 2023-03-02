@@ -57,7 +57,7 @@ SDK will function. This method can be called any time you have new information t
 [sdk identify:@{ IDENTIFIER_TYPE_CLIENT_USER_ID: @"myAppUserId", IDENTIFIER_TYPE_PHONE: @"+15556667777"}];
 ```
 
-See the [`ATTNUserIdentity`](Creative/ATTNUserIdentity.m) file for all possible identifier types.
+See the [`ATTNUserIdentity`](Sources/ATTNUserIdentity.m#L15) file for all possible identifier types.
 
 
 ### Load and render the creative
