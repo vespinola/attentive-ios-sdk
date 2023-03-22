@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #import "ATTNParameterValidation.h"
 #import "ATTNUserIdentity.h"
@@ -18,6 +19,8 @@
 #import "ATTNPurchaseEvent.h"
 #import "ATTNAddToCartEvent.h"
 #import "ATTNProductViewEvent.h"
+#import "ATTNInfoEvent.h"
+#import "ATTNUserAgentBuilder.h"
 
 // A single event can create multiple requests. The EventRequest class represents a single request.
 @interface EventRequest : NSObject
@@ -69,6 +72,7 @@ static NSString* const EVENT_TYPE_ADD_TO_CART = @"c";
 static NSString* const EVENT_TYPE_PRODUCT_VIEW = @"d";
 static NSString* const EVENT_TYPE_ORDER_CONFIRMED = @"oc";
 static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
+static NSString* const EVENT_TYPE_INFO = @"i";
 
 @implementation ATTNAPI {
     NSURLSession* _Nonnull _urlSession;
@@ -78,7 +82,15 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
 }
 
 - (instancetype)initWithDomain:(NSString*)domain {
-    return [self initWithDomain:domain urlSession:[NSURLSession sharedSession]];
+    return [self initWithDomain:domain urlSession:[self buildUrlSession]];
+}
+
+- (NSURLSession*)buildUrlSession {
+    NSURLSessionConfiguration* configWithUserAgent = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSDictionary* additionalHeadersWithUserAgent = @{@"User-Agent": [ATTNUserAgentBuilder buildUserAgent]};
+    [configWithUserAgent setHTTPAdditionalHeaders:additionalHeadersWithUserAgent];
+
+    return [NSURLSession sessionWithConfiguration:configWithUserAgent];
 }
 
 // Private constructor that makes testing easier
@@ -137,8 +149,9 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
 
 - (void)sendEventInternalForRequest:(EventRequest*)request userIdentity: (ATTNUserIdentity*)userIdentity domain:(NSString*) domain callback:(ATTNAPICallback)callback{
     NSURL* url = [self constructEventUrlComponentsForEventRequest:request userIdentity:userIdentity domain:domain].URL;
-
-    NSURLSessionDataTask* task = [_urlSession dataTaskWithURL:url completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSMutableURLRequest* urlRequest = [NSMutableURLRequest requestWithURL:url];
+    [urlRequest setHTTPMethod:@"POST"];
+    NSURLSessionDataTask* task = [_urlSession dataTaskWithRequest:urlRequest completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 
         NSString * message;
         if (error) {
@@ -248,6 +261,9 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
         }
         
         return eventRequests;
+    } else if ([event isKindOfClass:[ATTNInfoEvent class]]) {
+        [eventRequests addObject:[[EventRequest alloc] initWithMetadata:[[NSMutableDictionary alloc] init] eventNameAbbreviation:EVENT_TYPE_INFO]];
+        return eventRequests;
     } else {
         NSException *e = [NSException
                 exceptionWithName:@"UnknownEventException"
@@ -279,7 +295,8 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
     NSString* urlString = [NSString stringWithFormat:DTAG_URL_FORMAT, domain];
     
     NSURL* url = [NSURL URLWithString:urlString];
-    NSURLSessionDataTask* task = [_urlSession dataTaskWithURL:url completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    NSURLSessionDataTask* task = [_urlSession dataTaskWithRequest:request completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error getting the geo-adjusted domain. Error: '%@'", [error description]);
             completionHandler(nil, error);
@@ -314,7 +331,9 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
 
 - (void)sendUserIdentityInternal:(ATTNUserIdentity *)userIdentity domain:(NSString *)domain callback:(ATTNAPICallback)callback {
     NSURL* url = [self constructUserIdentityUrl:userIdentity domain:domain].URL;
-    NSURLSessionDataTask* task = [_urlSession dataTaskWithURL:url completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSURLSessionDataTask* task = [_urlSession dataTaskWithRequest:request completionHandler:^ void (NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 
         NSString * message;
         if (error) {
@@ -491,11 +510,6 @@ static NSString* const EVENT_TYPE_USER_IDENTIFIER_COLLECTED = @"idn";
 // For testing only
 - (NSURLSession*)session {
     return _urlSession;
-}
-
-// For testing only
-- (void)setSession:(NSURLSession*)session {
-    _urlSession = session;
 }
 
 // For testing only

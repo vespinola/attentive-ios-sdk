@@ -9,6 +9,20 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "58332EC2292EC18800B1ECF3"
+               BuildableName = "attentive_ios_sdk_framework.framework"
+               BlueprintName = "attentive-ios-sdk-framework"
+               ReferencedContainer = "container:attentive-ios-sdk.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -29,8 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "58D52E18292EC52B00CF32DE"
@@ -61,9 +74,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "58D52E18292EC52B00CF32DE"
-            BuildableName = "attentive-ios-sdk Tests.xctest"
-            BlueprintName = "attentive-ios-sdk Tests"
+            BlueprintIdentifier = "58332EC2292EC18800B1ECF3"
+            BuildableName = "attentive_ios_sdk_framework.framework"
+            BlueprintName = "attentive-ios-sdk-framework"
             ReferencedContainer = "container:attentive-ios-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

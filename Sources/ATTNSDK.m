@@ -10,6 +10,7 @@
 #import "ATTNSDK.h"
 #import "ATTNUserIdentity.h"
 #import "ATTNCreativeUrlFormatter.h"
+#import "ATTNInfoEvent.h"
 
 @implementation ATTNSDK {
     UIView *_parentView;
@@ -29,6 +30,8 @@
         _mode = mode;
         _userIdentity = [[ATTNUserIdentity alloc] init];
         _api = [[ATTNAPI alloc] initWithDomain:domain];
+        
+        [self sendInfoEvent];
     }
     return self;
 }
@@ -167,6 +170,10 @@
 
 - (ATTNUserIdentity*)getUserIdentity {
     return _userIdentity;
+}
+
+- (void)sendInfoEvent {
+    [_api sendEvent:[[ATTNInfoEvent alloc] init] userIdentity:_userIdentity];
 }
 
 @end

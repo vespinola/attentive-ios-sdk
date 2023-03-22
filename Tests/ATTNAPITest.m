@@ -6,9 +6,10 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "ATTNAPI.h"
 #import "ATTNTestEventUtils.h"
-
+#import "ATTNUserAgentBuilder.h"
 
 static NSString* const TEST_DOMAIN = @"some-domain";
 static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
@@ -23,6 +24,8 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 - (NSURL*)constructUserIdentityUrl:(ATTNUserIdentity *)userIdentity domain:(NSString *)domain;
 
 - (NSString*)getCachedGeoAdjustedDomain;
+
+- (NSURLSession*)session;
 
 @end
 
@@ -58,8 +61,9 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 @property bool didCallDtag;
 @property bool didCallEventsApi;
 @property NSMutableArray<NSURL*>* urlCalls;
+@property NSMutableArray<NSURLRequest*>* requests;
 
-- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandler:(void (NS_SWIFT_SENDABLE ^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
+- (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (NS_SWIFT_SENDABLE ^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler;
 
 @end
 
@@ -68,12 +72,16 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 - (instancetype)init {
     if (self = [super init]) {
         _urlCalls = [[NSMutableArray alloc] init];
+        _requests = [[NSMutableArray alloc] init];
     }
     
     return self;
 }
 
-- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url completionHandler:(void (NS_SWIFT_SENDABLE ^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler {
+- (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request completionHandler:(void (NS_SWIFT_SENDABLE ^)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error))completionHandler {
+    [_requests addObject:request];
+    
+    NSURL* url = request.URL;
     [_urlCalls addObject:url];
     
     if ([[url absoluteString] containsString:@"cdn.attn.tv"]) {
@@ -103,13 +111,37 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 
 @implementation ATTNAPITest
 
+
+- (void)testURLSession_verifySessionHasUserAgent {
+    // Arrange
+    id userAgentBuilderMock = [OCMockObject mockForClass:[ATTNUserAgentBuilder class]];
+    [[[userAgentBuilderMock stub] andReturn:@"fakeUserAgent"] buildUserAgent];
+
+    // Act
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:@"somedomain"];
+    
+    // Assert
+    NSDictionary* additionalHeaders = [api session].configuration.HTTPAdditionalHeaders;
+    XCTAssertEqual(1, additionalHeaders.count);
+    XCTAssertEqualObjects(@"User-Agent", [additionalHeaders allKeys][0]);
+    
+    NSString* actualUserAgent = additionalHeaders[@"User-Agent"];
+    XCTAssertEqualObjects(@"fakeUserAgent", actualUserAgent);
+    
+    [userAgentBuilderMock stopMocking];
+}
+
 - (void)testSendUserIdentity_validIdentifiers_callsEndpoints {
+    // Arrange
     NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
     ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
     
     ATTNUserIdentity* userIdentity = [[ATTNTestEventUtils class] buildUserIdentity];
+    
+    // Act
     [api sendUserIdentity:userIdentity];
     
+    // Assert
     XCTAssertTrue(sessionMock.didCallDtag);
     XCTAssertTrue(sessionMock.didCallEventsApi);
 }
@@ -293,6 +325,44 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
     XCTAssertEqualObjects(quantity, metadata[@"quantity"]);
 }
 
+- (void)testSendEvent_validInfoEvent_urlContainsExpectedMetadata {
+    // Arrange
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    ATTNInfoEvent* infoEvent = [[ATTNTestEventUtils class] buildInfoEvent];
+    ATTNUserIdentity* userIdentity = [[ATTNTestEventUtils class] buildUserIdentity];
+    
+    // Act
+    [api sendEvent:infoEvent userIdentity:userIdentity];
+    
+    // Assert
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(2, sessionMock.urlCalls.count);
+    NSURL* url = sessionMock.urlCalls[1];
+    NSDictionary<NSString*, NSString*>* queryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:url];
+    NSString* queryItemsString = queryItems[@"m"];
+    NSDictionary* metadata = [NSJSONSerialization JSONObjectWithData:[queryItemsString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    
+    XCTAssertEqualObjects(@"i", queryItems[@"t"]);
+}
+
+- (void)testSendEvent_validEvent_httpMethodIsPost {
+    // Arrange
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    ATTNProductViewEvent* productView = [[ATTNTestEventUtils class] buildProductView];
+    ATTNUserIdentity* userIdentity = [[ATTNTestEventUtils class] buildUserIdentity];
+    
+    // Act
+    [api sendEvent:productView userIdentity:userIdentity];
+    
+    // Assert
+    XCTAssertTrue(sessionMock.didCallEventsApi);
+    XCTAssertEqual(2, sessionMock.urlCalls.count);
+    NSURLRequest* request = sessionMock.requests[1];
+    XCTAssertEqualObjects(@"POST", [request.HTTPMethod uppercaseString]);
+}
+
 - (void)testSendEvent_multipleEventsSent_onlyGetsGeoAdjustedDomainOnce {
     NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
     ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
@@ -330,5 +400,19 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
     XCTAssertEqualObjects(TEST_GEO_ADJUSTED_DOMAIN, [api getCachedGeoAdjustedDomain]);
 }
 
+- (void)testGetGeoAdjustedDomain_notCachedYet_httpMethodIsGet {
+    NSURLSessionMock* sessionMock = [[NSURLSessionMock alloc] init];
+    ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:TEST_DOMAIN urlSession:sessionMock];
+    
+    XCTAssertNil([api getCachedGeoAdjustedDomain]);
+    
+    [api getGeoAdjustedDomain:TEST_DOMAIN completionHandler:^(NSString * _Nullable geoAdjustedDomain, NSError * _Nullable error) {
+        XCTAssertEqualObjects(TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain);
+    }];
+    
+    XCTAssertTrue(sessionMock.didCallDtag);
+    XCTAssertEqual(1, sessionMock.requests.count);
+    XCTAssertEqualObjects(@"GET", [sessionMock.requests[0].HTTPMethod uppercaseString]);
+}
 
 @end
