@@ -53,11 +53,14 @@ NSString *const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS = @"customIdentifiers";
 }
 
 - (void)validateIdentifiers:(nonnull NSDictionary *)identifiers {
-  [ATTNParameterValidation verifyStringOrNil:identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID] inputName:IDENTIFIER_TYPE_CLIENT_USER_ID];
-  [ATTNParameterValidation verifyStringOrNil:identifiers[IDENTIFIER_TYPE_PHONE] inputName:IDENTIFIER_TYPE_PHONE];
-  [ATTNParameterValidation verifyStringOrNil:identifiers[IDENTIFIER_TYPE_EMAIL] inputName:IDENTIFIER_TYPE_EMAIL];
-  [ATTNParameterValidation verifyStringOrNil:identifiers[IDENTIFIER_TYPE_SHOPIFY_ID] inputName:IDENTIFIER_TYPE_SHOPIFY_ID];
-  [ATTNParameterValidation verifyStringOrNil:identifiers[IDENTIFIER_TYPE_KLAVIYO_ID] inputName:IDENTIFIER_TYPE_KLAVIYO_ID];
+  NSArray *keys = @[IDENTIFIER_TYPE_CLIENT_USER_ID,
+                    IDENTIFIER_TYPE_PHONE,
+                    IDENTIFIER_TYPE_EMAIL,
+                    IDENTIFIER_TYPE_SHOPIFY_ID,
+                    IDENTIFIER_TYPE_KLAVIYO_ID];
+  [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+    [ATTNParameterValidation verifyString:identifiers[key] inputName:key];
+  }];
   [ATTNParameterValidation verify1DStringDictionaryOrNil:identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] inputName:IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS];
 }
 

@@ -39,12 +39,17 @@
 }
 
 + (void)verifyStringOrNil:(nullable NSString *)inputValue inputName:(nonnull const NSString *)inputName {
-  if ([ATTNParameterValidation isNotNil:inputValue]) {
-    if (![ATTNParameterValidation isString:inputValue]) {
-      [NSException raise:@"Bad Identifier" format:@"%@ should be NSString", inputName];
-    } else if ([ATTNParameterValidation isEmpty:inputValue]) {
-      NSLog(@"Identifier %@ should be non-empty", inputName);
+  if ([ATTNParameterValidation isNotNil:inputValue] && ![ATTNParameterValidation isStringAndNotEmpty:inputValue]) {
+      [NSException raise:@"Bad Identifier" format:@"%@ should be a non-empty NSString", inputName];
     }
+}
+
++ (void)verifyString:(nullable NSString *)inputValue inputName:(nonnull const NSString *)inputName {
+  if ([ATTNParameterValidation isNotNil:inputValue] && ![ATTNParameterValidation isString:inputValue]) {
+    [NSException raise:@"Bad Identifier" format:@"%@ should be NSString", inputName];
+  }
+  if ([ATTNParameterValidation isEmpty:inputValue]) {
+    NSLog(@"Identifier %@ should be non-empty", inputName);
   }
 }
 
