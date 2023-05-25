@@ -45,7 +45,10 @@
 }
 
 + (void)verifyString:(nullable NSString *)inputValue inputName:(nonnull const NSString *)inputName {
-  if ([ATTNParameterValidation isNotNil:inputValue] && ![ATTNParameterValidation isString:inputValue]) {
+  if ([ATTNParameterValidation isNil:inputValue]) {
+    return;
+  }
+  if (![ATTNParameterValidation isString:inputValue]) {
     [NSException raise:@"Bad Identifier" format:@"%@ should be NSString", inputName];
   }
   if ([ATTNParameterValidation isEmpty:inputValue]) {
