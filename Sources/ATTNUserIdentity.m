@@ -58,9 +58,9 @@ NSString *const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS = @"customIdentifiers";
                      IDENTIFIER_TYPE_EMAIL,
                      IDENTIFIER_TYPE_SHOPIFY_ID,
                      IDENTIFIER_TYPE_KLAVIYO_ID ];
-  [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
+  for (id key in keys) {
     [ATTNParameterValidation verifyString:identifiers[key] inputName:key];
-  }];
+  }
   [ATTNParameterValidation verify1DStringDictionaryOrNil:identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] inputName:IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS];
 }
 
