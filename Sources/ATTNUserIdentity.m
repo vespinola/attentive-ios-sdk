@@ -53,11 +53,11 @@ NSString *const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS = @"customIdentifiers";
 }
 
 - (void)validateIdentifiers:(nonnull NSDictionary *)identifiers {
-  NSArray *keys = @[IDENTIFIER_TYPE_CLIENT_USER_ID,
-                    IDENTIFIER_TYPE_PHONE,
-                    IDENTIFIER_TYPE_EMAIL,
-                    IDENTIFIER_TYPE_SHOPIFY_ID,
-                    IDENTIFIER_TYPE_KLAVIYO_ID];
+  NSArray *keys = @[ IDENTIFIER_TYPE_CLIENT_USER_ID,
+                     IDENTIFIER_TYPE_PHONE,
+                     IDENTIFIER_TYPE_EMAIL,
+                     IDENTIFIER_TYPE_SHOPIFY_ID,
+                     IDENTIFIER_TYPE_KLAVIYO_ID ];
   [keys enumerateObjectsUsingBlock:^(NSString *key, NSUInteger idx, BOOL *stop) {
     [ATTNParameterValidation verifyString:identifiers[key] inputName:key];
   }];
