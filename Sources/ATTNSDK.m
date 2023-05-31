@@ -59,7 +59,8 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
   } else if ([userIdentifiers isKindOfClass:[NSDictionary class]]) {
     [_userIdentity mergeIdentifiers:(NSDictionary *)userIdentifiers];
   } else {
-    [NSException raise:@"Incorrect type for userIdentifiers" format:@"userIdentifiers should be of type <NSDictionary *>"];
+    NSLog(@"ERROR: Incorrect type for userIdentifiers; expected type NSDictionary. No identify call will be made.");
+    return;
   }
 
   [_api sendUserIdentity:_userIdentity];

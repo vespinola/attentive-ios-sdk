@@ -275,11 +275,8 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
     [eventRequests addObject:[[EventRequest alloc] initWithMetadata:customEventMetadata eventNameAbbreviation:EVENT_TYPE_CUSTOM_EVENT]];
     return eventRequests;
   } else {
-    NSException* e = [NSException
-        exceptionWithName:@"UnknownEventException"
-                   reason:[NSString stringWithFormat:@"Unknown Event type: %@", [event class]]
-                 userInfo:nil];
-    @throw e;
+    NSLog(@"ERROR: Unknown event type: %@", [event class]);
+    return @[];
   }
 }
 

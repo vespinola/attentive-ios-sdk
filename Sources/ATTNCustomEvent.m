@@ -18,7 +18,6 @@
     NSString *invalidCharInType = [ATTNCustomEvent findInvalidCharacterInType:type];
     if (invalidCharInType != nil) {
       NSLog(@"Invalid character '%@' in CustomEvent type '%@'", invalidCharInType, type);
-      [NSException raise:@"Bad CustomEvent Type" format:@"The CustomEvent type '%@' had an invalid character '%@'.", type, invalidCharInType];
     }
 
     [ATTNParameterValidation verifyNotNil:properties inputName:@"properties"];
@@ -27,8 +26,7 @@
     for (NSString *key in properties.allKeys) {
       NSString *invalidCharInKey = [ATTNCustomEvent findInvalidCharacterInPropertiesKey:key];
       if (invalidCharInKey != nil) {
-        NSLog(@"Invalid character '%@' in CustomEvent property key '%@'", invalidCharInKey, key);
-        [NSException raise:@"Bad CustomEvent Property Key" format:@"The CustomEvent property key '%@' had an invalid character '%@'.", key, invalidCharInKey];
+        NSLog(@"ERROR: Invalid character '%@' in CustomEvent property key '%@'", invalidCharInKey, key);
       }
     }
 
