@@ -59,7 +59,7 @@ NSString *const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS = @"customIdentifiers";
                      IDENTIFIER_TYPE_SHOPIFY_ID,
                      IDENTIFIER_TYPE_KLAVIYO_ID ];
   for (id key in keys) {
-    [ATTNParameterValidation verifyString:identifiers[key] inputName:key];
+    [ATTNParameterValidation verifyStringOrNil:identifiers[key] inputName:key];
   }
   [ATTNParameterValidation verify1DStringDictionaryOrNil:identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] inputName:IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS];
 }

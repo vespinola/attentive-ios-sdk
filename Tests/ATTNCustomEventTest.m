@@ -24,11 +24,11 @@
 
 - (void)testConstructor {
   XCTAssertThrows([[ATTNCustomEvent alloc] initWithType:nil properties:@{@"k" : @"v"}]);
-  XCTAssertThrows([[ATTNCustomEvent alloc] initWithType:@"" properties:@{@"k" : @"v"}]);
   XCTAssertThrows([[ATTNCustomEvent alloc] initWithType:@"]" properties:@{@"k" : @"v"}]);
   XCTAssertThrows([[ATTNCustomEvent alloc] initWithType:@"good" properties:nil]);
   XCTAssertThrows([[ATTNCustomEvent alloc] initWithType:@"good" properties:@{@"k]" : @"v"}]);
 
+  XCTAssertNoThrow([[ATTNCustomEvent alloc] initWithType:@"" properties:@{@"k" : @"v"}]);
   XCTAssertNoThrow([[ATTNCustomEvent alloc] initWithType:@"good" properties:@{}]);
   XCTAssertNoThrow([[ATTNCustomEvent alloc] initWithType:@"good" properties:@{@"k" : @"v"}]);
 }

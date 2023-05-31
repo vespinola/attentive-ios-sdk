@@ -42,12 +42,12 @@
   XCTAssertNoThrow([ATTNParameterValidation verifyStringOrNil:nil inputName:@"inputNameValue"]);
 }
 
-- (void)testVerifyStringOrNil_givenDictionary_throws {
-  XCTAssertThrows([ATTNParameterValidation verifyStringOrNil:@{@"hi" : @"hello"} inputName:@"inputNameValue"]);
+- (void)testVerifyStringOrNil_givenDictionary_doesNotThrow {
+  XCTAssertNoThrow([ATTNParameterValidation verifyStringOrNil:@{@"hi" : @"hello"} inputName:@"inputNameValue"]);
 }
 
-- (void)testVerifyStringOrNil_givenEmptyString_throws {
-  XCTAssertThrows([ATTNParameterValidation verifyStringOrNil:@"" inputName:@"inputNameValue"]);
+- (void)testVerifyStringOrNil_givenEmptyString_doesNotThrow {
+  XCTAssertNoThrow([ATTNParameterValidation verifyStringOrNil:@"" inputName:@"inputNameValue"]);
 }
 
 - (void)testVerifyStringOrNil_givenNonEmptyString_succeeds {

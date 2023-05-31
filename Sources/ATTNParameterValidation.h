@@ -21,8 +21,6 @@
 
 + (void)verifyStringOrNil:(nullable NSString *) inputValue inputName:(nonnull const NSString *) inputName;
 
-+ (void)verifyString:(nullable NSString *) inputValue inputName:(nonnull const NSString *) inputName;
-
 + (void)verify1DStringDictionaryOrNil:(nullable NSDictionary *) inputValue inputName:(nonnull const NSString *) inputName;
 
 
