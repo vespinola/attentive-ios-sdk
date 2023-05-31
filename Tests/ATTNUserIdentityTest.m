@@ -36,8 +36,8 @@
   XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID]]);
 }
 
-- (void)testInitWithIdentifiers_invalidIdentifiers_throws {
-  XCTAssertThrows([[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : [[NSDictionary alloc] init]}]);
+- (void)testInitWithIdentifiers_invalidIdentifiers_doesNotThrow {
+  XCTAssertNoThrow([[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : [[NSDictionary alloc] init]}]);
 }
 
 - (void)testMergeIdentifiers_noExistingIdentifiersAndMergeEmptyIdentifiers_identifiersAreEmpty {
