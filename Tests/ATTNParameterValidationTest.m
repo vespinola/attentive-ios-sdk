@@ -6,7 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "AttNParameterValidation.h"
+#import "ATTNParameterValidation.h"
 
 @interface ATTNParameterValidationTest : XCTestCase
 
@@ -58,8 +58,8 @@
   XCTAssertNoThrow([ATTNParameterValidation verify1DStringDictionaryOrNil:nil inputName:@"inputNameValue"]);
 }
 
-- (void)testVerify1DStringDictionaryOrNil_givenString_throws {
-  XCTAssertThrows([ATTNParameterValidation verify1DStringDictionaryOrNil:@"someString" inputName:@"inputNameValue"]);
+- (void)testVerify1DStringDictionaryOrNil_givenString_doesNotThrow {
+  XCTAssertNoThrow([ATTNParameterValidation verify1DStringDictionaryOrNil:@"someString" inputName:@"inputNameValue"]);
 }
 
 - (void)testVerify1DStringDictionaryOrNil_givenEmptyDictionary_succeeds {

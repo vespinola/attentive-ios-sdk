@@ -52,7 +52,8 @@
     return;
 
   if (![inputValue isKindOfClass:[NSDictionary class]]) {
-    NSLog(@"Bad identifier: %@ should be of form NSDictionary<NSString *, NSString *> *", inputName];
+    NSLog(@"Bad identifier: %@ should be of form NSDictionary<NSString *, NSString *> *", inputName);
+    return;
   }
 
   for (id key in inputValue) {
