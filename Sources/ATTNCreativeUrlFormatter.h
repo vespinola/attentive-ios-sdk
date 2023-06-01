@@ -5,12 +5,10 @@
 //  Created by Olivia Kim on 3/9/23.
 //
 
-#import "ATTNUserIdentity.h"
-
 #ifndef ATTNCreativeUrlFormatter_h
 #define ATTNCreativeUrlFormatter_h
 
-#endif /* ATTNCreativeUrlFormatter_h */
+#import "ATTNUserIdentity.h"
 
 
 @interface ATTNCreativeUrlFormatter : NSObject
@@ -24,3 +22,5 @@ NS_ASSUME_NONNULL_BEGIN
 NS_ASSUME_NONNULL_END
 
 @end
+
+#endif /* ATTNCreativeUrlFormatter_h */
