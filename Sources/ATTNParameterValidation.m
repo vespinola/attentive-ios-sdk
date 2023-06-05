@@ -34,7 +34,7 @@
 
 + (void)verifyNotNil:(nonnull NSObject *)inputValue inputName:(nonnull const NSString *)inputName {
   if ([ATTNParameterValidation isNil:inputValue]) {
-    [NSException raise:@"Input Was Nil" format:@"%@ should be non-nil", inputName];
+    NSLog(@"Input was nil; %@ should be non-nil", inputName);
   }
 }
 
@@ -52,7 +52,8 @@
     return;
 
   if (![inputValue isKindOfClass:[NSDictionary class]]) {
-    [NSException raise:@"Bad Identifier" format:@"%@ should be of form NSDictionary<NSString *, NSString *> *", inputName];
+    NSLog(@"Bad identifier: %@ should be of form NSDictionary<NSString *, NSString *> *", inputName);
+    return;
   }
 
   for (id key in inputValue) {
