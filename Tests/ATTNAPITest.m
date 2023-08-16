@@ -86,7 +86,7 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
   if ([[url absoluteString] containsString:@"cdn.attn.tv"]) {
     _didCallDtag = true;
     return [[NSURLSessionDataTaskMock alloc] initWithHandler:^(NSData* data, NSURLResponse* response, NSError* error) {
-      completionHandler([[NSString stringWithFormat:@"window.__attentive_domain='%@.attn.tv'", TEST_GEO_ADJUSTED_DOMAIN] dataUsingEncoding:NSUTF8StringEncoding], [[NSHTTPURLResponse alloc] initWithURL:url statusCode:200 HTTPVersion:nil headerFields:nil], nil);
+      completionHandler([[NSString stringWithFormat:@"a='%@.attn.tv'", TEST_GEO_ADJUSTED_DOMAIN] dataUsingEncoding:NSUTF8StringEncoding], [[NSHTTPURLResponse alloc] initWithURL:url statusCode:200 HTTPVersion:nil headerFields:nil], nil);
     }];
   }
 
