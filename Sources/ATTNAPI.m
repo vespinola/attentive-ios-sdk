@@ -510,8 +510,6 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
     return nil;
   }
 
-  NSLog(@"Found attn domain is: %@", [tag substringWithRange:domainRange]);
-
   return [tag substringWithRange:domainRange];
 }
 
