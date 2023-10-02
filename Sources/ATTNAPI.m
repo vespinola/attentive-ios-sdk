@@ -483,7 +483,7 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
 
 + (NSString* _Nullable)extractDomainFromTag:(NSString*)tag {
   NSError* error = nil;
-  NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"window.__attentive_domain='(.*?).attn.tv'" options:0 error:&error];
+  NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:@"='([a-z0-9-]+)[.]attn[.]tv'" options:0 error:&error];
 
   if (error) {
     NSLog(@"Error building the domain regex. Error: '%@'", [error description]);
