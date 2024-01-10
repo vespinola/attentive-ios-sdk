@@ -18,7 +18,6 @@
 		58317973292EEEAA0003D6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5B28DCDE5A007620BD /* Assets.xcassets */; };
 		58317974292EEEAA0003D6B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5828DCDE57007620BD /* Main.storyboard */; };
 		5847C93B2B4EEC82009DA023 /* TabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847C93A2B4EEC82009DA023 /* TabBarControllerViewController.m */; };
-		5847C93D2B4EFC8F009DA023 /* TabViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5847C93C2B4EFC8F009DA023 /* TabViewStoryboard.storyboard */; };
 		588B597529B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; };
 		588B597629B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58D52E3F292EDA1600CF32DE /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -67,7 +66,6 @@
 		583179B1292F60460003D6B0 /* ImportAttentiveSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportAttentiveSDK.h; sourceTree = "<group>"; };
 		5847C9392B4EEC82009DA023 /* TabBarControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarControllerViewController.h; sourceTree = "<group>"; };
 		5847C93A2B4EEC82009DA023 /* TabBarControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerViewController.m; sourceTree = "<group>"; };
-		5847C93C2B4EFC8F009DA023 /* TabViewStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabViewStoryboard.storyboard; sourceTree = "<group>"; };
 		588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4C28DCDE57007620BD /* Example - Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example - Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4F28DCDE57007620BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 				69CCAF5B28DCDE5A007620BD /* Assets.xcassets */,
 				69CCAF5D28DCDE5A007620BD /* LaunchScreen.storyboard */,
 				69CCAF6028DCDE5A007620BD /* Info.plist */,
-				5847C93C2B4EFC8F009DA023 /* TabViewStoryboard.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 			files = (
 				58317972292EEEAA0003D6B0 /* LaunchScreen.storyboard in Resources */,
 				58317973292EEEAA0003D6B0 /* Assets.xcassets in Resources */,
-				5847C93D2B4EFC8F009DA023 /* TabViewStoryboard.storyboard in Resources */,
 				58317974292EEEAA0003D6B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
