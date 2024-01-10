@@ -23,7 +23,7 @@ ATTNSDK *sdk;
   self.view.backgroundColor = [UIColor systemGray3Color];
 
   // Replace with your Attentive domain to test with your Attentive account
-  _domain = @"YOUR_ATTENTIVE_DOMAIN";
+  _domain = @"games";
   _mode = @"production";
 
   // Setup for Testing purposes only
@@ -89,6 +89,8 @@ ATTNSDK *sdk;
 }
 
 - (IBAction)clearUserButtonPressed:(id)sender {
+    
+  NSLog(@"Clear user button pressed!");
   [sdk clearUser];
 }
 

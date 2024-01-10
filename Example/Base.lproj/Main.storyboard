@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z6X-Cg-nbe">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFm-Nn-lnh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="MOM-6S-MMr">
+        <!--Tab Bar Controller-->
+        <scene sceneID="H6e-UD-DmG">
             <objects>
-                <navigationController id="z6X-Cg-nbe" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KXw-M3-D9I">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                <tabBarController id="AFm-Nn-lnh" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="31e-te-HMd">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="haS-rh-XGC"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="bl1-Id-svC"/>
+                        <segue destination="Xj3-Ru-nwo" kind="relationship" relationship="viewControllers" id="sBj-1v-P5G"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PBS-Hg-Tpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Mg-fs-Jr4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-859" y="139"/>
+            <point key="canvasLocation" x="-1747" y="183"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
@@ -65,9 +67,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="View Product Page"/>
-                                <connections>
-                                    <segue destination="Xj3-Ru-nwo" kind="show" id="a2W-Fj-YWe"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsW-KC-BMs">
                                 <rect key="frame" x="211" y="73" width="97" height="0.0"/>
@@ -91,6 +90,7 @@
                             <constraint firstItem="KsW-KC-BMs" firstAttribute="leading" secondItem="gxU-kM-f6P" secondAttribute="trailing" constant="8" id="wSS-yH-e8x"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="c2C-4K-f9R"/>
                     <navigationItem key="navigationItem" id="4gh-gN-hKC"/>
                     <connections>
                         <outlet property="clearUserButton" destination="FZT-nD-dxR" id="BfD-L6-L38"/>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
-        <!--Product View Controller-->
+        <!--Item-->
         <scene sceneID="Ao7-F8-PxY">
             <objects>
                 <viewController id="Xj3-Ru-nwo" customClass="ProductViewController" sceneMemberID="viewController">
@@ -154,6 +154,7 @@
                         <viewLayoutGuide key="safeArea" id="KyE-6k-rz2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Kez-RS-Jz1"/>
                     <navigationItem key="navigationItem" id="gu9-Nv-e2w"/>
                     <connections>
                         <outlet property="addToCartButton" destination="oAv-pI-GrN" id="Mjq-gi-XsA"/>
@@ -169,7 +170,7 @@
     <resources>
         <image name="ProductImage" width="122" height="122"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

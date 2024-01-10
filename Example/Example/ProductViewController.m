@@ -21,8 +21,14 @@
   ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:@[ item ]];
 
   [[ATTNEventTracker sharedInstance] recordEvent:productView];
-  [self showToast:@"Product View event sent"];
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [self showToast:@"Product View event sent"];
+}
+
 
 - (IBAction)addToCartButtonPressed:(id)sender {
   ATTNItem* item = [self buildItem];
