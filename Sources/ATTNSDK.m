@@ -35,6 +35,8 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
   ATTNCreativeTriggerCompletionHandler _triggerHandler;
 }
 
+static BOOL isCreativeOpen = NO;
+
 - (id)initWithDomain:(NSString *)domain {
   return [self initWithDomain:domain mode:@"production"];
 }
@@ -98,9 +100,12 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
 
   [[wkWebViewConfiguration userContentController] addScriptMessageHandler:self name:@"log"];
 
-  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive && event.data.__attentive.action === 'CLOSE') {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);";
+  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`visibilitychange ${document.hidden}`);}, false);";
+    
+//    NSString *userScriptWithEventListener = @"window.addEventListener('click', (event) => {window.webkit.messageHandlers.log.postMessage(event);}, false);";
 
   WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
+    
   [[wkWebViewConfiguration userContentController] addUserScript:wkUserScript];
 
   _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
@@ -112,7 +117,7 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
     [_parentView addSubview:_webView];
   } else {
     _webView.opaque = NO;
-    _webView.backgroundColor = [UIColor clearColor];
+    _webView.backgroundColor = [UIColor redColor];
   }
 }
 
@@ -121,7 +126,7 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-
+    
   NSString *asyncJs = @"var p = new Promise(resolve => { "
                        "    var timeoutHandle = null;"
                        "    const interval = setInterval(function() {"
@@ -178,9 +183,14 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
+    NSLog(@"web event message: %@", message.body);
+    
+//    NSString *boolString = isCreativeOpen ? @"YES" : @"NO";
+//  NSLog(@"isCreativeOpen: %@", boolString);
   if ([message.body isEqualToString:@"CLOSE"]) {
     @try {
       [_webView removeFromSuperview];
+        isCreativeOpen = NO;
       if (self->_triggerHandler != nil) {
         self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
       }
@@ -191,6 +201,25 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
       }
     }
   }
+   else if ([message.body isEqualToString:@"IMPRESSION"]) {
+        isCreativeOpen = YES;
+    }
+   else if ([message.body isEqualToString:@"visibilitychange true"] && isCreativeOpen == YES) {
+       
+       NSLog(@"Nav away from creative, closing");
+       @try {
+           [_webView removeFromSuperview];
+           isCreativeOpen = NO;
+           if (self->_triggerHandler != nil) {
+               self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
+           }
+       } @catch (NSException *e) {
+           NSLog(@"Exception when closing creative: %@", e.reason);
+           if (self->_triggerHandler != nil) {
+               self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
+           }
+       }
+   }
 }
 
 
