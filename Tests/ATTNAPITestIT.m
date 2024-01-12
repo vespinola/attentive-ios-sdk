@@ -52,7 +52,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Assert
   NSHTTPURLResponse* response = (NSHTTPURLResponse*)urlResponse;
-  XCTAssertEqual(200, [response statusCode]);
+  XCTAssertEqual(204, [response statusCode]);
 
   NSDictionary<NSString*, NSString*>* queryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:eventUrl];
   NSString* queryItemsString = queryItems[@"m"];
@@ -102,7 +102,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Purchase Event
   NSHTTPURLResponse* purchaseResponse = (NSHTTPURLResponse*)purchaseUrlResponse;
-  XCTAssertEqual(200, [purchaseResponse statusCode]);
+  XCTAssertEqual(204, [purchaseResponse statusCode]);
 
   NSDictionary<NSString*, NSString*>* purchaseQueryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:purchaseUrl];
   NSString* purchaseQueryItemsString = purchaseQueryItems[@"m"];
@@ -131,7 +131,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Order Confirmed Event
   NSHTTPURLResponse* ocResponse = (NSHTTPURLResponse*)ocUrlResponse;
-  XCTAssertEqual(200, [ocResponse statusCode]);
+  XCTAssertEqual(204, [ocResponse statusCode]);
 
   NSDictionary<NSString*, NSString*>* ocQueryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:ocUrl];
   NSDictionary* ocMetadata = [[ATTNTestEventUtils class] getMetadataFromUrl:ocUrl];
@@ -175,7 +175,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Assert
   NSHTTPURLResponse* response = (NSHTTPURLResponse*)urlResponse;
-  XCTAssertEqual(200, [response statusCode]);
+  XCTAssertEqual(204, [response statusCode]);
 
   NSDictionary<NSString*, NSString*>* queryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:eventUrl];
   NSString* queryItemsString = queryItems[@"m"];
@@ -222,7 +222,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Assert
   NSHTTPURLResponse* response = (NSHTTPURLResponse*)urlResponse;
-  XCTAssertEqual(200, [response statusCode]);
+  XCTAssertEqual(204, [response statusCode]);
 
   NSDictionary<NSString*, NSString*>* queryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:eventUrl];
   NSString* queryItemsString = queryItems[@"m"];
@@ -269,7 +269,7 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
 
   // Assert
   NSHTTPURLResponse* response = (NSHTTPURLResponse*)urlResponse;
-  XCTAssertEqual(200, [response statusCode]);
+  XCTAssertEqual(204, [response statusCode]);
 
   NSDictionary<NSString*, NSString*>* queryItems = [[ATTNTestEventUtils class] getQueryItemsFromUrl:eventUrl];
   NSString* queryItemsString = queryItems[@"m"];
