@@ -24,7 +24,7 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_OPENED = @"CREATIVE_TRIGGER_STATUS_N
 // Status passed to the ATTNCreativeTriggerCompletionHandler when the Creative is not closed due to an unknown
 // exception
 NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_NOT_CLOSED";
-
+NSString *const SDK_VERSION = @"0.4.3-beta.0";
 
 @implementation ATTNSDK {
   UIView *_parentView;
@@ -38,10 +38,12 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_N
 static BOOL isCreativeOpen = NO;
 
 - (id)initWithDomain:(NSString *)domain {
+  NSLog(@"init attentive_ios_sdk v%@", SDK_VERSION);
   return [self initWithDomain:domain mode:@"production"];
 }
 
 - (id)initWithDomain:(NSString *)domain mode:(NSString *)mode {
+  NSLog(@"init attentive_ios_sdk v%@", SDK_VERSION);
   if (self = [super init]) {
     self->_domain = domain;
     _mode = mode;
