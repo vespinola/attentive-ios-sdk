@@ -115,7 +115,7 @@
 
   // Verify that the product page is visible
   XCTAssertTrue([app.buttons[@"Add To Cart"] waitForExistenceWithTimeout:5.0]);
-    
+
   // Nav back, and verify the creative is closed
   [app.tabBars.buttons[@"Main"] tap];
   XCTAssertTrue([app.buttons[@"Push me for Creative!"] waitForExistenceWithTimeout:5.0]);

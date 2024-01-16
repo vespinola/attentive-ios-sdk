@@ -24,9 +24,9 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+  [super viewDidAppear:animated];
 
-    [self showToast:@"Product View event sent"];
+  [self showToast:@"Product View event sent"];
 }
 
 

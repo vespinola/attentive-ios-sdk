@@ -104,7 +104,7 @@ static BOOL isCreativeOpen = NO;
   NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`Document Hidden: ${document.hidden}`);}, false);";
 
   WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
-    
+
   [[wkWebViewConfiguration userContentController] addUserScript:wkUserScript];
 
   _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
@@ -125,7 +125,7 @@ static BOOL isCreativeOpen = NO;
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    
+
   NSString *asyncJs = @"var p = new Promise(resolve => { "
                        "    var timeoutHandle = null;"
                        "    const interval = setInterval(function() {"
@@ -182,22 +182,20 @@ static BOOL isCreativeOpen = NO;
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
-    NSLog(@"web event message: %@", message.body);
+  NSLog(@"web event message: %@", message.body);
   if ([message.body isEqualToString:@"CLOSE"]) {
-    
-      [self closeCreative];
+
+    [self closeCreative];
+  } else if ([message.body isEqualToString:@"IMPRESSION"]) {
+
+    NSLog(@"Creative opened and generated impression event");
+    isCreativeOpen = YES;
+  } else if ([message.body isEqualToString:@"Document Hidden: true"] && isCreativeOpen == YES) {
+
+    NSLog(@"Nav away from creative, closing");
+
+    [self closeCreative];
   }
-   else if ([message.body isEqualToString:@"IMPRESSION"]) {
-       
-     NSLog(@"Creative opened and generated impression event");
-        isCreativeOpen = YES;
-    }
-   else if ([message.body isEqualToString:@"Document Hidden: true"] && isCreativeOpen == YES) {
-       
-       NSLog(@"Nav away from creative, closing");
-       
-         [self closeCreative];
-   }
 }
 
 
@@ -222,21 +220,21 @@ static BOOL isCreativeOpen = NO;
 }
 
 - (void)closeCreative {
-    NSLog(@"Closing creative");
-    @try {
-      [_webView removeFromSuperview];
-      isCreativeOpen = NO;
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
-      }
-        
-        NSLog(@"Successfully closed creative");
-    } @catch (NSException *e) {
-      NSLog(@"Exception when closing creative: %@", e.reason);
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
-      }
+  NSLog(@"Closing creative");
+  @try {
+    [_webView removeFromSuperview];
+    isCreativeOpen = NO;
+    if (self->_triggerHandler != nil) {
+      self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
     }
+
+    NSLog(@"Successfully closed creative");
+  } @catch (NSException *e) {
+    NSLog(@"Exception when closing creative: %@", e.reason);
+    if (self->_triggerHandler != nil) {
+      self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
+    }
+  }
 }
 
 - (ATTNAPI *)getApi {
