@@ -19,6 +19,8 @@ extern NSString * const CREATIVE_TRIGGER_STATUS_CLOSED;
 extern NSString * const CREATIVE_TRIGGER_STATUS_NOT_OPENED;
 extern NSString * const CREATIVE_TRIGGER_STATUS_NOT_CLOSED;
 
+extern NSString * const SDK_VERSION;
+
 typedef void (^ATTNCreativeTriggerCompletionHandler)(NSString * triggerStatus);
 
 

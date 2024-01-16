@@ -509,6 +509,10 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
     NSLog(@"No match found for Attentive domain in the tag.");
     return nil;
   }
+    
+    NSString* regionalizedDomain =[tag substringWithRange:domainRange];
+    
+      NSLog(@"Identified regionalized attentive domain: %@", regionalizedDomain);
 
   return [tag substringWithRange:domainRange];
 }

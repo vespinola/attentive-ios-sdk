@@ -24,7 +24,6 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_OPENED = @"CREATIVE_TRIGGER_STATUS_N
 // Status passed to the ATTNCreativeTriggerCompletionHandler when the Creative is not closed due to an unknown
 // exception
 NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_NOT_CLOSED";
-NSString *const SDK_VERSION = @"0.4.3-beta.0";
 
 @implementation ATTNSDK {
   UIView *_parentView;
@@ -102,9 +101,7 @@ static BOOL isCreativeOpen = NO;
 
   [[wkWebViewConfiguration userContentController] addScriptMessageHandler:self name:@"log"];
 
-  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`visibilitychange ${document.hidden}`);}, false);";
-    
-//    NSString *userScriptWithEventListener = @"window.addEventListener('click', (event) => {window.webkit.messageHandlers.log.postMessage(event);}, false);";
+  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`Document Hidden: ${document.hidden}`);}, false);";
 
   WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
     
@@ -186,9 +183,6 @@ static BOOL isCreativeOpen = NO;
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"web event message: %@", message.body);
-    
-//    NSString *boolString = isCreativeOpen ? @"YES" : @"NO";
-//  NSLog(@"isCreativeOpen: %@", boolString);
   if ([message.body isEqualToString:@"CLOSE"]) {
     @try {
       [_webView removeFromSuperview];
@@ -204,9 +198,11 @@ static BOOL isCreativeOpen = NO;
     }
   }
    else if ([message.body isEqualToString:@"IMPRESSION"]) {
+       
+     NSLog(@"Creative opened and generated impression event");
         isCreativeOpen = YES;
     }
-   else if ([message.body isEqualToString:@"visibilitychange true"] && isCreativeOpen == YES) {
+   else if ([message.body isEqualToString:@"Document Hidden: true"] && isCreativeOpen == YES) {
        
        NSLog(@"Nav away from creative, closing");
        @try {

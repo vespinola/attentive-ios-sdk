@@ -52,6 +52,7 @@
 
 - (void)testLoadCreative_fillOutFormAndSubmit_launchesSmsAppWithPrePopulatedText {
   [self launchAppWithMode:@"production"];
+  [app.buttons[@"Push me to clear the User!"] tap];
   [app.buttons[@"Push me for Creative!"] tap];
 
   // Fill in the email
@@ -102,6 +103,22 @@
 
   // Verify debug page shows
   XCTAssertTrue([app.staticTexts[@"Debug output JSON"] waitForExistenceWithTimeout:5.0]);
+}
+
+- (void)testLoadCreative_clickProductPage_closesCreative {
+  [self launchAppWithMode:@"production"];
+  [app.buttons[@"Push me for Creative!"] tap];
+
+  // Click privacy link
+  XCTAssertTrue([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
+  [app.tabBars.buttons[@"Product"] tap];
+
+  // Verify that the product page is visible
+  XCTAssertTrue([app.buttons[@"Add To Cart"] waitForExistenceWithTimeout:5.0]);
+    
+  // Nav back, and verify the creative is closed
+  [app.tabBars.buttons[@"Main"] tap];
+  XCTAssertTrue([app.buttons[@"Push me for Creative!"] waitForExistenceWithTimeout:5.0]);
 }
 
 
