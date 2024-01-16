@@ -116,7 +116,7 @@ static BOOL isCreativeOpen = NO;
     [_parentView addSubview:_webView];
   } else {
     _webView.opaque = NO;
-    _webView.backgroundColor = [UIColor redColor];
+    _webView.backgroundColor = [UIColor clearColor];
   }
 }
 
@@ -184,18 +184,8 @@ static BOOL isCreativeOpen = NO;
       didReceiveScriptMessage:(WKScriptMessage *)message {
     NSLog(@"web event message: %@", message.body);
   if ([message.body isEqualToString:@"CLOSE"]) {
-    @try {
-      [_webView removeFromSuperview];
-        isCreativeOpen = NO;
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
-      }
-    } @catch (NSException *e) {
-      NSLog(@"Exception when closing creative: %@", e.reason);
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
-      }
-    }
+    
+      [self closeCreative];
   }
    else if ([message.body isEqualToString:@"IMPRESSION"]) {
        
@@ -205,18 +195,8 @@ static BOOL isCreativeOpen = NO;
    else if ([message.body isEqualToString:@"Document Hidden: true"] && isCreativeOpen == YES) {
        
        NSLog(@"Nav away from creative, closing");
-       @try {
-           [_webView removeFromSuperview];
-           isCreativeOpen = NO;
-           if (self->_triggerHandler != nil) {
-               self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
-           }
-       } @catch (NSException *e) {
-           NSLog(@"Exception when closing creative: %@", e.reason);
-           if (self->_triggerHandler != nil) {
-               self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
-           }
-       }
+       
+         [self closeCreative];
    }
 }
 
@@ -239,6 +219,24 @@ static BOOL isCreativeOpen = NO;
   } else {
     decisionHandler(WKNavigationActionPolicyAllow);
   }
+}
+
+- (void)closeCreative {
+    NSLog(@"Closing creative");
+    @try {
+      [_webView removeFromSuperview];
+      isCreativeOpen = NO;
+      if (self->_triggerHandler != nil) {
+        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
+      }
+        
+        NSLog(@"Successfully closed creative");
+    } @catch (NSException *e) {
+      NSLog(@"Exception when closing creative: %@", e.reason);
+      if (self->_triggerHandler != nil) {
+        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
+      }
+    }
 }
 
 - (ATTNAPI *)getApi {

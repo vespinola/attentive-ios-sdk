@@ -41,7 +41,7 @@ ATTNSDK *sdk;
     }
     
   // Replace with your Attentive domain to test with your Attentive account
-  _domain = @"games";
+  _domain = @"YOUR_ATTENTIVE_DOMAIN";
   _mode = @"production";
 
   // Setup for Testing purposes only

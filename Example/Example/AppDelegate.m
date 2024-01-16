@@ -6,22 +6,18 @@
 //
 
 #import "AppDelegate.h"
-#import "TabBarControllerViewController.h"
 
-@interface AppDelegate ()@end
+@interface AppDelegate ()
+
+@end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
-//    TabBarControllerViewController *tabBarController = [[TabBarControllerViewController alloc] init];
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.rootViewController = tabBarController;
-//    [self.window makeKeyAndVisible];
   return YES;
 }
-
 
 #pragma mark - UISceneSession lifecycle
 

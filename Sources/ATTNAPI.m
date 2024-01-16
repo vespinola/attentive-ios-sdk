@@ -514,7 +514,7 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
     
       NSLog(@"Identified regionalized attentive domain: %@", regionalizedDomain);
 
-  return [tag substringWithRange:domainRange];
+  return regionalizedDomain;
 }
 
 // For testing only

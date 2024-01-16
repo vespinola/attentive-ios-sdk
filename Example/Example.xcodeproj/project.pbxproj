@@ -17,7 +17,6 @@
 		58317972292EEEAA0003D6B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5D28DCDE5A007620BD /* LaunchScreen.storyboard */; };
 		58317973292EEEAA0003D6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5B28DCDE5A007620BD /* Assets.xcassets */; };
 		58317974292EEEAA0003D6B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5828DCDE57007620BD /* Main.storyboard */; };
-		5847C93B2B4EEC82009DA023 /* TabBarControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5847C93A2B4EEC82009DA023 /* TabBarControllerViewController.m */; };
 		588B597529B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; };
 		588B597629B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58D52E3F292EDA1600CF32DE /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -64,8 +63,6 @@
 		5831797A292EEEB30003D6B0 /* attentive_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58317993292EF6F70003D6B0 /* attentive_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583179B1292F60460003D6B0 /* ImportAttentiveSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportAttentiveSDK.h; sourceTree = "<group>"; };
-		5847C9392B4EEC82009DA023 /* TabBarControllerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarControllerViewController.h; sourceTree = "<group>"; };
-		5847C93A2B4EEC82009DA023 /* TabBarControllerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarControllerViewController.m; sourceTree = "<group>"; };
 		588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4C28DCDE57007620BD /* Example - Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example - Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4F28DCDE57007620BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -162,8 +159,6 @@
 		69CCAF4E28DCDE57007620BD /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				5847C9392B4EEC82009DA023 /* TabBarControllerViewController.h */,
-				5847C93A2B4EEC82009DA023 /* TabBarControllerViewController.m */,
 				69CCAF4F28DCDE57007620BD /* AppDelegate.h */,
 				69CCAF5028DCDE57007620BD /* AppDelegate.m */,
 				69CCAF5228DCDE57007620BD /* SceneDelegate.h */,
@@ -374,7 +369,6 @@
 				58317969292EEEAA0003D6B0 /* ViewController.m in Sources */,
 				5831796A292EEEAA0003D6B0 /* AppDelegate.m in Sources */,
 				5831796D292EEEAA0003D6B0 /* main.m in Sources */,
-				5847C93B2B4EEC82009DA023 /* TabBarControllerViewController.m in Sources */,
 				5831796E292EEEAA0003D6B0 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
