@@ -41,8 +41,8 @@
   [app.buttons[@"Push me for Creative!"] tap];
 
   // Close the creative
-  XCTAssertTrue([app.webViews.buttons[@"close"] waitForExistenceWithTimeout:5.0]);
-  [app.webViews.buttons[@"close"] tap];
+  XCTAssertTrue([app.webViews.buttons[@"Dismiss this popup"] waitForExistenceWithTimeout:5.0]);
+  [app.webViews.buttons[@"Dismiss this popup"] tap];
 
   // Assert that the creative is closed
   XCTAssertTrue([app.buttons[@"Push me for Creative!"] waitForExistenceWithTimeout:5.0]);
@@ -101,7 +101,7 @@
   [app.buttons[@"Push me for Creative!"] tap];
 
   // Verify debug page shows
-  XCTAssertTrue([app.staticTexts[@"Debug output JSON:"] waitForExistenceWithTimeout:5.0]);
+  XCTAssertTrue([app.staticTexts[@"Debug output JSON"] waitForExistenceWithTimeout:5.0]);
 }
 
 
