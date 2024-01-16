@@ -6,9 +6,6 @@
 //
 
 #import "SceneDelegate.h"
-#import "TabBarControllerViewController.h"
-#import "ViewController.h"
-#import "ProductViewController.h"
 
 @interface SceneDelegate ()
 
