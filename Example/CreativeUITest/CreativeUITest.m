@@ -79,7 +79,7 @@
     XCTAssertTrue([smsApp.textFields[@"Message"] waitForExistenceWithTimeout:5.0]);
     XCTAssertTrue([smsApp.textFields[@"Message"].value containsString:@"Send this text to subscribe to recurring automated personalized marketing alerts (e.g. cart reminders) from Attentive Mobile Apps Test"]);
   }
-} 
+}
 
 
 - (void)testLoadCreative_clickPrivacyLink_opensPrivacyPageInWebApp {
