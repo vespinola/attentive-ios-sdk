@@ -8,7 +8,7 @@
 #ifndef ATTNInfoEvent_h
 #define ATTNInfoEvent_h
 
-#import "ATTNEvent.h"
+#import "../ATTNEvent.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
