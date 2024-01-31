@@ -238,10 +238,6 @@ static BOOL isCreativeOpen = NO;
   }
 }
 
-- (NSString *)documentHiddenJavascriptCode {
-  return @"`Document Hidden: ${document.hidden}`";
-}
-
 - (ATTNAPI *)getApi {
   return _api;
 }
