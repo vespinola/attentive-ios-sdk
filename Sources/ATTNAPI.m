@@ -162,7 +162,7 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
                                                 } else {
                                                   // The response is an HTTP response because the URL had an HTTPS scheme
                                                   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-                                                  if ([httpResponse statusCode] != 200) {
+                                                  if ([httpResponse statusCode] > 400) {
                                                     message = [NSString stringWithFormat:@"Error sending the event. Incorrect status code: '%ld'", (long)[httpResponse statusCode]];
                                                   } else {
                                                     message = [NSString stringWithFormat:@"Successfully sent event of type '%@'", request.eventNameAbbreviation];
@@ -349,7 +349,7 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
                                                 } else {
                                                   // The response is an HTTP response because the URL had an HTTPS scheme
                                                   NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-                                                  if ([httpResponse statusCode] != 200) {
+                                                  if ([httpResponse statusCode] > 400) {
                                                     message = [NSString stringWithFormat:@"Error sending the event. Incorrect status code: '%ld'", (long)[httpResponse statusCode]];
                                                   } else {
                                                     message = @"Successfully sent user identity event";
@@ -510,7 +510,11 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
     return nil;
   }
 
-  return [tag substringWithRange:domainRange];
+  NSString* regionalizedDomain = [tag substringWithRange:domainRange];
+
+  NSLog(@"Identified regionalized attentive domain: %@", regionalizedDomain);
+
+  return regionalizedDomain;
 }
 
 // For testing only
