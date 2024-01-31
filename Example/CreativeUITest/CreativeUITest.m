@@ -90,7 +90,7 @@
   // Click privacy link
   XCTAssertTrue([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
   [app.webViews.links[@"Privacy"] tap];
-    
+
   // Wait for a moment to allow the app to react
   sleep(5);
 
@@ -104,10 +104,9 @@
     XCUIApplication *safariApp = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.mobilesafari"];
     BOOL privacyPolicyExists = [safariApp.staticTexts[@"Privacy Policy"] waitForExistenceWithTimeout:5.0];
     BOOL messagingPrivacyPolicyExists = [safariApp.staticTexts[@"Messaging Privacy Policy"] waitForExistenceWithTimeout:5.0];
-    
+
     XCTAssertTrue(privacyPolicyExists || messagingPrivacyPolicyExists);
   }
-
 }
 
 
