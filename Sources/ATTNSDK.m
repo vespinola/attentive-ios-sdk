@@ -25,6 +25,8 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_OPENED = @"CREATIVE_TRIGGER_STATUS_N
 // exception
 NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_NOT_CLOSED";
 
+NSString *const visibilityEvent = @"document-visibility:";
+
 @implementation ATTNSDK {
   UIView *_parentView;
   WKWebView *_webView;
@@ -101,7 +103,7 @@ static BOOL isCreativeOpen = NO;
 
   [[wkWebViewConfiguration userContentController] addScriptMessageHandler:self name:@"log"];
 
-  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`Document Hidden: ${document.hidden}`);}, false);";
+  NSString *userScriptWithEventListener = [NSString stringWithFormat:@"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`%@ ${document.hidden}`);}, false);", visibilityEvent];
 
   WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
 
@@ -190,8 +192,7 @@ static BOOL isCreativeOpen = NO;
 
     NSLog(@"Creative opened and generated impression event");
     isCreativeOpen = YES;
-  } else if ([message.body isEqualToString:@"Document Hidden: true"] && isCreativeOpen == YES) {
-
+  } else if ([message.body isEqualToString:[NSString stringWithFormat:@"%@ true", visibilityEvent]] && isCreativeOpen == YES) {
     NSLog(@"Nav away from creative, closing");
 
     [self closeCreative];
@@ -235,6 +236,10 @@ static BOOL isCreativeOpen = NO;
       self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
     }
   }
+}
+
+- (NSString *)documentHiddenJavascriptCode {
+  return @"`Document Hidden: ${document.hidden}`";
 }
 
 - (ATTNAPI *)getApi {
