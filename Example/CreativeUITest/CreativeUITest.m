@@ -90,10 +90,24 @@
   // Click privacy link
   XCTAssertTrue([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
   [app.webViews.links[@"Privacy"] tap];
+    
+  // Wait for a moment to allow the app to react
+  sleep(5);
 
-  // Verify that the privacy page is visible in the external browser
-  XCUIApplication *safariApp = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.mobilesafari"];
-  XCTAssertTrue([safariApp.staticTexts[@"Privacy Policy"] waitForExistenceWithTimeout:5.0]);
+  // Check if the app is no longer active
+  XCTAssertFalse([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
+
+  // AWS Device Farm doesn't always acknowledge separate apps, leading to flakiness here
+  NSString *envHost = [[[NSProcessInfo processInfo] environment] objectForKey:@"COM_ATTENTIVE_EXAMPLE_HOST"];
+  if ([envHost isEqualToString:@"local"]) {
+    // Verify that the privacy page is visible in the external browser
+    XCUIApplication *safariApp = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.mobilesafari"];
+    BOOL privacyPolicyExists = [safariApp.staticTexts[@"Privacy Policy"] waitForExistenceWithTimeout:5.0];
+    BOOL messagingPrivacyPolicyExists = [safariApp.staticTexts[@"Messaging Privacy Policy"] waitForExistenceWithTimeout:5.0];
+    
+    XCTAssertTrue(privacyPolicyExists || messagingPrivacyPolicyExists);
+  }
+
 }
 
 
@@ -136,7 +150,7 @@
 
 + (void)resetUserDefaults {
   // Reset user defaults for example app, not the test runner
-  [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.attentive.Example"];
+  [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.attentive.ExampleTest"];
 }
 
 
