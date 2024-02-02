@@ -6,7 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
+#endif
 
 #import "ATTNAppInfo.h"
 #import "ATTNVersion.h"
@@ -27,11 +29,19 @@
 }
 
 + (NSString *)getDeviceModelName {
-  return [[UIDevice currentDevice] model];
+  #if TARGET_OS_IOS
+    return [[UIDevice currentDevice] model];
+  #else
+    return @"Not iOS device, not supported";
+  #endif
 }
 
 + (NSString *)getDevicePlatform {
-  return [[UIDevice currentDevice] systemName];
+  #if TARGET_OS_IOS
+    return [[UIDevice currentDevice] systemName];
+  #else
+    return @"Not iOS device, not supported";
+  #endif
 }
 
 + (NSString *)getDeviceOsVersion {
