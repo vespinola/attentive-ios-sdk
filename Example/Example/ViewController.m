@@ -2,6 +2,7 @@
 #import "ImportAttentiveSDK.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIButton *creativeButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendIdentifiersButton;
 @property (weak, nonatomic) IBOutlet UIButton *clearUserButton;
@@ -21,6 +22,23 @@ ATTNSDK *sdk;
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.backgroundColor = [UIColor systemGray3Color];
+
+  CGFloat contentWidth = self.scrollView.bounds.size.width;
+  CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
+  self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
+
+  CGFloat subviewHeight = (CGFloat)120;
+  CGFloat currentViewOffset = (CGFloat)600;
+
+  while (currentViewOffset < contentHeight) {
+    CGRect frame = CGRectInset(CGRectMake(0, currentViewOffset, contentWidth, subviewHeight), 5, 5);
+    CGFloat hue = currentViewOffset / contentHeight;
+    UIView *subview = [[UIView alloc] initWithFrame:frame];
+    subview.backgroundColor = [UIColor colorWithHue:hue saturation:1 brightness:1 alpha:1];
+    [self.scrollView addSubview:subview];
+
+    currentViewOffset += subviewHeight;
+  }
 
   // Replace with your Attentive domain to test with your Attentive account
   _domain = @"YOUR_ATTENTIVE_DOMAIN";
@@ -89,6 +107,8 @@ ATTNSDK *sdk;
 }
 
 - (IBAction)clearUserButtonPressed:(id)sender {
+
+  NSLog(@"Clear user button pressed!");
   [sdk clearUser];
 }
 

@@ -24,7 +24,8 @@ NSString *const CREATIVE_TRIGGER_STATUS_NOT_OPENED = @"CREATIVE_TRIGGER_STATUS_N
 // Status passed to the ATTNCreativeTriggerCompletionHandler when the Creative is not closed due to an unknown
 // exception
 NSString *const CREATIVE_TRIGGER_STATUS_NOT_CLOSED = @"CREATIVE_TRIGGER_STATUS_NOT_CLOSED";
-NSString *const SDK_VERSION = @"0.4.3-beta.0";
+
+NSString *const visibilityEvent = @"document-visibility:";
 
 @implementation ATTNSDK {
   UIView *_parentView;
@@ -34,6 +35,8 @@ NSString *const SDK_VERSION = @"0.4.3-beta.0";
   ATTNAPI *_api;
   ATTNCreativeTriggerCompletionHandler _triggerHandler;
 }
+
+static BOOL isCreativeOpen = NO;
 
 - (id)initWithDomain:(NSString *)domain {
   NSLog(@"init attentive_ios_sdk v%@", SDK_VERSION);
@@ -100,9 +103,10 @@ NSString *const SDK_VERSION = @"0.4.3-beta.0";
 
   [[wkWebViewConfiguration userContentController] addScriptMessageHandler:self name:@"log"];
 
-  NSString *userScriptWithEventListener = @"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive && event.data.__attentive.action === 'CLOSE') {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);";
+  NSString *userScriptWithEventListener = [NSString stringWithFormat:@"window.addEventListener('message', (event) => {if (event.data && event.data.__attentive) {window.webkit.messageHandlers.log.postMessage(event.data.__attentive.action);}}, false);window.addEventListener('visibilitychange', (event) => {window.webkit.messageHandlers.log.postMessage(`%@ ${document.hidden}`);}, false);", visibilityEvent];
 
   WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:userScriptWithEventListener injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:FALSE];
+
   [[wkWebViewConfiguration userContentController] addUserScript:wkUserScript];
 
   _webView = [[WKWebView alloc] initWithFrame:theView.frame configuration:wkWebViewConfiguration];
@@ -180,18 +184,18 @@ NSString *const SDK_VERSION = @"0.4.3-beta.0";
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
+  NSLog(@"web event message: %@", message.body);
   if ([message.body isEqualToString:@"CLOSE"]) {
-    @try {
-      [_webView removeFromSuperview];
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
-      }
-    } @catch (NSException *e) {
-      NSLog(@"Exception when closing creative: %@", e.reason);
-      if (self->_triggerHandler != nil) {
-        self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
-      }
-    }
+
+    [self closeCreative];
+  } else if ([message.body isEqualToString:@"IMPRESSION"]) {
+
+    NSLog(@"Creative opened and generated impression event");
+    isCreativeOpen = YES;
+  } else if ([message.body isEqualToString:[NSString stringWithFormat:@"%@ true", visibilityEvent]] && isCreativeOpen == YES) {
+    NSLog(@"Nav away from creative, closing");
+
+    [self closeCreative];
   }
 }
 
@@ -213,6 +217,24 @@ NSString *const SDK_VERSION = @"0.4.3-beta.0";
     }
   } else {
     decisionHandler(WKNavigationActionPolicyAllow);
+  }
+}
+
+- (void)closeCreative {
+  NSLog(@"Closing creative");
+  @try {
+    [_webView removeFromSuperview];
+    isCreativeOpen = NO;
+    if (self->_triggerHandler != nil) {
+      self->_triggerHandler(CREATIVE_TRIGGER_STATUS_CLOSED);
+    }
+
+    NSLog(@"Successfully closed creative");
+  } @catch (NSException *e) {
+    NSLog(@"Exception when closing creative: %@", e.reason);
+    if (self->_triggerHandler != nil) {
+      self->_triggerHandler(CREATIVE_TRIGGER_STATUS_NOT_CLOSED);
+    }
   }
 }
 
