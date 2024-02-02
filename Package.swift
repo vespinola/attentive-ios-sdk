@@ -4,10 +4,10 @@
 import PackageDescription
 
 let package = Package(
-	name: "Attentive",
-	platforms: [.iOS(.v12), .macOS(.v10_15), .tvOS(.v13)],
+	name: "attentive-ios-sdk",
+	platforms: [.iOS(.v12)],
 	products: [
-		.library(name: "Attentive", targets: ["attentive-ios-sdk"])
+		.library(name: "attentive-ios-sdk", targets: ["attentive-ios-sdk"])
 	],
 	targets: [
 		.target(
