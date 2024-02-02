@@ -8,6 +8,7 @@ let package = Package(
 	platforms: [.iOS(.v12)],
 	products: [
 		.library(name: "attentive-ios-sdk", targets: ["attentive-ios-sdk"])
+
 	],
 	targets: [
 		.target(
