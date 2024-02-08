@@ -80,6 +80,9 @@ static BOOL isCreativeOpen = NO;
   _triggerHandler = handler;
 
   NSLog(@"Called showWebView in creativeSDK with domain: %@", _domain);
+  if (isCreativeOpen) {
+    NSLog(@"Attempted to trigger creative, but creative is currently open. Taking no action");
+  }
   if (@available(iOS 14, *)) {
     NSLog(@"The iOS version is new enough, continuing to show the Attentive creative.");
   } else {
@@ -184,12 +187,11 @@ static BOOL isCreativeOpen = NO;
 
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
-  NSLog(@"web event message: %@", message.body);
+  NSLog(@"web event message: %@. isCreativeOpen: %@", message.body, isCreativeOpen ? @"YES" : @"NO");
   if ([message.body isEqualToString:@"CLOSE"]) {
 
     [self closeCreative];
   } else if ([message.body isEqualToString:@"IMPRESSION"]) {
-
     NSLog(@"Creative opened and generated impression event");
     isCreativeOpen = YES;
   } else if ([message.body isEqualToString:[NSString stringWithFormat:@"%@ true", visibilityEvent]] && isCreativeOpen == YES) {
