@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 
 #import "ATTNParameterValidation.h"
 #import "ATTNUserIdentity.h"
