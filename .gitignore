@@ -27,9 +27,7 @@ DerivedData
 Carthage/Build
 
 # cocoapods
-Example/Podfile.lock
 Example/Pods
-ExampleSwift/Podfile.lock
 ExampleSwift/Pods
 
 # swift builds
