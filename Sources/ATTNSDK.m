@@ -6,6 +6,7 @@
 //
 
 #import <WebKit/WebKit.h>
+#import <UIKit/UIKit.h>
 #import "ATTNAPI.h"
 #import "ATTNSDK.h"
 #import "ATTNUserIdentity.h"

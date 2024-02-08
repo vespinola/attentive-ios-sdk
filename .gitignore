@@ -30,6 +30,10 @@ Carthage/Build
 Example/Podfile.lock
 Example/Pods
 
+# swift builds
+.build/*
+ExampleSwift/.build/*
+
 # Vim
 # Swap
 [._]*.s[a-v][a-z]
