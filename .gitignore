@@ -27,8 +27,12 @@ DerivedData
 Carthage/Build
 
 # cocoapods
-Example/Podfile.lock
 Example/Pods
+ExampleSwift/Pods
+
+# swift builds
+.build/*
+ExampleSwift/.build/*
 
 # Vim
 # Swap
