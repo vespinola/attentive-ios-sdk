@@ -82,6 +82,7 @@ static BOOL isCreativeOpen = NO;
   NSLog(@"Called showWebView in creativeSDK with domain: %@", _domain);
   if (isCreativeOpen) {
     NSLog(@"Attempted to trigger creative, but creative is currently open. Taking no action");
+    return;
   }
   if (@available(iOS 14, *)) {
     NSLog(@"The iOS version is new enough, continuing to show the Attentive creative.");
