@@ -2,11 +2,11 @@
   "object": {
     "pins": [
       {
-        "package": "attentive-ios-sdk",
+        "package": "ATTNSDKFramework",
         "repositoryURL": "https://github.com/attentive-mobile/attentive-ios-sdk",
         "state": {
           "branch": "rsmith/support-swift",
-          "revision": "906c99881d8a7995d636baa41af0d6921da63af6",
+          "revision": "407c7b377117ae72f2e6d9f5cd486525249639a1",
           "version": null
         }
       }

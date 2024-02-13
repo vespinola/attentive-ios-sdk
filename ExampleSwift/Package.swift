@@ -18,7 +18,7 @@ let package = Package(
         .target(
             name: "ExampleSwift",
             dependencies: [
-                .product(name: "attentive-ios-sdk", package: "attentive-ios-sdk")],
+                .product(name: "ATTNSDKFramework", package: "attentive-ios-sdk")],
             path: "ExampleSwift" // Ensure this path exists and is correct
         ),
     ]
