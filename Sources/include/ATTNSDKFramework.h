@@ -4,7 +4,7 @@ FOUNDATION_EXPORT double ATTNSDKFrameworkVersionNumber;
 
 FOUNDATION_EXPORT const unsigned char ATTNSDKFrameworkVersionString[];
 
-#import <../ATTNSDK.h>
+//#import <../ATTNSDK.h>
 //#import <attentive_ios_sdk_framework/ATTNSDK.h>
 //#import <attentive_ios_sdk_framework/ATTNUserIdentity.h>
 //#import <attentive_ios_sdk_framework/ATTNEventTracker.h>
