@@ -4,15 +4,15 @@
 import PackageDescription
 
 let package = Package(
-	name: "AttentiveSdk",
+	name: "ATTNSDKFramework",
 	platforms: [.iOS(.v12)],
 	products: [
-		.library(name: "attentive-ios-sdk", targets: ["attentive-ios-sdk"])
+		.library(name: "ATTNSDKFramework", targets: ["ATTNSDKFramework"])
 
 	],
 	targets: [
 		.target(
-			name: "attentive-ios-sdk",
+			name: "ATTNSDKFramework",
 			path: "Sources/"
 		)
 	]
