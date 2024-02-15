@@ -7,6 +7,8 @@
 
 import Foundation
 import os
+import UIKit
+import ATTNSDKFramework
 
 class ProductViewController : UIViewController {
     @IBOutlet var addToCartBtn : UIButton?
