@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "588EB71B2995BC3A00C0163A"
-               BuildableName = "ExampleSwift - Pod.app"
-               BlueprintName = "ExampleSwift - Pod"
+               BuildableName = "ExampleSwift - SPM.app"
+               BlueprintName = "ExampleSwift - SPM"
                ReferencedContainer = "container:ExampleSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,8 +44,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "588EB71B2995BC3A00C0163A"
-            BuildableName = "ExampleSwift - Pod.app"
-            BlueprintName = "ExampleSwift - Pod"
+            BuildableName = "ExampleSwift - SPM.app"
+            BlueprintName = "ExampleSwift - SPM"
             ReferencedContainer = "container:ExampleSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "588EB71B2995BC3A00C0163A"
-            BuildableName = "ExampleSwift - Pod.app"
-            BlueprintName = "ExampleSwift - Pod"
+            BuildableName = "ExampleSwift - SPM.app"
+            BlueprintName = "ExampleSwift - SPM"
             ReferencedContainer = "container:ExampleSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

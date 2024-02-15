@@ -52,7 +52,7 @@
 		587DC5CE2995748B0082F8D0 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		588B597729B94AC200E3BA33 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		588EB7192995BBB700C0163A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
-		588EB72C2995BC3A00C0163A /* ExampleSwift - Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleSwift - Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleSwift - SPM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		588EB72E2995BE2E00C0163A /* attentive-ios-sdk-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk-bridging-header.h"; sourceTree = "<group>"; };
 		58ADF92E2988738D002EA268 /* attentive_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58ADF9322988746D002EA268 /* attentive-ios-sdk-local-bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk-local-bridging-header.h"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				58389AAA2987647900A31A35 /* ExampleSwift - Local.app */,
-				588EB72C2995BC3A00C0163A /* ExampleSwift - Pod.app */,
+				588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,9 +161,9 @@
 			productReference = 58389AAA2987647900A31A35 /* ExampleSwift - Local.app */;
 			productType = "com.apple.product-type.application";
 		};
-		588EB71B2995BC3A00C0163A /* ExampleSwift - Pod */ = {
+		588EB71B2995BC3A00C0163A /* ExampleSwift - SPM */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 588EB7292995BC3A00C0163A /* Build configuration list for PBXNativeTarget "ExampleSwift - Pod" */;
+			buildConfigurationList = 588EB7292995BC3A00C0163A /* Build configuration list for PBXNativeTarget "ExampleSwift - SPM" */;
 			buildPhases = (
 				588EB71C2995BC3A00C0163A /* Sources */,
 				588EB7202995BC3A00C0163A /* Frameworks */,
@@ -173,12 +173,12 @@
 			);
 			dependencies = (
 			);
-			name = "ExampleSwift - Pod";
+			name = "ExampleSwift - SPM";
 			packageProductDependencies = (
 				586439702B7D17680031140F /* ATTNSDKFramework */,
 			);
 			productName = ExampleSwift;
-			productReference = 588EB72C2995BC3A00C0163A /* ExampleSwift - Pod.app */;
+			productReference = 588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +213,7 @@
 			projectRoot = "";
 			targets = (
 				58389AA92987647900A31A35 /* ExampleSwift - Local */,
-				588EB71B2995BC3A00C0163A /* ExampleSwift - Pod */,
+				588EB71B2995BC3A00C0163A /* ExampleSwift - SPM */,
 			);
 		};
 /* End PBXProject section */
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		588EB7292995BC3A00C0163A /* Build configuration list for PBXNativeTarget "ExampleSwift - Pod" */ = {
+		588EB7292995BC3A00C0163A /* Build configuration list for PBXNativeTarget "ExampleSwift - SPM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				588EB72A2995BC3A00C0163A /* Debug */,
