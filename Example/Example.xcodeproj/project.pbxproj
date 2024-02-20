@@ -17,6 +17,7 @@
 		58317972292EEEAA0003D6B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5D28DCDE5A007620BD /* LaunchScreen.storyboard */; };
 		58317973292EEEAA0003D6B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5B28DCDE5A007620BD /* Assets.xcassets */; };
 		58317974292EEEAA0003D6B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5828DCDE57007620BD /* Main.storyboard */; };
+		5864397B2B7FE6B40031140F /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 5864397A2B7FE6B40031140F /* Podfile */; };
 		588B597529B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; };
 		588B597629B94AB100E3BA33 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		58D52E3F292EDA1600CF32DE /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -63,6 +64,7 @@
 		5831797A292EEEB30003D6B0 /* attentive_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58317993292EF6F70003D6B0 /* attentive_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		583179B1292F60460003D6B0 /* ImportAttentiveSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportAttentiveSDK.h; sourceTree = "<group>"; };
+		5864397A2B7FE6B40031140F /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		588B597429B94AB100E3BA33 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4C28DCDE57007620BD /* Example - Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example - Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69CCAF4F28DCDE57007620BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		69CCAF4328DCDE57007620BD = {
 			isa = PBXGroup;
 			children = (
+				5864397A2B7FE6B40031140F /* Podfile */,
 				69CCAF4E28DCDE57007620BD /* Example */,
 				58D52E24292EC9D400CF32DE /* Supporting Files */,
 				69D3C14A299EF2D10027934F /* CreativeUITest */,
@@ -294,6 +297,7 @@
 			files = (
 				58317972292EEEAA0003D6B0 /* LaunchScreen.storyboard in Resources */,
 				58317973292EEEAA0003D6B0 /* Assets.xcassets in Resources */,
+				5864397B2B7FE6B40031140F /* Podfile in Resources */,
 				58317974292EEEAA0003D6B0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,8 +454,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.attentive.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -481,8 +489,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.attentive.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

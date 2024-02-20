@@ -30,6 +30,7 @@
 		583C29F929C101A300EABBC9 /* ATTNUserAgentBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 583C29F829C101A300EABBC9 /* ATTNUserAgentBuilderTest.m */; };
 		5862BE4029407DAC002C1403 /* ATTNEventTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 5862BE3F29407DAC002C1403 /* ATTNEventTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5862BE462940820C002C1403 /* ATTNEventTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5862BE452940820C002C1403 /* ATTNEventTracker.m */; };
+		586439752B7FE0380031140F /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586439742B7FE0380031140F /* Package.swift */; };
 		587234BF2953AAD800EE12B6 /* ATTNPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 587234B42953AAD800EE12B6 /* ATTNPrice.m */; };
 		587234C02953AAD800EE12B6 /* ATTNPurchaseEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 587234B52953AAD800EE12B6 /* ATTNPurchaseEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		587234C12953AAD800EE12B6 /* ATTNOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 587234B62953AAD800EE12B6 /* ATTNOrder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,6 +114,7 @@
 		583C29F829C101A300EABBC9 /* ATTNUserAgentBuilderTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNUserAgentBuilderTest.m; path = Tests/ATTNUserAgentBuilderTest.m; sourceTree = "<group>"; };
 		5862BE3F29407DAC002C1403 /* ATTNEventTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNEventTracker.h; path = Sources/ATTNEventTracker.h; sourceTree = "<group>"; };
 		5862BE452940820C002C1403 /* ATTNEventTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNEventTracker.m; path = Sources/ATTNEventTracker.m; sourceTree = "<group>"; };
+		586439742B7FE0380031140F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		587234B42953AAD800EE12B6 /* ATTNPrice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNPrice.m; path = Sources/ATTNPrice.m; sourceTree = "<group>"; };
 		587234B52953AAD800EE12B6 /* ATTNPurchaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNPurchaseEvent.h; path = Sources/ATTNPurchaseEvent.h; sourceTree = "<group>"; };
 		587234B62953AAD800EE12B6 /* ATTNOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNOrder.h; path = Sources/ATTNOrder.h; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		58332EB9292EC18800B1ECF3 = {
 			isa = PBXGroup;
 			children = (
+				586439742B7FE0380031140F /* Package.swift */,
 				58332ED9292EC21100B1ECF3 /* Sources */,
 				58332EDB292EC24200B1ECF3 /* Supporting Files */,
 				58332EDA292EC23000B1ECF3 /* Tests */,
@@ -420,6 +423,7 @@
 				TargetAttributes = {
 					58332EC2292EC18800B1ECF3 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1520;
 					};
 					58D52E18292EC52B00CF32DE = {
 						CreatedOnToolsVersion = 14.1;
@@ -486,6 +490,7 @@
 				58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */,
 				69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */,
 				587234C52953AAD800EE12B6 /* ATTNItem.m in Sources */,
+				586439752B7FE0380031140F /* Package.swift in Sources */,
 				5806DE7B2977630800C18FFA /* ATTNCustomEvent.m in Sources */,
 				6972874F29353FEA003F1BEC /* ATTNPersistentStorage.m in Sources */,
 				6972874C29353A99003F1BEC /* ATTNVisitorService.m in Sources */,
@@ -655,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -681,9 +687,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -693,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -719,8 +728,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -730,6 +740,7 @@
 		58D52E21292EC52B00CF32DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -757,6 +768,7 @@
 		58D52E22292EC52B00CF32DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
