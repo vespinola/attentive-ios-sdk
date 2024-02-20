@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		58389AB62987647B00A31A35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58389AB52987647B00A31A35 /* Preview Assets.xcassets */; };
 		586439712B7D17680031140F /* ATTNSDKFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 586439702B7D17680031140F /* ATTNSDKFramework */; };
-		586439732B7FDF800031140F /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586439722B7FDF800031140F /* Package.swift */; };
-		586439782B7FE44A0031140F /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 586439772B7FE44A0031140F /* attentive_ios_sdk_framework.framework */; };
-		586439792B7FE44A0031140F /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 586439772B7FE44A0031140F /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		587DC5BF299550DA0082F8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587DC5BE299550DA0082F8D0 /* AppDelegate.swift */; };
 		587DC5C4299554B00082F8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C3299554B00082F8D0 /* Assets.xcassets */; };
 		587DC5CB2995551A0082F8D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C82995551A0082F8D0 /* Main.storyboard */; };
@@ -34,7 +31,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				586439792B7FE44A0031140F /* attentive_ios_sdk_framework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,9 +41,6 @@
 		58389AAA2987647900A31A35 /* ExampleSwift - Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleSwift - Local.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58389AB32987647B00A31A35 /* ExampleSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExampleSwift.entitlements; sourceTree = "<group>"; };
 		58389AB52987647B00A31A35 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		586439722B7FDF800031140F /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		586439772B7FE44A0031140F /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5864397C2B7FE7FA0031140F /* attentive-ios-sdk-local-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "attentive-ios-sdk-local-bridging-header.h"; path = "ExampleSwift/attentive-ios-sdk-local-bridging-header.h"; sourceTree = "<group>"; };
 		587DC5BE299550DA0082F8D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		587DC5C3299554B00082F8D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "ExampleSwift/Supporting Files/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		587DC5C92995551A0082F8D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
@@ -62,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586439782B7FE44A0031140F /* attentive_ios_sdk_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,12 +72,9 @@
 		58389AA12987647900A31A35 = {
 			isa = PBXGroup;
 			children = (
-				5864397C2B7FE7FA0031140F /* attentive-ios-sdk-local-bridging-header.h */,
-				586439722B7FDF800031140F /* Package.swift */,
 				58389AAC2987647900A31A35 /* ExampleSwift */,
 				587DC5C5299554DF0082F8D0 /* Supporting Files */,
 				58389AAB2987647900A31A35 /* Products */,
-				586439762B7FE44A0031140F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,14 +105,6 @@
 				58389AB52987647B00A31A35 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		586439762B7FE44A0031140F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				586439772B7FE44A0031140F /* attentive_ios_sdk_framework.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		587DC5C5299554DF0082F8D0 /* Supporting Files */ = {
@@ -245,7 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586439732B7FDF800031140F /* Package.swift in Sources */,
 				587DC5BF299550DA0082F8D0 /* AppDelegate.swift in Sources */,
 				587DC5CD299555D70082F8D0 /* ViewController.swift in Sources */,
 				587DC5CF2995748B0082F8D0 /* ProductViewController.swift in Sources */,
@@ -431,13 +411,10 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ExampleSwift/attentive-ios-sdk-local-bridging-header.h";
-				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -477,13 +454,10 @@
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "ExampleSwift/attentive-ios-sdk-local-bridging-header.h";
-				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
