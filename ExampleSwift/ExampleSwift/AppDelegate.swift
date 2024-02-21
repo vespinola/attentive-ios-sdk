@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
+import ATTNSDKFramework
 
 @main
 class AppDelegate : UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    public var attentiveSdk : ATTNSDK?
+    public var attentiveSdk : ATTNSDK?;
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         

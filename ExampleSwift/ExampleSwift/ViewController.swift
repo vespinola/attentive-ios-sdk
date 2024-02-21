@@ -7,6 +7,8 @@
 
 import Foundation
 import os
+import UIKit
+import ATTNSDKFramework
 
 class ViewController : UIViewController {
     @IBOutlet var creativeBtn : UIButton?
@@ -15,7 +17,7 @@ class ViewController : UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemGray3
+        self.view.backgroundColor = .white
     }
     
     @IBAction func creativeBtnPressed(sender: Any) {
