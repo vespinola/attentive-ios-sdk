@@ -588,7 +588,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/attentive-mobile/attentive-ios-sdk";
 			requirement = {
-				branch = "rsmith/support-swift";
+				branch = main;
 				kind = branch;
 			};
 		};

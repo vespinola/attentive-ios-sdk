@@ -12,7 +12,7 @@ let package = Package(
             targets: ["ExampleSwift"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/attentive-mobile/attentive-ios-sdk", .branch("rsmith/support-swift"))
+        .package(url: "https://github.com/attentive-mobile/attentive-ios-sdk", .branch("main"))
     ],
     targets: [
         .target(
