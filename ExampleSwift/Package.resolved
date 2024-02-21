@@ -4,11 +4,11 @@
       {
         "package": "ATTNSDKFramework",
         "repositoryURL": "https://github.com/attentive-mobile/attentive-ios-sdk",
-        "state": {
-          "branch": "rsmith/support-swift",
-          "revision": "0bf29e1001e180c0b84fe8e2bd350de7232a8346",
+        "state" : {
+          "branch" : "main",
+          "revision" : "cd9444f06c940efb6439044c3da6170c906d7a58",
           "version": null
-        }
+      }
       }
     ]
   },
