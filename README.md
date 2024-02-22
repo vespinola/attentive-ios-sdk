@@ -2,8 +2,9 @@
 
 The Attentive IOS SDK provides the functionality to render Attentive creative units and collect Attentive events in IOS mobile applications.
 
-
 ## Installation
+
+### Cocoapods
 
 The attentive-ios-sdk is available through [CocoaPods](https://cocoapods.org). To install the SDK in a separate project using Cocoapods, include the pod in your application’s Podfile:
 
@@ -20,22 +21,50 @@ pod install
 ```
 
 Check for new versions of the SDK using this command:
+
 ```
 pod update attentive-ios-sdk
 ```
+
 You can then update the version in your pod file and run `pod install` again to pull the changes.
 
+### Swift Package Manager
+
+We also support adding the dependency via Swift Package Manager.
+
+In your applications `Package.swift` file, add the attentive-ios-sdk as a dependency:
+
+```
+dependencies: [
+    // your other app dependencies
+    .package(url: "https://github.com/attentive-mobile/attentive-ios-sdk", from: "0.5.0"),
+],
+```
+
+This will allow your package to update patch releases with `swift package update`, but won't auto-upgrade any minor or major versions.
+
+Then, from a command line, run:
+
+```
+swift package resolve
+```
+
+To update your local package, run `swift package update`.
+
+To check for new major and minor versions of this SDK, navigate to the [releases](https://github.com/attentive-mobile/attentive-ios-sdk/releases) tab of the project. You can then manually update the version in your `Package.swift` file and run `swift package resolve` to complete the update.
+
 ## Usage
+
 See the [Example Project](https://github.com/attentive-mobile/attentive-ios-sdk/tree/main/Example) for a sample of how the Attentive
 IOS SDK is used.
 
-__*** NOTE: Please refrain from using any internal or undocumented classes or methods as they may change between releases. ***__
-
+****_ NOTE: Please refrain from using any internal or undocumented classes or methods as they may change between releases. _****
 
 ### Initialize the SDK
 
 The code snippets and examples below assume you are working in Objective C. To make the SDK available, you need to import the header
 file after installing the SDK:
+
 ```objectiveC
 #import "attentive_ios_sdk/attentive-ios-sdk-umbrella.h"
 ```
@@ -60,14 +89,14 @@ Register any identifying information you have about the user with the Attentive 
 ```
 
 The more identifiers that are passed to `identify`, the better the SDK will function. Here is the list of possible identifiers:
-| Identifier Name    | Type                                  | Description                                                                                                             |
+| Identifier Name | Type | Description |
 | ------------------ | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Client User ID     | NSString*                             | Your unique identifier for the user. This should be consistent across the user's lifetime. For example, a database id.  |
-| Phone              | NSString*                             | The users's phone number in E.164 format                                                                                |
-| Email              | NSString*                             | The users's email                                                                                                       |
-| Shopify ID         | NSString*                             | The users's Shopify ID                                                                                                  |
-| Klaviyo ID         | NSString*                             | The users's Klaviyo ID                                                                                                  | 
-| Custom Identifiers | NSDictionary<NSString *, NSString *>* | Key-value pairs of custom identifier names and values. The values should be unique to this user.                        |
+| Client User ID | NSString* | Your unique identifier for the user. This should be consistent across the user's lifetime. For example, a database id. |
+| Phone | NSString* | The users's phone number in E.164 format |
+| Email | NSString* | The users's email |
+| Shopify ID | NSString* | The users's Shopify ID |
+| Klaviyo ID | NSString* | The users's Klaviyo ID |
+| Custom Identifiers | NSDictionary<NSString *, NSString _>_ | Key-value pairs of custom identifier names and values. The values should be unique to this user. |
 
 For each identifier type, use the name `IDENTIFIER_TYPE_{IDENTIFIER_NAME}` for the key name in the user identifiers map.
 
@@ -88,6 +117,7 @@ For each identifier type, use the name `IDENTIFIER_TYPE_{IDENTIFIER_NAME}` for t
        }
      }];
 ```
+
 See [ATTNSDK.m](https://github.com/attentive-mobile/attentive-ios-sdk/blob/main/Sources/ATTNSDK.m) for a description of all the different trigger statuses.
 
 ```objectiveC
