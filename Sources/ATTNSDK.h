@@ -41,6 +41,8 @@ typedef void (^ATTNCreativeTriggerCompletionHandler)(NSString * triggerStatus);
 
 - (void)trigger:(UIView *)theView handler:(_Nullable ATTNCreativeTriggerCompletionHandler)handler;
 
+- (void)closeCreative;
+
 - (void)clearUser;
 
 NS_ASSUME_NONNULL_END
