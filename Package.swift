@@ -13,7 +13,8 @@ let package = Package(
 	targets: [
 		.target(
 			name: "ATTNSDKFramework",
-			path: "Sources/"
+			path: "Sources/",
+			resources: [ .process("Resources") ]
 		)
 	]
 )
