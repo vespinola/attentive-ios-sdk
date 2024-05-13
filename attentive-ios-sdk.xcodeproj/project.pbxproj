@@ -76,6 +76,7 @@
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
 		69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */; };
 		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; };
+		FB45B2652BF29EB00042A482 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB45B2632BF29EB00042A482 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +108,7 @@
 		58332ED0292EC20700B1ECF3 /* ATTNSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNSDK.m; path = Sources/ATTNSDK.m; sourceTree = "<group>"; };
 		58332ED1292EC20700B1ECF3 /* ATTNSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNSDK.h; path = Sources/ATTNSDK.h; sourceTree = "<group>"; };
 		58332ED2292EC20700B1ECF3 /* ATTNUserIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNUserIdentity.h; path = Sources/ATTNUserIdentity.h; sourceTree = "<group>"; };
-		58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "attentive-ios-sdk.podspec"; sourceTree = "<group>"; };
+		58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "attentive-ios-sdk.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		58332EDE292EC26000B1ECF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		58332EDF292EC26000B1ECF3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		583C29F829C101A300EABBC9 /* ATTNUserAgentBuilderTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNUserAgentBuilderTest.m; path = Tests/ATTNUserAgentBuilderTest.m; sourceTree = "<group>"; };
@@ -163,6 +164,7 @@
 		69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatterTest.m; path = Tests/ATTNCreativeUrlFormatterTest.m; sourceTree = "<group>"; };
 		69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatter.m; path = Sources/ATTNCreativeUrlFormatter.m; sourceTree = "<group>"; };
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
+		FB45B2632BF29EB00042A482 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 		58332ED9292EC21100B1ECF3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FB45B2642BF29EB00042A482 /* Resources */,
 				58C9CA5429E5EE6700EF036E /* Internal */,
 				5806DE772977570100C18FFA /* Events */,
 				6972874E29353FEA003F1BEC /* ATTNPersistentStorage.h */,
@@ -336,6 +339,15 @@
 			);
 			name = Internal;
 			path = Sources/Internal;
+			sourceTree = "<group>";
+		};
+		FB45B2642BF29EB00042A482 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FB45B2632BF29EB00042A482 /* PrivacyInfo.xcprivacy */,
+			);
+			name = Resources;
+			path = Sources/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +464,7 @@
 			files = (
 				58332EE1292EC26000B1ECF3 /* LICENSE in Resources */,
 				58332EE0292EC26000B1ECF3 /* README.md in Resources */,
+				FB45B2652BF29EB00042A482 /* PrivacyInfo.xcprivacy in Resources */,
 				58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
