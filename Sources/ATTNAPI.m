@@ -22,6 +22,8 @@
 #import "ATTNCustomEvent.h"
 #import "Internal/ATTNUserAgentBuilder.h"
 #import "Internal/ATTNInfoEvent.h"
+#import <attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h>
+//#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 // A single event can create multiple requests. The EventRequest class represents a single request.
 @interface EventRequest : NSObject
@@ -265,8 +267,8 @@ static NSString* const EVENT_TYPE_CUSTOM_EVENT = @"ce";
   } else if ([event isKindOfClass:[ATTNInfoEvent class]]) {
     [eventRequests addObject:[[EventRequest alloc] initWithMetadata:[[NSMutableDictionary alloc] init] eventNameAbbreviation:EVENT_TYPE_INFO]];
     return eventRequests;
-  } else if ([event isKindOfClass:[ATTNCustomEvent class]]) {
-    ATTNCustomEvent* customEvent = (ATTNCustomEvent*)event;
+  } else if ([event isKindOfClass:[SATTNCustomEvent class]]) {
+    SATTNCustomEvent* customEvent = (SATTNCustomEvent*)event;
 
     NSMutableDictionary* customEventMetadata = [[NSMutableDictionary alloc] init];
     customEventMetadata[@"type"] = customEvent.type;

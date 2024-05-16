@@ -1,0 +1,6 @@
+framework module attentive_ios_sdk_framework {
+    umbrella header "ATTNSDKFramework.h"
+    header "ATTNParameterValidation.h"
+    export *
+    module * { export * }
+}
