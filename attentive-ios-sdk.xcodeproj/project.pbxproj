@@ -76,6 +76,7 @@
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
 		69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */; };
 		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; };
+		FB0052A72BF6FDE700E38927 /* ATTCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0052A62BF6FDE700E38927 /* ATTCart.swift */; };
 		FB45B2652BF29EB00042A482 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB45B2632BF29EB00042A482 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,8 @@
 		69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatterTest.m; path = Tests/ATTNCreativeUrlFormatterTest.m; sourceTree = "<group>"; };
 		69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatter.m; path = Sources/ATTNCreativeUrlFormatter.m; sourceTree = "<group>"; };
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
+		FB0052A52BF6FC6E00E38927 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
+		FB0052A62BF6FDE700E38927 /* ATTCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATTCart.swift; path = Sources/ATTCart.swift; sourceTree = "<group>"; };
 		FB45B2632BF29EB00042A482 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +237,7 @@
 		58332ED9292EC21100B1ECF3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FB0052A62BF6FDE700E38927 /* ATTCart.swift */,
 				FB45B2642BF29EB00042A482 /* Resources */,
 				58C9CA5429E5EE6700EF036E /* Internal */,
 				5806DE772977570100C18FFA /* Events */,
@@ -282,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				58317997292F57300003D6B0 /* ATTNSDKFramework.h */,
+				FB0052A52BF6FC6E00E38927 /* module.modulemap */,
 				58332EDF292EC26000B1ECF3 /* LICENSE */,
 				58332EDE292EC26000B1ECF3 /* README.md */,
 				58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */,
@@ -432,6 +437,7 @@
 				TargetAttributes = {
 					58332EC2292EC18800B1ECF3 = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1530;
 					};
 					58D52E18292EC52B00CF32DE = {
 						CreatedOnToolsVersion = 14.1;
@@ -502,6 +508,7 @@
 				5806DE7B2977630800C18FFA /* ATTNCustomEvent.m in Sources */,
 				6972874F29353FEA003F1BEC /* ATTNPersistentStorage.m in Sources */,
 				6972874C29353A99003F1BEC /* ATTNVisitorService.m in Sources */,
+				FB0052A72BF6FDE700E38927 /* ATTCart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +671,9 @@
 		58332ECB292EC18800B1ECF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -686,6 +695,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
+				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
@@ -694,6 +704,7 @@
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -702,7 +713,9 @@
 		58332ECC292EC18800B1ECF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -724,6 +737,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
+				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = auto;
@@ -740,6 +754,7 @@
 		58D52E21292EC52B00CF32DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -767,6 +782,7 @@
 		58D52E22292EC52B00CF32DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

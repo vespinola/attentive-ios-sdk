@@ -11,7 +11,9 @@
 // Use the framework from your local attentive-ios-sdk project
 #if __has_include(<attentive_ios_sdk_framework/ATTNSDK.h>)
 #import <attentive_ios_sdk_framework/ATTNSDKFramework.h>
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 #else
 // Load the headers from the attentive-ios-sdk Pod
 #import "attentive_ios_sdk/attentive-ios-sdk-umbrella.h"
+#import "attentive_ios_sdk/attentive_ios_sdk-Swift.h"
 #endif

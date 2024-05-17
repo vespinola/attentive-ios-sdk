@@ -1,0 +1,5 @@
+framework module attentive_ios_sdk_framework {
+    umbrella header "ATTNSDKFramework.h"
+    export *
+    module * { export * }
+}
