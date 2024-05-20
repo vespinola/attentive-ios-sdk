@@ -22,6 +22,8 @@
 		588EB7242995BC3A00C0163A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588EB7182995BBB700C0163A /* LaunchScreen.storyboard */; };
 		588EB7252995BC3A00C0163A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C3299554B00082F8D0 /* Assets.xcassets */; };
 		588EB7262995BC3A00C0163A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C82995551A0082F8D0 /* Main.storyboard */; };
+		FB0E49E92BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; };
+		FB0E49EA2BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FB0E49EA2BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +51,7 @@
 		587DC5CE2995748B0082F8D0 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
 		588EB7192995BBB700C0163A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ExampleSwift - SPM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB0E49E92BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +80,7 @@
 				58389AAC2987647900A31A35 /* ExampleSwift */,
 				587DC5C5299554DF0082F8D0 /* Supporting Files */,
 				58389AAB2987647900A31A35 /* Products */,
+				FB0E49E72BFBBA2F0025E281 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +122,14 @@
 			);
 			name = "Supporting Files";
 			path = "ExampleSwift/Supporting Files";
+			sourceTree = "<group>";
+		};
+		FB0E49E72BFBBA2F0025E281 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,7 +426,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "ExampleSwift/attentive-ios-sdk-local-bridging-header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,7 +469,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "ExampleSwift/attentive-ios-sdk-local-bridging-header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
