@@ -12,8 +12,9 @@ let package = Package(
 	],
 	targets: [
 		.target(
-			name: "ATTNSDKFramework",
-			path: "Sources/"
+      name: "ATTNSDKFramework",
+      path: "Sources",
+      publicHeadersPath: "include"
 		)
 	]
 )
