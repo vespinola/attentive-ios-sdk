@@ -8,12 +8,12 @@ let package = Package(
 	platforms: [.iOS(.v12)],
 	products: [
 		.library(name: "ATTNSDKFramework", targets: ["ATTNSDKFramework"])
-
 	],
 	targets: [
 		.target(
       name: "ATTNSDKFramework",
       path: "Sources",
+      resources: [ .process("Resources") ],
       publicHeadersPath: "include"
 		)
 	]

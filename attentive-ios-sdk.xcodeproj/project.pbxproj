@@ -76,6 +76,7 @@
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
 		69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */; };
 		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; };
+		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatter.m; path = Sources/ATTNCreativeUrlFormatter.m; sourceTree = "<group>"; };
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		58332ED9292EC21100B1ECF3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				FB7E907E2BFCD9B400DB8804 /* Resources */,
 				FB0E49E32BFBB0A70025E281 /* include */,
 				58C9CA5429E5EE6700EF036E /* Internal */,
 				5806DE772977570100C18FFA /* Events */,
@@ -349,6 +352,15 @@
 			path = Sources/include;
 			sourceTree = "<group>";
 		};
+		FB7E907E2BFCD9B400DB8804 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */,
+			);
+			name = Resources;
+			path = Sources/Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -464,6 +476,7 @@
 			files = (
 				58332EE1292EC26000B1ECF3 /* LICENSE in Resources */,
 				58332EE0292EC26000B1ECF3 /* README.md in Resources */,
+				FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */,
 				58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
