@@ -238,3 +238,7 @@ sdk.clearUser()
 ```
 
 When/if the user logs back in, `identify` should be called again with the user's identfiers
+
+## Changelog
+
+Click [here](https://github.com/attentive-mobile/attentive-ios-sdk/blob/main/CHANGELOG.md) for a complete change log of every released version
