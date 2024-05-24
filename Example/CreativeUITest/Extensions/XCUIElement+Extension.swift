@@ -19,7 +19,7 @@ extension XCUIElement {
 
   /// Verify element existence on the app view hierarchy
   @objc func elementExists() -> Bool {
-    elementExists(timeout: 5)
+    elementExists(timeout: 10)
   }
 
   @objc func fillTextField(_ text: String) {
