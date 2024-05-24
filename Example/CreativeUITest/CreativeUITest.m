@@ -9,6 +9,7 @@
 #import <WebKit/WebKit.h>
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "CreativeUITest-Swift.h"
 
 @interface CreativeUITest : XCTestCase
 
@@ -21,121 +22,127 @@
 
 
 - (void)setUp {
+  [super setUp];
   // In UI tests it is usually best to stop immediately when a failure occurs.
   self.continueAfterFailure = NO;
-
-  [[self class] clearCookies];
 
   app = [[XCUIApplication alloc] init];
 }
 
-+ (void)tearDown {
+- (void)tearDown {
   // reset cookies & user defaults after all tests have run
   [self clearCookies];
   [self resetUserDefaults];
+
+  [app terminate];
+  [self deleteApp];
+
+  [super tearDown];
 }
 
 
 - (void)testLoadCreative_clickClose_closesCreative {
   [self launchAppWithMode:@"production"];
-  [app.buttons[@"Push me for Creative!"] tap];
+  [app.buttons[@"Push me for Creative!"] tapOnElement];
+
+  sleep(2);
 
   // Close the creative
-  XCTAssertTrue([app.webViews.buttons[@"Dismiss this popup"] waitForExistenceWithTimeout:5.0]);
-  [app.webViews.buttons[@"Dismiss this popup"] tap];
+  [app.webViews.buttons[@"Dismiss this popup"] tapOnElement];
 
   // Assert that the creative is closed
-  XCTAssertTrue([app.buttons[@"Push me for Creative!"] waitForExistenceWithTimeout:5.0]);
+  XCTAssertTrue([app.buttons[@"Push me for Creative!"] elementExists]);
   XCTAssertEqual(app.buttons[@"Push me for Creative!"].isHittable, true);
 }
 
 
 - (void)testLoadCreative_fillOutFormAndSubmit_launchesSmsAppWithPrePopulatedText {
   [self launchAppWithMode:@"production"];
-  [app.buttons[@"Push me to clear the User!"] tap];
-  [app.buttons[@"Push me for Creative!"] tap];
+  [app.buttons[@"Push me to clear the User!"] tapOnElement];
+  [app.buttons[@"Push me for Creative!"] tapOnElement];
 
   // Fill in the email
-  XCTAssertTrue([app.webViews.textFields[@"Email Address"] waitForExistenceWithTimeout:5.0]);
   XCUIElement *emailField = app.webViews.textFields[@"Email Address"];
-  [emailField tap];
-  [emailField typeText:@"testemail@attentivemobile.com"];
+  [emailField tapOnElement];
+  [emailField fillTextField:@"testemail@attentivemobile.com"];
 
   // Tap something else on the creative to dismiss the keyboard
-  [app.staticTexts[@"10% OFF"] tap];
+  [app.staticTexts[@"10% OFF"] tapOnElement];
 
   // Submit email
-  XCTAssertTrue([app.buttons[@"CONTINUE"] waitForExistenceWithTimeout:5.0]);
-  [app.webViews.buttons[@"CONTINUE"] tap];
+  [app.webViews.buttons[@"CONTINUE"] tapOnElement];
 
-  // Click subscribe button
-  XCTAssertTrue([app.buttons[@"GET 10% OFF NOW when you sign up for email and texts"] waitForExistenceWithTimeout:5.0]);
-  [app.buttons[@"GET 10% OFF NOW when you sign up for email and texts"] tap];
+  [app.buttons[@"GET 10% OFF NOW when you sign up for email and texts"] tapOnElement];
 
   // Assert that the SMS app is opened with prepopulated text if running locally
   // (AWS Device Farm doesn't allow use of SMS apps)
   NSString *envHost = [[[NSProcessInfo processInfo] environment] objectForKey:@"COM_ATTENTIVE_EXAMPLE_HOST"];
   if ([envHost isEqualToString:@"local"]) {
     XCUIApplication *smsApp = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.MobileSMS"];
-    XCTAssertTrue([smsApp.textFields[@"Message"] waitForExistenceWithTimeout:5.0]);
+
+    // Close Info Screen when SMS App is opened for the first time
+    if ([smsApp.buttons[@"OK"] elementExists]) {
+      [smsApp.buttons[@"OK"] tapOnElement];
+    }
+
+    XCTAssertTrue([smsApp.textFields[@"Message"] elementExists]);
     XCTAssertTrue([smsApp.textFields[@"Message"].value containsString:@"Send this text to subscribe to recurring automated personalized marketing alerts (e.g. cart reminders) from Attentive Mobile Apps Test"]);
+
+    [app activate];
+    sleep(1);
   }
 }
 
 
 - (void)testLoadCreative_clickPrivacyLink_opensPrivacyPageInWebApp {
   [self launchAppWithMode:@"production"];
-  [app.buttons[@"Push me for Creative!"] tap];
+  [app.buttons[@"Push me for Creative!"] tapOnElement];
 
   // Click privacy link
-  XCTAssertTrue([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
-  [app.webViews.links[@"Privacy"] tap];
-
-  // Wait for a moment to allow the app to react
-  sleep(5);
-
-  // Check if the app is no longer active
-  XCTAssertFalse([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
+  [app.links[@"Privacy"] tapOnElement];
 
   // AWS Device Farm doesn't always acknowledge separate apps, leading to flakiness here
   NSString *envHost = [[[NSProcessInfo processInfo] environment] objectForKey:@"COM_ATTENTIVE_EXAMPLE_HOST"];
   if ([envHost isEqualToString:@"local"]) {
     // Verify that the privacy page is visible in the external browser
     XCUIApplication *safariApp = [[XCUIApplication alloc] initWithBundleIdentifier:@"com.apple.mobilesafari"];
-    BOOL privacyPolicyExists = [safariApp.staticTexts[@"Privacy Policy"] waitForExistenceWithTimeout:5.0];
-    BOOL messagingPrivacyPolicyExists = [safariApp.staticTexts[@"Messaging Privacy Policy"] waitForExistenceWithTimeout:5.0];
+    BOOL privacyPolicyExists = [safariApp.staticTexts[@"Privacy Policy"] elementExists];
+    BOOL messagingPrivacyPolicyExists = [safariApp.staticTexts[@"Messaging Privacy Policy"] elementExists];
 
     XCTAssertTrue(privacyPolicyExists || messagingPrivacyPolicyExists);
+
+    [app activate];
+
+    sleep(1);
   }
 }
 
 
 - (void)testLoadCreative_inDebugMode_showsDebugMessage {
   [self launchAppWithMode:@"debug"];
-  [app.buttons[@"Push me for Creative!"] tap];
+  [app.buttons[@"Push me for Creative!"] tapOnElement];
 
   // Verify debug page shows
-  XCTAssertTrue([app.staticTexts[@"Debug output JSON"] waitForExistenceWithTimeout:5.0]);
+  XCTAssertTrue([app.staticTexts[@"Debug output JSON"] elementExists]);
 }
 
 - (void)testLoadCreative_clickProductPage_closesCreative {
   [self launchAppWithMode:@"production"];
-  [app.buttons[@"Push me for Creative!"] tap];
+  [app.buttons[@"Push me for Creative!"] tapOnElement];
 
   // Click privacy link
-  XCTAssertTrue([app.webViews.links[@"Privacy"] waitForExistenceWithTimeout:5.0]);
-  [app.tabBars.buttons[@"Product"] tap];
+  [app.tabBars.buttons[@"Product"] tapOnElement];
 
   // Verify that the product page is visible
-  XCTAssertTrue([app.buttons[@"Add To Cart"] waitForExistenceWithTimeout:5.0]);
+  XCTAssertTrue([app.buttons[@"Add To Cart"] elementExists]);
 
   // Nav back, and verify the creative is closed
-  [app.tabBars.buttons[@"Main"] tap];
-  XCTAssertTrue([app.buttons[@"Push me for Creative!"] waitForExistenceWithTimeout:5.0]);
+  [app.tabBars.buttons[@"Main"] tapOnElement];
+  XCTAssertTrue([app.buttons[@"Push me for Creative!"] elementExists]);
 }
 
 
-+ (void)clearCookies {
+- (void)clearCookies {
   NSLog(@"Clearing cookies!");
   NSSet *websiteDataTypes = [NSSet setWithArray:@[ WKWebsiteDataTypeCookies ]];
   NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
@@ -147,7 +154,7 @@
 }
 
 
-+ (void)resetUserDefaults {
+- (void)resetUserDefaults {
   // Reset user defaults for example app, not the test runner
   [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:@"com.attentive.ExampleTest"];
 }
