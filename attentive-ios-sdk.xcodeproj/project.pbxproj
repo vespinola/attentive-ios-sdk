@@ -41,13 +41,13 @@
 		587234C72953AAD800EE12B6 /* ATTNEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 587234BC2953AAD800EE12B6 /* ATTNEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		587234C82953AAD800EE12B6 /* ATTNItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 587234BD2953AAD800EE12B6 /* ATTNItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		587234C92953AAD800EE12B6 /* ATTNPurchaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 587234BE2953AAD800EE12B6 /* ATTNPurchaseEvent.m */; };
-		58A6EA2329354D02009BE922 /* ATTNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A6EA2229354D02009BE922 /* ATTNAPI.h */; };
+		58A6EA2329354D02009BE922 /* ATTNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A6EA2229354D02009BE922 /* ATTNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A6EA2529354D59009BE922 /* ATTNAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A6EA2429354D59009BE922 /* ATTNAPI.m */; };
 		58A6EA2729359A84009BE922 /* ATTNAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A6EA2629359757009BE922 /* ATTNAPITest.m */; };
 		58B01AAF294CFF8A0001CEBF /* ATTNEventTrackerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B01AAE294CFF8A0001CEBF /* ATTNEventTrackerTest.m */; };
 		58B01AB3294D3F9C0001CEBF /* TestAssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B01AB2294D3F9B0001CEBF /* TestAssertionHandler.m */; };
 		58B01AC5294D44140001CEBF /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B01AB6294D44140001CEBF /* libOCMock.a */; };
-		58C9CA5C29E5EE6700EF036E /* ATTNInfoEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C9CA5529E5EE6700EF036E /* ATTNInfoEvent.h */; };
+		58C9CA5C29E5EE6700EF036E /* ATTNInfoEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C9CA5529E5EE6700EF036E /* ATTNInfoEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58C9CA5D29E5EE6700EF036E /* ATTNAppInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C9CA5629E5EE6700EF036E /* ATTNAppInfo.h */; };
 		58C9CA5E29E5EE6700EF036E /* ATTNUserAgentBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C9CA5729E5EE6700EF036E /* ATTNUserAgentBuilder.h */; };
 		58C9CA5F29E5EE6700EF036E /* ATTNVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C9CA5829E5EE6700EF036E /* ATTNVersion.h */; };
@@ -75,8 +75,9 @@
 		69BA6D5B29B782CE00CCA573 /* ATTNTestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D5A29B782CE00CCA573 /* ATTNTestEventUtils.m */; };
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
 		69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */; };
-		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; };
+		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
+		FBF3A9BF2C04E4FB004D8C8F /* ATTNSDKSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9BE2C04E4FB004D8C8F /* ATTNSDKSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FBF3A9BE2C04E4FB004D8C8F /* ATTNSDKSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +245,7 @@
 				5862BE452940820C002C1403 /* ATTNEventTracker.m */,
 				69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */,
 				69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */,
+				FBF3A9BE2C04E4FB004D8C8F /* ATTNSDKSwift.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -444,7 +447,7 @@
 				TargetAttributes = {
 					58332EC2292EC18800B1ECF3 = {
 						CreatedOnToolsVersion = 14.1;
-						LastSwiftMigration = 1530;
+						LastSwiftMigration = 1540;
 					};
 					58D52E18292EC52B00CF32DE = {
 						CreatedOnToolsVersion = 14.1;
@@ -529,6 +532,7 @@
 				58C9CA6029E5EE6700EF036E /* ATTNInfoEvent.m in Sources */,
 				587234C62953AAD800EE12B6 /* ATTNOrder.m in Sources */,
 				58332ED3292EC20700B1ECF3 /* ATTNUserIdentity.m in Sources */,
+				FBF3A9BF2C04E4FB004D8C8F /* ATTNSDKSwift.swift in Sources */,
 				5806DE722977457600C18FFA /* ATTNProductViewEvent.m in Sources */,
 				587234C42953AAD800EE12B6 /* ATTNCart.m in Sources */,
 				58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */,
@@ -785,6 +789,7 @@
 		58D52E21292EC52B00CF32DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -812,6 +817,7 @@
 		58D52E22292EC52B00CF32DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
