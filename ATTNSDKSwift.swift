@@ -135,19 +135,19 @@ public final class ATTNSDKSwift: NSObject {
   public func clearUser() {
     userIdentity.clearUser()
   }
+
+  public func closeCreative() {
+    webView?.removeFromSuperview()
+    ATTNSDKSwift.isCreativeOpen = false
+    triggerHandler?(CREATIVE_TRIGGER_STATUS_CLOSED)
+    NSLog("Successfully closed creative")
+  }
 }
 
 // MARK: Private Helpers
 fileprivate extension ATTNSDKSwift {
   func sendInfoEvent() {
     api.send(ATTNInfoEvent(), userIdentity: userIdentity)
-  }
-
-  func closeCreative() {
-    webView?.removeFromSuperview()
-    ATTNSDKSwift.isCreativeOpen = false
-    triggerHandler?(CREATIVE_TRIGGER_STATUS_CLOSED)
-    NSLog("Successfully closed creative")
   }
 }
 
