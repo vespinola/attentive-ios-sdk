@@ -1,0 +1,20 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Run Swiftlint
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set Xcode 15
+        run: |
+          sudo xcode-select -switch /Applications/Xcode_15.3.app
+      - name: Lint
+        run: swiftlint
