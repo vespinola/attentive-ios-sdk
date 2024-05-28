@@ -25,3 +25,4 @@ FOUNDATION_EXPORT const unsigned char ATTNSDKFrameworkVersionString[];
 #import <attentive_ios_sdk_framework/ATTNAppInfo.h>
 #import <attentive_ios_sdk_framework/ATTNUserAgentBuilder.h>
 #import <attentive_ios_sdk_framework/ATTNVersion.h>
+#import <attentive_ios_sdk_framework/ATTNConstants.h>

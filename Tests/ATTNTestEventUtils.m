@@ -6,6 +6,7 @@
 //
 
 #import "ATTNTestEventUtils.h"
+#import "ATTNConstants.h"
 
 
 @implementation ATTNTestEventUtils

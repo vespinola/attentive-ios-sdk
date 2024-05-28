@@ -6,24 +6,13 @@
 //
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
+#import "ATTNConstants.h"
 
 
 @class ATTNUserIdentity;
 
 
 NS_ASSUME_NONNULL_BEGIN
-
-
-extern NSString * const CREATIVE_TRIGGER_STATUS_OPENED;
-extern NSString * const CREATIVE_TRIGGER_STATUS_CLOSED;
-extern NSString * const CREATIVE_TRIGGER_STATUS_NOT_OPENED;
-extern NSString * const CREATIVE_TRIGGER_STATUS_NOT_CLOSED;
-
-extern NSString * const SDK_VERSION;
-
-typedef void (^ATTNCreativeTriggerCompletionHandler)(NSString * triggerStatus);
-
-
 
 @interface ATTNSDK : NSObject <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 
