@@ -1,24 +1,24 @@
 //
-//  ObjcATTNSDK.swift
+//  ObjcATTSDK.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-27.
 //
 
-import Foundation
+import UIKit
 
-@objc(ObjcATTNSDK)
-public final class ObjcATTNSDK: NSObject {
-  private let sdk: ATTNSDKSwift
+@objc(ObjcATTSDK)
+public final class ObjcATTSDK: NSObject {
+  private let sdk: ATTSDK
 
   @objc(initWithDomain:mode:)
   public init(domain: String, mode: String) {
-    self.sdk = ATTNSDKSwift(domain: domain, mode: mode)
+    self.sdk = ATTSDK(domain: domain, mode: mode)
   }
 
   @objc(initWithDomain:)
   public init(domain: String) {
-    self.sdk = ATTNSDKSwift(domain: domain, mode: .production)
+    self.sdk = ATTSDK(domain: domain, mode: .production)
   }
 
   @objc(identify:)
@@ -35,8 +35,9 @@ public final class ObjcATTNSDK: NSObject {
     sdk.trigger(theView: view)
   }
 
+  // TODO: REVISIT ATTNCreativeTriggerCompletionHandler
   @objc(trigger:handler:)
-  public func trigger(theView view: UIView, handler: ATTNCreativeTriggerCompletionHandler?) {
+  public func trigger(theView view: UIView, handler: ((String) -> Void)?) {
     sdk.trigger(theView: view, handler: handler)
   }
 }

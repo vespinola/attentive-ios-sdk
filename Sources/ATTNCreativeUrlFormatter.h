@@ -8,7 +8,9 @@
 #ifndef ATTNCreativeUrlFormatter_h
 #define ATTNCreativeUrlFormatter_h
 
-#import "ATTNUserIdentity.h"
+#import <Foundation/Foundation.h>
+
+@class ATTNUserIdentity;
 
 
 @interface ATTNCreativeUrlFormatter : NSObject

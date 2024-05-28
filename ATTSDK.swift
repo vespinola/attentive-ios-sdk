@@ -1,5 +1,5 @@
 //
-//  ATTNSDKSwift.swift
+//  ATTSDK.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-27.
@@ -9,12 +9,12 @@ import Foundation
 import WebKit
 
 /// Define initialization mode for SDK
-public enum ATTNSDKMode: String {
+public enum ATTSDKMode: String {
   case debug
   case production
 }
 
-public final class ATTNSDKSwift: NSObject {
+public final class ATTSDK: NSObject {
   // MARK: Constants
   private enum Constants {
     static var visibilityEvent: String { "document-visibility:" }
@@ -51,17 +51,17 @@ public final class ATTNSDKSwift: NSObject {
   private let userIdentity: ATTNUserIdentity
 
   private var domain: String
-  private var mode: ATTNSDKMode
+  private var mode: ATTSDKMode
 
   // MARK: Init
-  convenience public init(domain: String, mode: ATTNSDKMode = .production) {
+  convenience public init(domain: String, mode: ATTSDKMode = .production) {
     self.init(domain: domain, mode: mode.rawValue)
   }
 
   public init(domain: String, mode: String = "production") {
-    NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
+//    NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
     self.domain = domain
-    self.mode = ATTNSDKMode(rawValue: mode) ?? .production
+    self.mode = ATTSDKMode(rawValue: mode) ?? .production
 
     self.userIdentity = .init()
     self.api = .init(domain: domain)
@@ -83,7 +83,7 @@ public final class ATTNSDKSwift: NSObject {
 
     NSLog("Called showWebView in creativeSDK with domain: %@", domain)
 
-    guard !ATTNSDKSwift.isCreativeOpen else {
+    guard !ATTSDK.isCreativeOpen else {
       NSLog("Attempted to trigger creative, but creative is currently open. Taking no action")
       return
     }
@@ -138,31 +138,31 @@ public final class ATTNSDKSwift: NSObject {
 
   public func closeCreative() {
     webView?.removeFromSuperview()
-    ATTNSDKSwift.isCreativeOpen = false
+    ATTSDK.isCreativeOpen = false
     triggerHandler?(CREATIVE_TRIGGER_STATUS_CLOSED)
     NSLog("Successfully closed creative")
   }
 }
 
 // MARK: Private Helpers
-fileprivate extension ATTNSDKSwift {
+fileprivate extension ATTSDK {
   func sendInfoEvent() {
     api.send(ATTNInfoEvent(), userIdentity: userIdentity)
   }
 }
 
 // MARK: WKScriptMessageHandler
-extension ATTNSDKSwift: WKScriptMessageHandler {
+extension ATTSDK: WKScriptMessageHandler {
   public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
     let messageBody = message.body as? String ?? ""
-    NSLog("Web event message: %@. isCreativeOpen: %@", messageBody, ATTNSDKSwift.isCreativeOpen ? "YES" : "NO")
+    NSLog("Web event message: %@. isCreativeOpen: %@", messageBody, ATTSDK.isCreativeOpen ? "YES" : "NO")
 
     if messageBody == "CLOSE" {
       closeCreative()
     } else if messageBody == "IMPRESSION" {
       NSLog("Creative opened and generated impression event")
-      ATTNSDKSwift.isCreativeOpen = true
-    } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), ATTNSDKSwift.isCreativeOpen {
+      ATTSDK.isCreativeOpen = true
+    } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), ATTSDK.isCreativeOpen {
       NSLog("Nav away from creative, closing")
       closeCreative()
     }
@@ -170,7 +170,7 @@ extension ATTNSDKSwift: WKScriptMessageHandler {
 }
 
 // MARK: WKNavigationDelegate
-extension ATTNSDKSwift: WKNavigationDelegate {
+extension ATTSDK: WKNavigationDelegate {
   public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     let asyncJs = """
       var p = new Promise(resolve => {

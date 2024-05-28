@@ -5,9 +5,7 @@
 //  Created by Wyatt Davis on 3/15/23.
 //
 
-#ifndef ATTNInfoEvent_h
-#define ATTNInfoEvent_h
-
+#import <Foundation/Foundation.h>
 #import "ATTNEvent.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,5 +15,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif /* ATTNInfoEvent_h */
