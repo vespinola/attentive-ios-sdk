@@ -9,24 +9,18 @@
 #import <OCMock/OCMock.h>
 #import "ATTNEventTracker.h"
 #import "TestAssertionHandler.h"
-#import "ATTNSDK.h"
 #import "ATTNPurchaseEvent.h"
 #import "ATTNOrder.h"
 #import "ATTNAPI.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @interface ATTNEventTracker (Test)
 
-- (id)initWithSdk:(ATTNSDK*)sdk;
+- (id)initWithSdk:(ObjcATTNSDK*)sdk;
 
 @end
 
 @interface ATTNEventTrackerTest : XCTestCase
-
-@end
-
-@interface ATTNSDK (Internal)
-
-- (ATTNAPI*)getApi;
 
 @end
 
@@ -63,7 +57,7 @@
   // CASE 2: verify that if setupWithSdk is called before getSharedInstance then no assertion is triggered
   // **************
 
-  ATTNSDK* sdkMock = OCMClassMock([ATTNSDK class]);
+  ObjcATTNSDK* sdkMock = OCMClassMock([ObjcATTNSDK class]);
   [ATTNEventTracker setupWithSdk:sdkMock];
 
   // Does not throw
@@ -72,7 +66,7 @@
 
 - (void)testRecordEvent_validEvent_callsApi {
   // Arrange
-  ATTNSDK* sdkMock = OCMClassMock([ATTNSDK class]);
+  ObjcATTNSDK* sdkMock = OCMClassMock([ObjcATTNSDK class]);
   ATTNAPI* apiMock = OCMClassMock([ATTNAPI class]);
   OCMStub([sdkMock getApi]).andReturn(apiMock);
 

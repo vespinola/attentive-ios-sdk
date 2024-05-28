@@ -21,8 +21,6 @@
 		58332ED3292EC20700B1ECF3 /* ATTNUserIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 58332ECD292EC20700B1ECF3 /* ATTNUserIdentity.m */; };
 		58332ED4292EC20700B1ECF3 /* ATTNParameterValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ECE292EC20700B1ECF3 /* ATTNParameterValidation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58332ECF292EC20700B1ECF3 /* ATTNParameterValidation.m */; };
-		58332ED6292EC20700B1ECF3 /* ATTNSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 58332ED0292EC20700B1ECF3 /* ATTNSDK.m */; };
-		58332ED7292EC20700B1ECF3 /* ATTNSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ED1292EC20700B1ECF3 /* ATTNSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332ED8292EC20700B1ECF3 /* ATTNUserIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ED2292EC20700B1ECF3 /* ATTNUserIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */; };
 		58332EE0292EC26000B1ECF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDE292EC26000B1ECF3 /* README.md */; };
@@ -68,8 +66,8 @@
 		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
 		FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB7ED5112C06554A000C73B9 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */; };
-		FBF3A9BF2C04E4FB004D8C8F /* ATTSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9BE2C04E4FB004D8C8F /* ATTSDK.swift */; };
-		FBF3A9C32C05282B004D8C8F /* ObjcATTSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9C22C05282B004D8C8F /* ObjcATTSDK.swift */; };
+		FBF3A9BF2C04E4FB004D8C8F /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */; };
+		FBF3A9C32C05282B004D8C8F /* ObjcATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9C22C05282B004D8C8F /* ObjcATTNSDK.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,8 +96,6 @@
 		58332ECD292EC20700B1ECF3 /* ATTNUserIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNUserIdentity.m; path = Sources/ATTNUserIdentity.m; sourceTree = "<group>"; };
 		58332ECE292EC20700B1ECF3 /* ATTNParameterValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNParameterValidation.h; path = Sources/ATTNParameterValidation.h; sourceTree = "<group>"; };
 		58332ECF292EC20700B1ECF3 /* ATTNParameterValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNParameterValidation.m; path = Sources/ATTNParameterValidation.m; sourceTree = "<group>"; };
-		58332ED0292EC20700B1ECF3 /* ATTNSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNSDK.m; path = Sources/ATTNSDK.m; sourceTree = "<group>"; };
-		58332ED1292EC20700B1ECF3 /* ATTNSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTNSDK.h; sourceTree = "<group>"; };
 		58332ED2292EC20700B1ECF3 /* ATTNUserIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTNUserIdentity.h; sourceTree = "<group>"; };
 		58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "attentive-ios-sdk.podspec"; sourceTree = "<group>"; };
 		58332EDE292EC26000B1ECF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -163,8 +159,8 @@
 		FB7ED50B2C063641000C73B9 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
 		FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTNConstants.m; sourceTree = "<group>"; };
-		FBF3A9BE2C04E4FB004D8C8F /* ATTSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTSDK.swift; sourceTree = "<group>"; };
-		FBF3A9C22C05282B004D8C8F /* ObjcATTSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjcATTSDK.swift; sourceTree = "<group>"; };
+		FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
+		FBF3A9C22C05282B004D8C8F /* ObjcATTNSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjcATTNSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,13 +234,12 @@
 				58A6EA2429354D59009BE922 /* ATTNAPI.m */,
 				58332ECE292EC20700B1ECF3 /* ATTNParameterValidation.h */,
 				58332ECF292EC20700B1ECF3 /* ATTNParameterValidation.m */,
-				58332ED0292EC20700B1ECF3 /* ATTNSDK.m */,
 				58332ECD292EC20700B1ECF3 /* ATTNUserIdentity.m */,
 				5862BE452940820C002C1403 /* ATTNEventTracker.m */,
 				69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */,
 				69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */,
 				FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */,
-				FBF3A9BE2C04E4FB004D8C8F /* ATTSDK.swift */,
+				FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -341,7 +336,6 @@
 			children = (
 				5862BE3F29407DAC002C1403 /* ATTNEventTracker.h */,
 				58332ED2292EC20700B1ECF3 /* ATTNUserIdentity.h */,
-				58332ED1292EC20700B1ECF3 /* ATTNSDK.h */,
 				587234B72953AAD800EE12B6 /* ATTNCart.h */,
 				587234BC2953AAD800EE12B6 /* ATTNEvent.h */,
 				587234BD2953AAD800EE12B6 /* ATTNItem.h */,
@@ -369,7 +363,7 @@
 		FBF3A9C12C05280D004D8C8F /* Objc */ = {
 			isa = PBXGroup;
 			children = (
-				FBF3A9C22C05282B004D8C8F /* ObjcATTSDK.swift */,
+				FBF3A9C22C05282B004D8C8F /* ObjcATTNSDK.swift */,
 			);
 			name = Objc;
 			path = Sources/Objc;
@@ -391,7 +385,6 @@
 				587234C32953AAD800EE12B6 /* ATTNPrice.h in Headers */,
 				587234C82953AAD800EE12B6 /* ATTNItem.h in Headers */,
 				587234C72953AAD800EE12B6 /* ATTNEvent.h in Headers */,
-				58332ED7292EC20700B1ECF3 /* ATTNSDK.h in Headers */,
 				6972874B29353A99003F1BEC /* ATTNVisitorService.h in Headers */,
 				5806DE7A2977630800C18FFA /* ATTNCustomEvent.h in Headers */,
 				5806DE712977457600C18FFA /* ATTNProductViewEvent.h in Headers */,
@@ -536,18 +529,17 @@
 			files = (
 				587234BF2953AAD800EE12B6 /* ATTNPrice.m in Sources */,
 				5806DE6E29773F6100C18FFA /* ATTNAddToCartEvent.m in Sources */,
-				58332ED6292EC20700B1ECF3 /* ATTNSDK.m in Sources */,
 				587234C92953AAD800EE12B6 /* ATTNPurchaseEvent.m in Sources */,
 				58C9CA6429E5EE6700EF036E /* ATTNUserAgentBuilder.m in Sources */,
 				58A6EA2529354D59009BE922 /* ATTNAPI.m in Sources */,
-				FBF3A9C32C05282B004D8C8F /* ObjcATTSDK.swift in Sources */,
+				FBF3A9C32C05282B004D8C8F /* ObjcATTNSDK.swift in Sources */,
 				58C9CA6229E5EE6700EF036E /* ATTNAppInfo.m in Sources */,
 				5862BE462940820C002C1403 /* ATTNEventTracker.m in Sources */,
 				58C9CA6029E5EE6700EF036E /* ATTNInfoEvent.m in Sources */,
 				587234C62953AAD800EE12B6 /* ATTNOrder.m in Sources */,
 				58332ED3292EC20700B1ECF3 /* ATTNUserIdentity.m in Sources */,
 				FB7ED5112C06554A000C73B9 /* ATTNConstants.m in Sources */,
-				FBF3A9BF2C04E4FB004D8C8F /* ATTSDK.swift in Sources */,
+				FBF3A9BF2C04E4FB004D8C8F /* ATTNSDK.swift in Sources */,
 				5806DE722977457600C18FFA /* ATTNProductViewEvent.m in Sources */,
 				587234C42953AAD800EE12B6 /* ATTNCart.m in Sources */,
 				58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */,

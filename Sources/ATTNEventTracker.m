@@ -6,30 +6,23 @@
 //
 
 #import "ATTNEventTracker.h"
-#import "ATTNSDK.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 #import "ATTNAPI.h"
 
 static ATTNEventTracker* __sharedInstance = nil;
 
-@interface ATTNSDK (Internal)
-
-- (ATTNAPI*)getApi;
-- (ATTNUserIdentity*)getUserIdentity;
-
-@end
-
 @implementation ATTNEventTracker {
-  ATTNSDK* _sdk;
+  ObjcATTNSDK* _sdk;
 }
 
-+ (void)setupWithSdk:(ATTNSDK*)sdk {
++ (void)setupWithSdk:(ObjcATTNSDK*)sdk {
   static dispatch_once_t ensureOnlyOnceToken;
   dispatch_once(&ensureOnlyOnceToken, ^{
     __sharedInstance = [[self alloc] initWithSdk:sdk];
   });
 }
 
-- (id)initWithSdk:(ATTNSDK*)sdk {
+- (id)initWithSdk:(ObjcATTNSDK*)sdk {
   if (self = [super init]) {
     _sdk = sdk;
   }

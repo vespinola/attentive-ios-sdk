@@ -1,5 +1,5 @@
 //
-//  ObjcATTSDK.swift
+//  ObjcATTNSDK.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-27.
@@ -7,18 +7,18 @@
 
 import UIKit
 
-@objc(ObjcATTSDK)
-public final class ObjcATTSDK: NSObject {
-  private let sdk: ATTSDK
+@objc(ObjcATTNSDK)
+public final class ObjcATTNSDK: NSObject {
+  private let sdk: ATTNSDK
 
   @objc(initWithDomain:mode:)
   public init(domain: String, mode: String) {
-    self.sdk = ATTSDK(domain: domain, mode: mode)
+    self.sdk = ATTNSDK(domain: domain, mode: mode)
   }
 
   @objc(initWithDomain:)
   public init(domain: String) {
-    self.sdk = ATTSDK(domain: domain, mode: .production)
+    self.sdk = ATTNSDK(domain: domain, mode: .production)
   }
 
   @objc(identify:)
@@ -40,4 +40,10 @@ public final class ObjcATTSDK: NSObject {
   public func trigger(theView view: UIView, handler: ((String) -> Void)?) {
     sdk.trigger(theView: view, handler: handler)
   }
+}
+
+// TODO: REVISIT protection keyboard
+public extension ObjcATTNSDK {
+  @objc func getApi() -> ATTNAPI { sdk.api }
+  @objc func getUserIdentity() -> ATTNUserIdentity { sdk.userIdentity }
 }
