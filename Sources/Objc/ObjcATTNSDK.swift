@@ -40,6 +40,11 @@ public final class ObjcATTNSDK: NSObject {
   public func trigger(theView view: UIView, handler: ((String) -> Void)?) {
     sdk.trigger(theView: view, handler: handler)
   }
+
+  @objc(clearUser)
+  public func clearUser() {
+    sdk.clearUser()
+  }
 }
 
 // TODO: REVISIT protection keyboard

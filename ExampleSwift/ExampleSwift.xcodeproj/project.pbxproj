@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		58389AB62987647B00A31A35 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58389AB52987647B00A31A35 /* Preview Assets.xcassets */; };
-		586439712B7D17680031140F /* ATTNSDKFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 586439702B7D17680031140F /* ATTNSDKFramework */; };
 		587DC5BF299550DA0082F8D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587DC5BE299550DA0082F8D0 /* AppDelegate.swift */; };
 		587DC5C4299554B00082F8D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C3299554B00082F8D0 /* Assets.xcassets */; };
 		587DC5CB2995551A0082F8D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C82995551A0082F8D0 /* Main.storyboard */; };
@@ -24,6 +23,7 @@
 		588EB7262995BC3A00C0163A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C82995551A0082F8D0 /* Main.storyboard */; };
 		FB0E49E92BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; };
 		FB0E49EA2BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB9EB7E72C067B3800B80F2D /* ATTNSDKFramework in Frameworks */ = {isa = PBXBuildFile; productRef = FB9EB7E62C067B3800B80F2D /* ATTNSDKFramework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586439712B7D17680031140F /* ATTNSDKFramework in Frameworks */,
+				FB9EB7E72C067B3800B80F2D /* ATTNSDKFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,7 +167,7 @@
 			);
 			name = "ExampleSwift - SPM";
 			packageProductDependencies = (
-				586439702B7D17680031140F /* ATTNSDKFramework */,
+				FB9EB7E62C067B3800B80F2D /* ATTNSDKFramework */,
 			);
 			productName = ExampleSwift;
 			productReference = 588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */;
@@ -198,7 +198,7 @@
 			);
 			mainGroup = 58389AA12987647900A31A35;
 			packageReferences = (
-				5864396F2B7D17680031140F /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */,
+				FB9EB7E52C067B3800B80F2D /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */,
 			);
 			productRefGroup = 58389AAB2987647900A31A35 /* Products */;
 			projectDirPath = "";
@@ -598,9 +598,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5864396F2B7D17680031140F /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */ = {
+		FB9EB7E52C067B3800B80F2D /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/attentive-mobile/attentive-ios-sdk";
+			repositoryURL = "https://github.com/vespinola/attentive-ios-sdk.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -609,9 +609,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		586439702B7D17680031140F /* ATTNSDKFramework */ = {
+		FB9EB7E62C067B3800B80F2D /* ATTNSDKFramework */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5864396F2B7D17680031140F /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */;
+			package = FB9EB7E52C067B3800B80F2D /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */;
 			productName = ATTNSDKFramework;
 		};
 /* End XCSwiftPackageProductDependency section */

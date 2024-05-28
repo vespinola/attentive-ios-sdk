@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "ImportAttentiveSDK.h"
+#import <WebKit/WebKit.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -17,7 +18,7 @@
   NSString *_mode;
 }
 
-ATTNSDK *sdk;
+ObjcATTNSDK *sdk;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -50,7 +51,7 @@ ATTNSDK *sdk;
   // Intialize the Attentive SDK.
   // This only has to be done once per application lifecycle so you can do
   // this in a singleton class rather than each time a view loads.
-  sdk = [[ATTNSDK alloc] initWithDomain:_domain mode:_mode];
+  sdk = [[ObjcATTNSDK alloc] initWithDomain:_domain mode:_mode];
 
   // Initialize the ATTNEventTracker. This must be done before the ATTNEventTracker can be used to send any events.
   [ATTNEventTracker setupWithSdk:sdk];

@@ -10,6 +10,7 @@
 
 #import "ATTNAppInfo.h"
 #import "ATTNVersion.h"
+#import "ATTNConstants.h"
 
 @implementation ATTNAppInfo
 

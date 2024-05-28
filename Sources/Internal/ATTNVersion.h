@@ -8,8 +8,10 @@
 #ifndef ATTNVersion_h
 #define ATTNVersion_h
 
+#import <Foundation/Foundation.h>
+
 // This should match the Podspec version
 // If there's a way to define the version in one place and use it both here and the Podspec then we should do it - I don't know of a way
-NSString* const SDK_VERSION = @"0.5.1";
+extern NSString* const SDK_VERSION;
 
 #endif /* ATTNVersion_h */
