@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "ATTNParameterValidation.h"
 #import "ATTNAPI.h"
 #import "ATTNEvent.h"
 #import "ATTNItem.h"

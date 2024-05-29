@@ -61,13 +61,13 @@ fileprivate extension ATTNUserIdentity {
 
     keys.forEach { currentKey in
       ATTNParameterValidation.verifyStringOrNil(
-        identifiers[currentKey] as? String,
+        identifiers[currentKey] as? NSObject,
         inputName: currentKey
       )
     }
 
     ATTNParameterValidation.verify1DStringDictionaryOrNil(
-      identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] as? [AnyHashable: Any],
+      identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] as? NSDictionary,
       inputName: IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS)
   }
 }
