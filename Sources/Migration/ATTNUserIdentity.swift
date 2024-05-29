@@ -1,5 +1,5 @@
 //
-//  ATTUserIdentity.swift
+//  ATTNUserIdentity.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-29.
@@ -7,23 +7,25 @@
 
 import Foundation
 
-@objc(ATTUserIdentity)
-final class ATTUserIdentity: NSObject {
-  private var identifiers: [String: Any] {
+// TODO: REVISIT create ObjcATTNUserIdentity wrapper
+@objc(ATTNUserIdentity)
+public final class ATTNUserIdentity: NSObject {
+  @objc public var identifiers: [String: Any] {
     willSet {
       validate(identifiers: newValue)
     }
   }
 
-  private var visitorId: String
+  @objc public var visitorId: String
   private let visitorService: ATTNVisitorService
 
-  override convenience init() {
+  @objc
+  public override convenience init() {
     self.init(identifiers: [:])
   }
 
   @objc(initWithIdentifiers:)
-  init(identifiers: [String: Any]) {
+  public init(identifiers: [String: Any]) {
     self.visitorService = .init()
     self.identifiers = identifiers
     self.visitorId = self.visitorService.getVisitorId()
@@ -31,13 +33,13 @@ final class ATTUserIdentity: NSObject {
   }
 
   @objc
-  func clearUser() {
+  public func clearUser() {
     identifiers = [:]
     visitorId = visitorService.createNewVisitorId()
   }
 
   @objc
-  func mergeIdentifiers(_ newIdentifiers: [String: Any]) {
+  public func mergeIdentifiers(_ newIdentifiers: [String: Any]) {
     validate(identifiers: newIdentifiers)
 
     var currentIdentifiers = identifiers
@@ -47,7 +49,7 @@ final class ATTUserIdentity: NSObject {
   }
 }
 
-fileprivate extension ATTUserIdentity {
+fileprivate extension ATTNUserIdentity {
   func validate(identifiers: [String: Any]) {
     let keys: [String] = [
       IDENTIFIER_TYPE_CLIENT_USER_ID,

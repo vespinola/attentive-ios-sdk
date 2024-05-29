@@ -7,10 +7,10 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "ATTNUserIdentity.h"
 #import "ATTNTestEventUtils.h"
 #import "ATTNCreativeUrlFormatter.h"
 #import "ATTNAppInfo.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 
 @interface ATTNCreativeUrlFormatterTest : XCTestCase

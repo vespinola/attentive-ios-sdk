@@ -7,7 +7,7 @@
 
 #import "ATTNCreativeUrlFormatter.h"
 #import "Internal/ATTNAppInfo.h"
-#import "ATTNUserIdentity.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 #import "ATTNConstants.h"
 
 @implementation ATTNCreativeUrlFormatter

@@ -9,7 +9,6 @@
 #import <XCTest/XCTest.h>
 
 #import "ATTNAPI.h"
-#import "ATTNUserIdentity.h"
 #import "ATTNPurchaseEvent.h"
 #import "ATTNAddToCartEvent.h"
 #import "ATTNProductViewEvent.h"
@@ -20,6 +19,7 @@
 #import "ATTNCart.h"
 #import "ATTNCustomEvent.h"
 #import "ATTNInfoEvent.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 #ifndef ATTNTestEventUtils_h
 #define ATTNTestEventUtils_h
