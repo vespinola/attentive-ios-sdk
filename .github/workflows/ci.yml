@@ -28,15 +28,22 @@ jobs:
         run: xcodebuild -project "attentive-ios-sdk.xcodeproj" -scheme "attentive-ios-sdk-framework" -destination "platform=iOS Simulator,OS=16.1,name=iPhone 13 Pro" test
 
   lint:
-    name: Run Swiftlint
-    runs-on: macos-14
+    name: Run lint
+    runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Install SwiftLint
-        run: brew install swiftlint
-      - name: Set Xcode 15
+      - uses: actions/checkout@v3
+      - name: "Install clang-format"
+        run: sudo apt -y install clang-format-11
+      - name: "Run lint"
         run: |
-          sudo xcode-select -switch /Applications/Xcode_15.3.app
-      - name: Lint
-        run: swiftlint
+          echo "Running lint"
+          find . \( \
+            -path "./Vendor/*" -prune -o \
+            -path "./*/Pods/*" -prune -o \
+            -path "./DerivedData/*" -prune -o \
+            -path "./build/*" -prune -o \
+            -path "./*/DerivedData/*" -prune -o \
+            -path "./*/build/*" -prune -o \
+            -path "./attentive-ios-sdk.xc*" -prune \
+            \) \
+            -o -name "*.h" -o -name "*.m" -print | xargs clang-format --dry-run --Werror --assume-filename=Objective-C
