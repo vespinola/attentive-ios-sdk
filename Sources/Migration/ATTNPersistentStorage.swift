@@ -14,7 +14,7 @@ public final class ATTNPersistentStorage: NSObject {
   }
 
   @objc
-  public convenience override init() { self.init() }
+  public override init() { }
 
   @objc(saveObject:forKey:)
   public func save(_ value: NSObject, forKey key: String) {
