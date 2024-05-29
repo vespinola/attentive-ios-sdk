@@ -8,7 +8,9 @@
 import Foundation
 import os
 import UIKit
-import ATTNSDKFramework
+//import ATTNSDKFramework
+import attentive_ios_sdk_framework
+import WebKit
 
 class ViewController : UIViewController {
     @IBOutlet var creativeBtn : UIButton?

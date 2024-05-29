@@ -9,7 +9,7 @@ import UIKit
 
 @objc(ObjcATTNSDK)
 public final class ObjcATTNSDK: NSObject {
-  private let sdk: ATTNSDK
+  private var sdk: ATTNSDK
 
   @objc(initWithDomain:mode:)
   public init(domain: String, mode: String) {
@@ -21,24 +21,29 @@ public final class ObjcATTNSDK: NSObject {
     self.sdk = ATTNSDK(domain: domain, mode: .production)
   }
 
+  // TODO: Temporal till migration is done
+  public init(sdk: ATTNSDK) {
+    self.sdk = sdk
+  }
+
   @objc(identify:)
   public func identify(userIdentifiers: NSDictionary) {
     guard let dict = userIdentifiers as? [String: Any] else {
       NSLog("UserIdentifiers casting to [String: Any] failed")
       return
     }
-    sdk.identify(userIdentifiers: dict)
+    sdk.identify(dict)
   }
 
   @objc(trigger:)
   public func trigger(theView view: UIView) {
-    sdk.trigger(theView: view)
+    sdk.trigger(view)
   }
 
   // TODO: REVISIT ATTNCreativeTriggerCompletionHandler
   @objc(trigger:handler:)
   public func trigger(theView view: UIView, handler: ((String) -> Void)?) {
-    sdk.trigger(theView: view, handler: handler)
+    sdk.trigger(view, handler: handler)
   }
 
   @objc(clearUser)

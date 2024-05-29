@@ -59,7 +59,7 @@ public final class ATTNSDK: NSObject {
   }
 
   public init(domain: String, mode: String = "production") {
-//    NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
+    NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
     self.domain = domain
     self.mode = ATTNSDKMode(rawValue: mode) ?? .production
 
@@ -72,12 +72,12 @@ public final class ATTNSDK: NSObject {
   }
 
   // MARK: Public API
-  public func identify(userIdentifiers: [String: Any]) {
+  public func identify(_ userIdentifiers: [String: Any]) {
     userIdentity.mergeIdentifiers(userIdentifiers)
     api.send(userIdentity)
   }
 
-  public func trigger(theView view: UIView, handler: ATTNCreativeTriggerCompletionHandler? = nil) {
+  public func trigger(_ view: UIView, handler: ATTNCreativeTriggerCompletionHandler? = nil) {
     parentView = view
     triggerHandler = handler
 
