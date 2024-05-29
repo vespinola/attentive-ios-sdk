@@ -65,6 +65,7 @@
 		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */; };
 		FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */; };
+		FB5A68B22C077CF600E57208 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */; };
 		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
 		FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB9EB7E42C0679BF00B80F2D /* ATTNVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9EB7E32C0679BF00B80F2D /* ATTNVersion.m */; };
@@ -155,8 +156,9 @@
 		69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatter.m; path = Sources/ATTNCreativeUrlFormatter.m; sourceTree = "<group>"; };
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATTNSDK.swift; path = Sources/ATTNSDK.swift; sourceTree = "<group>"; };
+		FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
 		FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNConstants.m; path = Sources/ATTNConstants.m; sourceTree = "<group>"; };
+		FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
 		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
 		FB7ED50B2C063641000C73B9 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -241,7 +243,7 @@
 				69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */,
 				69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */,
 				FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */,
-				FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */,
+				FB5A68B02C077CE200E57208 /* Migration */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -352,6 +354,16 @@
 			);
 			name = include;
 			path = Sources/include;
+			sourceTree = "<group>";
+		};
+		FB5A68B02C077CE200E57208 /* Migration */ = {
+			isa = PBXGroup;
+			children = (
+				FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */,
+				FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */,
+			);
+			name = Migration;
+			path = Sources/Migration;
 			sourceTree = "<group>";
 		};
 		FB7E907E2BFCD9B400DB8804 /* Resources */ = {
@@ -551,6 +563,7 @@
 				587234C52953AAD800EE12B6 /* ATTNItem.m in Sources */,
 				5806DE7B2977630800C18FFA /* ATTNCustomEvent.m in Sources */,
 				6972874F29353FEA003F1BEC /* ATTNPersistentStorage.m in Sources */,
+				FB5A68B22C077CF600E57208 /* ATTNSDKMode.swift in Sources */,
 				6972874C29353A99003F1BEC /* ATTNVisitorService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

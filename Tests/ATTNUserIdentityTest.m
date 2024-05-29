@@ -7,6 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import "ATTNUserIdentity.h"
+#import "ATTNConstants.h"
 
 @interface ATTNUserIdentityTest : XCTestCase
 

@@ -8,6 +8,7 @@
 #import "ATTNCreativeUrlFormatter.h"
 #import "Internal/ATTNAppInfo.h"
 #import "ATTNUserIdentity.h"
+#import "ATTNConstants.h"
 
 @implementation ATTNCreativeUrlFormatter
 

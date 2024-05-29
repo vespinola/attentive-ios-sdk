@@ -8,12 +8,6 @@
 import Foundation
 import WebKit
 
-/// Define initialization mode for SDK
-public enum ATTNSDKMode: String {
-  case debug
-  case production
-}
-
 public final class ATTNSDK: NSObject {
   // MARK: Constants
   private enum Constants {
