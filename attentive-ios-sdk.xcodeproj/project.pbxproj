@@ -19,7 +19,7 @@
 		5809FEAF2937C8F100BDE364 /* ATTNVisitorServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5809FEAE2937C8F100BDE364 /* ATTNVisitorServiceTest.m */; };
 		58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 58317997292F57300003D6B0 /* ATTNSDKFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332ED3292EC20700B1ECF3 /* ATTNUserIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 58332ECD292EC20700B1ECF3 /* ATTNUserIdentity.m */; };
-		58332ED4292EC20700B1ECF3 /* ATTNParameterValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ECE292EC20700B1ECF3 /* ATTNParameterValidation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		58332ED4292EC20700B1ECF3 /* ATTNParameterValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ECE292EC20700B1ECF3 /* ATTNParameterValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58332ECF292EC20700B1ECF3 /* ATTNParameterValidation.m */; };
 		58332ED8292EC20700B1ECF3 /* ATTNUserIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 58332ED2292EC20700B1ECF3 /* ATTNUserIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */; };
@@ -54,7 +54,7 @@
 		58C9CA6429E5EE6700EF036E /* ATTNUserAgentBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C9CA5B29E5EE6700EF036E /* ATTNUserAgentBuilder.m */; };
 		58D52E1D292EC52B00CF32DE /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58332EC3292EC18800B1ECF3 /* attentive_ios_sdk_framework.framework */; };
 		58DD2D7A29E9D6D700AC3281 /* ATTNCustomEventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DD2D7929E9D6D700AC3281 /* ATTNCustomEventTest.m */; };
-		6972874B29353A99003F1BEC /* ATTNVisitorService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6972874929353A99003F1BEC /* ATTNVisitorService.h */; };
+		6972874B29353A99003F1BEC /* ATTNVisitorService.h in Headers */ = {isa = PBXBuildFile; fileRef = 6972874929353A99003F1BEC /* ATTNVisitorService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6972874C29353A99003F1BEC /* ATTNVisitorService.m in Sources */ = {isa = PBXBuildFile; fileRef = 6972874A29353A99003F1BEC /* ATTNVisitorService.m */; };
 		6972874F29353FEA003F1BEC /* ATTNPersistentStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6972874D29353FEA003F1BEC /* ATTNPersistentStorage.m */; };
 		6972875029353FEA003F1BEC /* ATTNPersistentStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6972874E29353FEA003F1BEC /* ATTNPersistentStorage.h */; };
@@ -66,6 +66,7 @@
 		FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */; };
 		FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */; };
 		FB5A68B22C077CF600E57208 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */; };
+		FB5A68B42C07817800E57208 /* ATTUserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B32C07817800E57208 /* ATTUserIdentity.swift */; };
 		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
 		FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB9EB7E42C0679BF00B80F2D /* ATTNVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9EB7E32C0679BF00B80F2D /* ATTNVersion.m */; };
@@ -159,6 +160,7 @@
 		FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
 		FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNConstants.m; path = Sources/ATTNConstants.m; sourceTree = "<group>"; };
 		FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
+		FB5A68B32C07817800E57208 /* ATTUserIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTUserIdentity.swift; sourceTree = "<group>"; };
 		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
 		FB7ED50B2C063641000C73B9 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */,
 				FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */,
+				FB5A68B32C07817800E57208 /* ATTUserIdentity.swift */,
 			);
 			name = Migration;
 			path = Sources/Migration;
@@ -544,6 +547,7 @@
 			files = (
 				587234BF2953AAD800EE12B6 /* ATTNPrice.m in Sources */,
 				5806DE6E29773F6100C18FFA /* ATTNAddToCartEvent.m in Sources */,
+				FB5A68B42C07817800E57208 /* ATTUserIdentity.swift in Sources */,
 				587234C92953AAD800EE12B6 /* ATTNPurchaseEvent.m in Sources */,
 				58C9CA6429E5EE6700EF036E /* ATTNUserAgentBuilder.m in Sources */,
 				58A6EA2529354D59009BE922 /* ATTNAPI.m in Sources */,
