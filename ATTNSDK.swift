@@ -72,7 +72,7 @@ public final class ATTNSDK: NSObject {
   }
 
   // MARK: Public API
-  public func identify(userIdentifiers: [String: String]) {
+  public func identify(userIdentifiers: [String: Any]) {
     userIdentity.mergeIdentifiers(userIdentifiers)
     api.send(userIdentity)
   }
@@ -172,31 +172,34 @@ extension ATTNSDK: WKScriptMessageHandler {
 // MARK: WKNavigationDelegate
 extension ATTNSDK: WKNavigationDelegate {
   public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    let asyncJs = """
-      var p = new Promise(resolve => {
-          var timeoutHandle = null;
-          const interval = setInterval(function() {
-              e = document.querySelector('iframe');
-              if(e && e.id === 'attentive_creative') {
-                  clearInterval(interval);
-                  resolve('SUCCESS');
-                  if (timeoutHandle != null) {
-                      clearTimeout(timeoutHandle);
-                  }
-              }
-          }, 100);
-          timeoutHandle = setTimeout(function() {
-              clearInterval(interval);
-              resolve('TIMED OUT');
-          }, 5000);
-      });
-      var status = await p;
-      status;
-    """
-
     guard #available(iOS 14.0, *) else { return }
-
-    webView.callAsyncJavaScript(asyncJs, in: nil, in: .defaultClient) { [weak self] result in
+    let asyncJs =
+        """
+        var p = new Promise(resolve => {
+            var timeoutHandle = null;
+            const interval = setInterval(function() {
+                e = document.querySelector('iframe');
+                if(e && e.id === 'attentive_creative') {
+                    clearInterval(interval);
+                    resolve('SUCCESS');
+                    if (timeoutHandle != null) {
+                        clearTimeout(timeoutHandle);
+                    }
+                }
+            }, 100);
+            timeoutHandle = setTimeout(function() {
+                clearInterval(interval);
+                resolve('TIMED OUT');
+            }, 5000);
+        });
+        var status = await p;
+        return status;
+        """
+    webView.callAsyncJavaScript(
+      asyncJs,
+      in: nil,
+      in: .defaultClient
+    ) { [weak self] result in
       guard let self = self else { return }
       guard case let .success(statusAny) = result else {
         NSLog("No status returned from JS. Not showing WebView.")

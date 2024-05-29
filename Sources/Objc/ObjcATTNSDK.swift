@@ -23,8 +23,8 @@ public final class ObjcATTNSDK: NSObject {
 
   @objc(identify:)
   public func identify(userIdentifiers: NSDictionary) {
-    guard let dict = userIdentifiers as? [String: String] else {
-      NSLog("UserIdentifiers casting to [String: String] failed")
+    guard let dict = userIdentifiers as? [String: Any] else {
+      NSLog("UserIdentifiers casting to [String: Any] failed")
       return
     }
     sdk.identify(userIdentifiers: dict)
