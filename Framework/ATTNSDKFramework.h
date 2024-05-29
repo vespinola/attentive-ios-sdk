@@ -21,7 +21,7 @@ FOUNDATION_EXPORT const unsigned char ATTNSDKFrameworkVersionString[];
 #import <attentive_ios_sdk_framework/ATTNCustomEvent.h>
 #import <attentive_ios_sdk_framework/ATTNAPI.h>
 #import <attentive_ios_sdk_framework/ATTNInfoEvent.h>
-#import <attentive_ios_sdk_framework/ATTNCreativeUrlFormatter.h>
+//#import <attentive_ios_sdk_framework/ATTNCreativeUrlFormatter.h>
 #import <attentive_ios_sdk_framework/ATTNAppInfo.h>
 #import <attentive_ios_sdk_framework/ATTNUserAgentBuilder.h>
 #import <attentive_ios_sdk_framework/ATTNVersion.h>
