@@ -63,11 +63,11 @@
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
 		69BA6D7129BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */; };
 		69BA6D7329BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */; };
+		FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */; };
 		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
 		FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FB7ED5112C06554A000C73B9 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */; };
 		FB9EB7E42C0679BF00B80F2D /* ATTNVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9EB7E32C0679BF00B80F2D /* ATTNVersion.m */; };
-		FBF3A9BF2C04E4FB004D8C8F /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */; };
 		FBF3A9C32C05282B004D8C8F /* ObjcATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3A9C22C05282B004D8C8F /* ObjcATTNSDK.swift */; };
 /* End PBXBuildFile section */
 
@@ -155,13 +155,13 @@
 		69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatter.m; path = Sources/ATTNCreativeUrlFormatter.m; sourceTree = "<group>"; };
 		69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNCreativeUrlFormatter.h; path = Sources/ATTNCreativeUrlFormatter.h; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATTNSDK.swift; path = Sources/ATTNSDK.swift; sourceTree = "<group>"; };
+		FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNConstants.m; path = Sources/ATTNConstants.m; sourceTree = "<group>"; };
 		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
 		FB7ED50B2C063641000C73B9 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
-		FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTNConstants.m; sourceTree = "<group>"; };
 		FB9EB7E32C0679BF00B80F2D /* ATTNVersion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTNVersion.m; sourceTree = "<group>"; };
-		FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
 		FBF3A9C22C05282B004D8C8F /* ObjcATTNSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjcATTNSDK.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,8 +240,8 @@
 				5862BE452940820C002C1403 /* ATTNEventTracker.m */,
 				69BA6D7229BA3B9000CCA573 /* ATTNCreativeUrlFormatter.h */,
 				69BA6D7029BA3B5900CCA573 /* ATTNCreativeUrlFormatter.m */,
-				FB7ED50F2C06554A000C73B9 /* ATTNConstants.m */,
-				FBF3A9BE2C04E4FB004D8C8F /* ATTNSDK.swift */,
+				FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */,
+				FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */,
 			);
 			name = Sources;
 			sourceTree = "<group>";
@@ -541,8 +541,8 @@
 				58C9CA6029E5EE6700EF036E /* ATTNInfoEvent.m in Sources */,
 				587234C62953AAD800EE12B6 /* ATTNOrder.m in Sources */,
 				58332ED3292EC20700B1ECF3 /* ATTNUserIdentity.m in Sources */,
-				FB7ED5112C06554A000C73B9 /* ATTNConstants.m in Sources */,
-				FBF3A9BF2C04E4FB004D8C8F /* ATTNSDK.swift in Sources */,
+				FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */,
+				FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */,
 				5806DE722977457600C18FFA /* ATTNProductViewEvent.m in Sources */,
 				587234C42953AAD800EE12B6 /* ATTNCart.m in Sources */,
 				58332ED5292EC20700B1ECF3 /* ATTNParameterValidation.m in Sources */,
