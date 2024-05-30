@@ -212,19 +212,19 @@ extension ATTNSDK: WKNavigationDelegate {
       }
 
       switch ScriptStatus.getRawValue(from: statusAny) {
-        case .success:
-          NSLog("Found creative iframe, showing WebView.")
-          if self.mode == .production {
-            self.parentView?.addSubview(webView)
-          }
-          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_OPENED)
-        case .timeout:
-          NSLog("Creative timed out. Not showing WebView.")
-          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
-        case .unknown(let statusString):
-          NSLog("Received unknown status: %@. Not showing WebView", statusString)
-          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
-        default: break
+      case .success:
+        NSLog("Found creative iframe, showing WebView.")
+        if self.mode == .production {
+          self.parentView?.addSubview(webView)
+        }
+        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_OPENED)
+      case .timeout:
+        NSLog("Creative timed out. Not showing WebView.")
+        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+      case .unknown(let statusString):
+        NSLog("Received unknown status: %@. Not showing WebView", statusString)
+        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+      default: break
       }
     }
   }
@@ -258,4 +258,9 @@ public extension ATTNSDK {
 
   @objc(getUserIdentity)
   func getUserIdentity() -> ATTNUserIdentity { userIdentity }
+
+  @objc(sendEvent:)
+  func send(event: ATTNEvent) {
+    api.send(event, userIdentity: userIdentity)
+  }
 }

@@ -9,17 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "ATTNAPI.h"
-#import "ATTNEvent.h"
-#import "ATTNItem.h"
-#import "ATTNPrice.h"
-#import "ATTNOrder.h"
-#import "ATTNCart.h"
-#import "ATTNPurchaseEvent.h"
-#import "ATTNAddToCartEvent.h"
-#import "ATTNProductViewEvent.h"
-#import "ATTNCustomEvent.h"
 #import "Internal/ATTNUserAgentBuilder.h"
-#import "Internal/ATTNInfoEvent.h"
 #import "ATTNConstants.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 

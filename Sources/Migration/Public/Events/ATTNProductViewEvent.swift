@@ -1,0 +1,23 @@
+//
+//  ATTNProductViewEvent.swift
+//  attentive-ios-sdk-framework
+//
+//  Created by Vladimir - Work on 2024-05-30.
+//
+
+import Foundation
+
+@objc(ATTNProductViewEvent)
+public final class ATTNProductViewEvent: NSObject, ATTNEvent {
+  @objc public let items: [ATTNItem]
+
+  @objc(initWithItems:)
+  public init(items: [ATTNItem]) {
+    self.items = items
+    super.init()
+  }
+
+  @objc private override init() {
+    fatalError("init() has not been implemented")
+  }
+}

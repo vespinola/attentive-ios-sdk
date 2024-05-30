@@ -6,7 +6,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ATTNCustomEvent.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @interface ATTNCustomEventTest : XCTestCase
 
