@@ -12,17 +12,17 @@
 static ATTNEventTracker* __sharedInstance = nil;
 
 @implementation ATTNEventTracker {
-  ObjcATTNSDK* _sdk;
+  ATTNSDK* _sdk;
 }
 
-+ (void)setupWithSdk:(ObjcATTNSDK*)sdk {
++ (void)setupWithSdk:(ATTNSDK*)sdk {
   static dispatch_once_t ensureOnlyOnceToken;
   dispatch_once(&ensureOnlyOnceToken, ^{
     __sharedInstance = [[self alloc] initWithSdk:sdk];
   });
 }
 
-- (id)initWithSdk:(ObjcATTNSDK*)sdk {
+- (id)initWithSdk:(ATTNSDK*)sdk {
   if (self = [super init]) {
     _sdk = sdk;
   }

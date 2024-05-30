@@ -18,7 +18,7 @@
   NSString *_mode;
 }
 
-ObjcATTNSDK *sdk;
+ATTNSDK *sdk;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -42,8 +42,7 @@ ObjcATTNSDK *sdk;
   }
 
   // Replace with your Attentive domain to test with your Attentive account
-//  _domain = @"YOUR_ATTENTIVE_DOMAIN";
-  _domain = @"mobileapps";
+  _domain = @"YOUR_ATTENTIVE_DOMAIN";
   _mode = @"production";
 
   // Setup for Testing purposes only
@@ -52,7 +51,7 @@ ObjcATTNSDK *sdk;
   // Intialize the Attentive SDK.
   // This only has to be done once per application lifecycle so you can do
   // this in a singleton class rather than each time a view loads.
-  sdk = [[ObjcATTNSDK alloc] initWithDomain:_domain mode:_mode];
+  sdk = [[ATTNSDK alloc] initWithDomain:_domain mode:_mode];
 
   // Initialize the ATTNEventTracker. This must be done before the ATTNEventTracker can be used to send any events.
   [ATTNEventTracker setupWithSdk:sdk];

@@ -10,11 +10,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol ATTNEvent;
-@class ObjcATTNSDK;
+@class ATTNSDK;
 
 @interface ATTNEventTracker : NSObject
 
-+ (void)setupWithSdk:(ObjcATTNSDK*)sdk;
++ (void)setupWithSdk:(ATTNSDK*)sdk;
 
 + (instancetype)sharedInstance;
 

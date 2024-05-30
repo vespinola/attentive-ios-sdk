@@ -8,6 +8,7 @@
 import Foundation
 import WebKit
 
+@objc(ATTNSDK)
 public final class ATTNSDK: NSObject {
   // MARK: Constants
   private enum Constants {
@@ -23,12 +24,12 @@ public final class ATTNSDK: NSObject {
     static func getRawValue(from value: Any) -> ScriptStatus? {
       guard let stringValue = value as? String else { return nil }
       switch stringValue {
-      case "SUCCESS":
-        return .success
-      case "TIMED OUT":
-        return .timeout
-      default:
-        return .unknown(stringValue)
+        case "SUCCESS":
+          return .success
+        case "TIMED OUT":
+          return .timeout
+        default:
+          return .unknown(stringValue)
       }
     }
   }
@@ -47,12 +48,13 @@ public final class ATTNSDK: NSObject {
   private var domain: String
   private var mode: ATTNSDKMode
 
-  // MARK: Init
-  convenience public init(domain: String, mode: ATTNSDKMode = .production) {
-    self.init(domain: domain, mode: mode.rawValue)
+  @objc(initWithDomain:)
+  public convenience init(domain: String) {
+    self.init(domain: domain, mode: ATTNSDKMode.production.rawValue)
   }
 
-  public init(domain: String, mode: String = "production") {
+  @objc(initWithDomain:mode:)
+  public init(domain: String, mode: String) {
     NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
     self.domain = domain
     self.mode = ATTNSDKMode(rawValue: mode) ?? .production
@@ -66,12 +68,19 @@ public final class ATTNSDK: NSObject {
   }
 
   // MARK: Public API
+  @objc(identify:)
   public func identify(_ userIdentifiers: [String: Any]) {
     userIdentity.mergeIdentifiers(userIdentifiers)
     api.send(userIdentity)
   }
 
-  public func trigger(_ view: UIView, handler: ATTNCreativeTriggerCompletionHandler? = nil) {
+  @objc(trigger:)
+  public func trigger(_ view: UIView) {
+    trigger(view, handler: nil)
+  }
+
+  @objc(trigger:handler:)
+  public func trigger(_ view: UIView, handler: ((String) -> Void)?) {
     parentView = view
     triggerHandler = handler
 
@@ -126,11 +135,12 @@ public final class ATTNSDK: NSObject {
     }
   }
 
+  @objc(clearUser)
   public func clearUser() {
     userIdentity.clearUser()
   }
 
-  public func closeCreative() {
+  func closeCreative() {
     webView?.removeFromSuperview()
     ATTNSDK.isCreativeOpen = false
     triggerHandler?(CREATIVE_TRIGGER_STATUS_CLOSED)
@@ -202,19 +212,19 @@ extension ATTNSDK: WKNavigationDelegate {
       }
 
       switch ScriptStatus.getRawValue(from: statusAny) {
-      case .success:
-        NSLog("Found creative iframe, showing WebView.")
-        if self.mode == .production {
-          self.parentView?.addSubview(webView)
-        }
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_OPENED)
-      case .timeout:
-        NSLog("Creative timed out. Not showing WebView.")
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
-      case .unknown(let statusString):
-        NSLog("Received unknown status: %@. Not showing WebView", statusString)
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
-      default: break
+        case .success:
+          NSLog("Found creative iframe, showing WebView.")
+          if self.mode == .production {
+            self.parentView?.addSubview(webView)
+          }
+          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_OPENED)
+        case .timeout:
+          NSLog("Creative timed out. Not showing WebView.")
+          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+        case .unknown(let statusString):
+          NSLog("Received unknown status: %@. Not showing WebView", statusString)
+          self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+        default: break
       }
     }
   }
@@ -239,4 +249,13 @@ extension ATTNSDK: WKNavigationDelegate {
       decisionHandler(.allow)
     }
   }
+}
+
+// TODO: REVISIT
+public extension ATTNSDK {
+  @objc(getApi)
+  func getApi() -> ATTNAPI { api }
+
+  @objc(getUserIdentity)
+  func getUserIdentity() -> ATTNUserIdentity { userIdentity }
 }

@@ -16,7 +16,7 @@
 
 @interface ATTNEventTracker (Test)
 
-- (id)initWithSdk:(ObjcATTNSDK*)sdk;
+- (id)initWithSdk:(ATTNSDK*)sdk;
 
 @end
 
@@ -57,7 +57,7 @@
   // CASE 2: verify that if setupWithSdk is called before getSharedInstance then no assertion is triggered
   // **************
 
-  ObjcATTNSDK* sdkMock = OCMClassMock([ObjcATTNSDK class]);
+  ATTNSDK* sdkMock = OCMClassMock([ATTNSDK class]);
   [ATTNEventTracker setupWithSdk:sdkMock];
 
   // Does not throw
@@ -66,7 +66,7 @@
 
 - (void)testRecordEvent_validEvent_callsApi {
   // Arrange
-  ObjcATTNSDK* sdkMock = OCMClassMock([ObjcATTNSDK class]);
+  ATTNSDK* sdkMock = OCMClassMock([ATTNSDK class]);
   ATTNAPI* apiMock = OCMClassMock([ATTNAPI class]);
   OCMStub([sdkMock getApi]).andReturn(apiMock);
 
