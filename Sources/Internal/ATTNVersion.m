@@ -7,4 +7,4 @@
 
 #import "ATTNVersion.h"
 
-NSString * const SDK_VERSION = @"0.5.1";
+NSString* const SDK_VERSION = @"0.5.1";
