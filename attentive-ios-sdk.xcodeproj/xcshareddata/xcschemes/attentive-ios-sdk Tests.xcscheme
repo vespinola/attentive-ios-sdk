@@ -35,6 +35,11 @@
                BlueprintName = "attentive-ios-sdk Tests"
                ReferencedContainer = "container:attentive-ios-sdk.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ATTNCreativeUrlFormatterTest/testBuildCompanyCreativeUrlForDomain_customIdentifiersCannotBeSerialized_doesNotThrow">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

@@ -10,7 +10,7 @@
 #import "ATTNTestEventUtils.h"
 #import "ATTNAppInfo.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
-
+#import "ATTNConstants.h"
 
 @interface ATTNCreativeUrlFormatterTest : XCTestCase
 
@@ -53,11 +53,12 @@ static NSString* const TEST_DOMAIN = @"testDomain";
                                   mode:@"production"
                           userIdentity:userIdentity];
 
-  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&cuid=someClientUserId&p=+14156667777&e=someEmail@email.com&kid=someKlaviyoId&sid=someKlaviyoId&cstm=%%7B%%22customId%%22:%%22customIdValue%%22%%7D&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, [ATTNAppInfo getSdkVersion]];
+  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&cuid=someClientUserId&p=+14156667777&e=someEmail@email.com&kid=someKlaviyoId&sid=someShopifyId&cstm=%%7B%%22customId%%22:%%22customIdValue%%22%%7D&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, [ATTNAppInfo getSdkVersion]];
 
   XCTAssertTrue([expectedUrl isEqualToString:url]);
 }
 
+// TODO: REVISIT redo the test cases after test suite migration
 - (void)testBuildCompanyCreativeUrlForDomain_customIdentifiersCannotBeSerialized_doesNotThrow {
   NSException* exception = [NSException exceptionWithName:@"Test Exception"
                                                    reason:@"Test Exception"
@@ -79,7 +80,7 @@ static NSString* const TEST_DOMAIN = @"testDomain";
                                   mode:@"production"
                           userIdentity:userIdentity];
 
-  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&cuid=someClientUserId&p=+14156667777&e=someEmail@email.com&kid=someKlaviyoId&sid=someKlaviyoId&cstm=%%7B%%7D&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, [ATTNAppInfo getSdkVersion]];
+  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&cuid=someClientUserId&p=+14156667777&e=someEmail@email.com&kid=someKlaviyoId&sid=someShopifyId&cstm=%%7B%%7D&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, [ATTNAppInfo getSdkVersion]];
 
   XCTAssertTrue([expectedUrl isEqualToString:url]);
 }

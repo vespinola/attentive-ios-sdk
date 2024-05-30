@@ -77,8 +77,8 @@ fileprivate extension ATTNCreativeUrlFormatter {
       let jsonData = try JSONSerialization.data(withJSONObject: customIdentifiers, options: [])
       return String(data: jsonData, encoding: .utf8)
     } catch {
-      print("ERROR: Could not parse custom identifiers to json \(error)")
+      NSLog("ERROR: Could not parse custom identifiers to json %@", error.localizedDescription)
     }
-    return nil
+    return "{}"
   }
 }
