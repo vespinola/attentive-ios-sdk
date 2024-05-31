@@ -23,7 +23,7 @@ public final class ATTNEventTracker: NSObject {
   }
 
   @objc(recordEvent:)
-  public func recordEvent(_ event: ATTNEvent) {
+  public func record(event: ATTNEvent) {
     sdk.send(event: event)
   }
 

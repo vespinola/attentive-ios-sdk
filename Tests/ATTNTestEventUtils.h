@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
 
-#import "ATTNAPI.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 #ifndef ATTNTestEventUtils_h

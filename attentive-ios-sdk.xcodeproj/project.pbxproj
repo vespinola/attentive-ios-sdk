@@ -16,8 +16,6 @@
 		58332EE0292EC26000B1ECF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDE292EC26000B1ECF3 /* README.md */; };
 		58332EE1292EC26000B1ECF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDF292EC26000B1ECF3 /* LICENSE */; };
 		583C29F929C101A300EABBC9 /* ATTNUserAgentBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 583C29F829C101A300EABBC9 /* ATTNUserAgentBuilderTest.m */; };
-		58A6EA2329354D02009BE922 /* ATTNAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A6EA2229354D02009BE922 /* ATTNAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58A6EA2529354D59009BE922 /* ATTNAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A6EA2429354D59009BE922 /* ATTNAPI.m */; };
 		58A6EA2729359A84009BE922 /* ATTNAPITest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A6EA2629359757009BE922 /* ATTNAPITest.m */; };
 		58B01AAF294CFF8A0001CEBF /* ATTNEventTrackerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B01AAE294CFF8A0001CEBF /* ATTNEventTrackerTest.m */; };
 		58B01AB3294D3F9C0001CEBF /* TestAssertionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B01AB2294D3F9B0001CEBF /* TestAssertionHandler.m */; };
@@ -51,6 +49,10 @@
 		FBA9F98C2C0A0B4E00C65024 /* ATTNAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */; };
 		FBA9F98E2C0A163C00C65024 /* ATTNUserAgentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */; };
 		FBA9F9932C0A1CFA00C65024 /* ATTNAppInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9912C0A1CD000C65024 /* ATTNAppInfoMock.swift */; };
+		FBA9F9962C0A39D500C65024 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9952C0A39D500C65024 /* EventRequest.swift */; };
+		FBA9F9992C0A3D4B00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */; };
+		FBA9F99C2C0A5F0800C65024 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */; };
+		FBA9F99E2C0A6BA600C65024 /* ATTNUserAgentBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99D2C0A6BA600C65024 /* ATTNUserAgentBuilderMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,8 +76,6 @@
 		58332EDE292EC26000B1ECF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		58332EDF292EC26000B1ECF3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		583C29F829C101A300EABBC9 /* ATTNUserAgentBuilderTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNUserAgentBuilderTest.m; path = Tests/ATTNUserAgentBuilderTest.m; sourceTree = "<group>"; };
-		58A6EA2229354D02009BE922 /* ATTNAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNAPI.h; path = Sources/ATTNAPI.h; sourceTree = "<group>"; };
-		58A6EA2429354D59009BE922 /* ATTNAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNAPI.m; path = Sources/ATTNAPI.m; sourceTree = "<group>"; };
 		58A6EA2629359757009BE922 /* ATTNAPITest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNAPITest.m; path = Tests/ATTNAPITest.m; sourceTree = "<group>"; };
 		58B01AAE294CFF8A0001CEBF /* ATTNEventTrackerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNEventTrackerTest.m; path = Tests/ATTNEventTrackerTest.m; sourceTree = "<group>"; };
 		58B01AB0294D305C0001CEBF /* TestAssertionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TestAssertionHandler.h; path = Tests/TestAssertionHandler.h; sourceTree = "<group>"; };
@@ -127,6 +127,10 @@
 		FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAppInfo.swift; sourceTree = "<group>"; };
 		FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilder.swift; sourceTree = "<group>"; };
 		FBA9F9912C0A1CD000C65024 /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
+		FBA9F9952C0A39D500C65024 /* EventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
+		FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAPI.swift; sourceTree = "<group>"; };
+		FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		FBA9F99D2C0A6BA600C65024 /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,9 +178,6 @@
 			children = (
 				FB7E907E2BFCD9B400DB8804 /* Resources */,
 				FB0E49E32BFBB0A70025E281 /* include */,
-				58C9CA5429E5EE6700EF036E /* Internal */,
-				58A6EA2229354D02009BE922 /* ATTNAPI.h */,
-				58A6EA2429354D59009BE922 /* ATTNAPI.m */,
 				FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */,
 				FB5A68B02C077CE200E57208 /* Migration */,
 			);
@@ -256,14 +257,6 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
-		58C9CA5429E5EE6700EF036E /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Internal;
-			path = Sources/Internal;
-			sourceTree = "<group>";
-		};
 		FB0E49E32BFBB0A70025E281 /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,10 +271,6 @@
 			children = (
 				FB76BE592C0914E400F3EE87 /* Internal */,
 				FB76BE4D2C08F57400F3EE87 /* Public */,
-				FB5A68B52C07A49A00E57208 /* ATTNVisitorService.swift */,
-				FB5A68B72C07AAD400E57208 /* ATTNPersistentStorage.swift */,
-				FB47AB782C07BCD100E0DEC0 /* ATTNParameterValidation.swift */,
-				FB47AB7C2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift */,
 			);
 			name = Migration;
 			path = Sources/Migration;
@@ -318,9 +307,15 @@
 		FB76BE592C0914E400F3EE87 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
+				FBA9F99A2C0A5EEF00C65024 /* Extension */,
+				FBA9F9942C0A396E00C65024 /* API */,
 				FB76BE642C09201500F3EE87 /* ATTNInfoEvent.swift */,
 				FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */,
 				FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */,
+				FB5A68B52C07A49A00E57208 /* ATTNVisitorService.swift */,
+				FB5A68B72C07AAD400E57208 /* ATTNPersistentStorage.swift */,
+				FB47AB782C07BCD100E0DEC0 /* ATTNParameterValidation.swift */,
+				FB47AB7C2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -346,8 +341,26 @@
 			isa = PBXGroup;
 			children = (
 				FBA9F9912C0A1CD000C65024 /* ATTNAppInfoMock.swift */,
+				FBA9F99D2C0A6BA600C65024 /* ATTNUserAgentBuilderMock.swift */,
 			);
 			name = Mocks;
+			sourceTree = "<group>";
+		};
+		FBA9F9942C0A396E00C65024 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9952C0A39D500C65024 /* EventRequest.swift */,
+				FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FBA9F99A2C0A5EEF00C65024 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,7 +371,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */,
-				58A6EA2329354D02009BE922 /* ATTNAPI.h in Headers */,
 				58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,10 +505,10 @@
 				FB47AB7D2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift in Sources */,
 				FBA9F98E2C0A163C00C65024 /* ATTNUserAgentBuilder.swift in Sources */,
 				FB76BE5D2C09156800F3EE87 /* ATTNEvent.swift in Sources */,
+				FBA9F99C2C0A5F0800C65024 /* Dictionary+Extension.swift in Sources */,
 				FB76BE652C09201500F3EE87 /* ATTNInfoEvent.swift in Sources */,
 				FB5A68B42C07817800E57208 /* ATTNUserIdentity.swift in Sources */,
 				FBA9F98C2C0A0B4E00C65024 /* ATTNAppInfo.swift in Sources */,
-				58A6EA2529354D59009BE922 /* ATTNAPI.m in Sources */,
 				FB76BE632C091E8500F3EE87 /* ATTNEventTracker.swift in Sources */,
 				FB76BE522C08F77100F3EE87 /* ATTNItem.swift in Sources */,
 				FB76BE542C08FC6500F3EE87 /* ATTNOrder.swift in Sources */,
@@ -505,6 +517,8 @@
 				FB5A68B62C07A49A00E57208 /* ATTNVisitorService.swift in Sources */,
 				FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */,
 				FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */,
+				FBA9F9962C0A39D500C65024 /* EventRequest.swift in Sources */,
+				FBA9F9992C0A3D4B00C65024 /* ATTNAPI.swift in Sources */,
 				FB76BE5B2C09154500F3EE87 /* ATTNAddToCartEvent.swift in Sources */,
 				FB47AB792C07BCD100E0DEC0 /* ATTNParameterValidation.swift in Sources */,
 				FB76BE582C0911C600F3EE87 /* ATTNPurchaseEvent.swift in Sources */,
@@ -529,6 +543,7 @@
 				69BA6D5B29B782CE00CCA573 /* ATTNTestEventUtils.m in Sources */,
 				FBA9F9932C0A1CFA00C65024 /* ATTNAppInfoMock.swift in Sources */,
 				58DD2D7A29E9D6D700AC3281 /* ATTNCustomEventTest.m in Sources */,
+				FBA9F99E2C0A6BA600C65024 /* ATTNUserAgentBuilderMock.swift in Sources */,
 				5809FEAB29370E3300BDE364 /* ATTNPersistentStorageTest.m in Sources */,
 				58B01AB3294D3F9C0001CEBF /* TestAssertionHandler.m in Sources */,
 			);

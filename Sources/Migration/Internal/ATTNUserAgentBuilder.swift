@@ -8,10 +8,10 @@
 import Foundation
 
 @objc(ATTNUserAgentBuilder)
-public final class ATTNUserAgentBuilder: NSObject {
+open class ATTNUserAgentBuilder: NSObject {
 
   @objc(buildUserAgent)
-  public static func buildUserAgent() -> String {
+  open class func buildUserAgent() -> String {
     buildUserAgent(appInfo: ATTNAppInfo.self)
   }
 

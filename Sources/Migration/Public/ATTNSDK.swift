@@ -71,7 +71,7 @@ public final class ATTNSDK: NSObject {
   @objc(identify:)
   public func identify(_ userIdentifiers: [String: Any]) {
     userIdentity.mergeIdentifiers(userIdentifiers)
-    api.send(userIdentity)
+    api.send(userIdentity: userIdentity)
   }
 
   @objc(trigger:)
@@ -151,7 +151,7 @@ public final class ATTNSDK: NSObject {
 // MARK: Private Helpers
 fileprivate extension ATTNSDK {
   func sendInfoEvent() {
-    api.send(ATTNInfoEvent(), userIdentity: userIdentity)
+    api.send(event: ATTNInfoEvent(), userIdentity: userIdentity)
   }
 }
 
@@ -261,6 +261,6 @@ public extension ATTNSDK {
 
   @objc(sendEvent:)
   func send(event: ATTNEvent) {
-    api.send(event, userIdentity: userIdentity)
+    api.send(event: event, userIdentity: userIdentity)
   }
 }
