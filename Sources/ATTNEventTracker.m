@@ -6,17 +6,10 @@
 //
 
 #import "ATTNEventTracker.h"
-#import "ATTNSDK.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 #import "ATTNAPI.h"
 
 static ATTNEventTracker* __sharedInstance = nil;
-
-@interface ATTNSDK (Internal)
-
-- (ATTNAPI*)getApi;
-- (ATTNUserIdentity*)getUserIdentity;
-
-@end
 
 @implementation ATTNEventTracker {
   ATTNSDK* _sdk;

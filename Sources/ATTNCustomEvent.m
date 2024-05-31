@@ -6,7 +6,7 @@
 //
 
 #import "ATTNCustomEvent.h"
-#import "ATTNParameterValidation.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @implementation ATTNCustomEvent
 

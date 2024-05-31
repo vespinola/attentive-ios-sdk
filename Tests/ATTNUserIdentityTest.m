@@ -6,7 +6,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ATTNUserIdentity.h"
+#import "ATTNConstants.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @interface ATTNUserIdentityTest : XCTestCase
 

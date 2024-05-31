@@ -1,5 +1,6 @@
 #import "ViewController.h"
 #import "ImportAttentiveSDK.h"
+#import <WebKit/WebKit.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

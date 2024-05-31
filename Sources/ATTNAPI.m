@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "ATTNParameterValidation.h"
-#import "ATTNUserIdentity.h"
 #import "ATTNAPI.h"
 #import "ATTNEvent.h"
 #import "ATTNItem.h"
@@ -22,6 +20,8 @@
 #import "ATTNCustomEvent.h"
 #import "Internal/ATTNUserAgentBuilder.h"
 #import "Internal/ATTNInfoEvent.h"
+#import "ATTNConstants.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 // A single event can create multiple requests. The EventRequest class represents a single request.
 @interface EventRequest : NSObject

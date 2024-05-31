@@ -9,10 +9,10 @@
 #import <OCMock/OCMock.h>
 #import "ATTNEventTracker.h"
 #import "TestAssertionHandler.h"
-#import "ATTNSDK.h"
 #import "ATTNPurchaseEvent.h"
 #import "ATTNOrder.h"
 #import "ATTNAPI.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @interface ATTNEventTracker (Test)
 
@@ -21,12 +21,6 @@
 @end
 
 @interface ATTNEventTrackerTest : XCTestCase
-
-@end
-
-@interface ATTNSDK (Internal)
-
-- (ATTNAPI*)getApi;
 
 @end
 
