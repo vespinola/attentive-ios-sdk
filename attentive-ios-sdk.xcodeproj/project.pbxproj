@@ -25,34 +25,34 @@
 		69BA6D5929B7812C00CCA573 /* ATTNAPITestIT.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D5829B7812C00CCA573 /* ATTNAPITestIT.m */; };
 		69BA6D5B29B782CE00CCA573 /* ATTNTestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D5A29B782CE00CCA573 /* ATTNTestEventUtils.m */; };
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
-		FB47AB792C07BCD100E0DEC0 /* ATTNParameterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB47AB782C07BCD100E0DEC0 /* ATTNParameterValidation.swift */; };
-		FB47AB7D2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB47AB7C2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift */; };
-		FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */; };
-		FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */; };
-		FB5A68B22C077CF600E57208 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */; };
-		FB5A68B42C07817800E57208 /* ATTNUserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B32C07817800E57208 /* ATTNUserIdentity.swift */; };
-		FB5A68B62C07A49A00E57208 /* ATTNVisitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B52C07A49A00E57208 /* ATTNVisitorService.swift */; };
-		FB5A68B82C07AAD400E57208 /* ATTNPersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5A68B72C07AAD400E57208 /* ATTNPersistentStorage.swift */; };
-		FB76BE502C08F64B00F3EE87 /* ATTNCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE4F2C08F64B00F3EE87 /* ATTNCart.swift */; };
-		FB76BE522C08F77100F3EE87 /* ATTNItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE512C08F77100F3EE87 /* ATTNItem.swift */; };
-		FB76BE542C08FC6500F3EE87 /* ATTNOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE532C08FC6500F3EE87 /* ATTNOrder.swift */; };
-		FB76BE562C08FE1B00F3EE87 /* ATTNPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE552C08FE1B00F3EE87 /* ATTNPrice.swift */; };
-		FB76BE582C0911C600F3EE87 /* ATTNPurchaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE572C0911C600F3EE87 /* ATTNPurchaseEvent.swift */; };
-		FB76BE5B2C09154500F3EE87 /* ATTNAddToCartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE5A2C09154500F3EE87 /* ATTNAddToCartEvent.swift */; };
-		FB76BE5D2C09156800F3EE87 /* ATTNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE5C2C09156800F3EE87 /* ATTNEvent.swift */; };
-		FB76BE5F2C09177C00F3EE87 /* ATTNProductViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE5E2C09177C00F3EE87 /* ATTNProductViewEvent.swift */; };
-		FB76BE612C0919B800F3EE87 /* ATTNCustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE602C0919B800F3EE87 /* ATTNCustomEvent.swift */; };
-		FB76BE632C091E8500F3EE87 /* ATTNEventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE622C091E8500F3EE87 /* ATTNEventTracker.swift */; };
-		FB76BE652C09201500F3EE87 /* ATTNInfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB76BE642C09201500F3EE87 /* ATTNInfoEvent.swift */; };
-		FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */; };
-		FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FBA9F98C2C0A0B4E00C65024 /* ATTNAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */; };
-		FBA9F98E2C0A163C00C65024 /* ATTNUserAgentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */; };
-		FBA9F9962C0A39D500C65024 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9952C0A39D500C65024 /* EventRequest.swift */; };
-		FBA9F9992C0A3D4B00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */; };
-		FBA9F99C2C0A5F0800C65024 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */; };
 		FBA9F9A32C0A76B600C65024 /* ATTNAppInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */; };
 		FBA9F9A42C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */; };
+		FBA9FA052C0A77AB00C65024 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBA9FA062C0A77AB00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */; };
+		FBA9FA072C0A77AB00C65024 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E52C0A77AB00C65024 /* EventRequest.swift */; };
+		FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */; };
+		FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E92C0A77AB00C65024 /* ATTNAppInfo.swift */; };
+		FBA9FA0A2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9EA2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift */; };
+		FBA9FA0B2C0A77AB00C65024 /* ATTNInfoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9EB2C0A77AB00C65024 /* ATTNInfoEvent.swift */; };
+		FBA9FA0C2C0A77AB00C65024 /* ATTNParameterValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9EC2C0A77AB00C65024 /* ATTNParameterValidation.swift */; };
+		FBA9FA0D2C0A77AB00C65024 /* ATTNPersistentStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */; };
+		FBA9FA0E2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */; };
+		FBA9FA0F2C0A77AB00C65024 /* ATTNVisitorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */; };
+		FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F12C0A77AB00C65024 /* ATTNAddToCartEvent.swift */; };
+		FBA9FA112C0A77AB00C65024 /* ATTNCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F22C0A77AB00C65024 /* ATTNCart.swift */; };
+		FBA9FA122C0A77AB00C65024 /* ATTNCustomEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F32C0A77AB00C65024 /* ATTNCustomEvent.swift */; };
+		FBA9FA132C0A77AB00C65024 /* ATTNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F42C0A77AB00C65024 /* ATTNEvent.swift */; };
+		FBA9FA142C0A77AB00C65024 /* ATTNItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F52C0A77AB00C65024 /* ATTNItem.swift */; };
+		FBA9FA152C0A77AB00C65024 /* ATTNOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F62C0A77AB00C65024 /* ATTNOrder.swift */; };
+		FBA9FA162C0A77AB00C65024 /* ATTNPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F72C0A77AB00C65024 /* ATTNPrice.swift */; };
+		FBA9FA172C0A77AB00C65024 /* ATTNProductViewEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F82C0A77AB00C65024 /* ATTNProductViewEvent.swift */; };
+		FBA9FA182C0A77AB00C65024 /* ATTNPurchaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9F92C0A77AB00C65024 /* ATTNPurchaseEvent.swift */; };
+		FBA9FA192C0A77AB00C65024 /* ATTNEventTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */; };
+		FBA9FA1A2C0A77AB00C65024 /* ATTNSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */; };
+		FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */; };
+		FBA9FA1C2C0A77AB00C65024 /* ATTNUserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */; };
+		FBA9FA1D2C0A77AB00C65024 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */; };
+		FBA9FA1E2C0A77AB00C65024 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,36 +101,36 @@
 		69BA6D5A29B782CE00CCA573 /* ATTNTestEventUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNTestEventUtils.m; path = Tests/ATTNTestEventUtils.m; sourceTree = "<group>"; };
 		69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatterTest.m; path = Tests/ATTNCreativeUrlFormatterTest.m; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		FB47AB782C07BCD100E0DEC0 /* ATTNParameterValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNParameterValidation.swift; sourceTree = "<group>"; };
-		FB47AB7C2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeUrlFormatter.swift; sourceTree = "<group>"; };
-		FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
-		FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ATTNConstants.m; path = Sources/ATTNConstants.m; sourceTree = "<group>"; };
-		FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
-		FB5A68B32C07817800E57208 /* ATTNUserIdentity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserIdentity.swift; sourceTree = "<group>"; };
-		FB5A68B52C07A49A00E57208 /* ATTNVisitorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNVisitorService.swift; sourceTree = "<group>"; };
-		FB5A68B72C07AAD400E57208 /* ATTNPersistentStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNPersistentStorage.swift; sourceTree = "<group>"; };
-		FB76BE4F2C08F64B00F3EE87 /* ATTNCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCart.swift; sourceTree = "<group>"; };
-		FB76BE512C08F77100F3EE87 /* ATTNItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNItem.swift; sourceTree = "<group>"; };
-		FB76BE532C08FC6500F3EE87 /* ATTNOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNOrder.swift; sourceTree = "<group>"; };
-		FB76BE552C08FE1B00F3EE87 /* ATTNPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNPrice.swift; sourceTree = "<group>"; };
-		FB76BE572C0911C600F3EE87 /* ATTNPurchaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNPurchaseEvent.swift; sourceTree = "<group>"; };
-		FB76BE5A2C09154500F3EE87 /* ATTNAddToCartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAddToCartEvent.swift; sourceTree = "<group>"; };
-		FB76BE5C2C09156800F3EE87 /* ATTNEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNEvent.swift; sourceTree = "<group>"; };
-		FB76BE5E2C09177C00F3EE87 /* ATTNProductViewEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNProductViewEvent.swift; sourceTree = "<group>"; };
-		FB76BE602C0919B800F3EE87 /* ATTNCustomEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCustomEvent.swift; sourceTree = "<group>"; };
-		FB76BE622C091E8500F3EE87 /* ATTNEventTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNEventTracker.swift; sourceTree = "<group>"; };
-		FB76BE642C09201500F3EE87 /* ATTNInfoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNInfoEvent.swift; sourceTree = "<group>"; };
-		FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
-		FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
-		FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAppInfo.swift; sourceTree = "<group>"; };
-		FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilder.swift; sourceTree = "<group>"; };
-		FBA9F9952C0A39D500C65024 /* EventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
-		FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAPI.swift; sourceTree = "<group>"; };
-		FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
 		FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
 		FBA9F9A52C0A76E400C65024 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "attentive-ios-sdk Tests-Bridging-Header.h"; path = "Tests/attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
+		FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAPI.swift; sourceTree = "<group>"; };
+		FBA9F9E52C0A77AB00C65024 /* EventRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
+		FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
+		FBA9F9E92C0A77AB00C65024 /* ATTNAppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfo.swift; sourceTree = "<group>"; };
+		FBA9F9EA2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNCreativeUrlFormatter.swift; sourceTree = "<group>"; };
+		FBA9F9EB2C0A77AB00C65024 /* ATTNInfoEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNInfoEvent.swift; sourceTree = "<group>"; };
+		FBA9F9EC2C0A77AB00C65024 /* ATTNParameterValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNParameterValidation.swift; sourceTree = "<group>"; };
+		FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNPersistentStorage.swift; sourceTree = "<group>"; };
+		FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilder.swift; sourceTree = "<group>"; };
+		FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNVisitorService.swift; sourceTree = "<group>"; };
+		FBA9F9F12C0A77AB00C65024 /* ATTNAddToCartEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAddToCartEvent.swift; sourceTree = "<group>"; };
+		FBA9F9F22C0A77AB00C65024 /* ATTNCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNCart.swift; sourceTree = "<group>"; };
+		FBA9F9F32C0A77AB00C65024 /* ATTNCustomEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNCustomEvent.swift; sourceTree = "<group>"; };
+		FBA9F9F42C0A77AB00C65024 /* ATTNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNEvent.swift; sourceTree = "<group>"; };
+		FBA9F9F52C0A77AB00C65024 /* ATTNItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNItem.swift; sourceTree = "<group>"; };
+		FBA9F9F62C0A77AB00C65024 /* ATTNOrder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNOrder.swift; sourceTree = "<group>"; };
+		FBA9F9F72C0A77AB00C65024 /* ATTNPrice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNPrice.swift; sourceTree = "<group>"; };
+		FBA9F9F82C0A77AB00C65024 /* ATTNProductViewEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNProductViewEvent.swift; sourceTree = "<group>"; };
+		FBA9F9F92C0A77AB00C65024 /* ATTNPurchaseEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNPurchaseEvent.swift; sourceTree = "<group>"; };
+		FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNEventTracker.swift; sourceTree = "<group>"; };
+		FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDK.swift; sourceTree = "<group>"; };
+		FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
+		FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserIdentity.swift; sourceTree = "<group>"; };
+		FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTNConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,7 @@
 		58332EB9292EC18800B1ECF3 = {
 			isa = PBXGroup;
 			children = (
-				58332ED9292EC21100B1ECF3 /* Sources */,
+				FBA9FA042C0A77AB00C65024 /* Sources */,
 				58332EDB292EC24200B1ECF3 /* Supporting Files */,
 				58332EDA292EC23000B1ECF3 /* Tests */,
 				58B01AB4294D44140001CEBF /* Vendor */,
@@ -171,17 +171,6 @@
 				58D52E19292EC52B00CF32DE /* attentive-ios-sdk Tests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		58332ED9292EC21100B1ECF3 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FB7E907E2BFCD9B400DB8804 /* Resources */,
-				FB0E49E32BFBB0A70025E281 /* include */,
-				FB5A68AE2C077A5A00E57208 /* ATTNConstants.m */,
-				FB5A68B02C077CE200E57208 /* Migration */,
-			);
-			name = Sources;
 			sourceTree = "<group>";
 		};
 		58332EDA292EC23000B1ECF3 /* Tests */ = {
@@ -257,95 +246,6 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
-		FB0E49E32BFBB0A70025E281 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				FB7ED50E2C06554A000C73B9 /* ATTNConstants.h */,
-			);
-			name = include;
-			path = Sources/include;
-			sourceTree = "<group>";
-		};
-		FB5A68B02C077CE200E57208 /* Migration */ = {
-			isa = PBXGroup;
-			children = (
-				FB76BE592C0914E400F3EE87 /* Internal */,
-				FB76BE4D2C08F57400F3EE87 /* Public */,
-			);
-			name = Migration;
-			path = Sources/Migration;
-			sourceTree = "<group>";
-		};
-		FB76BE4C2C08F50300F3EE87 /* Events */ = {
-			isa = PBXGroup;
-			children = (
-				FB76BE5C2C09156800F3EE87 /* ATTNEvent.swift */,
-				FB76BE4F2C08F64B00F3EE87 /* ATTNCart.swift */,
-				FB76BE512C08F77100F3EE87 /* ATTNItem.swift */,
-				FB76BE532C08FC6500F3EE87 /* ATTNOrder.swift */,
-				FB76BE552C08FE1B00F3EE87 /* ATTNPrice.swift */,
-				FB76BE572C0911C600F3EE87 /* ATTNPurchaseEvent.swift */,
-				FB76BE5A2C09154500F3EE87 /* ATTNAddToCartEvent.swift */,
-				FB76BE5E2C09177C00F3EE87 /* ATTNProductViewEvent.swift */,
-				FB76BE602C0919B800F3EE87 /* ATTNCustomEvent.swift */,
-			);
-			path = Events;
-			sourceTree = "<group>";
-		};
-		FB76BE4D2C08F57400F3EE87 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				FB5A68AC2C077A4B00E57208 /* ATTNSDK.swift */,
-				FB5A68B12C077CF600E57208 /* ATTNSDKMode.swift */,
-				FB5A68B32C07817800E57208 /* ATTNUserIdentity.swift */,
-				FB76BE622C091E8500F3EE87 /* ATTNEventTracker.swift */,
-				FB76BE4C2C08F50300F3EE87 /* Events */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		FB76BE592C0914E400F3EE87 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				FBA9F99A2C0A5EEF00C65024 /* Extension */,
-				FBA9F9942C0A396E00C65024 /* API */,
-				FB76BE642C09201500F3EE87 /* ATTNInfoEvent.swift */,
-				FBA9F98B2C0A0B4E00C65024 /* ATTNAppInfo.swift */,
-				FBA9F98D2C0A163C00C65024 /* ATTNUserAgentBuilder.swift */,
-				FB5A68B52C07A49A00E57208 /* ATTNVisitorService.swift */,
-				FB5A68B72C07AAD400E57208 /* ATTNPersistentStorage.swift */,
-				FB47AB782C07BCD100E0DEC0 /* ATTNParameterValidation.swift */,
-				FB47AB7C2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift */,
-			);
-			path = Internal;
-			sourceTree = "<group>";
-		};
-		FB7E907E2BFCD9B400DB8804 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FB7E907D2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy */,
-			);
-			name = Resources;
-			path = Sources/Resources;
-			sourceTree = "<group>";
-		};
-		FBA9F9942C0A396E00C65024 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				FBA9F9952C0A39D500C65024 /* EventRequest.swift */,
-				FBA9F9982C0A3D4B00C65024 /* ATTNAPI.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		FBA9F99A2C0A5EEF00C65024 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				FBA9F99B2C0A5F0800C65024 /* Dictionary+Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		FBA9F9A12C0A76B600C65024 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,6 +264,95 @@
 			path = Tests/Doubles;
 			sourceTree = "<group>";
 		};
+		FBA9F9E32C0A77AB00C65024 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		FBA9F9E62C0A77AB00C65024 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */,
+				FBA9F9E52C0A77AB00C65024 /* EventRequest.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FBA9F9E82C0A77AB00C65024 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FBA9F9F02C0A77AB00C65024 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9E62C0A77AB00C65024 /* API */,
+				FBA9F9E82C0A77AB00C65024 /* Extension */,
+				FBA9F9E92C0A77AB00C65024 /* ATTNAppInfo.swift */,
+				FBA9F9EA2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift */,
+				FBA9F9EB2C0A77AB00C65024 /* ATTNInfoEvent.swift */,
+				FBA9F9EC2C0A77AB00C65024 /* ATTNParameterValidation.swift */,
+				FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */,
+				FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */,
+				FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */,
+			);
+			path = Internal;
+			sourceTree = "<group>";
+		};
+		FBA9F9FA2C0A77AB00C65024 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9F12C0A77AB00C65024 /* ATTNAddToCartEvent.swift */,
+				FBA9F9F22C0A77AB00C65024 /* ATTNCart.swift */,
+				FBA9F9F32C0A77AB00C65024 /* ATTNCustomEvent.swift */,
+				FBA9F9F42C0A77AB00C65024 /* ATTNEvent.swift */,
+				FBA9F9F52C0A77AB00C65024 /* ATTNItem.swift */,
+				FBA9F9F62C0A77AB00C65024 /* ATTNOrder.swift */,
+				FBA9F9F72C0A77AB00C65024 /* ATTNPrice.swift */,
+				FBA9F9F82C0A77AB00C65024 /* ATTNProductViewEvent.swift */,
+				FBA9F9F92C0A77AB00C65024 /* ATTNPurchaseEvent.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FBA9F9FF2C0A77AB00C65024 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9FA2C0A77AB00C65024 /* Events */,
+				FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */,
+				FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */,
+				FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */,
+				FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */,
+				FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		FBA9FA022C0A77AB00C65024 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FBA9FA042C0A77AB00C65024 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9F02C0A77AB00C65024 /* Internal */,
+				FBA9F9FF2C0A77AB00C65024 /* Public */,
+				FBA9F9E32C0A77AB00C65024 /* include */,
+				FBA9FA022C0A77AB00C65024 /* Resources */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -371,8 +360,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB7ED5102C06554A000C73B9 /* ATTNConstants.h in Headers */,
 				58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */,
+				FBA9FA052C0A77AB00C65024 /* ATTNConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +450,7 @@
 			files = (
 				58332EE1292EC26000B1ECF3 /* LICENSE in Resources */,
 				58332EE0292EC26000B1ECF3 /* README.md in Resources */,
-				FB7E907F2BFCD9B400DB8804 /* PrivacyInfo.xcprivacy in Resources */,
+				FBA9FA1D2C0A77AB00C65024 /* PrivacyInfo.xcprivacy in Resources */,
 				58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,30 +491,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB76BE562C08FE1B00F3EE87 /* ATTNPrice.swift in Sources */,
-				FB47AB7D2C07D0A100E0DEC0 /* ATTNCreativeUrlFormatter.swift in Sources */,
-				FBA9F98E2C0A163C00C65024 /* ATTNUserAgentBuilder.swift in Sources */,
-				FB76BE5D2C09156800F3EE87 /* ATTNEvent.swift in Sources */,
-				FBA9F99C2C0A5F0800C65024 /* Dictionary+Extension.swift in Sources */,
-				FB76BE652C09201500F3EE87 /* ATTNInfoEvent.swift in Sources */,
-				FB5A68B42C07817800E57208 /* ATTNUserIdentity.swift in Sources */,
-				FBA9F98C2C0A0B4E00C65024 /* ATTNAppInfo.swift in Sources */,
-				FB76BE632C091E8500F3EE87 /* ATTNEventTracker.swift in Sources */,
-				FB76BE522C08F77100F3EE87 /* ATTNItem.swift in Sources */,
-				FB76BE542C08FC6500F3EE87 /* ATTNOrder.swift in Sources */,
-				FB76BE5F2C09177C00F3EE87 /* ATTNProductViewEvent.swift in Sources */,
-				FB76BE612C0919B800F3EE87 /* ATTNCustomEvent.swift in Sources */,
-				FB5A68B62C07A49A00E57208 /* ATTNVisitorService.swift in Sources */,
-				FB5A68AD2C077A4B00E57208 /* ATTNSDK.swift in Sources */,
-				FB5A68AF2C077A5A00E57208 /* ATTNConstants.m in Sources */,
-				FBA9F9962C0A39D500C65024 /* EventRequest.swift in Sources */,
-				FBA9F9992C0A3D4B00C65024 /* ATTNAPI.swift in Sources */,
-				FB76BE5B2C09154500F3EE87 /* ATTNAddToCartEvent.swift in Sources */,
-				FB47AB792C07BCD100E0DEC0 /* ATTNParameterValidation.swift in Sources */,
-				FB76BE582C0911C600F3EE87 /* ATTNPurchaseEvent.swift in Sources */,
-				FB76BE502C08F64B00F3EE87 /* ATTNCart.swift in Sources */,
-				FB5A68B82C07AAD400E57208 /* ATTNPersistentStorage.swift in Sources */,
-				FB5A68B22C077CF600E57208 /* ATTNSDKMode.swift in Sources */,
+				FBA9FA122C0A77AB00C65024 /* ATTNCustomEvent.swift in Sources */,
+				FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */,
+				FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */,
+				FBA9FA072C0A77AB00C65024 /* EventRequest.swift in Sources */,
+				FBA9FA162C0A77AB00C65024 /* ATTNPrice.swift in Sources */,
+				FBA9FA132C0A77AB00C65024 /* ATTNEvent.swift in Sources */,
+				FBA9FA142C0A77AB00C65024 /* ATTNItem.swift in Sources */,
+				FBA9FA1C2C0A77AB00C65024 /* ATTNUserIdentity.swift in Sources */,
+				FBA9FA192C0A77AB00C65024 /* ATTNEventTracker.swift in Sources */,
+				FBA9FA182C0A77AB00C65024 /* ATTNPurchaseEvent.swift in Sources */,
+				FBA9FA062C0A77AB00C65024 /* ATTNAPI.swift in Sources */,
+				FBA9FA0D2C0A77AB00C65024 /* ATTNPersistentStorage.swift in Sources */,
+				FBA9FA0B2C0A77AB00C65024 /* ATTNInfoEvent.swift in Sources */,
+				FBA9FA0F2C0A77AB00C65024 /* ATTNVisitorService.swift in Sources */,
+				FBA9FA1E2C0A77AB00C65024 /* ATTNConstants.m in Sources */,
+				FBA9FA172C0A77AB00C65024 /* ATTNProductViewEvent.swift in Sources */,
+				FBA9FA112C0A77AB00C65024 /* ATTNCart.swift in Sources */,
+				FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */,
+				FBA9FA0A2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift in Sources */,
+				FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */,
+				FBA9FA152C0A77AB00C65024 /* ATTNOrder.swift in Sources */,
+				FBA9FA1A2C0A77AB00C65024 /* ATTNSDK.swift in Sources */,
+				FBA9FA0E2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift in Sources */,
+				FBA9FA0C2C0A77AB00C65024 /* ATTNParameterValidation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
