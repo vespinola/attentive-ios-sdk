@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "ATTNAPI.h"
-#import "Internal/ATTNUserAgentBuilder.h"
 #import "ATTNConstants.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 

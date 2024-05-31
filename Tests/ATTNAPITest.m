@@ -8,7 +8,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "ATTNTestEventUtils.h"
-#import "ATTNUserAgentBuilder.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 static NSString* const TEST_DOMAIN = @"some-domain";
 static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";

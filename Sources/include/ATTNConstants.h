@@ -26,4 +26,9 @@ extern NSString * const IDENTIFIER_TYPE_SHOPIFY_ID;
 extern NSString * const IDENTIFIER_TYPE_KLAVIYO_ID;
 extern NSString * const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS;
 
+// MARK: ATTNVersion
+// This should match the Podspec version
+// If there's a way to define the version in one place and use it both here and the Podspec then we should do it - I don't know of a way
+extern NSString* const SDK_VERSION;
+
 NS_ASSUME_NONNULL_END

@@ -23,9 +23,9 @@ public final class ATTNCustomEvent: NSObject, ATTNEvent {
 
     ATTNParameterValidation.verifyNotNil(properties as NSObject, inputName: "properties")
     ATTNParameterValidation.verify1DStringDictionaryOrNil(properties as NSDictionary, inputName: "properties")
-    if let _ = properties.keys
+    if properties.keys
       .map({ ATTNCustomEvent.findInvalidCharacterInPropertiesKey(key: $0) })
-      .first(where: { $0 != nil }) {
+      .first(where: { $0 != nil }) != nil {
       return nil
     }
 
@@ -46,10 +46,8 @@ fileprivate extension ATTNCustomEvent {
   }
 
   static func findCharacter(in input: String, charactersToFind: [String]) -> String? {
-    for character in charactersToFind {
-      if input.range(of: character) != nil {
-        return character
-      }
+    for character in charactersToFind where input.range(of: character) != nil {
+      return character
     }
     return nil
   }

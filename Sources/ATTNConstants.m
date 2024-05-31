@@ -35,3 +35,7 @@ NSString *const IDENTIFIER_TYPE_SHOPIFY_ID = @"shopifyId";
 NSString *const IDENTIFIER_TYPE_KLAVIYO_ID = @"klaviyoId";
 // Key-value pairs of custom identifier names and values (both NSStrings) to associate with this user
 NSString *const IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS = @"customIdentifiers";
+
+// MARK: ATTNVersion
+NSString* const SDK_VERSION = @"0.5.1";
+

@@ -12,7 +12,7 @@ public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
   @objc public let items: [ATTNItem]
 
   // Public initializer
-  @objc 
+  @objc
   public init(items: [ATTNItem]) {
     self.items = items
     super.init()

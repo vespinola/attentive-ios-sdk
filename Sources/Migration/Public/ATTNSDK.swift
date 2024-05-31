@@ -24,12 +24,12 @@ public final class ATTNSDK: NSObject {
     static func getRawValue(from value: Any) -> ScriptStatus? {
       guard let stringValue = value as? String else { return nil }
       switch stringValue {
-        case "SUCCESS":
-          return .success
-        case "TIMED OUT":
-          return .timeout
-        default:
-          return .unknown(stringValue)
+      case "SUCCESS":
+        return .success
+      case "TIMED OUT":
+        return .timeout
+      default:
+        return .unknown(stringValue)
       }
     }
   }
