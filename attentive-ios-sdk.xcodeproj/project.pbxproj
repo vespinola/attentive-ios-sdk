@@ -11,7 +11,6 @@
 		5809FEAB29370E3300BDE364 /* ATTNPersistentStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5809FEAA29370E3300BDE364 /* ATTNPersistentStorageTest.m */; };
 		5809FEAD2937147E00BDE364 /* ATTNUserIdentityTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5809FEAC2937147E00BDE364 /* ATTNUserIdentityTest.m */; };
 		5809FEAF2937C8F100BDE364 /* ATTNVisitorServiceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5809FEAE2937C8F100BDE364 /* ATTNVisitorServiceTest.m */; };
-		58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 58317997292F57300003D6B0 /* ATTNSDKFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58332EDD292EC25500B1ECF3 /* attentive-ios-sdk.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */; };
 		58332EE0292EC26000B1ECF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDE292EC26000B1ECF3 /* README.md */; };
 		58332EE1292EC26000B1ECF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDF292EC26000B1ECF3 /* LICENSE */; };
@@ -71,7 +70,6 @@
 		5809FEAA29370E3300BDE364 /* ATTNPersistentStorageTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNPersistentStorageTest.m; path = Tests/ATTNPersistentStorageTest.m; sourceTree = "<group>"; };
 		5809FEAC2937147E00BDE364 /* ATTNUserIdentityTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNUserIdentityTest.m; path = Tests/ATTNUserIdentityTest.m; sourceTree = "<group>"; };
 		5809FEAE2937C8F100BDE364 /* ATTNVisitorServiceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNVisitorServiceTest.m; path = Tests/ATTNVisitorServiceTest.m; sourceTree = "<group>"; };
-		58317997292F57300003D6B0 /* ATTNSDKFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ATTNSDKFramework.h; path = Framework/ATTNSDKFramework.h; sourceTree = "<group>"; };
 		58332EC3292EC18800B1ECF3 /* attentive_ios_sdk_framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = attentive_ios_sdk_framework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "attentive-ios-sdk.podspec"; sourceTree = "<group>"; };
 		58332EDE292EC26000B1ECF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeTriggerStatus.swift; sourceTree = "<group>"; };
 		FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNIdentifierType.swift; sourceTree = "<group>"; };
 		FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKConstants.swift; sourceTree = "<group>"; };
-		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
 		FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
 		FBA9F9A52C0A76E400C65024 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "attentive-ios-sdk Tests-Bridging-Header.h"; path = "Tests/attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -202,8 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				FB0E49E52BFBB1900025E281 /* Package.swift */,
-				58317997292F57300003D6B0 /* ATTNSDKFramework.h */,
-				FB7ED50A2C061245000C73B9 /* module.modulemap */,
 				58332EDF292EC26000B1ECF3 /* LICENSE */,
 				58332EDE292EC26000B1ECF3 /* README.md */,
 				58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */,
@@ -363,7 +358,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +693,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
@@ -741,7 +735,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
