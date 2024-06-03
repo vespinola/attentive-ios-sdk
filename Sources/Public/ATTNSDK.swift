@@ -141,19 +141,19 @@ public final class ATTNSDK: NSObject {
   public func clearUser() {
     userIdentity.clearUser()
   }
-
-  func closeCreative() {
-    webView?.removeFromSuperview()
-    ATTNSDK.isCreativeOpen = false
-    triggerHandler?(ATTNCreativeTriggerStatus.closed)
-    NSLog("Successfully closed creative")
-  }
 }
 
 // MARK: Private Helpers
 fileprivate extension ATTNSDK {
   func sendInfoEvent() {
     api.send(event: ATTNInfoEvent(), userIdentity: userIdentity)
+  }
+
+  func closeCreative() {
+    webView?.removeFromSuperview()
+    ATTNSDK.isCreativeOpen = false
+    triggerHandler?(ATTNCreativeTriggerStatus.closed)
+    NSLog("Successfully closed creative")
   }
 }
 

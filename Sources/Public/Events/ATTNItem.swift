@@ -25,3 +25,26 @@ public final class ATTNItem: NSObject {
     self.quantity = 1
   }
 }
+
+// MARK: Internal Helpers
+extension ATTNItem {
+  func addItem(toDictionary dictionary: inout [String: Any], with priceFormatter: NumberFormatter) {
+    dictionary["productId"] = productId
+    dictionary["subProductId"] = productVariantId
+    dictionary["price"] = priceFormatter.string(from: price.price)
+    dictionary["currency"] = price.currency
+    dictionary["quantity"] = "\(quantity)"
+
+    if let category = category {
+      dictionary["category"] = category
+    }
+
+    if let image = productImage {
+      dictionary["image"] = image
+    }
+
+    if let name = name {
+      dictionary["name"] = name
+    }
+  }
+}

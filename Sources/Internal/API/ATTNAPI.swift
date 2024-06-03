@@ -16,23 +16,6 @@ public final class ATTNAPI: NSObject {
     static var regexPattern: String { "='([a-z0-9-]+)[.]attn[.]tv'" }
   }
 
-  private enum EventTypes {
-    static var purchase: String { "p" }
-    static var addToCart: String { "c" }
-    static var productView: String { "d" }
-    static var orderConfirmed: String { "oc" }
-    static var userIdentifierCollected: String { "idn" }
-    static var info: String { "i" }
-    static var customEvent: String { "ce" }
-  }
-
-  private enum ExternalVendorTypes {
-    static var shopify: String { "0" }
-    static var klaviyo: String { "1" }
-    static var clientUser: String { "2" }
-    static var customUser: String { "6" }
-  }
-
   private var urlSession: URLSession
   private var priceFormatter: NumberFormatter
   private var domain: String
@@ -43,7 +26,7 @@ public final class ATTNAPI: NSObject {
 
   @objc(initWithDomain:)
   public init(domain: String) {
-    self.urlSession = ATTNAPI.buildUrlSession()
+    self.urlSession = URLSession.build(withUserAgent: ATTNAPI.userAgentBuilder.buildUserAgent())
     self.domain = domain
     self.priceFormatter = NumberFormatter()
     self.priceFormatter.minimumFractionDigits = 2
@@ -102,103 +85,14 @@ public final class ATTNAPI: NSObject {
 fileprivate extension ATTNAPI {
   func sendEventInternal(event: ATTNEvent, userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
     // Slice up the Event into individual EventRequests
-    let requests = convertEventToRequests(event: event)
+    let requests = event.convertEventToRequests()
 
     for request in requests {
       sendEventInternalForRequest(request: request, userIdentity: userIdentity, domain: domain, callback: callback)
     }
   }
 
-  func convertEventToRequests(event: ATTNEvent) -> [EventRequest] {
-    var eventRequests = [EventRequest]()
-
-    if let purchase = event as? ATTNPurchaseEvent {
-      if purchase.items.isEmpty {
-        NSLog("No items found in the purchase event.")
-        return []
-      }
-
-      var cartTotal = NSDecimalNumber.zero
-      for item in purchase.items {
-        var metadata = [String: Any]()
-        addProductDataToDictionary(item: item, dictionary: &metadata)
-
-        metadata["orderId"] = purchase.order.orderId
-
-        if let cart = purchase.cart {
-          metadata.addEntryIfNotNil(key: "cartId", value: cart.cartId)
-          metadata.addEntryIfNotNil(key: "cartCoupon", value: cart.cartCoupon)
-        }
-
-        eventRequests.append(EventRequest(metadata: metadata, eventNameAbbreviation: EventTypes.purchase))
-
-        cartTotal = cartTotal.adding(item.price.price)
-      }
-
-      let cartTotalString = priceFormatter.string(from: cartTotal)
-      for eventRequest in eventRequests {
-        eventRequest.metadata["cartTotal"] = cartTotalString
-      }
-
-      var orderConfirmedMetadata = [String: Any]()
-      orderConfirmedMetadata["orderId"] = purchase.order.orderId
-      orderConfirmedMetadata["cartTotal"] = cartTotalString
-      orderConfirmedMetadata["currency"] = purchase.items.first?.price.currency
-
-      var products = [[String: Any]]()
-      for item in purchase.items {
-        var product = [String: Any]()
-        addProductDataToDictionary(item: item, dictionary: &product)
-        products.append(product)
-      }
-      orderConfirmedMetadata["products"] = convertObjectToJson(products, defaultValue: "[]")
-      eventRequests.append(EventRequest(metadata: orderConfirmedMetadata, eventNameAbbreviation: EventTypes.orderConfirmed))
-
-      return eventRequests
-    } else if let addToCart = event as? ATTNAddToCartEvent {
-      if addToCart.items.isEmpty {
-        NSLog("No items found in the AddToCart event.")
-        return []
-      }
-
-      for item in addToCart.items {
-        var metadata = [String: Any]()
-        addProductDataToDictionary(item: item, dictionary: &metadata)
-        eventRequests.append(EventRequest(metadata: metadata, eventNameAbbreviation: EventTypes.addToCart))
-      }
-
-      return eventRequests
-    } else if let productView = event as? ATTNProductViewEvent {
-      if productView.items.isEmpty {
-        NSLog("No items found in the ProductView event.")
-        return []
-      }
-
-      for item in productView.items {
-        var metadata = [String: Any]()
-        addProductDataToDictionary(item: item, dictionary: &metadata)
-        eventRequests.append(EventRequest(metadata: metadata, eventNameAbbreviation: EventTypes.productView))
-      }
-
-      return eventRequests
-    } else if event is ATTNInfoEvent {
-      eventRequests.append(EventRequest(metadata: [String: Any](), eventNameAbbreviation: EventTypes.info))
-      return eventRequests
-    } else if let customEvent = event as? ATTNCustomEvent {
-      var customEventMetadata = [String: Any]()
-      customEventMetadata["type"] = customEvent.type
-      customEventMetadata["properties"] = convertObjectToJson(customEvent.properties, defaultValue: "{}")
-
-      eventRequests.append(EventRequest(metadata: customEventMetadata, eventNameAbbreviation: EventTypes.customEvent))
-      return eventRequests
-
-    } else {
-      NSLog("ERROR: Unknown event type: \(type(of: event))")
-      return []
-    }
-  }
-
-  func sendEventInternalForRequest(request: EventRequest, userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
+  func sendEventInternalForRequest(request: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
     guard let url = constructEventUrlComponents(for: request, userIdentity: userIdentity, domain: domain)?.url else {
       NSLog("Invalid URL constructed for event request.")
       return
@@ -226,33 +120,13 @@ fileprivate extension ATTNAPI {
     task.resume()
   }
 
-  func addProductDataToDictionary(item: ATTNItem, dictionary: inout [String: Any]) {
-    dictionary["productId"] = item.productId
-    dictionary["subProductId"] = item.productVariantId
-    dictionary["price"] = priceFormatter.string(from: item.price.price)
-    dictionary["currency"] = item.price.currency
-    dictionary["quantity"] = "\(item.quantity)"
-
-    if let category = item.category {
-      dictionary["category"] = category
-    }
-
-    if let image = item.productImage {
-      dictionary["image"] = image
-    }
-
-    if let name = item.name {
-      dictionary["name"] = name
-    }
-  }
-
-  func constructEventUrlComponents(for eventRequest: EventRequest, userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
+  func constructEventUrlComponents(for eventRequest: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
     var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
 
     var queryParams = constructBaseQueryParams(userIdentity: userIdentity, domain: domain)
-    var combinedMetadata = buildBaseMetadata(userIdentity: userIdentity) as [String: Any]
+    var combinedMetadata = userIdentity.buildBaseMetadata() as [String: Any]
     combinedMetadata.merge(eventRequest.metadata) { (current, _) in current }
-    queryParams["m"] = convertObjectToJson(combinedMetadata, defaultValue: "{}")
+    queryParams["m"] = try? ATTNJsonUtils.convertObjectToJson(combinedMetadata) ?? "{}"
     queryParams["t"] = eventRequest.eventNameAbbreviation
 
     var queryItems = [URLQueryItem]()
@@ -263,14 +137,6 @@ fileprivate extension ATTNAPI {
     urlComponents?.queryItems = queryItems
 
     return urlComponents
-  }
-
-  static func buildUrlSession() -> URLSession {
-    let configWithUserAgent = URLSessionConfiguration.default
-    let additionalHeadersWithUserAgent = ["User-Agent": userAgentBuilder.buildUserAgent()]
-    configWithUserAgent.httpAdditionalHeaders = additionalHeadersWithUserAgent
-
-    return URLSession(configuration: configWithUserAgent)
   }
 
   func sendUserIdentityInternal(userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
@@ -337,78 +203,9 @@ fileprivate extension ATTNAPI {
     queryParams["v"] = "mobile-app"
     queryParams["c"] = domain
     queryParams["lt"] = "0"
-    queryParams["evs"] = buildExternalVendorIdsJson(userIdentity: userIdentity)
+    queryParams["evs"] = userIdentity.buildExternalVendorIdsJson()
     queryParams["u"] = userIdentity.visitorId
     return queryParams
-  }
-
-  private func buildExternalVendorIdsJson(userIdentity: ATTNUserIdentity) -> String {
-    var ids: [[String: String]] = []
-
-    if let clientId = userIdentity.identifiers[ATTNIdentifierType.clientUserId] as? String {
-      ids.append(["vendor": ExternalVendorTypes.clientUser, "id": clientId])
-    }
-    if let klaviyoId = userIdentity.identifiers[ATTNIdentifierType.klaviyoId] as? String {
-      ids.append(["vendor": ExternalVendorTypes.klaviyo, "id": klaviyoId])
-    }
-    if let shopifyId = userIdentity.identifiers[ATTNIdentifierType.shopifyId] as? String {
-      ids.append(["vendor": ExternalVendorTypes.shopify, "id": shopifyId])
-    }
-    if let customIdentifiers = userIdentity.identifiers[ATTNIdentifierType.customIdentifiers] as? [String: String] {
-      for (key, value) in customIdentifiers {
-        ids.append(["vendor": ExternalVendorTypes.customUser, "id": value, "name": key])
-      }
-    }
-
-    do {
-      let jsonData = try JSONSerialization.data(withJSONObject: ids, options: [])
-      return String(data: jsonData, encoding: .utf8) ?? "[]"
-    } catch {
-      NSLog("Could not serialize the external vendor ids. Returning an empty array. Error: '\(error.localizedDescription)'")
-      return "[]"
-    }
-  }
-
-  func buildBaseMetadata(userIdentity: ATTNUserIdentity) -> [String: String] {
-    var metadata: [String: String] = [:]
-    metadata["source"] = "msdk"
-
-    if let phone = userIdentity.identifiers[ATTNIdentifierType.phone] as? String {
-      metadata["phone"] = phone
-    }
-
-    if let email = userIdentity.identifiers[ATTNIdentifierType.email] as? String {
-      metadata["email"] = email
-    }
-
-    return metadata
-  }
-
-  func convertObjectToJson(_ object: Any, defaultValue: String) -> String {
-    do {
-      let jsonData = try JSONSerialization.data(withJSONObject: object, options: [])
-      if let jsonString = String(data: jsonData, encoding: .utf8) {
-        return jsonString
-      } else {
-        NSLog("Could not encode JSON data to a string.")
-        return defaultValue
-      }
-    } catch {
-      NSLog("Could not serialize the object to JSON. Error: '\(error.localizedDescription)'")
-      return defaultValue
-    }
-  }
-
-  func buildMetadataJson(userIdentity: ATTNUserIdentity) -> String {
-    let metadata = buildBaseMetadata(userIdentity: userIdentity)
-
-    do {
-      let jsonData = try JSONSerialization.data(withJSONObject: metadata, options: [])
-      return String(data: jsonData, encoding: .utf8) ?? "{}"
-    } catch {
-      NSLog("Could not serialize the external vendor ids. Returning an empty blob. Error: '\(error.localizedDescription)'")
-      return "{}"
-    }
   }
 }
 
@@ -476,8 +273,8 @@ public extension ATTNAPI {
     var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
 
     var queryParams = constructBaseQueryParams(userIdentity: userIdentity, domain: domain)
-    queryParams["m"] = buildMetadataJson(userIdentity: userIdentity)
-    queryParams["t"] = EventTypes.userIdentifierCollected
+    queryParams["m"] = userIdentity.buildMetadataJson()
+    queryParams["t"] = ATTNEventTypes.userIdentifierCollected
 
     var queryItems: [URLQueryItem] = []
     for (key, value) in queryParams {

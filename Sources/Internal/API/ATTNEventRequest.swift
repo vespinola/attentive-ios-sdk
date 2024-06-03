@@ -1,5 +1,5 @@
 //
-//  EventRequest.swift
+//  ATTNEventRequest.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-31.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-// A single event can create multiple requests. The EventRequest class represents a single request.
-@objc(EventRequest)
-public final class EventRequest: NSObject {
+// A single event can create multiple requests. The ATTNEventRequest class represents a single request.
+@objc(ATTNEventRequest)
+public final class ATTNEventRequest: NSObject {
   @objc public var metadata: [String: Any]
   @objc public let eventNameAbbreviation: String
 
