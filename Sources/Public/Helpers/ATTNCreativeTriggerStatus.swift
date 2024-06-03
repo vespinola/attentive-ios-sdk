@@ -8,7 +8,7 @@
 import Foundation
 
 // Status passed to ATTNCreativeTriggerCompletionHandler when the creative is opened successfully
-@objc 
+@objc
 public class ATTNCreativeTriggerStatus: NSObject {
   @objc public static let opened = "CREATIVE_TRIGGER_STATUS_OPENED"
   @objc public static let closed = "CREATIVE_TRIGGER_STATUS_CLOSED"
