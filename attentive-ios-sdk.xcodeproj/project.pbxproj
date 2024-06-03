@@ -33,6 +33,12 @@
 		FB35C1892C0E3AF8009FA048 /* ATTNExternalVendorTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1882C0E3AF8009FA048 /* ATTNExternalVendorTypes.swift */; };
 		FB35C18B2C0E3F27009FA048 /* ATTNEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C18A2C0E3F27009FA048 /* ATTNEvent+Extension.swift */; };
 		FB35C18D2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C18C2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift */; };
+		FB35C1912C0E506D009FA048 /* ATTNEventRequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1902C0E506D009FA048 /* ATTNEventRequestProvider.swift */; };
+		FB35C1932C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1922C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift */; };
+		FB35C1952C0E5292009FA048 /* ATTNAddToCartEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1942C0E5292009FA048 /* ATTNAddToCartEvent+Extension.swift */; };
+		FB35C1972C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1962C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift */; };
+		FB35C1992C0E5365009FA048 /* ATTNInfoEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1982C0E5365009FA048 /* ATTNInfoEvent+Extension.swift */; };
+		FB35C19B2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C19A2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift */; };
 		FBA9F9A32C0A76B600C65024 /* ATTNAppInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */; };
 		FBA9F9A42C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */; };
 		FBA9FA062C0A77AB00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */; };
@@ -115,6 +121,12 @@
 		FB35C1882C0E3AF8009FA048 /* ATTNExternalVendorTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNExternalVendorTypes.swift; sourceTree = "<group>"; };
 		FB35C18A2C0E3F27009FA048 /* ATTNEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNEvent+Extension.swift"; sourceTree = "<group>"; };
 		FB35C18C2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNUserIdentity+Extension.swift"; sourceTree = "<group>"; };
+		FB35C1902C0E506D009FA048 /* ATTNEventRequestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNEventRequestProvider.swift; sourceTree = "<group>"; };
+		FB35C1922C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNPurchaseEvent+Extension.swift"; sourceTree = "<group>"; };
+		FB35C1942C0E5292009FA048 /* ATTNAddToCartEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNAddToCartEvent+Extension.swift"; sourceTree = "<group>"; };
+		FB35C1962C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNProductViewEvent+Extension.swift"; sourceTree = "<group>"; };
+		FB35C1982C0E5365009FA048 /* ATTNInfoEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNInfoEvent+Extension.swift"; sourceTree = "<group>"; };
+		FB35C19A2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNCustomEvent+Extension.swift"; sourceTree = "<group>"; };
 		FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
 		FBA9F9A52C0A76E400C65024 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "attentive-ios-sdk Tests-Bridging-Header.h"; path = "Tests/attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -255,22 +267,22 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
-		FB35C1772C0E02F4009FA048 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */,
-				FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
 		FB35C1812C0E1F85009FA048 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				FB35C18F2C0E5057009FA048 /* Protocols */,
 				FBA9F9E82C0A77AB00C65024 /* Extension */,
 				FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FB35C18F2C0E5057009FA048 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FB35C1902C0E506D009FA048 /* ATTNEventRequestProvider.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FBA9F9A12C0A76B600C65024 /* Mocks */ = {
@@ -309,6 +321,11 @@
 				FB35C1822C0E1FD7009FA048 /* URLSession+Extension.swift */,
 				FB35C18A2C0E3F27009FA048 /* ATTNEvent+Extension.swift */,
 				FB35C18C2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift */,
+				FB35C1922C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift */,
+				FB35C1942C0E5292009FA048 /* ATTNAddToCartEvent+Extension.swift */,
+				FB35C1962C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift */,
+				FB35C1982C0E5365009FA048 /* ATTNInfoEvent+Extension.swift */,
+				FB35C19A2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -332,10 +349,10 @@
 		FBA9F9FA2C0A77AB00C65024 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				FBA9F9F42C0A77AB00C65024 /* ATTNEvent.swift */,
 				FBA9F9F12C0A77AB00C65024 /* ATTNAddToCartEvent.swift */,
 				FBA9F9F22C0A77AB00C65024 /* ATTNCart.swift */,
 				FBA9F9F32C0A77AB00C65024 /* ATTNCustomEvent.swift */,
-				FBA9F9F42C0A77AB00C65024 /* ATTNEvent.swift */,
 				FBA9F9F52C0A77AB00C65024 /* ATTNItem.swift */,
 				FBA9F9F62C0A77AB00C65024 /* ATTNOrder.swift */,
 				FBA9F9F72C0A77AB00C65024 /* ATTNPrice.swift */,
@@ -348,12 +365,13 @@
 		FBA9F9FF2C0A77AB00C65024 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				FB35C1772C0E02F4009FA048 /* Constants */,
 				FBA9F9FA2C0A77AB00C65024 /* Events */,
 				FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */,
 				FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */,
 				FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */,
 				FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */,
+				FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */,
+				FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -514,19 +532,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA9FA122C0A77AB00C65024 /* ATTNCustomEvent.swift in Sources */,
+				FB35C1992C0E5365009FA048 /* ATTNInfoEvent+Extension.swift in Sources */,
 				FB35C1892C0E3AF8009FA048 /* ATTNExternalVendorTypes.swift in Sources */,
 				FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */,
 				FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */,
 				FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */,
 				FBA9FA072C0A77AB00C65024 /* ATTNEventRequest.swift in Sources */,
+				FB35C1932C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift in Sources */,
 				FB35C18D2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift in Sources */,
 				FB35C1832C0E1FD7009FA048 /* URLSession+Extension.swift in Sources */,
 				FB35C1872C0E3929009FA048 /* ATTNEventTypes.swift in Sources */,
 				FBA9FA162C0A77AB00C65024 /* ATTNPrice.swift in Sources */,
+				FB35C1912C0E506D009FA048 /* ATTNEventRequestProvider.swift in Sources */,
 				FB35C18B2C0E3F27009FA048 /* ATTNEvent+Extension.swift in Sources */,
 				FBA9FA132C0A77AB00C65024 /* ATTNEvent.swift in Sources */,
 				FBA9FA142C0A77AB00C65024 /* ATTNItem.swift in Sources */,
 				FBA9FA1C2C0A77AB00C65024 /* ATTNUserIdentity.swift in Sources */,
+				FB35C1972C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift in Sources */,
 				FBA9FA192C0A77AB00C65024 /* ATTNEventTracker.swift in Sources */,
 				FBA9FA182C0A77AB00C65024 /* ATTNPurchaseEvent.swift in Sources */,
 				FB35C1852C0E35E7009FA048 /* ATTNJsonUtils.swift in Sources */,
@@ -535,6 +557,8 @@
 				FBA9FA0B2C0A77AB00C65024 /* ATTNInfoEvent.swift in Sources */,
 				FBA9FA0F2C0A77AB00C65024 /* ATTNVisitorService.swift in Sources */,
 				FBA9FA172C0A77AB00C65024 /* ATTNProductViewEvent.swift in Sources */,
+				FB35C19B2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift in Sources */,
+				FB35C1952C0E5292009FA048 /* ATTNAddToCartEvent+Extension.swift in Sources */,
 				FBA9FA112C0A77AB00C65024 /* ATTNCart.swift in Sources */,
 				FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */,
 				FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */,
