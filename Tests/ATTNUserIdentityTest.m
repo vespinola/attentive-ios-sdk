@@ -6,7 +6,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ATTNConstants.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 @interface ATTNUserIdentityTest : XCTestCase
@@ -33,12 +32,12 @@
 }
 
 - (void)testInitWithIdentifiers_validIdentifiers_succeeds {
-  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
-  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID]]);
+  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
+  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[ATTNIdentifierType.clientUserId]]);
 }
 
 - (void)testInitWithIdentifiers_invalidIdentifiers_doesNotThrow {
-  XCTAssertNoThrow([[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : [[NSDictionary alloc] init]}]);
+  XCTAssertNoThrow([[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : [[NSDictionary alloc] init]}]);
 }
 
 - (void)testMergeIdentifiers_noExistingIdentifiersAndMergeEmptyIdentifiers_identifiersAreEmpty {
@@ -50,27 +49,27 @@
 
 - (void)testMergeIdentifiers_noExistingIdentifiersAndMergeNonEmptyIdentifiers_identifiersAreMerged {
   ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] init];
-  [identity mergeIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
+  [identity mergeIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
 
   XCTAssertEqual(1, identity.identifiers.count);
 }
 
 - (void)testMergeIdentifiers_existingIdentifiersAndMergeEmptyIdentifiers_identifiersDidNotChange {
-  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
+  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
   [identity mergeIdentifiers:@{}];
 
   XCTAssertEqual(1, identity.identifiers.count);
-  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID]]);
+  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[ATTNIdentifierType.clientUserId]]);
 }
 
 - (void)testMergeIdentifiers_existingIdentifiersAndMergeNewIdentifiers_identifiersUpdated {
-  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue", IDENTIFIER_TYPE_EMAIL : @"someEmail"}];
-  [identity mergeIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"newValue", IDENTIFIER_TYPE_PHONE : @"somePhone"}];
+  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue", ATTNIdentifierType.email : @"someEmail"}];
+  [identity mergeIdentifiers:@{ATTNIdentifierType.clientUserId : @"newValue", ATTNIdentifierType.phone : @"somePhone"}];
 
   XCTAssertEqual(3, identity.identifiers.count);
-  XCTAssertTrue([@"newValue" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID]]);
-  XCTAssertTrue([@"somePhone" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_PHONE]]);
-  XCTAssertTrue([@"someEmail" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_EMAIL]]);
+  XCTAssertTrue([@"newValue" isEqualToString:identity.identifiers[ATTNIdentifierType.clientUserId]]);
+  XCTAssertTrue([@"somePhone" isEqualToString:identity.identifiers[ATTNIdentifierType.phone]]);
+  XCTAssertTrue([@"someEmail" isEqualToString:identity.identifiers[ATTNIdentifierType.email]]);
 }
 
 - (void)testClearUser_noExistingIdentifiers_noop {
@@ -78,19 +77,19 @@
 }
 
 - (void)testClearUser_existingIdentifiers_clearsIdentifiers {
-  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
+  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
   [identity clearUser];
 
   XCTAssertEqual(0, identity.identifiers.count);
 }
 
 - (void)testClearUser_existingIdentifiersAndMergeAfterClearing_clearsIdentifiers {
-  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
+  ATTNUserIdentity* identity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
   [identity clearUser];
 
-  [identity mergeIdentifiers:@{IDENTIFIER_TYPE_CLIENT_USER_ID : @"someValue"}];
+  [identity mergeIdentifiers:@{ATTNIdentifierType.clientUserId : @"someValue"}];
   XCTAssertEqual(1, identity.identifiers.count);
-  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID]]);
+  XCTAssertTrue([@"someValue" isEqualToString:identity.identifiers[ATTNIdentifierType.clientUserId]]);
 }
 
 @end

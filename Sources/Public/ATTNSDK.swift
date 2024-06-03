@@ -8,6 +8,8 @@
 import Foundation
 import WebKit
 
+public typealias ATTNCreativeTriggerCompletionHandler = (String) -> Void
+
 @objc(ATTNSDK)
 public final class ATTNSDK: NSObject {
   // MARK: Constants
@@ -55,7 +57,7 @@ public final class ATTNSDK: NSObject {
 
   @objc(initWithDomain:mode:)
   public init(domain: String, mode: String) {
-    NSLog("init attentive_ios_sdk v%@", SDK_VERSION)
+    NSLog("init attentive_ios_sdk v%@", ATTNConstants.sdkVersion)
     self.domain = domain
     self.mode = ATTNSDKMode(rawValue: mode) ?? .production
 
@@ -80,7 +82,7 @@ public final class ATTNSDK: NSObject {
   }
 
   @objc(trigger:handler:)
-  public func trigger(_ view: UIView, handler: ((String) -> Void)?) {
+  public func trigger(_ view: UIView, handler: ATTNCreativeTriggerCompletionHandler?) {
     parentView = view
     triggerHandler = handler
 
@@ -93,7 +95,7 @@ public final class ATTNSDK: NSObject {
 
     guard #available(iOS 14, *) else {
       NSLog("Not showing the Attentive creative because the iOS version is too old.")
-      triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+      triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       return
     }
     NSLog("The iOS version is new enough, continuing to show the Attentive creative.")
@@ -143,7 +145,7 @@ public final class ATTNSDK: NSObject {
   func closeCreative() {
     webView?.removeFromSuperview()
     ATTNSDK.isCreativeOpen = false
-    triggerHandler?(CREATIVE_TRIGGER_STATUS_CLOSED)
+    triggerHandler?(ATTNCreativeTriggerStatus.closed)
     NSLog("Successfully closed creative")
   }
 }
@@ -207,7 +209,7 @@ extension ATTNSDK: WKNavigationDelegate {
       guard let self = self else { return }
       guard case let .success(statusAny) = result else {
         NSLog("No status returned from JS. Not showing WebView.")
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+        self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
         return
       }
 
@@ -217,13 +219,13 @@ extension ATTNSDK: WKNavigationDelegate {
         if self.mode == .production {
           self.parentView?.addSubview(webView)
         }
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_OPENED)
+        self.triggerHandler?(ATTNCreativeTriggerStatus.opened)
       case .timeout:
         NSLog("Creative timed out. Not showing WebView.")
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+        self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       case .unknown(let statusString):
         NSLog("Received unknown status: %@. Not showing WebView", statusString)
-        self.triggerHandler?(CREATIVE_TRIGGER_STATUS_NOT_OPENED)
+        self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       default: break
       }
     }

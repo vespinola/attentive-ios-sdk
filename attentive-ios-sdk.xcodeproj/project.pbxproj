@@ -25,9 +25,11 @@
 		69BA6D5929B7812C00CCA573 /* ATTNAPITestIT.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D5829B7812C00CCA573 /* ATTNAPITestIT.m */; };
 		69BA6D5B29B782CE00CCA573 /* ATTNTestEventUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D5A29B782CE00CCA573 /* ATTNTestEventUtils.m */; };
 		69BA6D6F29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */; };
+		FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */; };
+		FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */; };
+		FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */; };
 		FBA9F9A32C0A76B600C65024 /* ATTNAppInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */; };
 		FBA9F9A42C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */; };
-		FBA9FA052C0A77AB00C65024 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBA9FA062C0A77AB00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */; };
 		FBA9FA072C0A77AB00C65024 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E52C0A77AB00C65024 /* EventRequest.swift */; };
 		FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */; };
@@ -52,7 +54,6 @@
 		FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */; };
 		FBA9FA1C2C0A77AB00C65024 /* ATTNUserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */; };
 		FBA9FA1D2C0A77AB00C65024 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */; };
-		FBA9FA1E2C0A77AB00C65024 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,11 +102,13 @@
 		69BA6D5A29B782CE00CCA573 /* ATTNTestEventUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNTestEventUtils.m; path = Tests/ATTNTestEventUtils.m; sourceTree = "<group>"; };
 		69BA6D6E29BA3B1700CCA573 /* ATTNCreativeUrlFormatterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ATTNCreativeUrlFormatterTest.m; path = Tests/ATTNCreativeUrlFormatterTest.m; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeTriggerStatus.swift; sourceTree = "<group>"; };
+		FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNIdentifierType.swift; sourceTree = "<group>"; };
+		FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKConstants.swift; sourceTree = "<group>"; };
 		FB7ED50A2C061245000C73B9 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
 		FBA9F99F2C0A76B600C65024 /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FBA9F9A02C0A76B600C65024 /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
 		FBA9F9A52C0A76E400C65024 /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "attentive-ios-sdk Tests-Bridging-Header.h"; path = "Tests/attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
-		FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
 		FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAPI.swift; sourceTree = "<group>"; };
 		FBA9F9E52C0A77AB00C65024 /* EventRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
 		FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -130,7 +133,6 @@
 		FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
 		FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserIdentity.swift; sourceTree = "<group>"; };
 		FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATTNConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,15 @@
 			path = OCMock;
 			sourceTree = "<group>";
 		};
+		FB35C1772C0E02F4009FA048 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */,
+				FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		FBA9F9A12C0A76B600C65024 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,14 +273,6 @@
 			);
 			name = Doubles;
 			path = Tests/Doubles;
-			sourceTree = "<group>";
-		};
-		FBA9F9E32C0A77AB00C65024 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				FBA9F9E22C0A77AB00C65024 /* ATTNConstants.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 		FBA9F9E62C0A77AB00C65024 /* API */ = {
@@ -301,6 +304,7 @@
 				FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */,
 				FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */,
 				FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */,
+				FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -324,12 +328,12 @@
 		FBA9F9FF2C0A77AB00C65024 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				FB35C1772C0E02F4009FA048 /* Helpers */,
 				FBA9F9FA2C0A77AB00C65024 /* Events */,
 				FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */,
 				FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */,
 				FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */,
 				FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */,
-				FBA9FA032C0A77AB00C65024 /* ATTNConstants.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -347,7 +351,6 @@
 			children = (
 				FBA9F9F02C0A77AB00C65024 /* Internal */,
 				FBA9F9FF2C0A77AB00C65024 /* Public */,
-				FBA9F9E32C0A77AB00C65024 /* include */,
 				FBA9FA022C0A77AB00C65024 /* Resources */,
 			);
 			path = Sources;
@@ -361,7 +364,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58317998292F57300003D6B0 /* ATTNSDKFramework.h in Headers */,
-				FBA9FA052C0A77AB00C65024 /* ATTNConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +495,7 @@
 			files = (
 				FBA9FA122C0A77AB00C65024 /* ATTNCustomEvent.swift in Sources */,
 				FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */,
+				FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */,
 				FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */,
 				FBA9FA072C0A77AB00C65024 /* EventRequest.swift in Sources */,
 				FBA9FA162C0A77AB00C65024 /* ATTNPrice.swift in Sources */,
@@ -505,11 +508,12 @@
 				FBA9FA0D2C0A77AB00C65024 /* ATTNPersistentStorage.swift in Sources */,
 				FBA9FA0B2C0A77AB00C65024 /* ATTNInfoEvent.swift in Sources */,
 				FBA9FA0F2C0A77AB00C65024 /* ATTNVisitorService.swift in Sources */,
-				FBA9FA1E2C0A77AB00C65024 /* ATTNConstants.m in Sources */,
 				FBA9FA172C0A77AB00C65024 /* ATTNProductViewEvent.swift in Sources */,
 				FBA9FA112C0A77AB00C65024 /* ATTNCart.swift in Sources */,
 				FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */,
+				FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */,
 				FBA9FA0A2C0A77AB00C65024 /* ATTNCreativeUrlFormatter.swift in Sources */,
+				FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */,
 				FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */,
 				FBA9FA152C0A77AB00C65024 /* ATTNOrder.swift in Sources */,
 				FBA9FA1A2C0A77AB00C65024 /* ATTNSDK.swift in Sources */,

@@ -345,16 +345,16 @@ fileprivate extension ATTNAPI {
   private func buildExternalVendorIdsJson(userIdentity: ATTNUserIdentity) -> String {
     var ids: [[String: String]] = []
 
-    if let clientId = userIdentity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID] as? String {
+    if let clientId = userIdentity.identifiers[ATTNIdentifierType.clientUserId] as? String {
       ids.append(["vendor": ExternalVendorTypes.clientUser, "id": clientId])
     }
-    if let klaviyoId = userIdentity.identifiers[IDENTIFIER_TYPE_KLAVIYO_ID] as? String {
+    if let klaviyoId = userIdentity.identifiers[ATTNIdentifierType.klaviyoId] as? String {
       ids.append(["vendor": ExternalVendorTypes.klaviyo, "id": klaviyoId])
     }
-    if let shopifyId = userIdentity.identifiers[IDENTIFIER_TYPE_SHOPIFY_ID] as? String {
+    if let shopifyId = userIdentity.identifiers[ATTNIdentifierType.shopifyId] as? String {
       ids.append(["vendor": ExternalVendorTypes.shopify, "id": shopifyId])
     }
-    if let customIdentifiers = userIdentity.identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] as? [String: String] {
+    if let customIdentifiers = userIdentity.identifiers[ATTNIdentifierType.customIdentifiers] as? [String: String] {
       for (key, value) in customIdentifiers {
         ids.append(["vendor": ExternalVendorTypes.customUser, "id": value, "name": key])
       }
@@ -373,11 +373,11 @@ fileprivate extension ATTNAPI {
     var metadata: [String: String] = [:]
     metadata["source"] = "msdk"
 
-    if let phone = userIdentity.identifiers[IDENTIFIER_TYPE_PHONE] as? String {
+    if let phone = userIdentity.identifiers[ATTNIdentifierType.phone] as? String {
       metadata["phone"] = phone
     }
 
-    if let email = userIdentity.identifiers[IDENTIFIER_TYPE_EMAIL] as? String {
+    if let email = userIdentity.identifiers[ATTNIdentifierType.email] as? String {
       metadata["email"] = email
     }
 

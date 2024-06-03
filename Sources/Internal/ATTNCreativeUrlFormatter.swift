@@ -36,23 +36,23 @@ public final class ATTNCreativeUrlFormatter: NSObject {
 
     queryItems.append(URLQueryItem(name: "vid", value: userIdentity.visitorId))
 
-    if let clientUserId = userIdentity.identifiers[IDENTIFIER_TYPE_CLIENT_USER_ID] as? String {
+    if let clientUserId = userIdentity.identifiers[ATTNIdentifierType.clientUserId] as? String {
       queryItems.append(URLQueryItem(name: "cuid", value: clientUserId))
     }
 
-    if let phone = userIdentity.identifiers[IDENTIFIER_TYPE_PHONE] as? String {
+    if let phone = userIdentity.identifiers[ATTNIdentifierType.phone] as? String {
       queryItems.append(URLQueryItem(name: "p", value: phone))
     }
 
-    if let email = userIdentity.identifiers[IDENTIFIER_TYPE_EMAIL] as? String {
+    if let email = userIdentity.identifiers[ATTNIdentifierType.email] as? String {
       queryItems.append(URLQueryItem(name: "e", value: email))
     }
 
-    if let klaviyoId = userIdentity.identifiers[IDENTIFIER_TYPE_KLAVIYO_ID] as? String {
+    if let klaviyoId = userIdentity.identifiers[ATTNIdentifierType.klaviyoId] as? String {
       queryItems.append(URLQueryItem(name: "kid", value: klaviyoId))
     }
 
-    if let shopifyId = userIdentity.identifiers[IDENTIFIER_TYPE_SHOPIFY_ID] as? String {
+    if let shopifyId = userIdentity.identifiers[ATTNIdentifierType.shopifyId] as? String {
       queryItems.append(URLQueryItem(name: "sid", value: shopifyId))
     }
 
@@ -73,7 +73,7 @@ public final class ATTNCreativeUrlFormatter: NSObject {
 fileprivate extension ATTNCreativeUrlFormatter {
   static func getCustomIdentifiersJson(userIdentity: ATTNUserIdentity) -> String? {
     do {
-      guard let customIdentifiers = userIdentity.identifiers[IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS] else { return nil }
+      guard let customIdentifiers = userIdentity.identifiers[ATTNIdentifierType.customIdentifiers] else { return nil }
       let jsonData = try JSONSerialization.data(withJSONObject: customIdentifiers, options: [])
       return String(data: jsonData, encoding: .utf8)
     } catch {

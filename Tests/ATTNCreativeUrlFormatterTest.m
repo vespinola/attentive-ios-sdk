@@ -9,7 +9,6 @@
 #import <OCMock/OCMock.h>
 #import "ATTNTestEventUtils.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
-#import "ATTNConstants.h"
 
 @interface ATTNCreativeUrlFormatterTest : XCTestCase
 
@@ -99,7 +98,7 @@ static NSString* const TEST_DOMAIN = @"testDomain";
                                   mode:@"production"
                           userIdentity:userIdentity];
 
-  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, SDK_VERSION];
+  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, ATTNConstants.sdkVersion];
 
   XCTAssertEqualObjects(expectedUrl, url);
 

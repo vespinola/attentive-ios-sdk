@@ -6,7 +6,7 @@
 //
 
 #import "ATTNTestEventUtils.h"
-#import "ATTNConstants.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 
 
 @implementation ATTNTestEventUtils
@@ -24,8 +24,8 @@
   XCTAssertEqualObjects(eventType, queryItems[@"t"]);
   XCTAssertEqualObjects(userIdentity.visitorId, queryItems[@"u"]);
 
-  XCTAssertEqualObjects(userIdentity.identifiers[IDENTIFIER_TYPE_PHONE], metadata[@"phone"]);
-  XCTAssertEqualObjects(userIdentity.identifiers[IDENTIFIER_TYPE_EMAIL], metadata[@"email"]);
+  XCTAssertEqualObjects(userIdentity.identifiers[ATTNIdentifierType.phone], metadata[@"phone"]);
+  XCTAssertEqualObjects(userIdentity.identifiers[ATTNIdentifierType.email], metadata[@"email"]);
   XCTAssertEqualObjects(@"msdk", metadata[@"source"]);
 }
 
@@ -109,12 +109,12 @@
 
 + (ATTNUserIdentity*)buildUserIdentity {
   return [[ATTNUserIdentity alloc] initWithIdentifiers:@{
-    IDENTIFIER_TYPE_PHONE : @"+14156667777",
-    IDENTIFIER_TYPE_EMAIL : @"someEmail@email.com",
-    IDENTIFIER_TYPE_CLIENT_USER_ID : @"someClientUserId",
-    IDENTIFIER_TYPE_SHOPIFY_ID : @"someShopifyId",
-    IDENTIFIER_TYPE_KLAVIYO_ID : @"someKlaviyoId",
-    IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS : @{@"customId" : @"customIdValue"}
+    ATTNIdentifierType.phone : @"+14156667777",
+    ATTNIdentifierType.email : @"someEmail@email.com",
+    ATTNIdentifierType.clientUserId : @"someClientUserId",
+    ATTNIdentifierType.shopifyId : @"someShopifyId",
+    ATTNIdentifierType.klaviyoId : @"someKlaviyoId",
+    ATTNIdentifierType.customIdentifiers : @{@"customId" : @"customIdValue"}
   }];
 }
 

@@ -9,7 +9,7 @@
 // or 2) the published attentive-ios-sdk pod.
 
 // Use the framework from your local attentive-ios-sdk project
-#if __has_include(<attentive_ios_sdk_framework/ATTNConstants.h>)
+#if __has_include(<attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h>)
 #import <attentive_ios_sdk_framework/ATTNSDKFramework.h>
 #import <attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h>
 #else

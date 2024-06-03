@@ -52,7 +52,7 @@ open class ATTNAppInfo: NSObject {
 
   @objc(getSdkVersion)
   open class func getSdkVersion() -> String {
-    SDK_VERSION
+    ATTNConstants.sdkVersion
   }
 }
 
