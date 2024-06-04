@@ -32,4 +32,8 @@ public final class ATTNEventTracker: NSObject {
     assert(_sharedInstance != nil, "ATTNEventTracker must be setup before being used")
     return _sharedInstance
   }
+
+  public static func destroy() {
+    _sharedInstance = nil
+  }
 }

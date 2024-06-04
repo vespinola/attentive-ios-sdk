@@ -7,7 +7,6 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "ATTNTestEventUtils.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
 #import "attentive_ios_sdk_Tests-Swift.h"
 

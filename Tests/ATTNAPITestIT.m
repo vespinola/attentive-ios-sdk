@@ -7,8 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "ATTNTestEventUtils.h"
-
+#import "attentive_ios_sdk_Tests-Swift.h"
 
 static NSString* const TEST_DOMAIN = @"mobileapps";
 // Update this accordingly when running on VPN

@@ -20,3 +20,4 @@ nesting:
 excluded:
   - Example
   - ExampleSwift
+  - Tests
