@@ -12,8 +12,6 @@ struct ATTNPersistentStorage {
     static var storagePrefix: String { "com.attentive.iossdk.PERSISTENT_STORAGE" }
   }
 
-  private init() { }
-
   func save(_ value: NSObject, forKey key: String) {
     UserDefaults.standard.setValue(value, forKey: getPrefixedKey(key))
   }
