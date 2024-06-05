@@ -8,7 +8,6 @@
 import Foundation
 @testable import attentive_ios_sdk_framework
 
-@objc
 class ATTNAppInfoMock: ATTNAppInfo {
   override class func getAppBuild() -> String { "appBuildValue" }
   override class func getAppVersion() -> String { "appVersionValue" }

@@ -254,14 +254,11 @@ extension ATTNSDK: WKNavigationDelegate {
 }
 
 // TODO: REVISIT
-public extension ATTNSDK {
-  @objc(getApi)
+extension ATTNSDK {
   func getApi() -> ATTNAPI { api }
 
-  @objc(getUserIdentity)
   func getUserIdentity() -> ATTNUserIdentity { userIdentity }
 
-  @objc(sendEvent:)
   func send(event: ATTNEvent) {
     api.send(event: event, userIdentity: userIdentity)
   }

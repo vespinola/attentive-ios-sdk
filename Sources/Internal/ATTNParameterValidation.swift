@@ -7,34 +7,27 @@
 
 import Foundation
 
-// TODO: REVISIT This class should be removed after migration is done
-@objc(ATTNParameterValidation)
-public final class ATTNParameterValidation: NSObject {
-  @objc
-  public static func isNotNil(_ inputValue: NSObject?) -> Bool {
+struct ATTNParameterValidation {
+  static func isNotNil(_ inputValue: NSObject?) -> Bool {
     !isNil(inputValue)
   }
 
-  @objc
-  public static func isStringAndNotEmpty(_ inputValue: NSObject?) -> Bool {
+  static func isStringAndNotEmpty(_ inputValue: NSObject?) -> Bool {
     !((inputValue as? String)?.isEmpty ?? true)
   }
 
-  @objc
-  public static func verifyNotNil(_ inputValue: NSObject?, inputName: String) {
+  static func verifyNotNil(_ inputValue: NSObject?, inputName: String) {
     guard isNil(inputValue) else { return }
     NSLog("Input was nil; %@ should be non-nil", inputName)
   }
 
-  @objc
-  public static func verifyStringOrNil(_ inputValue: NSObject?, inputName: String) {
+  static func verifyStringOrNil(_ inputValue: NSObject?, inputName: String) {
     guard isNil(inputValue) else { return }
     guard !isString(inputValue) || isEmpty(inputName) else { return }
     NSLog("Identifier %@ should be a non-empty NSString", inputName)
   }
 
-  @objc
-  public static func verify1DStringDictionaryOrNil(_ inputValue: NSDictionary?, inputName: String) {
+  static func verify1DStringDictionaryOrNil(_ inputValue: NSDictionary?, inputName: String) {
     guard isNil(inputValue), let inputValue = inputValue else { return }
 
     for (key, value) in inputValue {

@@ -8,13 +8,11 @@
 import Foundation
 
 // A single event can create multiple requests. The ATTNEventRequest class represents a single request.
-@objc(ATTNEventRequest)
-public final class ATTNEventRequest: NSObject {
-  @objc public var metadata: [String: Any]
-  @objc public let eventNameAbbreviation: String
+final class ATTNEventRequest {
+  var metadata: [String: Any]
+  let eventNameAbbreviation: String
 
-  @objc(initWithMetadata:eventNameAbbreviation:)
-  public init(metadata: [String: Any], eventNameAbbreviation: String) {
+  init(metadata: [String: Any], eventNameAbbreviation: String) {
     self.metadata = metadata
     self.eventNameAbbreviation = eventNameAbbreviation
   }

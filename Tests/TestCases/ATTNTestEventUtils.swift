@@ -9,11 +9,8 @@ import Foundation
 import XCTest
 @testable import attentive_ios_sdk_framework
 
-@objc
-final class ATTNTestEventUtils: NSObject {
-
-  @objc(verifyCommonQueryItems:userIdentity:geoAdjustedDomain:eventType:metadata:)
-  class func verifyCommonQueryItems(queryItems: [String: String], userIdentity: ATTNUserIdentity, geoAdjustedDomain: String, eventType: String, metadata: [String: Any]) {
+struct ATTNTestEventUtils {
+  static func verifyCommonQueryItems(queryItems: [String: String], userIdentity: ATTNUserIdentity, geoAdjustedDomain: String, eventType: String, metadata: [String: Any]) {
     XCTAssertEqual("modern", queryItems["tag"])
     XCTAssertEqual("mobile-app", queryItems["v"])
     XCTAssertEqual("0", queryItems["lt"])
@@ -26,8 +23,7 @@ final class ATTNTestEventUtils: NSObject {
     XCTAssertEqual("msdk", metadata["source"] as? String)
   }
 
-  @objc(verifyProductFromItem:product:)
-  class func verifyProductFromItem(item: ATTNItem, product: [String: Any]) {
+  static func verifyProductFromItem(item: ATTNItem, product: [String: Any]) {
     XCTAssertEqual(item.productId, product["productId"] as? String)
     XCTAssertEqual(item.productVariantId, product["subProductId"] as? String)
     XCTAssertEqual(item.price.price, NSDecimalNumber(string: product["price"] as? String))
@@ -37,16 +33,14 @@ final class ATTNTestEventUtils: NSObject {
     XCTAssertEqual(item.name, product["name"] as? String)
   }
 
-  @objc(getMetadataFromUrl:)
-  class func getMetadataFromUrl(url: URL) -> [String: Any]? {
+  static func getMetadataFromUrl(url: URL) -> [String: Any]? {
     let queryItems = getQueryItemsFromUrl(url: url)
     guard let queryItemsString = queryItems["m"] else { return nil }
     let data = queryItemsString.data(using: .utf8)!
     return try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
   }
 
-  @objc(getQueryItemsFromUrl:)
-  class func getQueryItemsFromUrl(url: URL) -> [String: String] {
+  static func getQueryItemsFromUrl(url: URL) -> [String: String] {
     var queryItemDict = [String: String]()
     if let components = URLComponents(string: url.absoluteString),
        let queryItems = components.queryItems {
@@ -57,8 +51,7 @@ final class ATTNTestEventUtils: NSObject {
     return queryItemDict
   }
 
-  @objc
-  class func buildPurchase() -> ATTNPurchaseEvent {
+  static func buildPurchase() -> ATTNPurchaseEvent {
     let item = buildItem()
     let order = ATTNOrder(orderId: "778899")
     let cart = ATTNCart()
@@ -69,20 +62,17 @@ final class ATTNTestEventUtils: NSObject {
     return purchaseEvent
   }
 
-  @objc
-  class func buildAddToCart() -> ATTNAddToCartEvent {
+  static func buildAddToCart() -> ATTNAddToCartEvent {
     let item = buildItem()
     return ATTNAddToCartEvent(items: [item])
   }
 
-  @objc
-  class func buildProductView() -> ATTNProductViewEvent {
+  static func buildProductView() -> ATTNProductViewEvent {
     let item = buildItem()
     return ATTNProductViewEvent(items: [item])
   }
 
-  @objc
-  class func buildItem() -> ATTNItem {
+  static func buildItem() -> ATTNItem {
     let price = ATTNPrice(price: NSDecimalNumber(string: "15.99"), currency: "USD")
     let item = ATTNItem(productId: "222", productVariantId: "55555", price: price)
     item.category = "someCategory"
@@ -91,8 +81,7 @@ final class ATTNTestEventUtils: NSObject {
     return item
   }
 
-  @objc
-  class func buildPurchaseWithTwoItems() -> ATTNPurchaseEvent {
+  static func buildPurchaseWithTwoItems() -> ATTNPurchaseEvent {
     let item1 = buildItem()
     let item2 = ATTNItem(productId: "2222", productVariantId: "555552", price: ATTNPrice(price: NSDecimalNumber(string: "20.00"), currency: "USD"))
     item2.category = "someCategory2"
@@ -107,8 +96,7 @@ final class ATTNTestEventUtils: NSObject {
     return purchaseEvent
   }
 
-  @objc
-  class func buildUserIdentity() -> ATTNUserIdentity {
+  static func buildUserIdentity() -> ATTNUserIdentity {
     return ATTNUserIdentity(identifiers: [
       ATTNIdentifierType.phone: "+14156667777",
       ATTNIdentifierType.email: "someEmail@email.com",
@@ -119,13 +107,11 @@ final class ATTNTestEventUtils: NSObject {
     ])
   }
 
-  @objc
-  class func buildInfoEvent() -> ATTNInfoEvent {
+  static func buildInfoEvent() -> ATTNInfoEvent {
     return ATTNInfoEvent()
   }
 
-  @objc
-  class func buildCustomEvent() -> ATTNCustomEvent {
+  static func buildCustomEvent() -> ATTNCustomEvent {
     return ATTNCustomEvent(type: "Concert Viewed", properties: ["band": "The Beatles"])!
   }
 }

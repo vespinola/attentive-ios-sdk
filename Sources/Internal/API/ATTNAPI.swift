@@ -9,8 +9,7 @@ import Foundation
 
 public typealias ATTNAPICallback = (Data?, URL?, URLResponse?, Error?) -> Void
 
-@objc(ATTNAPI)
-public final class ATTNAPI: NSObject {
+final class ATTNAPI {
   private enum RequestConstants {
     static var dtagUrlFormat: String { "https://cdn.attn.tv/%@/dtag.js" }
     static var regexPattern: String { "='([a-z0-9-]+)[.]attn[.]tv'" }
@@ -22,36 +21,29 @@ public final class ATTNAPI: NSObject {
   private var cachedGeoAdjustedDomain: String?
 
   // TODO REVISIT remove later
-  @objc public static var userAgentBuilder: ATTNUserAgentBuilder.Type = ATTNUserAgentBuilder.self
+  static var userAgentBuilder: ATTNUserAgentBuilder.Type = ATTNUserAgentBuilder.self
 
-  @objc(initWithDomain:)
-  public init(domain: String) {
+  init(domain: String) {
     self.urlSession = URLSession.build(withUserAgent: ATTNAPI.userAgentBuilder.buildUserAgent())
     self.domain = domain
     self.priceFormatter = NumberFormatter()
     self.priceFormatter.minimumFractionDigits = 2
     self.cachedGeoAdjustedDomain = nil
-    super.init()
   }
 
-  // Private initializer for testing purposes
-  @objc(initWithDomain:urlSession:)
-  public init(domain: String, urlSession: URLSession) {
+  init(domain: String, urlSession: URLSession) {
     self.urlSession = urlSession
     self.domain = domain
     self.priceFormatter = NumberFormatter()
     self.priceFormatter.minimumFractionDigits = 2
     self.cachedGeoAdjustedDomain = nil
-    super.init()
   }
 
-  @objc(sendUserIdentity:)
-  public func send(userIdentity: ATTNUserIdentity) {
+  func send(userIdentity: ATTNUserIdentity) {
     send(userIdentity: userIdentity, callback: nil)
   }
 
-  @objc(sendUserIdentity:callback:)
-  public func send(userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
+  func send(userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
     getGeoAdjustedDomain(domain: domain) { [weak self] geoAdjustedDomain, error in
       if let error = error {
         NSLog("Error sending user identity: '%@'", error.localizedDescription)
@@ -63,13 +55,11 @@ public final class ATTNAPI: NSObject {
     }
   }
 
-  @objc(sendEvent:userIdentity:)
-  public func send(event: ATTNEvent, userIdentity: ATTNUserIdentity) {
+  func send(event: ATTNEvent, userIdentity: ATTNUserIdentity) {
     send(event: event, userIdentity: userIdentity, callback: nil)
   }
 
-  @objc(sendEvent:userIdentity:callback:)
-  public func send(event: ATTNEvent, userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
+  func send(event: ATTNEvent, userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
     getGeoAdjustedDomain(domain: domain) { [weak self] geoAdjustedDomain, error in
       if let error = error {
         NSLog("Error sending user identity: '%@'", error.localizedDescription)
@@ -209,14 +199,11 @@ fileprivate extension ATTNAPI {
   }
 }
 
-public extension ATTNAPI {
-  @objc
+extension ATTNAPI {
   func session() -> URLSession { urlSession }
 
-  @objc
   func getCachedGeoAdjustedDomain() -> String? { cachedGeoAdjustedDomain }
 
-  @objc(getGeoAdjustedDomain:completionHandler:)
   func getGeoAdjustedDomain(domain: String, completionHandler: @escaping (String?, Error?) -> Void) {
     if let cachedDomain = cachedGeoAdjustedDomain {
       completionHandler(cachedDomain, nil)
@@ -233,7 +220,7 @@ public extension ATTNAPI {
     }
 
     let request = URLRequest(url: url)
-    let task = urlSession.dataTask(with: request) { data, response, error in
+    let task = urlSession.dataTask(with: request) { [weak self] data, response, error in
       if let error = error {
         NSLog("Error getting the geo-adjusted domain. Error: '%@'", error.localizedDescription)
         completionHandler(nil, error)
@@ -261,14 +248,13 @@ public extension ATTNAPI {
         return
       }
 
-      self.cachedGeoAdjustedDomain = geoAdjustedDomain
+      self?.cachedGeoAdjustedDomain = geoAdjustedDomain
       completionHandler(geoAdjustedDomain, nil)
     }
 
     task.resume()
   }
 
-  @objc
   func constructUserIdentityUrl(userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
     var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
 

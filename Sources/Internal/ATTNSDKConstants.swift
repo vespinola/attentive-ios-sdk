@@ -7,6 +7,6 @@
 
 import Foundation
 
-@objc public class ATTNConstants: NSObject {
-  @objc public static let sdkVersion = "0.5.1"
+struct ATTNConstants {
+  static let sdkVersion = "0.5.1"
 }

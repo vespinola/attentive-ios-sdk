@@ -7,21 +7,18 @@
 
 import Foundation
 
-@objc(ATTNVisitorService)
-public final class ATTNVisitorService: NSObject {
+struct ATTNVisitorService {
   private enum Constants {
     static var visitorIdKey: String { "visitorId" }
   }
 
   private let persistentStorage: ATTNPersistentStorage
 
-  @objc
-  public override init() {
+  init() {
     self.persistentStorage = .init()
   }
 
-  @objc
-  public func getVisitorId() -> String {
+  func getVisitorId() -> String {
     guard let existingVisitorId = persistentStorage.readString(forKey: Constants.visitorIdKey) else {
       return createNewVisitorId()
     }
@@ -29,8 +26,7 @@ public final class ATTNVisitorService: NSObject {
     return existingVisitorId
   }
 
-  @objc
-  public func createNewVisitorId() -> String {
+  func createNewVisitorId() -> String {
     let newVisitorId = generateVisitorId()
     persistentStorage.save(newVisitorId as NSObject, forKey: Constants.visitorIdKey)
     return newVisitorId

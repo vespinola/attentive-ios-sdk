@@ -7,27 +7,22 @@
 
 import Foundation
 
-@objc(ATTNPersistentStorage)
-public final class ATTNPersistentStorage: NSObject {
+struct ATTNPersistentStorage {
   private enum Constants {
     static var storagePrefix: String { "com.attentive.iossdk.PERSISTENT_STORAGE" }
   }
 
-  @objc
-  public override init() { }
+  private init() { }
 
-  @objc(saveObject:forKey:)
-  public func save(_ value: NSObject, forKey key: String) {
+  func save(_ value: NSObject, forKey key: String) {
     UserDefaults.standard.setValue(value, forKey: getPrefixedKey(key))
   }
 
-  @objc
-  public func readString(forKey key: String) -> String? {
+  func readString(forKey key: String) -> String? {
     UserDefaults.standard.string(forKey: getPrefixedKey(key))
   }
 
-  @objc(deleteObjectForKey:)
-  public func delete(forKey key: String) {
+  func delete(forKey key: String) {
     UserDefaults.standard.removeObject(forKey: getPrefixedKey(key))
   }
 }

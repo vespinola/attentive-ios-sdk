@@ -7,16 +7,14 @@
 
 import Foundation
 
-@objc(ATTNCreativeUrlFormatter)
-public final class ATTNCreativeUrlFormatter: NSObject {
+struct ATTNCreativeUrlFormatter {
   private enum Constants {
     static var scheme: String { "https" }
     static var host: String { "creatives.attn.tv" }
     static var path: String { "/mobile-apps/index.html" }
   }
 
-  @objc(buildCompanyCreativeUrlForDomain:mode:userIdentity:)
-  public static func buildCompanyCreativeUrl(
+  static func buildCompanyCreativeUrl(
     forDomain domain: String,
     mode: String,
     userIdentity: ATTNUserIdentity

@@ -9,7 +9,7 @@ import XCTest
 
 extension XCUIElement {
   /// Verify element existence and then proceed with tapping on it
-  @objc func tapOnElement() {
+  func tapOnElement() {
     guard elementExists() else {
       XCTFail("\(description) does not exists")
       return
@@ -18,11 +18,11 @@ extension XCUIElement {
   }
 
   /// Verify element existence on the app view hierarchy
-  @objc func elementExists() -> Bool {
+  func elementExists() -> Bool {
     elementExists(timeout: 10)
   }
 
-  @objc func fillTextField(_ text: String) {
+  func fillTextField(_ text: String) {
     guard elementExists() else {
       XCTFail("\(description) does not exists")
       return

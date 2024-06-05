@@ -19,7 +19,7 @@ public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
   }
 
   // Private default initializer to prevent its use
-  @objc private override init() {
+  private override init() {
     fatalError("init() has not been implemented")
   }
 }
