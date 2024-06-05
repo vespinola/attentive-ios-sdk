@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import attentive_ios_sdk_framework
 
 final class ATTNCreativeUrlFormatterTests: XCTestCase {
 

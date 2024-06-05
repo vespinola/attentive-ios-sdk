@@ -6,12 +6,15 @@
 //
 
 import Foundation
+@testable import attentive_ios_sdk_framework
 
 class NSURLSessionMock: URLSession {
   var didCallDtag = false
   var didCallEventsApi = false
   var urlCalls: [URL] = []
   var requests: [URLRequest] = []
+
+  private let TEST_GEO_ADJUSTED_DOMAIN = "some-domain-ca"
 
   override init() {
     super.init()
@@ -26,7 +29,7 @@ class NSURLSessionMock: URLSession {
       if url.absoluteString.contains("cdn.attn.tv") {
         didCallDtag = true
         return NSURLSessionDataTaskMock { data, response, error in
-          completionHandler("a='\(TEST_GEO_ADJUSTED_DOMAIN).attn.tv'".data(using: .utf8), HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil), nil)
+          completionHandler("a='\(self.TEST_GEO_ADJUSTED_DOMAIN).attn.tv'".data(using: .utf8), HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil), nil)
         }
       }
 

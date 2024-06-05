@@ -101,7 +101,6 @@
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		FB2983D02C0F73990039759C /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FB2983D12C0F73990039759C /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
-		FB2983D42C0F73990039759C /* attentive-ios-sdk Tests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "attentive-ios-sdk Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB2983F32C0F759D0039759C /* ATTNVisitorServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNVisitorServiceTests.swift; sourceTree = "<group>"; };
 		FB2983F52C0F7CF10039759C /* ATTNUserIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserIdentityTests.swift; sourceTree = "<group>"; };
 		FB2983F72C0F7FB60039759C /* ATTNUserAgentBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderTests.swift; sourceTree = "<group>"; };
@@ -268,7 +267,6 @@
 			children = (
 				FB2983F22C0F75600039759C /* TestCases */,
 				FB2983D32C0F73990039759C /* Doubles */,
-				FB2983D42C0F73990039759C /* attentive-ios-sdk Tests-Bridging-Header.h */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -838,7 +836,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Tests/attentive-ios-sdk Tests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -870,7 +868,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Tests/attentive-ios-sdk Tests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

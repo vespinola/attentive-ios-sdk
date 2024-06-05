@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import attentive_ios_sdk_framework
 
 @objc
 class ATTNAppInfoMock: ATTNAppInfo {
