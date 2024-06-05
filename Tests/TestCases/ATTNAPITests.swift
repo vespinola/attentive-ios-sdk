@@ -8,10 +8,10 @@
 import XCTest
 @testable import attentive_ios_sdk_framework
 
-let TEST_DOMAIN = "some-domain"
-let TEST_GEO_ADJUSTED_DOMAIN = "some-domain-ca"
-
 final class ATTNAPITests: XCTestCase {
+  let TEST_DOMAIN = "some-domain"
+  let TEST_GEO_ADJUSTED_DOMAIN = "some-domain-ca"
+  
   override func tearDown() {
     ATTNAPI.userAgentBuilder = ATTNUserAgentBuilder.self
     super.tearDown()
@@ -31,7 +31,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendUserIdentity_validIdentifiers_callsEndpoints() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
 
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -46,7 +46,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validEvent_callsEventEndpoint() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let purchase = ATTNTestEventUtils.buildPurchase()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -65,7 +65,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validPurchaseEvent_urlContainsExpectedPurchaseMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let purchase = ATTNTestEventUtils.buildPurchase()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -97,7 +97,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validPurchaseEventWithTwoItems_urlContainsExpectedOrderConfirmedMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let purchase = ATTNTestEventUtils.buildPurchaseWithTwoItems()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -134,7 +134,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_purchaseEventWithTwoItems_threeRequestsAreSent() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let purchase = ATTNTestEventUtils.buildPurchaseWithTwoItems()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -167,7 +167,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validAddToCartEvent_urlContainsExpectedMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let addToCart = ATTNTestEventUtils.buildAddToCart()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -198,7 +198,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validProductViewEvent_urlContainsExpectedMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let productView = ATTNTestEventUtils.buildProductView()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -229,7 +229,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validInfoEvent_urlContainsExpectedMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let infoEvent = ATTNTestEventUtils.buildInfoEvent()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -248,7 +248,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validCustomEventWithAllProperties_urlContainsExpectedCustomEventMetadata() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let customEvent = ATTNTestEventUtils.buildCustomEvent()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -290,7 +290,7 @@ final class ATTNAPITests: XCTestCase {
 
   func testSendEvent_validEvent_httpMethodIsPost() {
     // Arrange
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let productView = ATTNTestEventUtils.buildProductView()
     let userIdentity = ATTNTestEventUtils.buildUserIdentity()
@@ -306,7 +306,7 @@ final class ATTNAPITests: XCTestCase {
   }
 
   func testSendEvent_multipleEventsSent_onlyGetsGeoAdjustedDomainOnce() {
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
     let addToCart1 = ATTNTestEventUtils.buildAddToCart()
     let addToCart2 = ATTNTestEventUtils.buildAddToCart()
@@ -330,26 +330,26 @@ final class ATTNAPITests: XCTestCase {
   }
 
   func testGetGeoAdjustedDomain_notCachedYet_savesTheCorrectDomainValue() {
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
 
     XCTAssertNil(api.getCachedGeoAdjustedDomain())
 
     api.getGeoAdjustedDomain(domain: TEST_DOMAIN) { geoAdjustedDomain, error in
-      XCTAssertEqual(TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)
+      XCTAssertEqual(self.TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)
     }
 
     XCTAssertEqual(TEST_GEO_ADJUSTED_DOMAIN, api.getCachedGeoAdjustedDomain())
   }
 
   func testGetGeoAdjustedDomain_notCachedYet_httpMethodIsGet() {
-    let sessionMock = NSURLSessionMock2()
+    let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
 
     XCTAssertNil(api.getCachedGeoAdjustedDomain())
 
     api.getGeoAdjustedDomain(domain: TEST_DOMAIN) { geoAdjustedDomain, error in
-      XCTAssertEqual(TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)
+      XCTAssertEqual(self.TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)
     }
 
     XCTAssertTrue(sessionMock.didCallDtag)
@@ -357,54 +357,4 @@ final class ATTNAPITests: XCTestCase {
     let request = sessionMock.requests[0]
     XCTAssertEqual("GET", request.httpMethod?.uppercased())
   }
-
-
 }
-
-class NSURLSessionDataTaskMock2: URLSessionDataTask {
-  let completionHandler: (Data?, URLResponse?, Error?) -> Void
-
-  init(completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-    self.completionHandler = completionHandler
-  }
-
-  override func resume() {
-    completionHandler(nil, nil, nil)
-  }
-}
-
-class NSURLSessionMock2: URLSession {
-  var didCallDtag = false
-  var didCallEventsApi = false
-  var urlCalls: [URL] = []
-  var requests: [URLRequest] = []
-
-  override init() {
-    super.init()
-  }
-
-  override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-    requests.append(request)
-
-    if let url = request.url {
-      urlCalls.append(url)
-
-      if url.absoluteString.contains("cdn.attn.tv") {
-        didCallDtag = true
-        return NSURLSessionDataTaskMock2 { data, response, error in
-          completionHandler("a='\(TEST_GEO_ADJUSTED_DOMAIN).attn.tv'".data(using: .utf8), HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil), nil)
-        }
-      }
-
-      if url.absoluteString.contains("events.attentivemobile.com") {
-        didCallEventsApi = true
-        return NSURLSessionDataTaskMock2 { data, response, error in
-          completionHandler(Data(), HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil), nil)
-        }
-      }
-    }
-
-    fatalError("Should not get here")
-  }
-}
-
