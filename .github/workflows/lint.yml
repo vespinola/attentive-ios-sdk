@@ -8,6 +8,10 @@ on:
       - main
       - feature/*
 
+concurrency:
+  group: ${{ github.ref_name }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: Run Swiftlint
