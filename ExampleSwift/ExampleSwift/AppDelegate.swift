@@ -38,8 +38,6 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
         sdk.identify(AppDelegate.createUserIdentifiers())
     }
 
-  
-
     public static func createUserIdentifiers() -> [String: Any] {
         [
           ATTNIdentifierType.phone: "+15671230987",
