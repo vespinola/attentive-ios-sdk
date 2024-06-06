@@ -27,6 +27,8 @@ public final class ATTNEventTracker: NSObject {
     sdk.send(event: event)
   }
 
+  //add new mehtod with deprecated mark
+
   @objc
   public static func sharedInstance() -> ATTNEventTracker? {
     assert(_sharedInstance != nil, "ATTNEventTracker must be setup before being used")

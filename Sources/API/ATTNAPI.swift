@@ -16,6 +16,7 @@ final class ATTNAPI {
   }
 
   private var userAgentBuilder: ATTNUserAgentBuilderProtocol = ATTNUserAgentBuilder()
+  private var eventUrlProvider: ATTNEventURLProviding = ATTNEventURLProvider()
 
   private(set) var urlSession: URLSession
   private(set) var cachedGeoAdjustedDomain: String?
@@ -78,7 +79,7 @@ fileprivate extension ATTNAPI {
   }
 
   func sendEventInternalForRequest(request: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
-    guard let url = constructEventUrlComponents(for: request, userIdentity: userIdentity, domain: domain)?.url else {
+    guard let url = eventUrlProvider.buildUrl(for: request, userIdentity: userIdentity, domain: domain) else {
       NSLog("Invalid URL constructed for event request.")
       return
     }
@@ -106,7 +107,7 @@ fileprivate extension ATTNAPI {
   }
 
   func sendUserIdentityInternal(userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
-    guard let url = constructUserIdentityUrl(userIdentity: userIdentity, domain: domain)?.url else {
+    guard let url = eventUrlProvider.buildUrl(for: userIdentity, domain: domain) else {
       NSLog("Invalid URL constructed for user identity.")
       return
     }
@@ -214,40 +215,5 @@ extension ATTNAPI {
     }
 
     task.resume()
-  }
-
-  func constructUserIdentityUrl(userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
-    var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
-
-    var queryParams = userIdentity.constructBaseQueryParams(domain: domain)
-    queryParams["m"] = userIdentity.buildMetadataJson()
-    queryParams["t"] = ATTNEventTypes.userIdentifierCollected
-
-    var queryItems: [URLQueryItem] = []
-    for (key, value) in queryParams {
-      queryItems.append(URLQueryItem(name: key, value: value))
-    }
-
-    urlComponents?.queryItems = queryItems
-    return urlComponents
-  }
-
-  func constructEventUrlComponents(for eventRequest: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
-    var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
-
-    var queryParams = userIdentity.constructBaseQueryParams(domain: domain)
-    var combinedMetadata = userIdentity.buildBaseMetadata() as [String: Any]
-    combinedMetadata.merge(eventRequest.metadata) { (current, _) in current }
-    queryParams["m"] = try? ATTNJsonUtils.convertObjectToJson(combinedMetadata) ?? "{}"
-    queryParams["t"] = eventRequest.eventNameAbbreviation
-
-    var queryItems = [URLQueryItem]()
-    for (key, value) in queryParams {
-      queryItems.append(URLQueryItem(name: key, value: value))
-    }
-
-    urlComponents?.queryItems = queryItems
-
-    return urlComponents
   }
 }

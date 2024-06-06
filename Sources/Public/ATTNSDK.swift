@@ -49,7 +49,7 @@ public final class ATTNSDK: NSObject {
 
   private var domain: String
   private var mode: ATTNSDKMode
-  private var urlBuilder: ATTNCreativeUrlFormatterProtocol = ATTNCreativeUrlFormatter()
+  private var urlBuilder: ATTNCreativeUrlFormatterProviding = ATTNCreativeUrlProvider()
 
   public convenience init(domain: String, mode: ATTNSDKMode) {
     self.init(domain: domain, mode: mode.rawValue)
@@ -264,7 +264,7 @@ extension ATTNSDK {
     api.send(event: event, userIdentity: userIdentity)
   }
 
-  convenience init(domain: String, mode: ATTNSDKMode, urlBuilder: ATTNCreativeUrlFormatterProtocol) {
+  convenience init(domain: String, mode: ATTNSDKMode, urlBuilder: ATTNCreativeUrlFormatterProviding) {
     self.init(domain: domain, mode: mode)
     self.urlBuilder = urlBuilder
   }

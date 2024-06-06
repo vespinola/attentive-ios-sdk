@@ -1,5 +1,5 @@
 //
-//  ATTNCreativeUrlFormatter.swift
+//  ATTNCreativeUrlProvider.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-05-29.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ATTNCreativeUrlFormatterProtocol {
+protocol ATTNCreativeUrlFormatterProviding {
   func buildCompanyCreativeUrl(
     forDomain domain: String,
     mode: String,
@@ -15,7 +15,7 @@ protocol ATTNCreativeUrlFormatterProtocol {
   ) -> String
 }
 
-struct ATTNCreativeUrlFormatter: ATTNCreativeUrlFormatterProtocol {
+struct ATTNCreativeUrlProvider: ATTNCreativeUrlFormatterProviding {
   private enum Constants {
     static var scheme: String { "https" }
     static var host: String { "creatives.attn.tv" }
@@ -82,7 +82,7 @@ struct ATTNCreativeUrlFormatter: ATTNCreativeUrlFormatterProtocol {
   }
 }
 
-fileprivate extension ATTNCreativeUrlFormatter {
+fileprivate extension ATTNCreativeUrlProvider {
   func getCustomIdentifiersJson(userIdentity: ATTNUserIdentity) -> String? {
     do {
       guard let customIdentifiers = userIdentity.identifiers[ATTNIdentifierType.customIdentifiers] else { return nil }

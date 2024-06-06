@@ -10,13 +10,13 @@ import XCTest
 
 final class ATTNCreativeUrlFormatterTests: XCTestCase {
   private let TEST_DOMAIN = "testDomain"
-  private var sut: ATTNCreativeUrlFormatter!
+  private var sut: ATTNCreativeUrlProvider!
   private var appInfo: ATTNAppInfo!
 
   override func setUp() {
     super.setUp()
     appInfo = .init()
-    sut = ATTNCreativeUrlFormatter()
+    sut = ATTNCreativeUrlProvider()
   }
 
   override func tearDown() {
