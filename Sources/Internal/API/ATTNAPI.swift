@@ -16,26 +16,20 @@ final class ATTNAPI {
   }
 
   private var urlSession: URLSession
-  private var priceFormatter: NumberFormatter
   private var domain: String
   private var cachedGeoAdjustedDomain: String?
 
-  // TODO REVISIT remove later
-  static var userAgentBuilder: ATTNUserAgentBuilder.Type = ATTNUserAgentBuilder.self
+  private var userAgentBuilder: ATTNUserAgentBuilderProtocol = ATTNUserAgentBuilder()
 
   init(domain: String) {
-    self.urlSession = URLSession.build(withUserAgent: ATTNAPI.userAgentBuilder.buildUserAgent())
+    self.urlSession = URLSession.build(withUserAgent: userAgentBuilder.buildUserAgent())
     self.domain = domain
-    self.priceFormatter = NumberFormatter()
-    self.priceFormatter.minimumFractionDigits = 2
     self.cachedGeoAdjustedDomain = nil
   }
 
   init(domain: String, urlSession: URLSession) {
     self.urlSession = urlSession
     self.domain = domain
-    self.priceFormatter = NumberFormatter()
-    self.priceFormatter.minimumFractionDigits = 2
     self.cachedGeoAdjustedDomain = nil
   }
 

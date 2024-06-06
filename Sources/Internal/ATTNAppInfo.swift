@@ -8,46 +8,82 @@
 import Foundation
 import UIKit
 
-open class ATTNAppInfo {
-  open class func getAppBuild() -> String {
-    Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? ""
-  }
+protocol ATTNAppInfoProtocol {
+  func getAppBuild() -> String
+  func getAppVersion() -> String
+  func getAppName() -> String
+  func getAppId() -> String
+  func getDeviceModelName() -> String
+  func getDevicePlatform() -> String
+  func getDeviceOsVersion() -> String
+  func getSdkName() -> String
+  func getSdkVersion() -> String
+}
 
-  open class func getAppVersion() -> String {
-    Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
-  }
-
-  open class func getAppName() -> String {
-    Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String ?? ""
-  }
-
-  open class func getAppId() -> String {
-    Bundle.main.bundleIdentifier ?? ""
-  }
-
-  open class func getDeviceModelName() -> String {
-    UIDevice.current.model
-  }
-
-  open class func getDevicePlatform() -> String {
-    UIDevice.current.systemName
-  }
-
-  open class func getDeviceOsVersion() -> String {
-    ProcessInfo.processInfo.operatingSystemVersionString
-  }
-
-  open class func getSdkName() -> String {
-    "attentive-ios-sdk"
-  }
-
-  open class func getSdkVersion() -> String {
-    ATTNConstants.sdkVersion
+extension ATTNAppInfoProtocol {
+  func getFormattedAppName() -> String {
+    getAppName().replacingOccurrences(of: " ", with: "-")
   }
 }
 
-public extension ATTNAppInfo {
-  static func getFormattedAppName() -> String {
-    getAppName().replacingOccurrences(of: " ", with: "-")
+struct ATTNAppInfo: ATTNAppInfoProtocol {
+  private enum Constants {
+    static var sdkName: String { "attentive-ios-sdk" }
+  }
+
+  private enum BundleConstants {
+    static var bundleVersion: String { "CFBundleVersion" }
+    static var bundleShortVersion: String { "CFBundleShortVersionString" }
+    static var bundleName: String { "CFBundleName" }
+  }
+
+  private var bundle: Bundle
+  private var uiDevice: UIDevice
+  private var processInfo: ProcessInfo
+
+  init(
+    bundle: Bundle = Bundle.main,
+    uiDevice: UIDevice = UIDevice.current,
+    processInfo: ProcessInfo = ProcessInfo.processInfo
+  ) {
+    self.bundle = bundle
+    self.uiDevice = uiDevice
+    self.processInfo = processInfo
+  }
+
+  func getAppBuild() -> String {
+    bundle.object(forInfoDictionaryKey: BundleConstants.bundleVersion) as? String ?? ""
+  }
+
+  func getAppVersion() -> String {
+    bundle.object(forInfoDictionaryKey: BundleConstants.bundleShortVersion) as? String ?? ""
+  }
+
+  func getAppName() -> String {
+    bundle.object(forInfoDictionaryKey: BundleConstants.bundleName) as? String ?? ""
+  }
+
+  func getAppId() -> String {
+    bundle.bundleIdentifier ?? ""
+  }
+
+  func getDeviceModelName() -> String {
+    uiDevice.model
+  }
+
+  func getDevicePlatform() -> String {
+    uiDevice.systemName
+  }
+
+  func getDeviceOsVersion() -> String {
+    processInfo.operatingSystemVersionString
+  }
+
+  func getSdkName() -> String {
+    Constants.sdkName
+  }
+
+  func getSdkVersion() -> String {
+    ATTNConstants.sdkVersion
   }
 }

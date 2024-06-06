@@ -16,6 +16,7 @@ import Foundation
   @objc public static let customIdentifiers = "customIdentifiers"
 }
 
+// MARK: Internal Helpers
 extension ATTNIdentifierType {
   static var allKeys: [String] = [
     clientUserId,

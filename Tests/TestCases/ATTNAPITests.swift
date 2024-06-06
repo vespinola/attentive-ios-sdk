@@ -11,17 +11,11 @@ import XCTest
 final class ATTNAPITests: XCTestCase {
   let TEST_DOMAIN = "some-domain"
   let TEST_GEO_ADJUSTED_DOMAIN = "some-domain-ca"
-  
-  override func tearDown() {
-    ATTNAPI.userAgentBuilder = ATTNUserAgentBuilder.self
-    super.tearDown()
-  }
 
   func testURLSession_verifySessionHasUserAgent() {
-    let userAgentBuilderMock = ATTNUserAgentBuilderMock.self
+    let userAgentBuilderMock = ATTNUserAgentBuilderMock()
 
-    ATTNAPI.userAgentBuilder = userAgentBuilderMock
-    let api = ATTNAPI(domain: "somedomain")
+    let api = ATTNAPI(domain: "somedomain", urlSession: URLSession.build(withUserAgent: userAgentBuilderMock.buildUserAgent()))
 
     let additionalHeaders = api.session().configuration.httpAdditionalHeaders
     XCTAssertEqual(1, additionalHeaders?.count)

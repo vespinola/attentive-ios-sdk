@@ -49,6 +49,11 @@ public final class ATTNSDK: NSObject {
 
   private var domain: String
   private var mode: ATTNSDKMode
+  private var urlBuilder: ATTNCreativeUrlFormatterProtocol = ATTNCreativeUrlFormatter()
+
+  public convenience init(domain: String, mode: ATTNSDKMode) {
+    self.init(domain: domain, mode: mode.rawValue)
+  }
 
   @objc(initWithDomain:)
   public convenience init(domain: String) {
@@ -100,7 +105,7 @@ public final class ATTNSDK: NSObject {
     }
     NSLog("The iOS version is new enough, continuing to show the Attentive creative.")
 
-    let creativePageUrl = ATTNCreativeUrlFormatter.buildCompanyCreativeUrl(
+    let creativePageUrl = urlBuilder.buildCompanyCreativeUrl(
       forDomain: domain,
       mode: mode.rawValue,
       userIdentity: userIdentity
@@ -253,13 +258,14 @@ extension ATTNSDK: WKNavigationDelegate {
   }
 }
 
-// TODO: REVISIT
+// MARK: Internal Helpers
 extension ATTNSDK {
-  func getApi() -> ATTNAPI { api }
-
-  func getUserIdentity() -> ATTNUserIdentity { userIdentity }
-
   func send(event: ATTNEvent) {
     api.send(event: event, userIdentity: userIdentity)
+  }
+
+  convenience init(domain: String, mode: ATTNSDKMode, urlBuilder: ATTNCreativeUrlFormatterProtocol) {
+    self.init(domain: domain, mode: mode)
+    self.urlBuilder = urlBuilder
   }
 }

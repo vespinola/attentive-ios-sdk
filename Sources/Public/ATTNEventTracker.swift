@@ -7,32 +7,35 @@
 
 import Foundation
 
-//@objc(ATTNEventTracker)
+@objc(ATTNEventTracker)
 public final class ATTNEventTracker: NSObject {
   private static var _sharedInstance: ATTNEventTracker?
   private let sdk: ATTNSDK
 
-//  @objc(initWithSdk:)
+  @objc(initWithSdk:)
   public init(sdk: ATTNSDK) {
     self.sdk = sdk
   }
 
-//  @objc(setupWithSdk:)
+  @objc(setupWithSdk:)
   public static func setup(with sdk: ATTNSDK) {
     _sharedInstance = ATTNEventTracker(sdk: sdk)
   }
 
-//  @objc(recordEvent:)
+  @objc(recordEvent:)
   public func record(event: ATTNEvent) {
     sdk.send(event: event)
   }
 
-//  @objc
+  @objc
   public static func sharedInstance() -> ATTNEventTracker? {
     assert(_sharedInstance != nil, "ATTNEventTracker must be setup before being used")
     return _sharedInstance
   }
+}
 
+// MARK: Internal Helpers
+extension ATTNEventTracker {
   static func destroy() {
     _sharedInstance = nil
   }

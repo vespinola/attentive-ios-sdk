@@ -7,14 +7,28 @@
 
 import Foundation
 
-struct ATTNCreativeUrlFormatter {
+protocol ATTNCreativeUrlFormatterProtocol {
+  func buildCompanyCreativeUrl(
+    forDomain domain: String,
+    mode: String,
+    userIdentity: ATTNUserIdentity
+  ) -> String
+}
+
+struct ATTNCreativeUrlFormatter: ATTNCreativeUrlFormatterProtocol {
   private enum Constants {
     static var scheme: String { "https" }
     static var host: String { "creatives.attn.tv" }
     static var path: String { "/mobile-apps/index.html" }
   }
 
-  static func buildCompanyCreativeUrl(
+  private let appInfo: ATTNAppInfoProtocol
+
+  init(appInfo: ATTNAppInfoProtocol = ATTNAppInfo()) {
+    self.appInfo = appInfo
+  }
+
+  func buildCompanyCreativeUrl(
     forDomain domain: String,
     mode: String,
     userIdentity: ATTNUserIdentity
@@ -59,8 +73,8 @@ struct ATTNCreativeUrlFormatter {
     }
 
     // Add SDK info just for analytics purposes
-    queryItems.append(URLQueryItem(name: "sdkVersion", value: ATTNAppInfo.getSdkVersion()))
-    queryItems.append(URLQueryItem(name: "sdkName", value: ATTNAppInfo.getSdkName()))
+    queryItems.append(URLQueryItem(name: "sdkVersion", value: appInfo.getSdkVersion()))
+    queryItems.append(URLQueryItem(name: "sdkName", value: appInfo.getSdkName()))
 
     components.queryItems = queryItems
 
@@ -69,7 +83,7 @@ struct ATTNCreativeUrlFormatter {
 }
 
 fileprivate extension ATTNCreativeUrlFormatter {
-  static func getCustomIdentifiersJson(userIdentity: ATTNUserIdentity) -> String? {
+  func getCustomIdentifiersJson(userIdentity: ATTNUserIdentity) -> String? {
     do {
       guard let customIdentifiers = userIdentity.identifiers[ATTNIdentifierType.customIdentifiers] else { return nil }
       let jsonData = try JSONSerialization.data(withJSONObject: customIdentifiers, options: [])

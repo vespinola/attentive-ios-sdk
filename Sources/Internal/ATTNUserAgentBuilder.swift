@@ -7,13 +7,18 @@
 
 import Foundation
 
-open class ATTNUserAgentBuilder {
+protocol ATTNUserAgentBuilderProtocol {
+  func buildUserAgent() -> String
+}
 
-  open class func buildUserAgent() -> String {
-    buildUserAgent(appInfo: ATTNAppInfo.self)
+class ATTNUserAgentBuilder: ATTNUserAgentBuilderProtocol {
+  private var appInfo: ATTNAppInfoProtocol
+
+  init(appInfo: ATTNAppInfoProtocol = ATTNAppInfo()) {
+    self.appInfo = appInfo
   }
 
-  static func buildUserAgent(appInfo: ATTNAppInfo.Type) -> String {
+  func buildUserAgent() -> String {
     // We replace the spaces with dashes for the app name because spaces in a User-Agent represent a new "product", so app names that have spaces are harder to parse if we don't replace spaces with dashes
     String(
       format: "%@/%@.%@ (%@; %@ %@) %@/%@",

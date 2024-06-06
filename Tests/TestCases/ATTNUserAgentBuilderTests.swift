@@ -9,22 +9,22 @@ import XCTest
 @testable import attentive_ios_sdk_framework
 
 final class ATTNUserAgentBuilderTests: XCTestCase {
-
-  private var appInfoMock: ATTNAppInfoMock.Type!
+  private var appInfoMock: ATTNAppInfoMock!
+  private var sut: ATTNUserAgentBuilder!
 
   override func setUp() {
     super.setUp()
-    appInfoMock = ATTNAppInfoMock.self
+    appInfoMock = ATTNAppInfoMock()
+    sut = ATTNUserAgentBuilder(appInfo: appInfoMock)
   }
 
   override func tearDown() {
     appInfoMock = nil
+    sut = nil
     super.tearDown()
   }
 
   func testBuildUserAgent_appInfoReturnsAllValues_userAgentIsFormattedCorrectly() {
-    let actualUserAgent = ATTNUserAgentBuilder.buildUserAgent(appInfo: appInfoMock)
-
-    XCTAssertEqual("appName-Value/appVersionValue.appBuildValue (deviceModelNameValue; devicePlatformValue deviceOsVersionValue) sdkNameValue/sdkVersionValue", actualUserAgent)
+    XCTAssertEqual("appName-Value/appVersionValue.appBuildValue (deviceModelNameValue; devicePlatformValue deviceOsVersionValue) sdkNameValue/sdkVersionValue", sut.buildUserAgent())
   }
 }

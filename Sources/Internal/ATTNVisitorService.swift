@@ -12,10 +12,10 @@ struct ATTNVisitorService {
     static var visitorIdKey: String { "visitorId" }
   }
 
-  private let persistentStorage: ATTNPersistentStorage
+  private let persistentStorage: ATTNPersistentStorageProtocol
 
-  init() {
-    self.persistentStorage = .init()
+  init(persistentStorage: ATTNPersistentStorageProtocol = ATTNPersistentStorage()) {
+    self.persistentStorage = persistentStorage
   }
 
   func getVisitorId() -> String {

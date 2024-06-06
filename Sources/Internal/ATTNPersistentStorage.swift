@@ -7,12 +7,18 @@
 
 import Foundation
 
-struct ATTNPersistentStorage {
+protocol ATTNPersistentStorageProtocol {
+  func save(_ value: AnyObject, forKey key: String)
+  func readString(forKey key: String) -> String?
+  func delete(forKey key: String)
+}
+
+struct ATTNPersistentStorage: ATTNPersistentStorageProtocol {
   private enum Constants {
     static var storagePrefix: String { "com.attentive.iossdk.PERSISTENT_STORAGE" }
   }
 
-  func save(_ value: NSObject, forKey key: String) {
+  func save(_ value: AnyObject, forKey key: String) {
     UserDefaults.standard.setValue(value, forKey: getPrefixedKey(key))
   }
 
