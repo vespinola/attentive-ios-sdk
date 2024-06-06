@@ -60,4 +60,15 @@ extension ATTNUserIdentity {
       return "{}"
     }
   }
+
+  func constructBaseQueryParams(domain: String) -> [String: String] {
+    var queryParams: [String: String] = [:]
+    queryParams["tag"] = "modern"
+    queryParams["v"] = "mobile-app"
+    queryParams["c"] = domain
+    queryParams["lt"] = "0"
+    queryParams["evs"] = buildExternalVendorIdsJson()
+    queryParams["u"] = visitorId
+    return queryParams
+  }
 }

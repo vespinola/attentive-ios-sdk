@@ -42,9 +42,8 @@ extension BaseXCTestCase {
     app.launch()
   }
 
+  /// Assert that the SMS app is opened with prepopulated text if running locally. (AWS Device Farm doesn't allow use of SMS apps).
   var canLaunchExternalApps: Bool {
-    // Assert that the SMS app is opened with prepopulated text if running locally
-    // (AWS Device Farm doesn't allow use of SMS apps)
     ProcessInfo
       .processInfo
       .environment["COM_ATTENTIVE_EXAMPLE_HOST"] == "local"

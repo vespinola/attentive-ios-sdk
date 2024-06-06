@@ -17,7 +17,7 @@ final class ATTNAPITests: XCTestCase {
 
     let api = ATTNAPI(domain: "somedomain", urlSession: URLSession.build(withUserAgent: userAgentBuilderMock.buildUserAgent()))
 
-    let additionalHeaders = api.session().configuration.httpAdditionalHeaders
+    let additionalHeaders = api.urlSession.configuration.httpAdditionalHeaders
     XCTAssertEqual(1, additionalHeaders?.count)
     XCTAssertEqual("User-Agent", additionalHeaders?.keys.first)
     XCTAssertEqual("fakeUserAgent", additionalHeaders?["User-Agent"] as? String)
@@ -327,20 +327,20 @@ final class ATTNAPITests: XCTestCase {
     let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
 
-    XCTAssertNil(api.getCachedGeoAdjustedDomain())
+    XCTAssertNil(api.cachedGeoAdjustedDomain)
 
     api.getGeoAdjustedDomain(domain: TEST_DOMAIN) { geoAdjustedDomain, error in
       XCTAssertEqual(self.TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)
     }
 
-    XCTAssertEqual(TEST_GEO_ADJUSTED_DOMAIN, api.getCachedGeoAdjustedDomain())
+    XCTAssertEqual(TEST_GEO_ADJUSTED_DOMAIN, api.cachedGeoAdjustedDomain)
   }
 
   func testGetGeoAdjustedDomain_notCachedYet_httpMethodIsGet() {
     let sessionMock = NSURLSessionMock()
     let api = ATTNAPI(domain: TEST_DOMAIN, urlSession: sessionMock)
 
-    XCTAssertNil(api.getCachedGeoAdjustedDomain())
+    XCTAssertNil(api.cachedGeoAdjustedDomain)
 
     api.getGeoAdjustedDomain(domain: TEST_DOMAIN) { geoAdjustedDomain, error in
       XCTAssertEqual(self.TEST_GEO_ADJUSTED_DOMAIN, geoAdjustedDomain)

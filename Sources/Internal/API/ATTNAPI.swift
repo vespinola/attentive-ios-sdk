@@ -15,11 +15,12 @@ final class ATTNAPI {
     static var regexPattern: String { "='([a-z0-9-]+)[.]attn[.]tv'" }
   }
 
-  private var urlSession: URLSession
-  private var domain: String
-  private var cachedGeoAdjustedDomain: String?
-
   private var userAgentBuilder: ATTNUserAgentBuilderProtocol = ATTNUserAgentBuilder()
+
+  private(set) var urlSession: URLSession
+  private(set) var cachedGeoAdjustedDomain: String?
+
+  private var domain: String
 
   init(domain: String) {
     self.urlSession = URLSession.build(withUserAgent: userAgentBuilder.buildUserAgent())
@@ -104,25 +105,6 @@ fileprivate extension ATTNAPI {
     task.resume()
   }
 
-  func constructEventUrlComponents(for eventRequest: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
-    var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
-
-    var queryParams = constructBaseQueryParams(userIdentity: userIdentity, domain: domain)
-    var combinedMetadata = userIdentity.buildBaseMetadata() as [String: Any]
-    combinedMetadata.merge(eventRequest.metadata) { (current, _) in current }
-    queryParams["m"] = try? ATTNJsonUtils.convertObjectToJson(combinedMetadata) ?? "{}"
-    queryParams["t"] = eventRequest.eventNameAbbreviation
-
-    var queryItems = [URLQueryItem]()
-    for (key, value) in queryParams {
-      queryItems.append(URLQueryItem(name: key, value: value))
-    }
-
-    urlComponents?.queryItems = queryItems
-
-    return urlComponents
-  }
-
   func sendUserIdentityInternal(userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
     guard let url = constructUserIdentityUrl(userIdentity: userIdentity, domain: domain)?.url else {
       NSLog("Invalid URL constructed for user identity.")
@@ -180,24 +162,9 @@ fileprivate extension ATTNAPI {
       return nil
     }
   }
-
-  func constructBaseQueryParams(userIdentity: ATTNUserIdentity, domain: String) -> [String: String] {
-    var queryParams: [String: String] = [:]
-    queryParams["tag"] = "modern"
-    queryParams["v"] = "mobile-app"
-    queryParams["c"] = domain
-    queryParams["lt"] = "0"
-    queryParams["evs"] = userIdentity.buildExternalVendorIdsJson()
-    queryParams["u"] = userIdentity.visitorId
-    return queryParams
-  }
 }
 
 extension ATTNAPI {
-  func session() -> URLSession { urlSession }
-
-  func getCachedGeoAdjustedDomain() -> String? { cachedGeoAdjustedDomain }
-
   func getGeoAdjustedDomain(domain: String, completionHandler: @escaping (String?, Error?) -> Void) {
     if let cachedDomain = cachedGeoAdjustedDomain {
       completionHandler(cachedDomain, nil)
@@ -252,7 +219,7 @@ extension ATTNAPI {
   func constructUserIdentityUrl(userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
     var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
 
-    var queryParams = constructBaseQueryParams(userIdentity: userIdentity, domain: domain)
+    var queryParams = userIdentity.constructBaseQueryParams(domain: domain)
     queryParams["m"] = userIdentity.buildMetadataJson()
     queryParams["t"] = ATTNEventTypes.userIdentifierCollected
 
@@ -262,6 +229,25 @@ extension ATTNAPI {
     }
 
     urlComponents?.queryItems = queryItems
+    return urlComponents
+  }
+
+  func constructEventUrlComponents(for eventRequest: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String) -> URLComponents? {
+    var urlComponents = URLComponents(string: "https://events.attentivemobile.com/e")
+
+    var queryParams = userIdentity.constructBaseQueryParams(domain: domain)
+    var combinedMetadata = userIdentity.buildBaseMetadata() as [String: Any]
+    combinedMetadata.merge(eventRequest.metadata) { (current, _) in current }
+    queryParams["m"] = try? ATTNJsonUtils.convertObjectToJson(combinedMetadata) ?? "{}"
+    queryParams["t"] = eventRequest.eventNameAbbreviation
+
+    var queryItems = [URLQueryItem]()
+    for (key, value) in queryParams {
+      queryItems.append(URLQueryItem(name: key, value: value))
+    }
+
+    urlComponents?.queryItems = queryItems
+
     return urlComponents
   }
 }
