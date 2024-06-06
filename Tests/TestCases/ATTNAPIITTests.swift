@@ -10,17 +10,17 @@ import XCTest
 
 final class ATTNAPIITTests: XCTestCase {
 
-  private let TEST_DOMAIN = "mobileapps"
+  private let testDomain = "mobileapps"
   // Update this accordingly when running on VPN
-  private let TEST_GEO_ADJUSTED_DOMAIN = "mobileapps"
-  private let EVENT_SEND_TIMEOUT_SEC = 6
+  private let testGeoAdjustedDomain = "mobileapps"
+  private let eventSendTimeoutSec = 6
 
   var api: ATTNAPI!
   var userIdentity: ATTNUserIdentity!
 
   override func setUp() {
     super.setUp()
-    api = ATTNAPI(domain: TEST_DOMAIN)
+    api = ATTNAPI(domain: testDomain)
     userIdentity = ATTNTestEventUtils.buildUserIdentity()
   }
 
@@ -44,7 +44,7 @@ final class ATTNAPIITTests: XCTestCase {
         eventTaskExpectation.fulfill()
       }
     }
-    waitForExpectations(timeout: TimeInterval(EVENT_SEND_TIMEOUT_SEC), handler: nil)
+    waitForExpectations(timeout: TimeInterval(eventSendTimeoutSec), handler: nil)
 
     // Assert
     if let httpResponse = urlResponse as? HTTPURLResponse {
@@ -66,7 +66,7 @@ final class ATTNAPIITTests: XCTestCase {
       return
     }
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "idn", metadata: metadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "idn", metadata: metadata)
 
     let expectedJSONString = "[{\"vendor\":\"2\",\"id\":\"someClientUserId\"},{\"vendor\":\"1\",\"id\":\"someKlaviyoId\"},{\"vendor\":\"0\",\"id\":\"someShopifyId\"},{\"vendor\":\"6\",\"id\":\"customIdValue\",\"name\":\"customId\"}]"
     guard let expectedData = expectedJSONString.data(using: .utf8),
@@ -112,7 +112,7 @@ final class ATTNAPIITTests: XCTestCase {
         }
       }
     }
-    waitForExpectations(timeout: TimeInterval(EVENT_SEND_TIMEOUT_SEC), handler: nil)
+    waitForExpectations(timeout: TimeInterval(eventSendTimeoutSec), handler: nil)
 
     // Assert
 
@@ -136,7 +136,7 @@ final class ATTNAPIITTests: XCTestCase {
       return
     }
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: purchaseQueryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "p", metadata: purchaseMetadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: purchaseQueryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "p", metadata: purchaseMetadata)
 
     XCTAssertEqual(purchase.items[0].productId, purchaseMetadata["productId"] as? String)
     XCTAssertEqual(purchase.items[0].productVariantId, purchaseMetadata["subProductId"] as? String)
@@ -173,7 +173,7 @@ final class ATTNAPIITTests: XCTestCase {
     }
     XCTAssertEqual(1, products.count)
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: ocQueryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "oc", metadata: ocMetadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: ocQueryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "oc", metadata: ocMetadata)
 
     ATTNTestEventUtils.verifyProductFromItem(item: purchase.items[0], product: products[0])
 
@@ -198,7 +198,7 @@ final class ATTNAPIITTests: XCTestCase {
         eventTaskExpectation.fulfill()
       }
     }
-    waitForExpectations(timeout: TimeInterval(EVENT_SEND_TIMEOUT_SEC), handler: nil)
+    waitForExpectations(timeout: TimeInterval(eventSendTimeoutSec), handler: nil)
 
     // Assert
     if let httpResponse = urlResponse as? HTTPURLResponse {
@@ -220,7 +220,7 @@ final class ATTNAPIITTests: XCTestCase {
       return
     }
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "c", metadata: metadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "c", metadata: metadata)
 
     XCTAssertEqual(addToCart.items[0].productId, metadata["productId"] as? String)
     XCTAssertEqual(addToCart.items[0].productVariantId, metadata["subProductId"] as? String)
@@ -250,7 +250,7 @@ final class ATTNAPIITTests: XCTestCase {
         eventTaskExpectation.fulfill()
       }
     }
-    waitForExpectations(timeout: TimeInterval(EVENT_SEND_TIMEOUT_SEC), handler: nil)
+    waitForExpectations(timeout: TimeInterval(eventSendTimeoutSec), handler: nil)
 
     // Assert
     if let httpResponse = urlResponse as? HTTPURLResponse {
@@ -272,7 +272,7 @@ final class ATTNAPIITTests: XCTestCase {
       return
     }
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "d", metadata: metadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "d", metadata: metadata)
 
     XCTAssertEqual(productView.items[0].productId, metadata["productId"] as? String)
     XCTAssertEqual(productView.items[0].productVariantId, metadata["subProductId"] as? String)
@@ -302,7 +302,7 @@ final class ATTNAPIITTests: XCTestCase {
         eventTaskExpectation.fulfill()
       }
     }
-    waitForExpectations(timeout: TimeInterval(EVENT_SEND_TIMEOUT_SEC), handler: nil)
+    waitForExpectations(timeout: TimeInterval(eventSendTimeoutSec), handler: nil)
 
     // Assert
     if let httpResponse = urlResponse as? HTTPURLResponse {
@@ -324,7 +324,7 @@ final class ATTNAPIITTests: XCTestCase {
       return
     }
 
-    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: TEST_GEO_ADJUSTED_DOMAIN, eventType: "ce", metadata: metadata)
+    ATTNTestEventUtils.verifyCommonQueryItems(queryItems: queryItems, userIdentity: userIdentity, geoAdjustedDomain: testGeoAdjustedDomain, eventType: "ce", metadata: metadata)
 
     XCTAssertEqual(customEvent.type, metadata["type"] as? String)
     if let propertiesString = metadata["properties"] as? String,

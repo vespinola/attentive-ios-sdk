@@ -30,15 +30,11 @@ extension Page {
 
   @discardableResult
   static func dismissKeyboard() -> Self.Type {
-    guard app.keyboards.count > .zero, app.keyboards.buttons["Return"].elementExists() else {
-      let window = app.windows.element(boundBy: 0)
-        .coordinate(
-          withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)
-        )
-      window.tap()
-      return self
-    }
-    app.keyboards.buttons["Return"].tapOnElement()
+    let window = app.windows.element(boundBy: 0)
+      .coordinate(
+        withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)
+      )
+    window.tap()
     return self
   }
 }

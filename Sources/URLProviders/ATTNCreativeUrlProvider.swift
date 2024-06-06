@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ATTNCreativeUrlFormatterProviding {
+protocol ATTNCreativeUrlProviding {
   func buildCompanyCreativeUrl(
     forDomain domain: String,
     mode: String,
@@ -15,7 +15,7 @@ protocol ATTNCreativeUrlFormatterProviding {
   ) -> String
 }
 
-struct ATTNCreativeUrlProvider: ATTNCreativeUrlFormatterProviding {
+struct ATTNCreativeUrlProvider: ATTNCreativeUrlProviding {
   private enum Constants {
     static var scheme: String { "https" }
     static var host: String { "creatives.attn.tv" }

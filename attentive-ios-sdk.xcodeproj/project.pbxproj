@@ -269,6 +269,7 @@
 			children = (
 				FB2983F22C0F75600039759C /* TestCases */,
 				FB2983D32C0F73990039759C /* Doubles */,
+				FB2984032C0F9D650039759C /* ATTNTestEventUtils.swift */,
 			);
 			path = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -283,7 +284,6 @@
 				FB2983FB2C0F81FD0039759C /* ATTNParameterValidationTests.swift */,
 				FB2983FD2C0F85770039759C /* ATTNCustomEventTests.swift */,
 				FB2983FF2C0F86270039759C /* ATTNCreativeUrlFormatterTests.swift */,
-				FB2984032C0F9D650039759C /* ATTNTestEventUtils.swift */,
 				FB2984052C0FA2DA0039759C /* ATTNEventTrackerTests.swift */,
 				FB2984072C0FAE040039759C /* ATTNAPITests.swift */,
 				FB90EF0A2C109CB4004DFC4A /* ATTNAPIITTests.swift */,
@@ -316,6 +316,15 @@
 				FB60AF0A2C1211C700C61537 /* ATTNEventURLProvider.swift */,
 			);
 			path = URLProviders;
+			sourceTree = "<group>";
+		};
+		FB60AF0F2C123ABB00C61537 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */,
+				FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */,
+			);
+			path = SDK;
 			sourceTree = "<group>";
 		};
 		FBA9F9E62C0A77AB00C65024 /* API */ = {
@@ -364,10 +373,9 @@
 		FBA9F9FF2C0A77AB00C65024 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				FB60AF0F2C123ABB00C61537 /* SDK */,
 				FBA9F9FA2C0A77AB00C65024 /* Events */,
 				FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */,
-				FBA9F9FC2C0A77AB00C65024 /* ATTNSDK.swift */,
-				FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */,
 				FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */,
 				FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */,
 				FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */,

@@ -23,11 +23,9 @@ public final class ATTNEventTracker: NSObject {
   }
 
   @objc(recordEvent:)
-  public func record(event: ATTNEvent) {
+  public func record(_ event: ATTNEvent) {
     sdk.send(event: event)
   }
-
-  //add new mehtod with deprecated mark
 
   @objc
   public static func sharedInstance() -> ATTNEventTracker? {

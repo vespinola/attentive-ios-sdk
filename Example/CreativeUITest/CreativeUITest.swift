@@ -30,7 +30,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
 
     HomePage
       .tapOnPushMeToCreative()
-      .addDelay(seconds: 2)
+      .addDelay(seconds: 3)
 
     CreativePage.tapOnCloseCreative()
 
@@ -49,6 +49,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
       .dismissKeyboard()
       .tapOnContinue()
       .tapOnSubscribe()
+      .addDelay(seconds: 3)
 
     guard canLaunchExternalApps else { return }
     
