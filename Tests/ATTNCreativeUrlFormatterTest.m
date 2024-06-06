@@ -8,9 +8,7 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "ATTNTestEventUtils.h"
-#import "ATTNAppInfo.h"
 #import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
-#import "ATTNConstants.h"
 
 @interface ATTNCreativeUrlFormatterTest : XCTestCase
 
@@ -88,21 +86,23 @@ static NSString* const TEST_DOMAIN = @"testDomain";
 - (void)testBuildCompanyCreativeUrlForDomain_productionMode_buildsUrlWithSdkDetails {
   ATTNUserIdentity* userIdentity = [[ATTNUserIdentity alloc] initWithIdentifiers:@{}];
 
-  id appInfoMock = [OCMockObject mockForClass:[ATTNAppInfo class]];
-  [[[appInfoMock stub] andReturn:@"fakeSdkName"] getSdkName];
-  [[[appInfoMock stub] andReturn:@"fakeSdkVersion"] getSdkVersion];
-  XCTAssertEqualObjects(@"fakeSdkName", [ATTNAppInfo getSdkName]);
+//  id appInfoMock = [OCMockObject mockForClass:[ATTNAppInfo class]];
+//  [[[appInfoMock stub] andReturn:@"fakeSdkName"] getSdkName];
+//  [[[appInfoMock stub] andReturn:@"fakeSdkVersion"] getSdkVersion];
+//  XCTAssertEqualObjects(@"fakeSdkName", [ATTNAppInfo getSdkName]);
+
+  id appInfoMock = [ATTNAppInfo class];
 
   NSString* url = [[ATTNCreativeUrlFormatter class]
       buildCompanyCreativeUrlForDomain:TEST_DOMAIN
                                   mode:@"production"
                           userIdentity:userIdentity];
 
-  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&sdkVersion=fakeSdkVersion&sdkName=fakeSdkName", userIdentity.visitorId];
+  NSString* expectedUrl = [NSString stringWithFormat:@"https://creatives.attn.tv/mobile-apps/index.html?domain=testDomain&vid=%@&sdkVersion=%@&sdkName=attentive-ios-sdk", userIdentity.visitorId, ATTNConstants.sdkVersion];
 
   XCTAssertEqualObjects(expectedUrl, url);
 
-  [appInfoMock stopMocking];
+//  [appInfoMock stopMocking];
 }
 
 @end

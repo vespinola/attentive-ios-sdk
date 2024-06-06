@@ -8,25 +8,11 @@
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
 #import "ATTNTestEventUtils.h"
-#import "ATTNUserAgentBuilder.h"
+#import "attentive_ios_sdk_framework/attentive_ios_sdk_framework-Swift.h"
+#import "attentive_ios_sdk_Tests-Swift.h"
 
 static NSString* const TEST_DOMAIN = @"some-domain";
 static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
-
-
-@interface ATTNAPI (Testing)
-
-- (instancetype)initWithDomain:domain urlSession:(NSURLSession*)urlSession;
-
-- (void)getGeoAdjustedDomain:(NSString*)domain completionHandler:(void (^)(NSString* _Nullable, NSError* _Nullable))completionHandler;
-
-- (NSURL*)constructUserIdentityUrl:(ATTNUserIdentity*)userIdentity domain:(NSString*)domain;
-
-- (NSString*)getCachedGeoAdjustedDomain;
-
-- (NSURLSession*)session;
-
-@end
 
 
 @interface NSURLSessionDataTaskMock : NSURLSessionDataTask
@@ -110,13 +96,17 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 
 @implementation ATTNAPITest
 
+- (void)tearDown {
+  ATTNAPI.userAgentBuilder = [ATTNUserAgentBuilder class];
+  [super tearDown];
+}
 
 - (void)testURLSession_verifySessionHasUserAgent {
   // Arrange
-  id userAgentBuilderMock = [OCMockObject mockForClass:[ATTNUserAgentBuilder class]];
-  [[[userAgentBuilderMock stub] andReturn:@"fakeUserAgent"] buildUserAgent];
+  id userAgentBuilderMock = [ATTNUserAgentBuilderMock class];
 
   // Act
+  ATTNAPI.userAgentBuilder = userAgentBuilderMock;
   ATTNAPI* api = [[ATTNAPI alloc] initWithDomain:@"somedomain"];
 
   // Assert
@@ -126,8 +116,6 @@ static NSString* const TEST_GEO_ADJUSTED_DOMAIN = @"some-domain-ca";
 
   NSString* actualUserAgent = additionalHeaders[@"User-Agent"];
   XCTAssertEqualObjects(@"fakeUserAgent", actualUserAgent);
-
-  [userAgentBuilderMock stopMocking];
 }
 
 - (void)testSendUserIdentity_validIdentifiers_callsEndpoints {

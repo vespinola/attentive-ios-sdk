@@ -7,7 +7,6 @@
 
 #import <XCTest/XCTest.h>
 #import <OCMock/OCMock.h>
-#import "ATTNAPI.h"
 #import "ATTNTestEventUtils.h"
 
 
@@ -64,7 +63,16 @@ static int EVENT_SEND_TIMEOUT_SEC = 6;
                                            eventType:@"idn"
                                             metadata:metadata];
 
-  XCTAssertEqualObjects(@"[{\"vendor\":\"2\",\"id\":\"someClientUserId\"},{\"vendor\":\"1\",\"id\":\"someKlaviyoId\"},{\"vendor\":\"0\",\"id\":\"someShopifyId\"},{\"vendor\":\"6\",\"id\":\"customIdValue\",\"name\":\"customId\"}]", queryItems[@"evs"]);
+  NSString *expectedJSONString = @"[{\"vendor\":\"2\",\"id\":\"someClientUserId\"},{\"vendor\":\"1\",\"id\":\"someKlaviyoId\"},{\"vendor\":\"0\",\"id\":\"someShopifyId\"},{\"vendor\":\"6\",\"id\":\"customIdValue\",\"name\":\"customId\"}]";
+  NSError *error;
+  NSData *expectedData = [expectedJSONString dataUsingEncoding:NSUTF8StringEncoding];
+  NSDictionary *expectedDictionary = [NSJSONSerialization JSONObjectWithData:expectedData options:0 error:&error];
+
+  NSString *actualJSONString = queryItems[@"evs"];
+  NSData *actualData = [actualJSONString dataUsingEncoding:NSUTF8StringEncoding];
+  NSDictionary *actualDictionary = [NSJSONSerialization JSONObjectWithData:actualData options:0 error:&error];
+
+  XCTAssertEqualObjects(expectedDictionary, actualDictionary);
   XCTAssertEqualObjects(@"idn", queryItems[@"t"]);
 }
 
