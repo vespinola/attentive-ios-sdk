@@ -39,12 +39,12 @@ class AppDelegate : UIResponder, UIApplicationDelegate {
 
     public static func createUserIdentifiers() -> [String: Any] {
         [
-          ATTNIdentifierType.phone: "+15671230987",
-          ATTNIdentifierType.email: "someemail@email.com",
-          ATTNIdentifierType.clientUserId: "APP_USER_ID",
-          ATTNIdentifierType.shopifyId: "207119551",
-          ATTNIdentifierType.klaviyoId: "555555",
-          ATTNIdentifierType.customIdentifiers: ["customId": "customIdValue"]
+            IDENTIFIER_TYPE_PHONE: "+15671230987",
+            IDENTIFIER_TYPE_EMAIL: "someemail@email.com",
+            IDENTIFIER_TYPE_CLIENT_USER_ID: "APP_USER_ID",
+            IDENTIFIER_TYPE_SHOPIFY_ID: "207119551",
+            IDENTIFIER_TYPE_KLAVIYO_ID: "555555",
+            IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS: ["customId": "customIdValue"]
         ]
     }
 }

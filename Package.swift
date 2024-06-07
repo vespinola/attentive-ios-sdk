@@ -14,7 +14,7 @@ let package = Package(
       name: "ATTNSDKFramework",
       path: "Sources",
       resources: [ .process("Resources") ],
-      publicHeadersPath: "include"
+      publicHeadersPath: "Public/Objc/Include"
 		)
 	]
 )
