@@ -6,16 +6,16 @@
 //
 
 import Foundation
+@testable import attentive_ios_sdk_framework
 
-@objc
-class ATTNAppInfoMock: ATTNAppInfo {
-  override class func getAppBuild() -> String { "appBuildValue" }
-  override class func getAppVersion() -> String { "appVersionValue" }
-  override class func getAppName() -> String { "appName Value" }
-  override class func getAppId() -> String { "appIdValue" }
-  override class func getDeviceModelName() -> String { "deviceModelNameValue" }
-  override class func getDevicePlatform() -> String { "devicePlatformValue" }
-  override class func getDeviceOsVersion() -> String { "deviceOsVersionValue" }
-  override class func getSdkName() -> String { "sdkNameValue" }
-  override class func getSdkVersion() -> String { "sdkVersionValue" }
+class ATTNAppInfoMock: ATTNAppInfoProtocol {
+  func getAppBuild() -> String { "appBuildValue" }
+  func getAppVersion() -> String { "appVersionValue" }
+  func getAppName() -> String { "appName Value" }
+  func getAppId() -> String { "appIdValue" }
+  func getDeviceModelName() -> String { "deviceModelNameValue" }
+  func getDevicePlatform() -> String { "devicePlatformValue" }
+  func getDeviceOsVersion() -> String { "deviceOsVersionValue" }
+  func getSdkName() -> String { "sdkNameValue" }
+  func getSdkVersion() -> String { "sdkVersionValue" }
 }

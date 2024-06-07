@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TODO: REVISIT create ObjcATTNUserIdentity wrapper
 @objc(ATTNUserIdentity)
 public final class ATTNUserIdentity: NSObject {
   @objc public var identifiers: [String: Any] {

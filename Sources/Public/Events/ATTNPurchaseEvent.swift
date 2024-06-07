@@ -20,7 +20,7 @@ public class ATTNPurchaseEvent: NSObject, ATTNEvent {
     super.init()
   }
 
-  @objc private override init() {
+  private override init() {
     fatalError("init() has not been implemented")
   }
 }

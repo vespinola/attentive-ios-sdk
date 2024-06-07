@@ -1,12 +1,19 @@
 name: Lint
 
 on:
+  push:
+    branches:
+      - main
+      - "feature/*"
   pull_request:
     branches:
-      - develop
       - swift-migration
       - main
-      - feature/*
+      - "feature/*"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   lint:

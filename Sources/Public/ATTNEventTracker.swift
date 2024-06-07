@@ -23,7 +23,7 @@ public final class ATTNEventTracker: NSObject {
   }
 
   @objc(recordEvent:)
-  public func record(event: ATTNEvent) {
+  public func record(_ event: ATTNEvent) {
     sdk.send(event: event)
   }
 
@@ -31,5 +31,12 @@ public final class ATTNEventTracker: NSObject {
   public static func sharedInstance() -> ATTNEventTracker? {
     assert(_sharedInstance != nil, "ATTNEventTracker must be setup before being used")
     return _sharedInstance
+  }
+}
+
+// MARK: Internal Helpers
+extension ATTNEventTracker {
+  static func destroy() {
+    _sharedInstance = nil
   }
 }
