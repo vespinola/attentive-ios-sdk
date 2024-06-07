@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-//import ATTNSDKFramework
 import attentive_ios_sdk_framework
 
 @main

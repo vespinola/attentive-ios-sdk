@@ -23,6 +23,7 @@
 		588EB7262995BC3A00C0163A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587DC5C82995551A0082F8D0 /* Main.storyboard */; };
 		FB0E49E92BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; };
 		FB0E49EA2BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB0E49E82BFBBA2F0025E281 /* attentive_ios_sdk_framework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FB6723732C134958008D5516 /* ATTNSDKFramework in Frameworks */ = {isa = PBXBuildFile; productRef = FB6723722C134958008D5516 /* ATTNSDKFramework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6723732C134958008D5516 /* ATTNSDKFramework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +167,7 @@
 			);
 			name = "ExampleSwift - SPM";
 			packageProductDependencies = (
+				FB6723722C134958008D5516 /* ATTNSDKFramework */,
 			);
 			productName = ExampleSwift;
 			productReference = 588EB72C2995BC3A00C0163A /* ExampleSwift - SPM.app */;
@@ -195,6 +198,7 @@
 			);
 			mainGroup = 58389AA12987647900A31A35;
 			packageReferences = (
+				FB6723712C134958008D5516 /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */,
 			);
 			productRefGroup = 58389AAB2987647900A31A35 /* Products */;
 			projectDirPath = "";
@@ -592,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FB6723712C134958008D5516 /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vespinola/attentive-ios-sdk.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FB6723722C134958008D5516 /* ATTNSDKFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FB6723712C134958008D5516 /* XCRemoteSwiftPackageReference "attentive-ios-sdk" */;
+			productName = ATTNSDKFramework;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58389AA22987647900A31A35 /* Project object */;
 }
