@@ -51,20 +51,10 @@ public final class ATTNSDK: NSObject {
   private var mode: ATTNSDKMode
   private var urlBuilder: ATTNCreativeUrlProviding = ATTNCreativeUrlProvider()
 
-  public convenience init(domain: String, mode: ATTNSDKMode) {
-    self.init(domain: domain, mode: mode.rawValue)
-  }
-
-  @objc(initWithDomain:)
-  public convenience init(domain: String) {
-    self.init(domain: domain, mode: ATTNSDKMode.production.rawValue)
-  }
-
-  @objc(initWithDomain:mode:)
-  public init(domain: String, mode: String) {
+  public init(domain: String, mode: ATTNSDKMode) {
     NSLog("init attentive_ios_sdk v%@", ATTNConstants.sdkVersion)
     self.domain = domain
-    self.mode = ATTNSDKMode(rawValue: mode) ?? .production
+    self.mode = mode
 
     self.userIdentity = .init()
     self.api = .init(domain: domain)
@@ -72,6 +62,17 @@ public final class ATTNSDK: NSObject {
     super.init()
 
     self.sendInfoEvent()
+  }
+
+  @objc(initWithDomain:)
+  public convenience init(domain: String) {
+    self.init(domain: domain, mode: .production)
+  }
+
+  @available(swift, deprecated: 0.6.0, message: "Please use init(domain: String, mode: ATTNSDKMode) instead.")
+  @objc(initWithDomain:mode:)
+  public convenience init(domain: String, mode: String) {
+    self.init(domain: domain, mode: ATTNSDKMode(rawValue: mode) ?? .production)
   }
 
   // MARK: Public API
