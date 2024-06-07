@@ -58,7 +58,8 @@ To check for new major and minor versions of this SDK, navigate to the [releases
 See the [Example Project](https://github.com/attentive-mobile/attentive-ios-sdk/tree/main/Example) for a sample of how the Attentive
 IOS SDK is used.
 
-****_ NOTE: Please refrain from using any internal or undocumented classes or methods as they may change between releases. _****
+> [!NOTE]
+> Please refrain from using any internal or undocumented classes or methods as they may change between releases.
 
 ### Initialize the SDK
 
