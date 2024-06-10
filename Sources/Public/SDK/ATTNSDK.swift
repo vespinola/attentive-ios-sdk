@@ -69,7 +69,7 @@ public final class ATTNSDK: NSObject {
     self.init(domain: domain, mode: .production)
   }
 
-  @available(swift, deprecated: 0.6.0, message: "Please use init(domain: String, mode: ATTNSDKMode) instead.")
+  @available(swift, deprecated: 0.6, message: "Please use init(domain: String, mode: ATTNSDKMode) instead.")
   @objc(initWithDomain:mode:)
   public convenience init(domain: String, mode: String) {
     self.init(domain: domain, mode: ATTNSDKMode(rawValue: mode) ?? .production)

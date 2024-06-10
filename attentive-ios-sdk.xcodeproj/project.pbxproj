@@ -69,7 +69,7 @@
 		FBA9FA1D2C0A77AB00C65024 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */; };
 		FBF78AAB2C135E0700596479 /* ATTNSDKFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF78AA92C135E0700596479 /* ATTNSDKFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FBF78AAE2C135ECD00596479 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF78AAD2C135ECD00596479 /* ATTNConstants.m */; };
-		FBF78AAF2C135ECD00596479 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF78AAC2C135ECD00596479 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBF78AB42C13A1BF00596479 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF78AAC2C135ECD00596479 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +187,7 @@
 		58332EB9292EC18800B1ECF3 = {
 			isa = PBXGroup;
 			children = (
+				FBF78AA82C135D3E00596479 /* Objc */,
 				FBA9FA042C0A77AB00C65024 /* Sources */,
 				58332EDB292EC24200B1ECF3 /* Supporting Files */,
 				FB2983E32C0F73990039759C /* Tests */,
@@ -382,7 +383,6 @@
 		FBA9F9FF2C0A77AB00C65024 /* Public */ = {
 			isa = PBXGroup;
 			children = (
-				FBF78AA82C135D3E00596479 /* Objc */,
 				FB60AF0F2C123ABB00C61537 /* SDK */,
 				FBA9F9FA2C0A77AB00C65024 /* Events */,
 				FBA9F9FB2C0A77AB00C65024 /* ATTNEventTracker.swift */,
@@ -420,19 +420,19 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		FBF78AA72C135C7300596479 /* Include */ = {
+		FBF78AA72C135C7300596479 /* include */ = {
 			isa = PBXGroup;
 			children = (
 				FBF78AAC2C135ECD00596479 /* ATTNConstants.h */,
 			);
-			path = Include;
+			path = include;
 			sourceTree = "<group>";
 		};
 		FBF78AA82C135D3E00596479 /* Objc */ = {
 			isa = PBXGroup;
 			children = (
-				FBF78AA72C135C7300596479 /* Include */,
 				FBF78AAD2C135ECD00596479 /* ATTNConstants.m */,
+				FBF78AA72C135C7300596479 /* include */,
 			);
 			path = Objc;
 			sourceTree = "<group>";
@@ -445,7 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF78AAB2C135E0700596479 /* ATTNSDKFramework.h in Headers */,
-				FBF78AAF2C135ECD00596479 /* ATTNConstants.h in Headers */,
+				FBF78AB42C13A1BF00596479 /* ATTNConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

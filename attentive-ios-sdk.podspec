@@ -30,8 +30,8 @@ The Attentive IOS SDK provides the functionality to render Attentive signup unit
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Sources/**/*'
-  
+  s.source_files = 'Sources/**/*.swift', 'Objc/**/*'
+
   s.resource_bundles = {'attentive-ios-sdk' => ['Sources/Resources/PrivacyInfo.xcprivacy']}
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
