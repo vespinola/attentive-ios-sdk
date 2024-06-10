@@ -26,7 +26,7 @@
 		FB2984082C0FAE040039759C /* ATTNAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2984072C0FAE040039759C /* ATTNAPITests.swift */; };
 		FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */; };
 		FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */; };
-		FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */; };
+		FB35C17D2C0E039E009FA048 /* ATTNConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */; };
 		FB35C1832C0E1FD7009FA048 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1822C0E1FD7009FA048 /* URLSession+Extension.swift */; };
 		FB35C1852C0E35E7009FA048 /* ATTNJsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */; };
 		FB35C1872C0E3929009FA048 /* ATTNEventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1862C0E3929009FA048 /* ATTNEventTypes.swift */; };
@@ -117,7 +117,7 @@
 		FB2984072C0FAE040039759C /* ATTNAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAPITests.swift; sourceTree = "<group>"; };
 		FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeTriggerStatus.swift; sourceTree = "<group>"; };
 		FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNIdentifierType.swift; sourceTree = "<group>"; };
-		FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKConstants.swift; sourceTree = "<group>"; };
+		FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNConstants.swift; sourceTree = "<group>"; };
 		FB35C1822C0E1FD7009FA048 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNJsonUtils.swift; sourceTree = "<group>"; };
 		FB35C1862C0E3929009FA048 /* ATTNEventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNEventTypes.swift; sourceTree = "<group>"; };
@@ -413,7 +413,7 @@
 				FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */,
 				FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */,
 				FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */,
-				FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */,
+				FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */,
 				FBA9F9FF2C0A77AB00C65024 /* Public */,
 				FBA9FA022C0A77AB00C65024 /* Resources */,
 			);
@@ -609,7 +609,7 @@
 				FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */,
 				FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */,
 				FBA9FA0A2C0A77AB00C65024 /* ATTNCreativeUrlProvider.swift in Sources */,
-				FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */,
+				FB35C17D2C0E039E009FA048 /* ATTNConstants.swift in Sources */,
 				FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */,
 				FBA9FA152C0A77AB00C65024 /* ATTNOrder.swift in Sources */,
 				FBA9FA1A2C0A77AB00C65024 /* ATTNSDK.swift in Sources */,
