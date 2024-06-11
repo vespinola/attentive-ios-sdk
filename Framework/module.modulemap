@@ -1,4 +1,4 @@
-framework module attentive_ios_sdk_framework {
+framework module ATTNSDKFramework {
   umbrella header "ATTNSDKFramework.h"
   export *
   module * { export * }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-@testable import attentive_ios_sdk_framework
+@testable import ATTNSDKFramework
 
 class NSURLSessionMock: URLSession {
   var didCallDtag = false

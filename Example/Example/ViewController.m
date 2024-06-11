@@ -1,5 +1,5 @@
 #import "ViewController.h"
-#import "ImportAttentiveSDK.h"
+#import "ATTNSDKFramework/ATTNSDKFramework-Swift.h"
 #import <WebKit/WebKit.h>
 
 @interface ViewController ()
