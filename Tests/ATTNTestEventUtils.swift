@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import attentive_ios_sdk_framework
+@testable import ATTNSDKFramework
 
 struct ATTNTestEventUtils {
   static func verifyCommonQueryItems(queryItems: [String: String], userIdentity: ATTNUserIdentity, geoAdjustedDomain: String, eventType: String, metadata: [String: Any]) {

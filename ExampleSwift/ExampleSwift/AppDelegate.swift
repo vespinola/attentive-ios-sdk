@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import attentive_ios_sdk_framework
+import ATTNSDKFramework
 
 @main
 class AppDelegate : UIResponder, UIApplicationDelegate {

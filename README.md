@@ -8,25 +8,28 @@ The Attentive IOS SDK provides the functionality to render Attentive creative un
 
 The attentive-ios-sdk is available through [CocoaPods](https://cocoapods.org). To install the SDK in a separate project using Cocoapods, include the pod in your application’s Podfile:
 
-```
+```ruby
 target 'MyApp' do
-  pod 'attentive-ios-sdk', 'THE_SDK_VERSION'
+  pod 'ATTNSDKFramework', '~> 0.6'
 end
 ```
 
 And then make sure to run:
 
-```
+```ruby
 pod install
 ```
 
 Check for new versions of the SDK using this command:
 
-```
-pod update attentive-ios-sdk
+```ruby
+pod update ATTNSDKFramework
 ```
 
 You can then update the version in your pod file and run `pod install` again to pull the changes.
+
+> [!IMPORTANT]
+> `attentive-ios-sdk` was deprecated in favor of `ATTNSDKFramework`. Please update your Podfile with the newest name for the SDK.
 
 ### Swift Package Manager
 
@@ -34,10 +37,10 @@ We also support adding the dependency via Swift Package Manager.
 
 In your applications `Package.swift` file, add the attentive-ios-sdk as a dependency:
 
-```
+```swift
 dependencies: [
     // your other app dependencies
-    .package(url: "https://github.com/attentive-mobile/attentive-ios-sdk", from: "THE_SDK_VERSION"),
+    .package(url: "https://github.com/attentive-mobile/attentive-ios-sdk", from: "0.6.0"),
 ],
 ```
 
@@ -58,7 +61,7 @@ To check for new major and minor versions of this SDK, navigate to the [releases
 See the [Example Project](https://github.com/attentive-mobile/attentive-ios-sdk/tree/main/Example) for a sample of how the Attentive
 IOS SDK is used.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Please refrain from using any internal or undocumented classes or methods as they may change between releases.
 
 ### Initialize the SDK

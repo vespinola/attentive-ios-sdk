@@ -8,7 +8,7 @@
 import Foundation
 import os
 import UIKit
-import attentive_ios_sdk_framework
+import ATTNSDKFramework
 
 class ProductViewController : UIViewController {
     @IBOutlet var addToCartBtn : UIButton?

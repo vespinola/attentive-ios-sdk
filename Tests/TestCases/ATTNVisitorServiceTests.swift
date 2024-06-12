@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import attentive_ios_sdk_framework
+@testable import ATTNSDKFramework
 
 final class ATTNVisitorServiceTests: XCTestCase {
   private var sut: ATTNVisitorService!
