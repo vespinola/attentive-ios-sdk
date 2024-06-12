@@ -8,5 +8,5 @@
 import Foundation
 
 struct ATTNConstants {
-  static let sdkVersion = "0.5.1"
+  static let sdkVersion = "0.6.0-beta.1"
 }
