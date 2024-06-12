@@ -11,6 +11,7 @@ import Foundation
 public final class ATTNUserIdentity: NSObject {
   @objc public var identifiers: [String: Any] {
     willSet {
+      guard !newValue.isEmpty else { return }
       validate(identifiers: newValue)
     }
   }

@@ -4,17 +4,22 @@
 import PackageDescription
 
 let package = Package(
-	name: "ATTNSDKFramework",
-	platforms: [.iOS(.v12)],
-	products: [
-		.library(name: "ATTNSDKFramework", targets: ["ATTNSDKFramework"])
-	],
-	targets: [
-		.target(
+  name: "ATTNSDKFramework",
+  platforms: [.iOS(.v12)],
+  products: [
+    .library(name: "ATTNSDKFramework", targets: ["ATTNSDKFramework", "ATTNSDKFrameworkObjc"])
+  ],
+  targets: [
+    .target(
       name: "ATTNSDKFramework",
       path: "Sources",
-      resources: [ .process("Resources") ],
+      resources: [ .process("Resources") ]
+    ),
+    .target(
+      name: "ATTNSDKFrameworkObjc",
+      dependencies: [],
+      path: "Objc",
       publicHeadersPath: "include"
-		)
-	]
+    )
+  ]
 )

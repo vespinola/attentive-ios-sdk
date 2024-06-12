@@ -1,5 +1,5 @@
 //
-//  ATTNSDKConstants.swift
+//  ATTNConstants.swift
 //  attentive-ios-sdk-framework
 //
 //  Created by Vladimir - Work on 2024-06-03.

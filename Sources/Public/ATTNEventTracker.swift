@@ -22,8 +22,13 @@ public final class ATTNEventTracker: NSObject {
     _sharedInstance = ATTNEventTracker(sdk: sdk)
   }
 
+  @available(swift, deprecated: 0.6, message: "Please use record(event: ATTNEvent) instead.")
   @objc(recordEvent:)
   public func record(_ event: ATTNEvent) {
+    sdk.send(event: event)
+  }
+
+  public func record(event: ATTNEvent) {
     sdk.send(event: event)
   }
 

@@ -1,0 +1,15 @@
+{
+  "originHash" : "6b3de92165125b4410ec54f34acb3ca6e0b8fc849f4bd109516c1eddb59f6bf0",
+  "pins" : [
+    {
+      "identity" : "attentive-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/vespinola/attentive-ios-sdk.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "46691f276e02add53c6f6a0af5cd1c13c04c9497"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -26,7 +26,7 @@
 		FB2984082C0FAE040039759C /* ATTNAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2984072C0FAE040039759C /* ATTNAPITests.swift */; };
 		FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */; };
 		FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */; };
-		FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */; };
+		FB35C17D2C0E039E009FA048 /* ATTNConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */; };
 		FB35C1832C0E1FD7009FA048 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1822C0E1FD7009FA048 /* URLSession+Extension.swift */; };
 		FB35C1852C0E35E7009FA048 /* ATTNJsonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */; };
 		FB35C1872C0E3929009FA048 /* ATTNEventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1862C0E3929009FA048 /* ATTNEventTypes.swift */; };
@@ -67,6 +67,9 @@
 		FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */; };
 		FBA9FA1C2C0A77AB00C65024 /* ATTNUserIdentity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */; };
 		FBA9FA1D2C0A77AB00C65024 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */; };
+		FBF78AAB2C135E0700596479 /* ATTNSDKFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF78AA92C135E0700596479 /* ATTNSDKFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FBF78AAE2C135ECD00596479 /* ATTNConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF78AAD2C135ECD00596479 /* ATTNConstants.m */; };
+		FBF78AB42C13A1BF00596479 /* ATTNConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = FBF78AAC2C135ECD00596479 /* ATTNConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +117,7 @@
 		FB2984072C0FAE040039759C /* ATTNAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAPITests.swift; sourceTree = "<group>"; };
 		FB35C1782C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeTriggerStatus.swift; sourceTree = "<group>"; };
 		FB35C17A2C0E0353009FA048 /* ATTNIdentifierType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNIdentifierType.swift; sourceTree = "<group>"; };
-		FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNSDKConstants.swift; sourceTree = "<group>"; };
+		FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNConstants.swift; sourceTree = "<group>"; };
 		FB35C1822C0E1FD7009FA048 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNJsonUtils.swift; sourceTree = "<group>"; };
 		FB35C1862C0E3929009FA048 /* ATTNEventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNEventTypes.swift; sourceTree = "<group>"; };
@@ -155,6 +158,10 @@
 		FBA9F9FD2C0A77AB00C65024 /* ATTNSDKMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNSDKMode.swift; sourceTree = "<group>"; };
 		FBA9F9FE2C0A77AB00C65024 /* ATTNUserIdentity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserIdentity.swift; sourceTree = "<group>"; };
 		FBA9FA012C0A77AB00C65024 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FBF78AA92C135E0700596479 /* ATTNSDKFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ATTNSDKFramework.h; path = Framework/ATTNSDKFramework.h; sourceTree = "<group>"; };
+		FBF78AAA2C135E0700596479 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = module.modulemap; path = Framework/module.modulemap; sourceTree = "<group>"; };
+		FBF78AAC2C135ECD00596479 /* ATTNConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ATTNConstants.h; sourceTree = "<group>"; };
+		FBF78AAD2C135ECD00596479 /* ATTNConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATTNConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +187,7 @@
 		58332EB9292EC18800B1ECF3 = {
 			isa = PBXGroup;
 			children = (
+				FBF78AA82C135D3E00596479 /* Objc */,
 				FBA9FA042C0A77AB00C65024 /* Sources */,
 				58332EDB292EC24200B1ECF3 /* Supporting Files */,
 				FB2983E32C0F73990039759C /* Tests */,
@@ -203,6 +211,8 @@
 				FB0E49E52BFBB1900025E281 /* Package.swift */,
 				58332EDF292EC26000B1ECF3 /* LICENSE */,
 				58332EDE292EC26000B1ECF3 /* README.md */,
+				FBF78AA92C135E0700596479 /* ATTNSDKFramework.h */,
+				FBF78AAA2C135E0700596479 /* module.modulemap */,
 				58332EDC292EC25500B1ECF3 /* attentive-ios-sdk.podspec */,
 			);
 			name = "Supporting Files";
@@ -403,11 +413,28 @@
 				FBA9F9ED2C0A77AB00C65024 /* ATTNPersistentStorage.swift */,
 				FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */,
 				FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */,
-				FB35C17C2C0E039E009FA048 /* ATTNSDKConstants.swift */,
+				FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */,
 				FBA9F9FF2C0A77AB00C65024 /* Public */,
 				FBA9FA022C0A77AB00C65024 /* Resources */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		FBF78AA72C135C7300596479 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				FBF78AAC2C135ECD00596479 /* ATTNConstants.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		FBF78AA82C135D3E00596479 /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+				FBF78AAD2C135ECD00596479 /* ATTNConstants.m */,
+				FBF78AA72C135C7300596479 /* include */,
+			);
+			path = Objc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +444,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBF78AAB2C135E0700596479 /* ATTNSDKFramework.h in Headers */,
+				FBF78AB42C13A1BF00596479 /* ATTNConstants.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +581,7 @@
 				FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */,
 				FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */,
 				FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */,
+				FBF78AAE2C135ECD00596479 /* ATTNConstants.m in Sources */,
 				FBA9FA072C0A77AB00C65024 /* ATTNEventRequest.swift in Sources */,
 				FB35C1932C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift in Sources */,
 				FB35C18D2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift in Sources */,
@@ -579,7 +609,7 @@
 				FBA9FA102C0A77AB00C65024 /* ATTNAddToCartEvent.swift in Sources */,
 				FB35C17B2C0E0353009FA048 /* ATTNIdentifierType.swift in Sources */,
 				FBA9FA0A2C0A77AB00C65024 /* ATTNCreativeUrlProvider.swift in Sources */,
-				FB35C17D2C0E039E009FA048 /* ATTNSDKConstants.swift in Sources */,
+				FB35C17D2C0E039E009FA048 /* ATTNConstants.swift in Sources */,
 				FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */,
 				FBA9FA152C0A77AB00C65024 /* ATTNOrder.swift in Sources */,
 				FBA9FA1A2C0A77AB00C65024 /* ATTNSDK.swift in Sources */,
@@ -767,7 +797,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = "";
+				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
@@ -809,7 +839,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.6;
 				MARKETING_VERSION = 1.0;
-				MODULEMAP_FILE = "";
+				MODULEMAP_FILE = "$(SRCROOT)/Framework/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.attentive.attentive-ios-sdk-local";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
