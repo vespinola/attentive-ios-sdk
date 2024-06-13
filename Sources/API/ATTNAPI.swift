@@ -66,6 +66,11 @@ final class ATTNAPI {
       self?.sendEventInternal(event: event, userIdentity: userIdentity, domain: geoAdjustedDomain, callback: callback)
     }
   }
+
+  func update(domain newDomain: String) {
+    domain = newDomain
+    cachedGeoAdjustedDomain = nil
+  }
 }
 
 fileprivate extension ATTNAPI {

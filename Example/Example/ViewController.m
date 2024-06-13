@@ -22,27 +22,9 @@ ATTNSDK *sdk;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = [UIColor systemGray3Color];
-
-  CGFloat contentWidth = self.scrollView.bounds.size.width;
-  CGFloat contentHeight = self.scrollView.bounds.size.height * 3;
-  self.scrollView.contentSize = CGSizeMake(contentWidth, contentHeight);
-
-  CGFloat subviewHeight = (CGFloat)120;
-  CGFloat currentViewOffset = (CGFloat)600;
-
-  while (currentViewOffset < contentHeight) {
-    CGRect frame = CGRectInset(CGRectMake(0, currentViewOffset, contentWidth, subviewHeight), 5, 5);
-    CGFloat hue = currentViewOffset / contentHeight;
-    UIView *subview = [[UIView alloc] initWithFrame:frame];
-    subview.backgroundColor = [UIColor colorWithHue:hue saturation:1 brightness:1 alpha:1];
-    [self.scrollView addSubview:subview];
-
-    currentViewOffset += subviewHeight;
-  }
 
   // Replace with your Attentive domain to test with your Attentive account
-  _domain = @"YOUR_ATTENTIVE_DOMAIN";
+  _domain = @"mobileapps";
   _mode = @"production";
 
   // Setup for Testing purposes only
@@ -66,7 +48,7 @@ ATTNSDK *sdk;
   [sdk identify:_userIdentifiers];
 
   // Attentive Example app specific setup code
-  [_domainLabel setText:_domain];
+  [_domainLabel setText: [NSString stringWithFormat:@"Domain: %@", _domain]];
 }
 
 - (IBAction)creativeButtonPress:(id)sender {
@@ -113,6 +95,45 @@ ATTNSDK *sdk;
   [sdk clearUser];
 }
 
+- (IBAction)swichDomainTapped:(id)sender {
+  [self showAlertForSwitchingDomains];
+}
+
+- (void)showAlertForSwitchingDomains {
+  UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Switch Domain"
+                                                                           message:@"Here you will test switching domains"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+
+  [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+    textField.placeholder = @"Enter the new Domain here";
+  }];
+
+  UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+    UITextField *textField = alertController.textFields.firstObject;
+    [self handleDomainInput:textField.text];
+  }];
+
+  UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                         style:UIAlertActionStyleDefault
+                                                       handler:nil];
+  [alertController addAction:okAction];
+  [alertController addAction:cancelAction];
+
+  [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)handleDomainInput:(NSString *)text {
+  [sdk updateDomain:text];
+
+  _domain = text;
+
+  [_domainLabel setText: [NSString stringWithFormat:@"Domain: %@", _domain]];
+
+  [self showToast:[NSString stringWithFormat:@"New domain is %@", text]];
+}
+
 // Method for setting up UI Tests. Only used for testing purposes
 - (void)setupForUITests {
   // Override the hard-coded domain & mode with the values from the environment variables
@@ -133,6 +154,20 @@ ATTNSDK *sdk;
     NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:bundleIdentifier];
   }
+}
+
+- (void)showToast:(NSString*)message {
+  UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
+                                                                 message:message
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+
+  [self presentViewController:alert animated:YES completion:nil];
+
+  int duration = 3; // duration in seconds
+
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    [alert dismissViewControllerAnimated:YES completion:nil];
+  });
 }
 
 @end

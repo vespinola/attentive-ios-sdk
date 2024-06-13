@@ -28,6 +28,7 @@ struct HomePage: Page {
       XCTFail("Push me to Creative is not visible")
       return self
     }
+    sleep(1)
     XCTAssertTrue(creativeButton.isHittable)
     return self
   }
