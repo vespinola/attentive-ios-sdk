@@ -44,7 +44,7 @@ public final class ATTNSDK: NSObject {
   private var webView: WKWebView?
   private var triggerHandler: ATTNCreativeTriggerCompletionHandler?
 
-  private(set) var api: ATTNAPI
+  private(set) var api: ATTNAPIProtocol
   private(set) var userIdentity: ATTNUserIdentity
 
   private var domain: String
@@ -57,7 +57,7 @@ public final class ATTNSDK: NSObject {
     self.mode = mode
 
     self.userIdentity = .init()
-    self.api = .init(domain: domain)
+    self.api = ATTNAPI(domain: domain)
 
     super.init()
 
@@ -150,6 +150,7 @@ public final class ATTNSDK: NSObject {
 
   @objc(updateDomain:)
   public func update(domain: String) {
+    guard self.domain != domain else { return }
     self.domain = domain
     api.update(domain: domain)
     api.send(userIdentity: userIdentity)
@@ -276,5 +277,10 @@ extension ATTNSDK {
   convenience init(domain: String, mode: ATTNSDKMode, urlBuilder: ATTNCreativeUrlProviding) {
     self.init(domain: domain, mode: mode)
     self.urlBuilder = urlBuilder
+  }
+
+  convenience init(api: ATTNAPIProtocol) {
+    self.init(domain: api.domain)
+    self.api = api
   }
 }
