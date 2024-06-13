@@ -1,0 +1,5 @@
+framework module ATTNSDKFramework {
+  umbrella header "ATTNSDKFramework.h"
+  export *
+  module * { export * }
+}

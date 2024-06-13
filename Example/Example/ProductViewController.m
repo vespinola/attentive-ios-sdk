@@ -6,7 +6,7 @@
 //
 
 #import "ProductViewController.h"
-#import "ImportAttentiveSDK.h"
+#import "ATTNSDKFramework/ATTNSDKFramework-Swift.h"
 
 @interface ProductViewController ()
 

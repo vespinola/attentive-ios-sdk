@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'attentive-ios-sdk'
-  s.version          = '0.5.1'
+  s.version          = '0.6.0-beta.1'
   s.summary          = 'Attentive IOS SDK'
 
 # This description is used to generate tags and improve search results.
@@ -30,11 +30,14 @@ The Attentive IOS SDK provides the functionality to render Attentive signup unit
 
   s.ios.deployment_target = '10.0'
 
-  s.source_files = 'Sources/**/*'
-  
+  s.source_files = 'Sources/**/*.swift', 'Objc/**/*'
+
   s.resource_bundles = {'attentive-ios-sdk' => ['Sources/Resources/PrivacyInfo.xcprivacy']}
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+
+  s.deprecated = true
+  s.deprecated_in_favor_of = 'ATTNSDKFramework'
 end

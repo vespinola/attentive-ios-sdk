@@ -1,5 +1,6 @@
 #import "ViewController.h"
-#import "ImportAttentiveSDK.h"
+#import "ATTNSDKFramework/ATTNSDKFramework-Swift.h"
+#import <WebKit/WebKit.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -56,12 +57,12 @@ ATTNSDK *sdk;
   [ATTNEventTracker setupWithSdk:sdk];
 
   // Register the current user with the Attentive SDK by calling the `identify` method. Each identifier is optional, but the more identifiers you provide the better the Attentive SDK will function.
-  _userIdentifiers = @{IDENTIFIER_TYPE_PHONE : @"+14156667777",
-                       IDENTIFIER_TYPE_EMAIL : @"someemail@email.com",
-                       IDENTIFIER_TYPE_CLIENT_USER_ID : @"APP_USER_ID",
-                       IDENTIFIER_TYPE_SHOPIFY_ID : @"207119551",
-                       IDENTIFIER_TYPE_KLAVIYO_ID : @"555555",
-                       IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS : @{@"customId" : @"customIdValue"}};
+  _userIdentifiers = @{ATTNIdentifierType.phone : @"+14156667777",
+                       ATTNIdentifierType.email : @"someemail@email.com",
+                       ATTNIdentifierType.clientUserId : @"APP_USER_ID",
+                       ATTNIdentifierType.shopifyId : @"207119551",
+                       ATTNIdentifierType.klaviyoId : @"555555",
+                       ATTNIdentifierType.customIdentifiers : @{@"customId" : @"customIdValue"}};
   [sdk identify:_userIdentifiers];
 
   // Attentive Example app specific setup code
@@ -77,13 +78,13 @@ ATTNSDK *sdk;
   // You can also call [sdk trigger:self.view] without a callback handler
   [sdk trigger:self.view
        handler:^(NSString *triggerStatus) {
-         if (triggerStatus == CREATIVE_TRIGGER_STATUS_OPENED) {
+         if (triggerStatus == ATTNCreativeTriggerStatus.opened) {
            NSLog(@"Opened the Creative!");
-         } else if (triggerStatus == CREATIVE_TRIGGER_STATUS_NOT_OPENED) {
+         } else if (triggerStatus == ATTNCreativeTriggerStatus.notOpened) {
            NSLog(@"Couldn't open the Creative!");
-         } else if (triggerStatus == CREATIVE_TRIGGER_STATUS_CLOSED) {
+         } else if (triggerStatus == ATTNCreativeTriggerStatus.closed) {
            NSLog(@"Closed the Creative!");
-         } else if (triggerStatus == CREATIVE_TRIGGER_STATUS_NOT_CLOSED) {
+         } else if (triggerStatus == ATTNCreativeTriggerStatus.notClosed) {
            NSLog(@"Couldn't close the Creative!");
          }
        }];
