@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/attentive-mobile/attentive-ios-sdk",
       "state" : {
-        "revision" : "16ea6c5924b6431d996f38d057b9a55e6639ed03",
-        "version" : "0.6.0"
+        "branch" : "main",
+        "revision" : "16ea6c5924b6431d996f38d057b9a55e6639ed03"
       }
     }
   ],
