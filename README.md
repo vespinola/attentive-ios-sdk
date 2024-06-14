@@ -72,7 +72,7 @@ file after installing the SDK:
 #### Swift
 
 ```swift
-import attentive_ios_sdk
+import ATTNSDKFramework
 ```
 
 ```swift
@@ -89,7 +89,8 @@ ATTNEventTracker.setup(with: sdk)
 #### Objective-C
 
 ```objectiveC
-#import "attentive_ios_sdk/attentive-ios-sdk-umbrella.h"
+#import "ATTNSDKFramework-Swift.h"
+#import "ATTNSDKFramework-umbrella.h"
 ```
 
 ```objectiveC
@@ -221,6 +222,24 @@ ATTNOrder* order = [[ATTNOrder alloc] initWithOrderId:@"778899"];
 ATTNPurchaseEvent* purchase = [[ATTNPurchaseEvent alloc] initWithItems:@[item] order:order];
 
 [[ATTNEventTracker sharedInstance] recordEvent:purchase];
+```
+
+### Switch to another domain
+
+Reinitialize the SDK with a different domain.
+
+#### Swift
+
+```swift
+let sdk = ATTNSDK(domain: "domain")
+sdk.update(domain: "differentDomain")
+```
+
+#### Objective-C
+
+```objectivec
+ATTNSDK *sdk = [[ATTNSDK alloc] initWithDomain:@"domain"];
+[sdk updateDomain: @"differentDomain"];
 ```
 
 ### Clear the current user
