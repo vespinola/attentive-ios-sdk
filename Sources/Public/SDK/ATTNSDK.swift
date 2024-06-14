@@ -279,8 +279,14 @@ extension ATTNSDK {
     self.urlBuilder = urlBuilder
   }
 
-  convenience init(api: ATTNAPIProtocol) {
+  convenience init(api: ATTNAPIProtocol, urlBuilder: ATTNCreativeUrlProviding? = nil) {
     self.init(domain: api.domain)
     self.api = api
+    guard let urlBuilder = urlBuilder else { return }
+    self.urlBuilder = urlBuilder
+  }
+
+  func getDomain() -> String {
+    domain
   }
 }

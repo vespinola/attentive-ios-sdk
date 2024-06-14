@@ -12,6 +12,8 @@
 		58332EE1292EC26000B1ECF3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 58332EDF292EC26000B1ECF3 /* LICENSE */; };
 		58B01AC5294D44140001CEBF /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B01AB6294D44140001CEBF /* libOCMock.a */; };
 		58D52E1D292EC52B00CF32DE /* ATTNSDKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58332EC3292EC18800B1ECF3 /* ATTNSDKFramework.framework */; };
+		FB080C712C1C755A00834BAA /* ATTNAPISpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65536D2C1B7747008DB3B1 /* ATTNAPISpy.swift */; };
+		FB080C722C1C755F00834BAA /* ATTNCreativeUrlProviderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB080C6F2C1C752E00834BAA /* ATTNCreativeUrlProviderSpy.swift */; };
 		FB2983E42C0F73990039759C /* ATTNAppInfoMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2983D02C0F73990039759C /* ATTNAppInfoMock.swift */; };
 		FB2983E52C0F73990039759C /* ATTNUserAgentBuilderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2983D12C0F73990039759C /* ATTNUserAgentBuilderMock.swift */; };
 		FB2983F42C0F759D0039759C /* ATTNVisitorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2983F32C0F759D0039759C /* ATTNVisitorServiceTests.swift */; };
@@ -43,7 +45,6 @@
 		FB60AF0B2C1211C700C61537 /* ATTNEventURLProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB60AF0A2C1211C700C61537 /* ATTNEventURLProvider.swift */; };
 		FB65536A2C1B72D4008DB3B1 /* ATTNSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6553692C1B72D4008DB3B1 /* ATTNSDKTests.swift */; };
 		FB65536C2C1B74A9008DB3B1 /* ATTNAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65536B2C1B74A9008DB3B1 /* ATTNAPIProtocol.swift */; };
-		FB65536E2C1B7747008DB3B1 /* ATTNAPISpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB65536D2C1B7747008DB3B1 /* ATTNAPISpy.swift */; };
 		FB90EF0B2C109CB4004DFC4A /* ATTNAPIITTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0A2C109CB4004DFC4A /* ATTNAPIITTests.swift */; };
 		FB90EF0D2C10A7F7004DFC4A /* NSURLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0C2C10A7F7004DFC4A /* NSURLSessionDataTaskMock.swift */; };
 		FB90EF0F2C10A81E004DFC4A /* NSURLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0E2C10A81E004DFC4A /* NSURLSessionMock.swift */; };
@@ -106,6 +107,7 @@
 		58B01AC3294D44140001CEBF /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMConstraint.h; sourceTree = "<group>"; };
 		58B01AC4294D44140001CEBF /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
 		58D52E19292EC52B00CF32DE /* attentive-ios-sdk Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "attentive-ios-sdk Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB080C6F2C1C752E00834BAA /* ATTNCreativeUrlProviderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNCreativeUrlProviderSpy.swift; sourceTree = "<group>"; };
 		FB0E49E52BFBB1900025E281 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		FB2983D02C0F73990039759C /* ATTNAppInfoMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAppInfoMock.swift; sourceTree = "<group>"; };
 		FB2983D12C0F73990039759C /* ATTNUserAgentBuilderMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNUserAgentBuilderMock.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				FB65536D2C1B7747008DB3B1 /* ATTNAPISpy.swift */,
+				FB080C6F2C1C752E00834BAA /* ATTNCreativeUrlProviderSpy.swift */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -609,7 +612,6 @@
 				FB35C1832C0E1FD7009FA048 /* URLSession+Extension.swift in Sources */,
 				FB35C1872C0E3929009FA048 /* ATTNEventTypes.swift in Sources */,
 				FBA9FA162C0A77AB00C65024 /* ATTNPrice.swift in Sources */,
-				FB65536E2C1B7747008DB3B1 /* ATTNAPISpy.swift in Sources */,
 				FB35C1912C0E506D009FA048 /* ATTNEventRequestProvider.swift in Sources */,
 				FB35C18B2C0E3F27009FA048 /* ATTNEvent+Extension.swift in Sources */,
 				FB60AF0B2C1211C700C61537 /* ATTNEventURLProvider.swift in Sources */,
@@ -645,6 +647,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB080C712C1C755A00834BAA /* ATTNAPISpy.swift in Sources */,
 				FB90EF0B2C109CB4004DFC4A /* ATTNAPIITTests.swift in Sources */,
 				FB90EF0F2C10A81E004DFC4A /* NSURLSessionMock.swift in Sources */,
 				FB2983E42C0F73990039759C /* ATTNAppInfoMock.swift in Sources */,
@@ -652,6 +655,7 @@
 				FB2983F62C0F7CF10039759C /* ATTNUserIdentityTests.swift in Sources */,
 				FB2983F42C0F759D0039759C /* ATTNVisitorServiceTests.swift in Sources */,
 				FB2983FA2C0F80A30039759C /* ATTNPersistentStorageTests.swift in Sources */,
+				FB080C722C1C755F00834BAA /* ATTNCreativeUrlProviderSpy.swift in Sources */,
 				FB2983E52C0F73990039759C /* ATTNUserAgentBuilderMock.swift in Sources */,
 				FB2984082C0FAE040039759C /* ATTNAPITests.swift in Sources */,
 				FB65536A2C1B72D4008DB3B1 /* ATTNSDKTests.swift in Sources */,

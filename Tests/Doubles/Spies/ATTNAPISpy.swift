@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import ATTNSDKFramework
 
 final class ATTNAPISpy: ATTNAPIProtocol {
   private(set) var sendUserIdentityWasCalled = false
