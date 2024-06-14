@@ -25,6 +25,7 @@
 		69CCAF5C28DCDE5A007620BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5B28DCDE5A007620BD /* Assets.xcassets */; };
 		69CCAF5F28DCDE5A007620BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CCAF5D28DCDE5A007620BD /* LaunchScreen.storyboard */; };
 		69CCAF6228DCDE5A007620BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CCAF6128DCDE5A007620BD /* main.m */; };
+		FB080C742C1C8AE500834BAA /* SwitchDomainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB080C732C1C8AE500834BAA /* SwitchDomainPage.swift */; };
 		FB2F35B32C18D4CE0016CAE8 /* ATTNSDKFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2F35B22C18D4CE0016CAE8 /* ATTNSDKFramework.framework */; };
 		FB2F35B42C18D4CE0016CAE8 /* ATTNSDKFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB2F35B22C18D4CE0016CAE8 /* ATTNSDKFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB90EF122C10AE66004DFC4A /* CreativeUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF112C10AE66004DFC4A /* CreativeUITest.swift */; };
@@ -82,6 +83,7 @@
 		69CCAF6028DCDE5A007620BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CCAF6128DCDE5A007620BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69D3C149299EF2D10027934F /* CreativeUITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreativeUITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB080C732C1C8AE500834BAA /* SwitchDomainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchDomainPage.swift; sourceTree = "<group>"; };
 		FB2F35B22C18D4CE0016CAE8 /* ATTNSDKFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ATTNSDKFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6723742C134C13008D5516 /* Example - Pod-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example - Pod-Bridging-Header.h"; sourceTree = "<group>"; };
 		FB90EF102C10AE66004DFC4A /* CreativeUITest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CreativeUITest-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				FB90EF1F2C10CF13004DFC4A /* SMSPage.swift */,
 				FB90EF212C10D412004DFC4A /* PricacyPolicyPage.swift */,
 				FB90EF232C10D83B004DFC4A /* ProductPage.swift */,
+				FB080C732C1C8AE500834BAA /* SwitchDomainPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				FB90EF202C10CF13004DFC4A /* SMSPage.swift in Sources */,
 				FB90EF152C10B871004DFC4A /* HomePage.swift in Sources */,
 				FB90EF122C10AE66004DFC4A /* CreativeUITest.swift in Sources */,
+				FB080C742C1C8AE500834BAA /* SwitchDomainPage.swift in Sources */,
 				FB90EF1C2C10B959004DFC4A /* XCUIElement+Extension.swift in Sources */,
 				FB90EF172C10B887004DFC4A /* BaseXCTestCase.swift in Sources */,
 				FB90EF222C10D412004DFC4A /* PricacyPolicyPage.swift in Sources */,

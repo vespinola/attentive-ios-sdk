@@ -38,6 +38,24 @@ struct HomePage: Page {
     productTabItem.tapOnElement()
     return self
   }
+
+  @discardableResult
+  static func tapOnSwitchDomain() -> Self.Type {
+    switchDomainButton.tapOnElement()
+    return self
+  }
+
+  @discardableResult
+  static func verifyDomainTitle(text: String) -> Self.Type {
+    let domainLabel = app.staticTexts["Domain: \(text)"]
+
+    guard domainLabel.elementExists() else {
+      XCTFail("Domain label does not exists")
+      return self
+    }
+
+    return self
+  }
 }
 
 fileprivate extension HomePage {
@@ -51,5 +69,9 @@ fileprivate extension HomePage {
 
   static var productTabItem: XCUIElement {
     app.tabBars.buttons["Product"]
+  }
+
+  static var switchDomainButton: XCUIElement {
+    app.buttons["Switch Domain"]
   }
 }
