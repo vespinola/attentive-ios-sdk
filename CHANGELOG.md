@@ -4,21 +4,21 @@
 * `ATTNEventTracker.sharedInstance()` returns now and Optional. Update your codebase accordandly to avoid operating over a nil instance.
 * For **SPM**, Objective-C target **ATTNSDKFrameworkObjc** was added due to mixed languages limitations in the **Sources/** folder. Please use `import ATTNSDKFrameworkObjc` to access the following global constants.
 
-| Creative   |
-|------------|
-| CREATIVE_TRIGGER_STATUS_OPENED |
-| CREATIVE_TRIGGER_STATUS_CLOSED |
-| CREATIVE_TRIGGER_STATUS_NOT_OPENED |
-| CREATIVE_TRIGGER_STATUS_NOT_CLOSED |
+  | Creative   |
+  |------------|
+  | CREATIVE_TRIGGER_STATUS_OPENED |
+  | CREATIVE_TRIGGER_STATUS_CLOSED |
+  | CREATIVE_TRIGGER_STATUS_NOT_OPENED |
+  | CREATIVE_TRIGGER_STATUS_NOT_CLOSED |
 
-| Identity   |
-|------------|
-| IDENTIFIER_TYPE_CLIENT_USER_ID |
-| IDENTIFIER_TYPE_PHONE |
-| IDENTIFIER_TYPE_EMAIL |
-| IDENTIFIER_TYPE_SHOPIFY_ID |
-| IDENTIFIER_TYPE_KLAVIYO_ID |
-| IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS |
+  | Identity   |
+  |------------|
+  | IDENTIFIER_TYPE_CLIENT_USER_ID |
+  | IDENTIFIER_TYPE_PHONE |
+  | IDENTIFIER_TYPE_EMAIL |
+  | IDENTIFIER_TYPE_SHOPIFY_ID |
+  | IDENTIFIER_TYPE_KLAVIYO_ID |
+  | IDENTIFIER_TYPE_CUSTOM_IDENTIFIERS |
 
 ### Bug Fixes
 
