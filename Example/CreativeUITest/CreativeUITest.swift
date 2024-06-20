@@ -20,8 +20,6 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
 
     XCUIApplication().terminate()
 
-    deleteApp()
-
     super.tearDown()
   }
 
@@ -138,7 +136,7 @@ extension CreativeUITest {
 
   func resetUserDefaults() {
     // Reset user defaults for example app, not the test runner
-    UserDefaults.standard.removePersistentDomain(forName: "com.attentive.ExampleTest")
+    UserDefaults.standard.removePersistentDomain(forName: "com.attentive.Example")
   }
 }
 
