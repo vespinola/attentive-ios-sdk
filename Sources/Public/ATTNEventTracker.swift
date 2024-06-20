@@ -44,4 +44,8 @@ extension ATTNEventTracker {
   static func destroy() {
     _sharedInstance = nil
   }
+
+  func getSdk() -> ATTNSDK {
+    sdk
+  }
 }

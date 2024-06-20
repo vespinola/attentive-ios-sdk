@@ -28,6 +28,7 @@ struct HomePage: Page {
       XCTFail("Push me to Creative is not visible")
       return self
     }
+    sleep(1)
     XCTAssertTrue(creativeButton.isHittable)
     return self
   }
@@ -35,6 +36,24 @@ struct HomePage: Page {
   @discardableResult
   static func navigateToProduct() -> Self.Type {
     productTabItem.tapOnElement()
+    return self
+  }
+
+  @discardableResult
+  static func tapOnSwitchDomain() -> Self.Type {
+    switchDomainButton.tapOnElement()
+    return self
+  }
+
+  @discardableResult
+  static func verifyDomainTitle(text: String) -> Self.Type {
+    let domainLabel = app.staticTexts["Domain: \(text)"]
+
+    guard domainLabel.elementExists() else {
+      XCTFail("Domain label does not exists")
+      return self
+    }
+
     return self
   }
 }
@@ -50,5 +69,9 @@ fileprivate extension HomePage {
 
   static var productTabItem: XCUIElement {
     app.tabBars.buttons["Product"]
+  }
+
+  static var switchDomainButton: XCUIElement {
+    app.buttons["Switch Domain"]
   }
 }

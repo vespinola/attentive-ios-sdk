@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFm-Nn-lnh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AFm-Nn-lnh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="31e-te-HMd">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.70276256443298968" green="0.69389011684967661" blue="0.69382289972727507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="bl1-Id-svC"/>
@@ -35,66 +35,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y0K-2a-2oz">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0K-2a-2oz">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Domain:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxU-kM-f6P">
-                                        <rect key="frame" x="176" y="70" width="63" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsW-KC-BMs">
-                                        <rect key="frame" x="247" y="66" width="97" height="28"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EU-4M-k4b">
-                                        <rect key="frame" x="106" y="127" width="202" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Push me for Creative!"/>
-                                        <connections>
-                                            <action selector="creativeButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQG-yF-8JO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaz-PN-whY">
-                                        <rect key="frame" x="88" y="375" width="238" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Push me to Identify!"/>
-                                        <connections>
-                                            <action selector="sendIdentifiersButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1LC-5j-XXO"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZT-nD-dxR">
-                                        <rect key="frame" x="88" y="244" width="238" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="Push me to clear the User!"/>
-                                        <connections>
-                                            <action selector="clearUserButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75P-t0-J5k"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kje-cU-hHI">
-                                        <rect key="frame" x="85" y="509" width="245" height="63"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="tinted" title="View Product Page"/>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FsH-gJ-RUp">
+                                        <rect key="frame" x="0.0" y="56" width="414" height="701"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="E7f-e5-ttw">
+                                                <rect key="frame" x="36" y="24" width="342" height="491.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RNO-mE-pXq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="20.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="YOUR_DOMAIN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KsW-KC-BMs">
+                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="c9U-SE-BbU"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="94F-he-3nT">
+                                                        <rect key="frame" x="0.0" y="56.5" width="342" height="435"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EU-4M-k4b">
+                                                                <rect key="frame" x="0.0" y="0.0" width="342" height="63"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="63" id="ooE-xS-O5f"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" title="Push me for Creative!"/>
+                                                                <connections>
+                                                                    <action selector="creativeButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KQG-yF-8JO"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZT-nD-dxR">
+                                                                <rect key="frame" x="0.0" y="93" width="342" height="63"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" title="Push me to clear the User!"/>
+                                                                <connections>
+                                                                    <action selector="clearUserButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="75P-t0-J5k"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oaz-PN-whY">
+                                                                <rect key="frame" x="0.0" y="186" width="342" height="63"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" title="Push me to Identify!"/>
+                                                                <connections>
+                                                                    <action selector="sendIdentifiersButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1LC-5j-XXO"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kje-cU-hHI">
+                                                                <rect key="frame" x="0.0" y="279" width="342" height="63"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" title="View Product Page"/>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-1o-sXi">
+                                                                <rect key="frame" x="0.0" y="372" width="342" height="63"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="tinted" title="Switch Domain"/>
+                                                                <connections>
+                                                                    <action selector="swichDomainTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jlx-VC-fVt"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="E7f-e5-ttw" firstAttribute="leading" secondItem="FsH-gJ-RUp" secondAttribute="leading" constant="36" id="2IJ-bu-aHg"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E7f-e5-ttw" secondAttribute="bottom" id="82P-cv-9y7"/>
+                                            <constraint firstItem="E7f-e5-ttw" firstAttribute="top" secondItem="FsH-gJ-RUp" secondAttribute="top" constant="24" id="91M-3F-WmC"/>
+                                            <constraint firstAttribute="trailing" secondItem="E7f-e5-ttw" secondAttribute="trailing" constant="36" id="rhi-hX-En6"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <viewLayoutGuide key="contentLayoutGuide" id="bzx-DO-PoE"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="2Af-cn-Fg7"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FsH-gJ-RUp" firstAttribute="centerY" secondItem="y0K-2a-2oz" secondAttribute="centerY" id="4f1-S7-Tkh"/>
+                                    <constraint firstAttribute="trailing" secondItem="FsH-gJ-RUp" secondAttribute="trailing" id="5i4-sQ-uNx"/>
+                                    <constraint firstAttribute="bottom" secondItem="FsH-gJ-RUp" secondAttribute="bottom" id="Ddh-Qd-Vbo"/>
+                                    <constraint firstItem="FsH-gJ-RUp" firstAttribute="centerX" secondItem="y0K-2a-2oz" secondAttribute="centerX" id="VCN-V1-aZs"/>
+                                    <constraint firstItem="FsH-gJ-RUp" firstAttribute="top" secondItem="y0K-2a-2oz" secondAttribute="topMargin" id="m16-92-NhH"/>
+                                    <constraint firstItem="FsH-gJ-RUp" firstAttribute="leading" secondItem="y0K-2a-2oz" secondAttribute="leading" id="oNr-Bh-7D7"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="y0K-2a-2oz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0oZ-bP-EHM"/>
+                            <constraint firstItem="y0K-2a-2oz" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="RAL-fx-MJh"/>
+                            <constraint firstItem="y0K-2a-2oz" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nmj-r9-CTV"/>
+                            <constraint firstItem="y0K-2a-2oz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="vfa-44-SrS"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Main" id="c2C-4K-f9R"/>
+                    <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" id="c2C-4K-f9R"/>
                     <navigationItem key="navigationItem" id="4gh-gN-hKC"/>
                     <connections>
                         <outlet property="clearUserButton" destination="FZT-nD-dxR" id="BfD-L6-L38"/>
@@ -159,7 +200,7 @@
                         <viewLayoutGuide key="safeArea" id="KyE-6k-rz2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Product" id="Kez-RS-Jz1"/>
+                    <tabBarItem key="tabBarItem" title="Product" image="cart.fill" catalog="system" id="Kez-RS-Jz1"/>
                     <navigationItem key="navigationItem" id="gu9-Nv-e2w"/>
                     <connections>
                         <outlet property="addToCartButton" destination="oAv-pI-GrN" id="Mjq-gi-XsA"/>
@@ -174,6 +215,8 @@
     </scenes>
     <resources>
         <image name="ProductImage" width="122" height="122"/>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

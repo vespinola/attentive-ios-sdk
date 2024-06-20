@@ -30,7 +30,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
 
     HomePage
       .tapOnPushMeToCreative()
-      .addDelay(seconds: 3)
+      .addDelay(seconds: 4)
 
     CreativePage.tapOnCloseCreative()
 
@@ -95,6 +95,29 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
       .navigateToMain()
 
     HomePage.verifyPushMeToCreativeIsHittable()
+  }
+
+  func testLoadCreative_switchDomain_shouldDisplayNewCreative() {
+    launch(with: .production)
+
+    HomePage
+      .verifyDomainTitle(text: "mobileapps")
+      .tapOnSwitchDomain()
+
+    SwitchDomainPage
+      .verifyIfTitleExists()
+      .fillDomainInput(text: "games")
+      .tapOnOk()
+      .addDelay(seconds: 1)
+
+    HomePage
+      .verifyDomainTitle(text: "games")
+      .tapOnPushMeToCreative()
+      .addDelay(seconds: 4)
+
+    CreativePage
+      .verifyIfElementExists(label: "AttentiveGames", elementType: .image)
+      .tapOnCloseCreative()
   }
 }
 

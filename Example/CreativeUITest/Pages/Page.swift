@@ -37,4 +37,16 @@ extension Page {
     window.tap()
     return self
   }
+
+  @discardableResult
+  static func verifyIfElementExists(label: String, elementType: XCUIElement.ElementType) -> Self.Type {
+    let element = app.descendants(matching: elementType)[label]
+
+    guard element.elementExists() else {
+      XCTFail("Element with label \(label) of type \(elementType) does not exists")
+      return self
+    }
+
+    return self
+  }
 }

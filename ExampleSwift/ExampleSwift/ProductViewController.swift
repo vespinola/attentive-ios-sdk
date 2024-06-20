@@ -20,15 +20,15 @@ class ProductViewController : UIViewController {
         
         let item : ATTNItem = buildItem()
         let productView : ATTNProductViewEvent = ATTNProductViewEvent(items: [item])
-        ATTNEventTracker.sharedInstance()?.record(productView)
-        
+        ATTNEventTracker.sharedInstance()?.record(event: productView)
+
         showToast(message: "Product View event sent")
     }
     
     @IBAction func addToCartBtnPressed(sender: Any) {
         let item : ATTNItem = self.buildItem()
         let addToCart : ATTNAddToCartEvent = ATTNAddToCartEvent(items: [item])
-        ATTNEventTracker.sharedInstance()?.record(addToCart)
+        ATTNEventTracker.sharedInstance()?.record(event: addToCart)
 
         showToast(message: "Add To Cart event sent")
     }
@@ -41,14 +41,14 @@ class ProductViewController : UIViewController {
         // Create PurchaseEvent
         let purchase : ATTNPurchaseEvent = ATTNPurchaseEvent(items: [item], order: order)
         // Send the PurchaseEvent
-        ATTNEventTracker.sharedInstance()?.record(purchase)
+        ATTNEventTracker.sharedInstance()?.record(event: purchase)
 
         showToast(message: "Purchase event sent")
     }
     
     @IBAction func customEventBtnPressed(sender: Any) {
         guard let customEvent = ATTNCustomEvent(type: "Added to Wishlist", properties: ["wishlistName": "Gift Ideas"]) else { return }
-        ATTNEventTracker.sharedInstance()?.record(customEvent)
+        ATTNEventTracker.sharedInstance()?.record(event: customEvent)
 
         showToast(message: "Custom event sent")
     }

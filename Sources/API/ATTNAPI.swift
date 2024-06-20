@@ -9,7 +9,7 @@ import Foundation
 
 public typealias ATTNAPICallback = (Data?, URL?, URLResponse?, Error?) -> Void
 
-final class ATTNAPI {
+final class ATTNAPI: ATTNAPIProtocol {
   private enum RequestConstants {
     static var dtagUrlFormat: String { "https://cdn.attn.tv/%@/dtag.js" }
     static var regexPattern: String { "='([a-z0-9-]+)[.]attn[.]tv'" }
@@ -19,9 +19,10 @@ final class ATTNAPI {
   private var eventUrlProvider: ATTNEventURLProviding = ATTNEventURLProvider()
 
   private(set) var urlSession: URLSession
-  private(set) var cachedGeoAdjustedDomain: String?
 
-  private var domain: String
+  // MARK: ATTNAPIProtocol Properties
+  var cachedGeoAdjustedDomain: String?
+  var domain: String
 
   init(domain: String) {
     self.urlSession = URLSession.build(withUserAgent: userAgentBuilder.buildUserAgent())
@@ -65,6 +66,11 @@ final class ATTNAPI {
       guard let geoAdjustedDomain = geoAdjustedDomain else { return }
       self?.sendEventInternal(event: event, userIdentity: userIdentity, domain: geoAdjustedDomain, callback: callback)
     }
+  }
+
+  func update(domain newDomain: String) {
+    domain = newDomain
+    cachedGeoAdjustedDomain = nil
   }
 }
 
