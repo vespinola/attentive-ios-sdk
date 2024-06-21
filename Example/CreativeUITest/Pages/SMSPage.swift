@@ -12,7 +12,7 @@ struct SMSPage: Page {
 
   @discardableResult
   static func verifyPrefilledMessage(message: String) -> Self.Type {
-    if okButton.elementExists() {
+    if okButton.elementExists(timeout: 5) {
       okButton.tapOnElement()
     }
 

@@ -12,13 +12,13 @@ struct CreativePage: Page {
 
   @discardableResult
   static func tapOnCloseCreative() -> Self.Type {
-    closeButton.tapOnElement()
+    closeButton.tapOnElement(timeout: Timeout.max)
     return self
   }
 
   @discardableResult
   static func fillEmailInput(text: String) -> Self.Type {
-    emailTextField.tapOnElement()
+    emailTextField.tapOnElement(timeout: Timeout.max)
     emailTextField.fillTextField(text)
     return self
   }
@@ -49,7 +49,7 @@ struct CreativePage: Page {
 
   @discardableResult
   static func verifyPrivacyLinkExists() -> Self.Type {
-    XCTAssertTrue(privacyLink.elementExists())
+    XCTAssertTrue(privacyLink.elementExists(timeout: Timeout.max))
     return self
   }
 }

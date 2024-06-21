@@ -18,7 +18,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     clearCookies()
     resetUserDefaults()
 
-    XCUIApplication().terminate()
+    XCUIApplication().activate()
 
     super.tearDown()
   }
@@ -67,6 +67,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     HomePage.tapOnPushMeToCreative()
 
     CreativePage
+      .addDelay(seconds: 1)
       .tapOnPrivacyLink()
       .addDelay(seconds: 5)
 
