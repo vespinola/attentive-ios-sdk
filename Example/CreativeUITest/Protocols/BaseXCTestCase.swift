@@ -47,7 +47,6 @@ extension BaseXCTestCase {
       "COM_ATTENTIVE_EXAMPLE_DOMAIN" : "mobileapps",
       "COM_ATTENTIVE_EXAMPLE_MODE" : mode.rawValue,
       "COM_ATTENTIVE_EXAMPLE_IS_UI_TEST" : "YES",
-      "COM_ATTENTIVE_EXAMPLE_HOST" : "local"
     ]
 
     if !extras.isEmpty {
@@ -61,6 +60,6 @@ extension BaseXCTestCase {
   var canLaunchExternalApps: Bool {
     ProcessInfo
       .processInfo
-      .environment["COM_ATTENTIVE_EXAMPLE_HOST"] == "local"
+      .environment["COM_ATTENTIVE_EXAMPLE_HOST"] == nil
   }
 }

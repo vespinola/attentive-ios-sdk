@@ -54,7 +54,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
       .addDelay(seconds: 3)
 
     guard canLaunchExternalApps else { return }
-    
+
     SMSPage
       .verifyPrefilledMessage(
         message: "Send this text to subscribe to recurring automated personalized marketing alerts (e.g. cart reminders) from Attentive Mobile Apps Test"
