@@ -25,7 +25,13 @@ struct CreativePage: Page {
 
   @discardableResult
   static func tapOnContinue() -> Self.Type {
-    continueButton.tapOnElement()
+    if continueButton.elementExists() {
+      continueButton.tapOnElement()
+    } else {
+      let goKeyboardButton = app.keyboards.buttons["go"]
+      goKeyboardButton.tapOnElement(timeout: 5)
+    }
+    
     return self
   }
 
