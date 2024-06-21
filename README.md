@@ -242,6 +242,28 @@ ATTNSDK *sdk = [[ATTNSDK alloc] initWithDomain:@"domain"];
 [sdk updateDomain: @"differentDomain"];
 ```
 
+### Skip Fatigue on Creative
+
+Determinates if fatigue rules evaluation will be skipped for Creative. Default value is `false`.
+
+#### Swift
+
+```swift
+let sdk = ATTNSDK(domain: "domain")
+sdk.skipFatigueOnCreative = true
+```
+
+#### Objective-C
+
+```objective-c
+ATTNSDK *sdk = [[ATTNSDK alloc] initWithDomain:@"domain"];
+sdk.skipFatigueOnCreative = YES;
+```
+
+Alternatively, `SKIP_FATIGUE_ON_CREATIVE` can be added as an environment value in the project scheme or even included in CI files.
+
+Environment value can be a string with value `"true"` or `"false"`.
+
 ### Clear the current user
 
 If the user logs out then the current user identifiers should be deleted:
