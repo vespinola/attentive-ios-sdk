@@ -12,7 +12,7 @@ struct HomePage: Page {
   
   @discardableResult
   static func tapOnPushMeToCreative() -> Self.Type {
-    creativeButton.tapOnElement()
+    creativeButton.tapOnElement(timeout: Timeout.max)
     return self
   }
 

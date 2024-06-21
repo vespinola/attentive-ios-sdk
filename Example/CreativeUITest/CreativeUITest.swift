@@ -18,7 +18,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     clearCookies()
     resetUserDefaults()
 
-    XCUIApplication().activate()
+    app.activate()
 
     super.tearDown()
   }
@@ -69,11 +69,12 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     CreativePage
       .addDelay(seconds: 1)
       .tapOnPrivacyLink()
-      .addDelay(seconds: 5)
 
     guard canLaunchExternalApps else { return }
 
-    PricacyPolicyPage.verifyContent()
+    PricacyPolicyPage
+      .addDelay(seconds: 5)
+      .verifyContent()
   }
 
   func testLoadCreative_inDebugMode_showsDebugMessage() {
