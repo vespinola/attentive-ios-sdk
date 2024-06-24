@@ -13,12 +13,17 @@ enum Mode: String {
 }
 
 protocol BaseXCTestCase where Self: XCTestCase {
+  var app: XCUIApplication { get }
   func deleteApp()
   func launch(with mode: Mode)
 }
 
 extension BaseXCTestCase {
+  var app: XCUIApplication { .init() }
+
   func deleteApp() {
+    guard canLaunchExternalApps else { return }
+    
     let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
 
     let icon = springboard.icons["Example - Local"]

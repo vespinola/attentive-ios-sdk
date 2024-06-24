@@ -12,6 +12,10 @@ struct SMSPage: Page {
 
   @discardableResult
   static func verifyPrefilledMessage(message: String) -> Self.Type {
+    if okButton.elementExists(timeout: 5) {
+      okButton.tapOnElement()
+    }
+
     guard let prefilledMessage = messageTextView.value as? String else {
       return self
     }
@@ -28,5 +32,9 @@ struct SMSPage: Page {
 fileprivate extension SMSPage {
   static var messageTextView: XCUIElement {
     smsApp.textFields["Message"]
+  }
+
+  static var okButton: XCUIElement {
+    smsApp.buttons["OK"]
   }
 }

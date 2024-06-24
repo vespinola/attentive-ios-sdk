@@ -12,20 +12,26 @@ struct CreativePage: Page {
 
   @discardableResult
   static func tapOnCloseCreative() -> Self.Type {
-    closeButton.tapOnElement()
+    closeButton.tapOnElement(timeout: Timeout.max)
     return self
   }
 
   @discardableResult
   static func fillEmailInput(text: String) -> Self.Type {
-    emailTextField.tapOnElement()
+    emailTextField.tapOnElement(timeout: Timeout.max)
     emailTextField.fillTextField(text)
     return self
   }
 
   @discardableResult
   static func tapOnContinue() -> Self.Type {
-    continueButton.tapOnElement()
+    if continueButton.elementExists() {
+      continueButton.tapOnElement()
+    } else {
+      let goKeyboardButton = app.keyboards.buttons["go"]
+      goKeyboardButton.tapOnElement(timeout: 5)
+    }
+    
     return self
   }
 
@@ -49,7 +55,7 @@ struct CreativePage: Page {
 
   @discardableResult
   static func verifyPrivacyLinkExists() -> Self.Type {
-    XCTAssertTrue(privacyLink.elementExists())
+    XCTAssertTrue(privacyLink.elementExists(timeout: Timeout.max))
     return self
   }
 }

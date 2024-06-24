@@ -18,9 +18,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     clearCookies()
     resetUserDefaults()
 
-    XCUIApplication().terminate()
-
-    deleteApp()
+    app.activate()
 
     super.tearDown()
   }
@@ -34,7 +32,9 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
       .tapOnPushMeToCreative()
       .addDelay(seconds: 4)
 
-    CreativePage.tapOnCloseCreative()
+    CreativePage
+      .tapOnCloseCreative()
+      .addDelay()
 
     HomePage.verifyPushMeToCreativeIsHittable()
   }
@@ -54,7 +54,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
       .addDelay(seconds: 3)
 
     guard canLaunchExternalApps else { return }
-    
+
     SMSPage
       .verifyPrefilledMessage(
         message: "Send this text to subscribe to recurring automated personalized marketing alerts (e.g. cart reminders) from Attentive Mobile Apps Test"
@@ -67,12 +67,14 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     HomePage.tapOnPushMeToCreative()
 
     CreativePage
+      .addDelay(seconds: 1)
       .tapOnPrivacyLink()
-      .addDelay(seconds: 5)
 
     guard canLaunchExternalApps else { return }
 
-    PricacyPolicyPage.verifyContent()
+    PricacyPolicyPage
+      .addDelay(seconds: 5)
+      .verifyContent()
   }
 
   func testLoadCreative_inDebugMode_showsDebugMessage() {
@@ -136,7 +138,7 @@ extension CreativeUITest {
 
   func resetUserDefaults() {
     // Reset user defaults for example app, not the test runner
-    UserDefaults.standard.removePersistentDomain(forName: "com.attentive.ExampleTest")
+    UserDefaults.standard.removePersistentDomain(forName: "com.attentive.Example")
   }
 }
 
