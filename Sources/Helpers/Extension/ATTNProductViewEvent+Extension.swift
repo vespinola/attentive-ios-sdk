@@ -12,7 +12,7 @@ extension ATTNProductViewEvent: ATTNEventRequestProvider {
     var eventRequests = [ATTNEventRequest]()
 
     if items.isEmpty {
-      NSLog("No items found in the ProductView event.")
+      Loggers.event.error("No items found in the ProductView event.")
       return []
     }
 

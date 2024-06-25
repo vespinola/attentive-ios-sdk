@@ -18,13 +18,13 @@ struct ATTNParameterValidation {
 
   static func verifyNotNil(_ inputValue: NSObject?, inputName: String) {
     guard isNil(inputValue) else { return }
-    NSLog("Input was nil; %@ should be non-nil", inputName)
+    Loggers.event.debug("Input was nil; \(inputName) should be non-nil")
   }
 
   static func verifyStringOrNil(_ inputValue: NSObject?, inputName: String) {
     guard isNil(inputValue) else { return }
     guard !isString(inputValue) || isEmpty(inputName) else { return }
-    NSLog("Identifier %@ should be a non-empty NSString", inputName)
+    Loggers.event.debug("Identifier \(inputName) should be a non-empty NSString")
   }
 
   static func verify1DStringDictionaryOrNil(_ inputValue: NSDictionary?, inputName: String) {

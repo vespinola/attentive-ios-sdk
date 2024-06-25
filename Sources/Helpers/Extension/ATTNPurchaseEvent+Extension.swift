@@ -12,7 +12,7 @@ extension ATTNPurchaseEvent: ATTNEventRequestProvider {
     var eventRequests = [ATTNEventRequest]()
 
     guard !items.isEmpty else {
-      NSLog("No items found in the purchase event.")
+      Loggers.event.debug("No items found in the purchase event.")
       return []
     }
 

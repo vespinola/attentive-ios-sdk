@@ -30,7 +30,7 @@ extension ATTNUserIdentity {
     do {
       return try ATTNJsonUtils.convertObjectToJson(ids) ?? "[]"
     } catch {
-      NSLog("Could not serialize the external vendor ids. Returning an empty array. Error: '\(error.localizedDescription)'")
+      Loggers.event.error("Could not serialize the external vendor ids. Returning an empty array. Error: '\(error.localizedDescription)'")
       return "[]"
     }
   }
@@ -56,7 +56,7 @@ extension ATTNUserIdentity {
     do {
       return try ATTNJsonUtils.convertObjectToJson(metadata) ?? "{}"
     } catch {
-      NSLog("Could not serialize the external vendor ids. Returning an empty blob. Error: '\(error.localizedDescription)'")
+      Loggers.event.error("Could not serialize the external vendor ids. Returning an empty blob. Error: '\(error.localizedDescription)'")
       return "{}"
     }
   }

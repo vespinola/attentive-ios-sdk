@@ -53,6 +53,7 @@
 		FB90EF0B2C109CB4004DFC4A /* ATTNAPIITTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0A2C109CB4004DFC4A /* ATTNAPIITTests.swift */; };
 		FB90EF0D2C10A7F7004DFC4A /* NSURLSessionDataTaskMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0C2C10A7F7004DFC4A /* NSURLSessionDataTaskMock.swift */; };
 		FB90EF0F2C10A81E004DFC4A /* NSURLSessionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB90EF0E2C10A81E004DFC4A /* NSURLSessionMock.swift */; };
+		FB91BE602C2B4C6200E5A9B8 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91BE5F2C2B4C6200E5A9B8 /* Logger.swift */; };
 		FBA9FA062C0A77AB00C65024 /* ATTNAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */; };
 		FBA9FA072C0A77AB00C65024 /* ATTNEventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E52C0A77AB00C65024 /* ATTNEventRequest.swift */; };
 		FBA9FA082C0A77AB00C65024 /* Dictionary+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */; };
@@ -154,6 +155,7 @@
 		FB90EF0A2C109CB4004DFC4A /* ATTNAPIITTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNAPIITTests.swift; sourceTree = "<group>"; };
 		FB90EF0C2C10A7F7004DFC4A /* NSURLSessionDataTaskMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLSessionDataTaskMock.swift; sourceTree = "<group>"; };
 		FB90EF0E2C10A81E004DFC4A /* NSURLSessionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLSessionMock.swift; sourceTree = "<group>"; };
+		FB91BE5F2C2B4C6200E5A9B8 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FBA9F9E42C0A77AB00C65024 /* ATTNAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNAPI.swift; sourceTree = "<group>"; };
 		FBA9F9E52C0A77AB00C65024 /* ATTNEventRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATTNEventRequest.swift; sourceTree = "<group>"; };
 		FBA9F9E72C0A77AB00C65024 /* Dictionary+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extension.swift"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				FB35C18F2C0E5057009FA048 /* Protocols */,
 				FBA9F9E82C0A77AB00C65024 /* Extension */,
 				FB35C1842C0E35E7009FA048 /* ATTNJsonUtils.swift */,
+				FB91BE5F2C2B4C6200E5A9B8 /* Logger.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				FBA9FA1B2C0A77AB00C65024 /* ATTNSDKMode.swift in Sources */,
 				FBF78AAE2C135ECD00596479 /* ATTNConstants.m in Sources */,
 				FBA9FA072C0A77AB00C65024 /* ATTNEventRequest.swift in Sources */,
+				FB91BE602C2B4C6200E5A9B8 /* Logger.swift in Sources */,
 				FB35C1932C0E524E009FA048 /* ATTNPurchaseEvent+Extension.swift in Sources */,
 				FB35C18D2C0E3FAA009FA048 /* ATTNUserIdentity+Extension.swift in Sources */,
 				FB35C1832C0E1FD7009FA048 /* URLSession+Extension.swift in Sources */,
@@ -850,7 +854,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
@@ -892,7 +896,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",

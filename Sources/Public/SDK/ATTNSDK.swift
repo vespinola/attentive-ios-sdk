@@ -55,7 +55,7 @@ public final class ATTNSDK: NSObject {
   @objc public var skipFatigueOnCreative: Bool = false
 
   public init(domain: String, mode: ATTNSDKMode) {
-    NSLog("init attentive_ios_sdk v%@", ATTNConstants.sdkVersion)
+    Loggers.creative.trace("Init attentive_ios_sdk v\(ATTNConstants.sdkVersion)")
     self.domain = domain
     self.mode = mode
 
@@ -131,7 +131,7 @@ fileprivate extension ATTNSDK {
     webView = nil
     ATTNSDK.isCreativeOpen = false
     triggerHandler?(ATTNCreativeTriggerStatus.closed)
-    NSLog("Successfully closed creative")
+    Loggers.creative.trace("Successfully closed creative")
   }
 
   func launchCreative(
@@ -142,19 +142,19 @@ fileprivate extension ATTNSDK {
     parentView = view
     triggerHandler = handler
 
-    NSLog("Called showWebView in creativeSDK with domain: %@", domain)
+    Loggers.creative.trace("Called showWebView in creativeSDK with domain: \(self.domain, privacy: .public)")
 
     guard !ATTNSDK.isCreativeOpen else {
-      NSLog("Attempted to trigger creative, but creative is currently open. Taking no action")
+      Loggers.creative.trace("Attempted to trigger creative, but creative is currently open. Taking no action")
       return
     }
 
     guard #available(iOS 14, *) else {
-      NSLog("Not showing the Attentive creative because the iOS version is too old.")
+      Loggers.creative.trace("Not showing the Attentive creative because the iOS version is too old.")
       triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       return
     }
-    NSLog("The iOS version is new enough, continuing to show the Attentive creative.")
+    Loggers.creative.trace("The iOS version is new enough, continuing to show the Attentive creative.")
 
     let creativePageUrl = urlBuilder.buildCompanyCreativeUrl(
       configuration: ATTNCreativeUrlConfig(
@@ -166,10 +166,10 @@ fileprivate extension ATTNSDK {
       )
     )
 
-    NSLog("Requesting creative page url: %@", creativePageUrl)
+    Loggers.creative.trace("Requesting creative page url: \(creativePageUrl)" )
 
     guard let url = URL(string: creativePageUrl) else {
-      NSLog("URL could not be created.")
+      Loggers.creative.trace("URL could not be created.")
       return
     }
 
@@ -202,15 +202,15 @@ fileprivate extension ATTNSDK {
 extension ATTNSDK: WKScriptMessageHandler {
   public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
     let messageBody = message.body as? String ?? ""
-    NSLog("Web event message: %@. isCreativeOpen: %@", messageBody, ATTNSDK.isCreativeOpen ? "YES" : "NO")
+    Loggers.creative.trace("Web event message: \(messageBody). isCreativeOpen: \(ATTNSDK.isCreativeOpen ? "YES" : "NO")")
 
     if messageBody == "CLOSE" {
       closeCreative()
     } else if messageBody == "IMPRESSION" {
-      NSLog("Creative opened and generated impression event")
+      Loggers.creative.trace("Creative opened and generated impression event")
       ATTNSDK.isCreativeOpen = true
     } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), ATTNSDK.isCreativeOpen {
-      NSLog("Nav away from creative, closing")
+      Loggers.creative.trace("Nav away from creative, closing")
       closeCreative()
     }
   }
@@ -249,23 +249,23 @@ extension ATTNSDK: WKNavigationDelegate {
     ) { [weak self] result in
       guard let self = self else { return }
       guard case let .success(statusAny) = result else {
-        NSLog("No status returned from JS. Not showing WebView.")
+        Loggers.creative.trace("No status returned from JS. Not showing WebView.")
         self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
         return
       }
 
       switch ScriptStatus.getRawValue(from: statusAny) {
       case .success:
-        NSLog("Found creative iframe, showing WebView.")
+        Loggers.creative.trace("Found creative iframe, showing WebView.")
         if self.mode == .production {
           self.parentView?.addSubview(webView)
         }
         self.triggerHandler?(ATTNCreativeTriggerStatus.opened)
       case .timeout:
-        NSLog("Creative timed out. Not showing WebView.")
+        Loggers.creative.error("Creative timed out. Not showing WebView.")
         self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       case .unknown(let statusString):
-        NSLog("Received unknown status: %@. Not showing WebView", statusString)
+        Loggers.creative.error("Received unknown status: \(statusString). Not showing WebView")
         self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       default: break
       }
