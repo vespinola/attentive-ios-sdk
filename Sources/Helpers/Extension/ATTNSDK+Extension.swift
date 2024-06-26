@@ -15,6 +15,7 @@ extension ATTNSDK {
   func initializeSkipFatigueOnCreatives() {
     if let skipFatigueValue = ProcessInfo.processInfo.environment[ATTNConstants.skipFatigueEnvKey] {
       self.skipFatigueOnCreative = skipFatigueValue.booleanValue
+      Loggers.creative.info("SKIP_FATIGUE_ON_CREATIVE: \(skipFatigueValue)")
     } else {
       self.skipFatigueOnCreative = false
     }

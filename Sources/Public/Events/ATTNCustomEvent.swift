@@ -17,7 +17,7 @@ public final class ATTNCustomEvent: NSObject, ATTNEvent {
     ATTNParameterValidation.verifyNotNil(type as NSObject, inputName: "type")
     ATTNParameterValidation.verifyStringOrNil(type as NSObject, inputName: "type")
     if let invalidCharInType = ATTNCustomEvent.findInvalidCharacter(in: type) {
-      print("Invalid character \(invalidCharInType) in CustomEvent type \(type)")
+      Loggers.event.debug("Invalid character \(invalidCharInType) in CustomEvent type \(type)")
       return nil
     }
 

@@ -43,7 +43,7 @@ final class ATTNAPI: ATTNAPIProtocol {
   func send(userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
     getGeoAdjustedDomain(domain: domain) { [weak self] geoAdjustedDomain, error in
       if let error = error {
-        NSLog("Error sending user identity: '%@'", error.localizedDescription)
+        Loggers.network.error("Error sending user identity: \(error.localizedDescription)")
         return
       }
 
@@ -59,11 +59,12 @@ final class ATTNAPI: ATTNAPIProtocol {
   func send(event: ATTNEvent, userIdentity: ATTNUserIdentity, callback: ATTNAPICallback?) {
     getGeoAdjustedDomain(domain: domain) { [weak self] geoAdjustedDomain, error in
       if let error = error {
-        NSLog("Error sending user identity: '%@'", error.localizedDescription)
+        Loggers.network.error("Error sending event: \(error.localizedDescription)")
         return
       }
 
       guard let geoAdjustedDomain = geoAdjustedDomain else { return }
+      Loggers.network.debug("Successfully returned geoAdjustedDomain: \(geoAdjustedDomain, privacy: .public)")
       self?.sendEventInternal(event: event, userIdentity: userIdentity, domain: geoAdjustedDomain, callback: callback)
     }
   }
@@ -86,25 +87,23 @@ fileprivate extension ATTNAPI {
 
   func sendEventInternalForRequest(request: ATTNEventRequest, userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
     guard let url = eventUrlProvider.buildUrl(for: request, userIdentity: userIdentity, domain: domain) else {
-      NSLog("Invalid URL constructed for event request.")
+      Loggers.event.error("Invalid URL constructed for event request.")
       return
     }
+
+    Loggers.event.debug("Building Event URL: \(url)")
 
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "POST"
 
     let task = urlSession.dataTask(with: urlRequest) { data, response, error in
-      let message: String
-
       if let error = error {
-        message = "Error sending for event '\(request.eventNameAbbreviation)'. Error: '\(error.localizedDescription)'"
+        Loggers.event.error("Error sending for event '\(request.eventNameAbbreviation)'. Error: '\(error.localizedDescription)'")
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
-        message = "Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'"
+        Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        message = "Successfully sent event of type '\(request.eventNameAbbreviation)'"
+        Loggers.event.debug("Successfully sent event of type '\(request.eventNameAbbreviation)'")
       }
-
-      NSLog("%@", message)
 
       callback?(data, url, response, error)
     }
@@ -114,25 +113,23 @@ fileprivate extension ATTNAPI {
 
   func sendUserIdentityInternal(userIdentity: ATTNUserIdentity, domain: String, callback: ATTNAPICallback?) {
     guard let url = eventUrlProvider.buildUrl(for: userIdentity, domain: domain) else {
-      NSLog("Invalid URL constructed for user identity.")
+      Loggers.event.error("Invalid URL constructed for user identity.")
       return
     }
+
+    Loggers.event.debug("Building Identity Event URL: \(url)")
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
 
     let task = urlSession.dataTask(with: request) { data, response, error in
-      let message: String
-
       if let error = error {
-        message = "Error sending user identity. Error: '\(error.localizedDescription)'"
+        Loggers.event.error("Error sending user identity. Error: '\(error.localizedDescription)'")
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
-        message = "Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'"
+        Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        message = "Successfully sent user identity event"
+        Loggers.event.debug("Successfully sent user identity event")
       }
-
-      NSLog("%@", message)
 
       callback?(data, url, response, error)
     }
@@ -146,26 +143,26 @@ fileprivate extension ATTNAPI {
       let matchesCount = regex.numberOfMatches(in: tag, options: [], range: NSRange(location: 0, length: tag.utf16.count))
 
       guard matchesCount >= 1 else {
-        NSLog("No Attentive domain found in the tag")
+        Loggers.creative.debug("No Attentive domain found in the tag")
         return nil
       }
 
       guard let match = regex.firstMatch(in: tag, options: [], range: NSRange(location: 0, length: tag.utf16.count)) else {
-        NSLog("No Attentive domain regex match object returned.")
+        Loggers.creative.debug("No Attentive domain regex match object returned.")
         return nil
       }
 
       let domainRange = match.range(at: 1)
       guard domainRange.location != NSNotFound, let range = Range(domainRange, in: tag) else {
-        NSLog("No match found for Attentive domain in the tag.")
+        Loggers.creative.debug("No match found for Attentive domain in the tag.")
         return nil
       }
 
       let regionalizedDomain = String(tag[range])
-      NSLog("Identified regionalized attentive domain: %@", regionalizedDomain)
+      Loggers.creative.debug("Identified regionalized attentive domain: \(regionalizedDomain)")
       return regionalizedDomain
     } catch {
-      NSLog("Error building the domain regex. Error: '%@'", error.localizedDescription)
+      Loggers.creative.debug("Error building the domain regex. Error: '\(error.localizedDescription)'")
       return nil
     }
   }
@@ -178,11 +175,11 @@ extension ATTNAPI {
       return
     }
 
-    NSLog("Getting the geoAdjustedDomain for domain '%@'...", domain)
+    Loggers.network.debug("Getting the geoAdjustedDomain for domain '\(domain)'...")
 
     let urlString = String(format: RequestConstants.dtagUrlFormat, domain)
     guard let url = URL(string: urlString) else {
-      NSLog("Invalid URL format for domain '%@'", domain)
+      Loggers.network.debug("Invalid URL format for domain '\(domain)'")
       completionHandler(nil, NSError(domain: "com.attentive.API", code: NSURLErrorBadURL, userInfo: nil))
       return
     }
@@ -190,19 +187,19 @@ extension ATTNAPI {
     let request = URLRequest(url: url)
     let task = urlSession.dataTask(with: request) { [weak self] data, response, error in
       if let error = error {
-        NSLog("Error getting the geo-adjusted domain. Error: '%@'", error.localizedDescription)
+        Loggers.network.error("Error getting the geo-adjusted domain for \(domain). Error: '\(error.localizedDescription)'")
         completionHandler(nil, error)
         return
       }
 
       guard let httpResponse = response as? HTTPURLResponse else {
-        NSLog("Invalid response received.")
+        Loggers.network.error("Invalid response received.")
         completionHandler(nil, NSError(domain: "com.attentive.API", code: NSURLErrorUnknown, userInfo: nil))
         return
       }
 
       guard httpResponse.statusCode == 200, let data = data else {
-        NSLog("Error getting the geo-adjusted domain. Incorrect status code: '%ld'", httpResponse.statusCode)
+        Loggers.network.error("Error getting the geo-adjusted domain for \(domain). Incorrect status code: '\(httpResponse.statusCode)'")
         completionHandler(nil, NSError(domain: "com.attentive.API", code: NSURLErrorBadServerResponse, userInfo: nil))
         return
       }
@@ -211,6 +208,7 @@ extension ATTNAPI {
       guard let geoAdjustedDomain = ATTNAPI.extractDomainFromTag(dataString ?? "") else { return }
 
       if geoAdjustedDomain.isEmpty {
+        Loggers.network.error("Invalid empty geo-adjusted domain")
         let error = NSError(domain: "com.attentive.API", code: NSURLErrorBadServerResponse, userInfo: nil)
         completionHandler(nil, error)
         return

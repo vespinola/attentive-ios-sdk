@@ -28,7 +28,7 @@ The Attentive IOS SDK provides the functionality to render Attentive signup unit
   s.source           = { :git => 'https://github.com/attentive-mobile/attentive-ios-sdk.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '14.0'
 
   s.source_files = 'Sources/**/*.swift', 'Objc/**/*'
 

@@ -20,7 +20,7 @@ class ATTNUserAgentBuilder: ATTNUserAgentBuilderProtocol {
 
   func buildUserAgent() -> String {
     // We replace the spaces with dashes for the app name because spaces in a User-Agent represent a new "product", so app names that have spaces are harder to parse if we don't replace spaces with dashes
-    String(
+    let userAgent = String(
       format: "%@/%@.%@ (%@; %@ %@) %@/%@",
       appInfo.getFormattedAppName(),
       appInfo.getAppVersion(),
@@ -31,5 +31,9 @@ class ATTNUserAgentBuilder: ATTNUserAgentBuilderProtocol {
       appInfo.getSdkName(),
       appInfo.getSdkVersion()
     )
+
+    Loggers.event.debug("Created User Agent: \(userAgent)")
+
+    return userAgent
   }
 }
