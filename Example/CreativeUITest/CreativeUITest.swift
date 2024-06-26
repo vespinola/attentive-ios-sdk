@@ -30,7 +30,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
 
     HomePage
       .tapOnPushMeToCreative()
-      .addDelay(seconds: 4)
+      .addDelay(seconds: 5)
 
     CreativePage
       .tapOnCloseCreative()
