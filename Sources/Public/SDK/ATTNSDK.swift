@@ -55,7 +55,8 @@ public final class ATTNSDK: NSObject {
   @objc public var skipFatigueOnCreative: Bool = false
 
   public init(domain: String, mode: ATTNSDKMode) {
-    Loggers.creative.trace("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion). Mode: \(mode.rawValue)")
+    Loggers.creative.trace("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion), Mode: \(mode.rawValue), Domain: \(domain)")
+
     self.domain = domain
     self.mode = mode
 
@@ -84,6 +85,7 @@ public final class ATTNSDK: NSObject {
   public func identify(_ userIdentifiers: [String: Any]) {
     userIdentity.mergeIdentifiers(userIdentifiers)
     api.send(userIdentity: userIdentity)
+    Loggers.event.debug("Send User Identifiers: \(userIdentifiers)")
   }
 
   @objc(trigger:)
@@ -109,6 +111,7 @@ public final class ATTNSDK: NSObject {
   @objc(clearUser)
   public func clearUser() {
     userIdentity.clearUser()
+    Loggers.creative.debug("Clear user. New visitor id: \(self.userIdentity.visitorId, privacy: .public)")
   }
 
   @objc(updateDomain:)
@@ -116,7 +119,9 @@ public final class ATTNSDK: NSObject {
     guard self.domain != domain else { return }
     self.domain = domain
     api.update(domain: domain)
+    Loggers.creative.trace("Updated SDK with new domain: \(domain)")
     api.send(userIdentity: userIdentity)
+    Loggers.creative.trace("Retrigger Identity Event with new domain '\(domain)'")
   }
 }
 

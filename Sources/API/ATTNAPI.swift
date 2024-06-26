@@ -187,7 +187,7 @@ extension ATTNAPI {
     let request = URLRequest(url: url)
     let task = urlSession.dataTask(with: request) { [weak self] data, response, error in
       if let error = error {
-        Loggers.network.error("Error getting the geo-adjusted domain. Error: '\(error.localizedDescription)'")
+        Loggers.network.error("Error getting the geo-adjusted domain for \(domain). Error: '\(error.localizedDescription)'")
         completionHandler(nil, error)
         return
       }
@@ -199,7 +199,7 @@ extension ATTNAPI {
       }
 
       guard httpResponse.statusCode == 200, let data = data else {
-        Loggers.network.error("Error getting the geo-adjusted domain. Incorrect status code: '\(httpResponse.statusCode)'")
+        Loggers.network.error("Error getting the geo-adjusted domain for \(domain). Incorrect status code: '\(httpResponse.statusCode)'")
         completionHandler(nil, NSError(domain: "com.attentive.API", code: NSURLErrorBadServerResponse, userInfo: nil))
         return
       }
