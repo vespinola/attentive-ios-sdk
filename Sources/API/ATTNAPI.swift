@@ -44,6 +44,7 @@ final class ATTNAPI: ATTNAPIProtocol {
     getGeoAdjustedDomain(domain: domain) { [weak self] geoAdjustedDomain, error in
       if let error = error {
         Loggers.network.error("Error sending user identity: \(error.localizedDescription)")
+        return
       }
 
       guard let geoAdjustedDomain = geoAdjustedDomain else { return }
@@ -90,16 +91,18 @@ fileprivate extension ATTNAPI {
       return
     }
 
+    Loggers.event.trace("Building Event URL: \(url)")
+
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "POST"
 
     let task = urlSession.dataTask(with: urlRequest) { data, response, error in
       if let error = error {
-        Loggers.network.error("Error sending for event '\(request.eventNameAbbreviation)'. Error: '\(error.localizedDescription)'")
+        Loggers.event.error("Error sending for event '\(request.eventNameAbbreviation)'. Error: '\(error.localizedDescription)'")
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
-        Loggers.network.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
+        Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        Loggers.network.trace("Successfully sent event of type '\(request.eventNameAbbreviation)'")
+        Loggers.event.trace("Successfully sent event of type '\(request.eventNameAbbreviation)'")
       }
 
       callback?(data, url, response, error)
@@ -114,16 +117,18 @@ fileprivate extension ATTNAPI {
       return
     }
 
+    Loggers.event.trace("Building Identity Event URL: \(url)")
+
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
 
     let task = urlSession.dataTask(with: request) { data, response, error in
       if let error = error {
-        Loggers.network.error("Error sending user identity. Error: '\(error.localizedDescription)'")
+        Loggers.event.error("Error sending user identity. Error: '\(error.localizedDescription)'")
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
-        Loggers.network.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
+        Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        Loggers.network.trace("Successfully sent user identity event")
+        Loggers.event.trace("Successfully sent user identity event")
       }
 
       callback?(data, url, response, error)

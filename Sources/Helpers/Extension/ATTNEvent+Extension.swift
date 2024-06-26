@@ -11,7 +11,7 @@ import Foundation
 extension ATTNEvent {
   func convertEventToRequests() -> [ATTNEventRequest] {
     guard let provider = self as? ATTNEventRequestProvider else {
-      Loggers.event.error("ERROR: Unknown event type: \(type(of: self))")
+      Loggers.event.error("Unknown event type: \(type(of: self)). It can not be converted to EventRequest.")
       return []
     }
 

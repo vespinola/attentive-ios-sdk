@@ -70,6 +70,7 @@ struct ATTNCreativeUrlProvider: ATTNCreativeUrlProviding {
 
     if configuration.skipFatigue {
       queryItems.append(URLQueryItem(name: "skipFatigue", value: configuration.skipFatigue.stringValue))
+      Loggers.creative.info("Skip Fatigue is enabled. Keep in mind it should be disable for production.")
     }
 
     if let creativeId = configuration.creativeId {

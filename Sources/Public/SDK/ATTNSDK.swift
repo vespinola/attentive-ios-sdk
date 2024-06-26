@@ -55,7 +55,7 @@ public final class ATTNSDK: NSObject {
   @objc public var skipFatigueOnCreative: Bool = false
 
   public init(domain: String, mode: ATTNSDKMode) {
-    Loggers.creative.trace("Init attentive_ios_sdk v\(ATTNConstants.sdkVersion)")
+    Loggers.creative.trace("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion). Mode: \(mode.rawValue)")
     self.domain = domain
     self.mode = mode
 

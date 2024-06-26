@@ -23,12 +23,17 @@ struct ATTNVisitorService {
       return createNewVisitorId()
     }
 
+    Loggers.event.info("Obtained existing visitor id: \(existingVisitorId, privacy: .public)")
+
     return existingVisitorId
   }
 
   func createNewVisitorId() -> String {
     let newVisitorId = generateVisitorId()
     persistentStorage.save(newVisitorId as NSObject, forKey: Constants.visitorIdKey)
+
+    Loggers.event.info("Generated new visitor id: \(newVisitorId, privacy: .public)")
+
     return newVisitorId
   }
 
