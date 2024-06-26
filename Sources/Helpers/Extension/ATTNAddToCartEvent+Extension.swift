@@ -12,7 +12,7 @@ extension ATTNAddToCartEvent: ATTNEventRequestProvider {
     var eventRequests = [ATTNEventRequest]()
 
     if items.isEmpty {
-      Loggers.event.error("No items found in the AddToCart event.")
+      Loggers.event.debug("No items found in the AddToCart event.")
       return []
     }
 
