@@ -64,7 +64,7 @@ final class ATTNAPI: ATTNAPIProtocol {
       }
 
       guard let geoAdjustedDomain = geoAdjustedDomain else { return }
-      Loggers.network.trace("Successfully returned geoAdjustedDomain: \(geoAdjustedDomain, privacy: .public)")
+      Loggers.network.debug("Successfully returned geoAdjustedDomain: \(geoAdjustedDomain, privacy: .public)")
       self?.sendEventInternal(event: event, userIdentity: userIdentity, domain: geoAdjustedDomain, callback: callback)
     }
   }
@@ -91,7 +91,7 @@ fileprivate extension ATTNAPI {
       return
     }
 
-    Loggers.event.trace("Building Event URL: \(url)")
+    Loggers.event.debug("Building Event URL: \(url)")
 
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = "POST"
@@ -102,7 +102,7 @@ fileprivate extension ATTNAPI {
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
         Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        Loggers.event.trace("Successfully sent event of type '\(request.eventNameAbbreviation)'")
+        Loggers.event.debug("Successfully sent event of type '\(request.eventNameAbbreviation)'")
       }
 
       callback?(data, url, response, error)
@@ -117,7 +117,7 @@ fileprivate extension ATTNAPI {
       return
     }
 
-    Loggers.event.trace("Building Identity Event URL: \(url)")
+    Loggers.event.debug("Building Identity Event URL: \(url)")
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
@@ -128,7 +128,7 @@ fileprivate extension ATTNAPI {
       } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode > 400 {
         Loggers.event.error("Error sending the event. Incorrect status code: '\(httpResponse.statusCode)'")
       } else {
-        Loggers.event.trace("Successfully sent user identity event")
+        Loggers.event.debug("Successfully sent user identity event")
       }
 
       callback?(data, url, response, error)
@@ -175,11 +175,11 @@ extension ATTNAPI {
       return
     }
 
-    Loggers.network.trace("Getting the geoAdjustedDomain for domain '\(domain)'...")
+    Loggers.network.debug("Getting the geoAdjustedDomain for domain '\(domain)'...")
 
     let urlString = String(format: RequestConstants.dtagUrlFormat, domain)
     guard let url = URL(string: urlString) else {
-      Loggers.network.trace("Invalid URL format for domain '\(domain)'")
+      Loggers.network.debug("Invalid URL format for domain '\(domain)'")
       completionHandler(nil, NSError(domain: "com.attentive.API", code: NSURLErrorBadURL, userInfo: nil))
       return
     }

@@ -55,7 +55,7 @@ public final class ATTNSDK: NSObject {
   @objc public var skipFatigueOnCreative: Bool = false
 
   public init(domain: String, mode: ATTNSDKMode) {
-    Loggers.creative.trace("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion), Mode: \(mode.rawValue), Domain: \(domain)")
+    Loggers.creative.debug("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion), Mode: \(mode.rawValue), Domain: \(domain)")
 
     self.domain = domain
     self.mode = mode
@@ -119,9 +119,9 @@ public final class ATTNSDK: NSObject {
     guard self.domain != domain else { return }
     self.domain = domain
     api.update(domain: domain)
-    Loggers.creative.trace("Updated SDK with new domain: \(domain)")
+    Loggers.creative.debug("Updated SDK with new domain: \(domain)")
     api.send(userIdentity: userIdentity)
-    Loggers.creative.trace("Retrigger Identity Event with new domain '\(domain)'")
+    Loggers.creative.debug("Retrigger Identity Event with new domain '\(domain)'")
   }
 }
 
@@ -136,7 +136,7 @@ fileprivate extension ATTNSDK {
     webView = nil
     ATTNSDK.isCreativeOpen = false
     triggerHandler?(ATTNCreativeTriggerStatus.closed)
-    Loggers.creative.trace("Successfully closed creative")
+    Loggers.creative.debug("Successfully closed creative")
   }
 
   func launchCreative(
@@ -147,19 +147,19 @@ fileprivate extension ATTNSDK {
     parentView = view
     triggerHandler = handler
 
-    Loggers.creative.trace("Called showWebView in creativeSDK with domain: \(self.domain, privacy: .public)")
+    Loggers.creative.debug("Called showWebView in creativeSDK with domain: \(self.domain, privacy: .public)")
 
     guard !ATTNSDK.isCreativeOpen else {
-      Loggers.creative.trace("Attempted to trigger creative, but creative is currently open. Taking no action")
+      Loggers.creative.debug("Attempted to trigger creative, but creative is currently open. Taking no action")
       return
     }
 
     guard #available(iOS 14, *) else {
-      Loggers.creative.trace("Not showing the Attentive creative because the iOS version is too old.")
+      Loggers.creative.debug("Not showing the Attentive creative because the iOS version is too old.")
       triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       return
     }
-    Loggers.creative.trace("The iOS version is new enough, continuing to show the Attentive creative.")
+    Loggers.creative.debug("The iOS version is new enough, continuing to show the Attentive creative.")
 
     let creativePageUrl = urlBuilder.buildCompanyCreativeUrl(
       configuration: ATTNCreativeUrlConfig(
@@ -171,10 +171,10 @@ fileprivate extension ATTNSDK {
       )
     )
 
-    Loggers.creative.trace("Requesting creative page url: \(creativePageUrl)" )
+    Loggers.creative.debug("Requesting creative page url: \(creativePageUrl)" )
 
     guard let url = URL(string: creativePageUrl) else {
-      Loggers.creative.trace("URL could not be created.")
+      Loggers.creative.debug("URL could not be created.")
       return
     }
 
@@ -207,15 +207,15 @@ fileprivate extension ATTNSDK {
 extension ATTNSDK: WKScriptMessageHandler {
   public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
     let messageBody = message.body as? String ?? ""
-    Loggers.creative.trace("Web event message: \(messageBody). isCreativeOpen: \(ATTNSDK.isCreativeOpen ? "YES" : "NO")")
+    Loggers.creative.debug("Web event message: \(messageBody). isCreativeOpen: \(ATTNSDK.isCreativeOpen ? "YES" : "NO")")
 
     if messageBody == "CLOSE" {
       closeCreative()
     } else if messageBody == "IMPRESSION" {
-      Loggers.creative.trace("Creative opened and generated impression event")
+      Loggers.creative.debug("Creative opened and generated impression event")
       ATTNSDK.isCreativeOpen = true
     } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), ATTNSDK.isCreativeOpen {
-      Loggers.creative.trace("Nav away from creative, closing")
+      Loggers.creative.debug("Nav away from creative, closing")
       closeCreative()
     }
   }
@@ -254,14 +254,14 @@ extension ATTNSDK: WKNavigationDelegate {
     ) { [weak self] result in
       guard let self = self else { return }
       guard case let .success(statusAny) = result else {
-        Loggers.creative.trace("No status returned from JS. Not showing WebView.")
+        Loggers.creative.debug("No status returned from JS. Not showing WebView.")
         self.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
         return
       }
 
       switch ScriptStatus.getRawValue(from: statusAny) {
       case .success:
-        Loggers.creative.trace("Found creative iframe, showing WebView.")
+        Loggers.creative.debug("Found creative iframe, showing WebView.")
         if self.mode == .production {
           self.parentView?.addSubview(webView)
         }
