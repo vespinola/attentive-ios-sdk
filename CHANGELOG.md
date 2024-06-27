@@ -1,3 +1,8 @@
+## [1.0.0-beta.2](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.1...1.0.0-beta.2) (2024-06-27)
+
+### Bug Fixes
+* Release 1.0.0 Beta 1 - Fix ([103](https://github.com/attentive-mobile/attentive-ios-sdk/pull/103)) ([c49d8cc](https://github.com/attentive-mobile/attentive-ios-sdk/commit/c49d8cca52d77a1fc2441ccc0896f97c67ae08dd))
+
 ## [1.0.0-beta.1](https://github.com/attentive-mobile/attentive-ios-sdk/compare/0.6.0...1.0.0-beta.1) (2024-06-27)
 
 ### Breaking Changes
