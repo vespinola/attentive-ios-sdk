@@ -55,7 +55,7 @@ public final class ATTNSDK: NSObject {
   @objc public var skipFatigueOnCreative: Bool = false
 
   public init(domain: String, mode: ATTNSDKMode) {
-    Loggers.creative.debug("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion), Mode: \(mode.rawValue), Domain: \(domain)")
+    Loggers.creative.debug("Init ATTNSDKFramework v\(ATTNConstants.sdkVersion, privacy: .public), Mode: \(mode.rawValue, privacy: .public), Domain: \(domain, privacy: .public)")
 
     self.domain = domain
     self.mode = mode
