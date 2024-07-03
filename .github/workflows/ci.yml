@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - "feature/*"
+      - "release/*"
   pull_request:
     branches: 
       - main
       - "feature/*"
+      - "release/*"
   workflow_dispatch:
 
 concurrency:
