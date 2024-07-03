@@ -3,7 +3,6 @@ name: Run UI Test Cases
 on:
   pull_request:
     branches:
-      - swift-migration
       - main
       - "feature/*"
 
