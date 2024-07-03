@@ -5,11 +5,12 @@ on:
     branches:
       - main
       - "feature/*"
+      - "release/*"
   pull_request:
     branches:
-      - swift-migration
       - main
       - "feature/*"
+      - "release/*"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
