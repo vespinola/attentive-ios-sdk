@@ -43,6 +43,7 @@
 		FB35C1972C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1962C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift */; };
 		FB35C1992C0E5365009FA048 /* ATTNInfoEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C1982C0E5365009FA048 /* ATTNInfoEvent+Extension.swift */; };
 		FB35C19B2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB35C19A2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift */; };
+		FB4E3FE52C36F7BF004B8FF0 /* ATTNWebViewHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4E3FE42C36F7BF004B8FF0 /* ATTNWebViewHandling.swift */; };
 		FB56D4DA2C208BAD00AF7530 /* ATTNSDK+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56D4D92C208BAD00AF7530 /* ATTNSDK+Extension.swift */; };
 		FB56D4DC2C208D6100AF7530 /* Boolean+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56D4DB2C208D6100AF7530 /* Boolean+Extension.swift */; };
 		FB56D4DE2C208DC100AF7530 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB56D4DD2C208DC100AF7530 /* String+Extension.swift */; };
@@ -144,6 +145,7 @@
 		FB35C1962C0E52F3009FA048 /* ATTNProductViewEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNProductViewEvent+Extension.swift"; sourceTree = "<group>"; };
 		FB35C1982C0E5365009FA048 /* ATTNInfoEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNInfoEvent+Extension.swift"; sourceTree = "<group>"; };
 		FB35C19A2C0E53F9009FA048 /* ATTNCustomEvent+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNCustomEvent+Extension.swift"; sourceTree = "<group>"; };
+		FB4E3FE42C36F7BF004B8FF0 /* ATTNWebViewHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATTNWebViewHandling.swift; sourceTree = "<group>"; };
 		FB56D4D92C208BAD00AF7530 /* ATTNSDK+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ATTNSDK+Extension.swift"; sourceTree = "<group>"; };
 		FB56D4DB2C208D6100AF7530 /* Boolean+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Boolean+Extension.swift"; sourceTree = "<group>"; };
 		FB56D4DD2C208DC100AF7530 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				FBA9F9EE2C0A77AB00C65024 /* ATTNUserAgentBuilder.swift */,
 				FBA9F9EF2C0A77AB00C65024 /* ATTNVisitorService.swift */,
 				FB35C17C2C0E039E009FA048 /* ATTNConstants.swift */,
+				FB4E3FE42C36F7BF004B8FF0 /* ATTNWebViewHandling.swift */,
 				FBA9F9FF2C0A77AB00C65024 /* Public */,
 				FBA9FA022C0A77AB00C65024 /* Resources */,
 			);
@@ -636,6 +639,7 @@
 				FBA9FA122C0A77AB00C65024 /* ATTNCustomEvent.swift in Sources */,
 				FB35C1992C0E5365009FA048 /* ATTNInfoEvent+Extension.swift in Sources */,
 				FB35C1892C0E3AF8009FA048 /* ATTNExternalVendorTypes.swift in Sources */,
+				FB4E3FE52C36F7BF004B8FF0 /* ATTNWebViewHandling.swift in Sources */,
 				FB080C7F2C1CC9E500834BAA /* ATTNCreativeUrlConfig.swift in Sources */,
 				FBA9FA092C0A77AB00C65024 /* ATTNAppInfo.swift in Sources */,
 				FB35C1792C0E030E009FA048 /* ATTNCreativeTriggerStatus.swift in Sources */,

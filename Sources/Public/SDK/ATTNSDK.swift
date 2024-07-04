@@ -37,13 +37,13 @@ public final class ATTNSDK: NSObject {
   }
 
   // MARK: Static Properties
-  private static var isCreativeOpen = false
+  static var isCreativeOpen = false
 
   // MARK: Instance Properties
-  private var parentView: UIView?
-  private var webView: WKWebView?
-  private var triggerHandler: ATTNCreativeTriggerCompletionHandler?
-
+  var parentView: UIView?
+  var triggerHandler: ATTNCreativeTriggerCompletionHandler?
+  var webView: WKWebView?
+  
   private(set) var api: ATTNAPIProtocol
   private(set) var userIdentity: ATTNUserIdentity
 
@@ -315,5 +315,14 @@ extension ATTNSDK {
 
   func getDomain() -> String {
     domain
+  }
+
+  func getMode() -> ATTNSDKMode {
+    mode
+  }
+
+  func removeWebView() {
+    webView?.removeFromSuperview()
+    webView = nil
   }
 }
