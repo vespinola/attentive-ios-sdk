@@ -40,7 +40,7 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
   private weak var sdk: ATTNSDK?
   private var urlBuilder: ATTNCreativeUrlProviding
 
-  init(sdk: ATTNSDK, creativeUrlBuilder: ATTNCreativeUrlProviding) {
+  init(sdk: ATTNSDK, creativeUrlBuilder: ATTNCreativeUrlProviding = ATTNCreativeUrlProvider()) {
     self.sdk = sdk
     self.urlBuilder = creativeUrlBuilder
   }
