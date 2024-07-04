@@ -12,8 +12,7 @@ public typealias ATTNCreativeTriggerCompletionHandler = (String) -> Void
 
 @objc(ATTNSDK)
 public final class ATTNSDK: NSObject {
-  // MARK: Static Properties
-  static var isCreativeOpen = false
+  var isCreativeOpen = false
 
   // MARK: Instance Properties
   var parentView: UIView?
@@ -41,7 +40,7 @@ public final class ATTNSDK: NSObject {
 
     super.init()
 
-    self.webViewHandler = ATTNWebViewHandler(sdk: self)
+    self.webViewHandler = ATTNWebViewHandler(webViewProvider: self)
     self.sendInfoEvent()
     self.initializeSkipFatigueOnCreatives()
   }
@@ -102,6 +101,15 @@ public final class ATTNSDK: NSObject {
   }
 }
 
+// MARK: ATTNWebViewProviding
+extension ATTNSDK: ATTNWebViewProviding {
+  func getDomain() -> String { domain }
+
+  func getMode() -> ATTNSDKMode { mode }
+
+  func getUserIdentity() -> ATTNUserIdentity { userIdentity }
+}
+
 // MARK: Private Helpers
 fileprivate extension ATTNSDK {
   func sendInfoEvent() {
@@ -121,22 +129,13 @@ fileprivate extension ATTNSDK {
 extension ATTNSDK {
   convenience init(domain: String, mode: ATTNSDKMode, urlBuilder: ATTNCreativeUrlProviding) {
     self.init(domain: domain, mode: mode)
-    self.webViewHandler = ATTNWebViewHandler(sdk: self, creativeUrlBuilder: urlBuilder)
+    self.webViewHandler = ATTNWebViewHandler(webViewProvider: self, creativeUrlBuilder: urlBuilder)
   }
 
   convenience init(api: ATTNAPIProtocol, urlBuilder: ATTNCreativeUrlProviding? = nil) {
     self.init(domain: api.domain)
     self.api = api
     guard let urlBuilder = urlBuilder else { return }
-    self.webViewHandler = ATTNWebViewHandler(sdk: self, creativeUrlBuilder: urlBuilder)
-  }
-
-  func getDomain() -> String { domain }
-
-  func getMode() -> ATTNSDKMode { mode }
-
-  func removeWebView() {
-    webView?.removeFromSuperview()
-    webView = nil
+    self.webViewHandler = ATTNWebViewHandler(webViewProvider: self, creativeUrlBuilder: urlBuilder)
   }
 }

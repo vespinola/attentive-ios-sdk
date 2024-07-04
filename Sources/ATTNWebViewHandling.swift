@@ -37,11 +37,11 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
     }
   }
 
-  private weak var sdk: ATTNSDK?
+  private weak var webViewProvider: ATTNWebViewProviding?
   private var urlBuilder: ATTNCreativeUrlProviding
 
-  init(sdk: ATTNSDK, creativeUrlBuilder: ATTNCreativeUrlProviding = ATTNCreativeUrlProvider()) {
-    self.sdk = sdk
+  init(webViewProvider: ATTNWebViewProviding, creativeUrlBuilder: ATTNCreativeUrlProviding = ATTNCreativeUrlProvider()) {
+    self.webViewProvider = webViewProvider
     self.urlBuilder = creativeUrlBuilder
   }
 
@@ -50,22 +50,18 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
     creativeId: String? = nil,
     handler: ATTNCreativeTriggerCompletionHandler? = nil
   ) {
-    guard let sdk = sdk else {
+    guard let webViewProvider = webViewProvider else {
       Loggers.creative.debug("Not showing the Attentive creative because the iOS version is too old.")
-      sdk?.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
+      webViewProvider?.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       return
     }
 
-    sdk.parentView = view
-    sdk.triggerHandler = handler
+    webViewProvider.parentView = view
+    webViewProvider.triggerHandler = handler
 
-    let domain = sdk.getDomain()
-    let mode = sdk.getMode()
-    let userIdentity = sdk.userIdentity
+    Loggers.creative.debug("Called showWebView in creativeSDK with domain: \(self.domain, privacy: .public)")
 
-    Loggers.creative.debug("Called showWebView in creativeSDK with domain: \(domain, privacy: .public)")
-
-    guard !ATTNSDK.isCreativeOpen else {
+    guard !isCreativeOpen else {
       Loggers.creative.debug("Attempted to trigger creative, but creative is currently open. Taking no action")
       return
     }
@@ -76,7 +72,7 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
       configuration: ATTNCreativeUrlConfig(
         domain: domain,
         creativeId: creativeId,
-        skipFatigue: sdk.skipFatigueOnCreative,
+        skipFatigue: webViewProvider.skipFatigueOnCreative,
         mode: mode.rawValue,
         userIdentity: userIdentity
       )
@@ -98,15 +94,15 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
     let userScript = WKUserScript(source: userScriptWithEventListener, injectionTime: .atDocumentStart, forMainFrameOnly: false)
     configuration.userContentController.addUserScript(userScript)
 
-    sdk.webView = WKWebView(frame: view.frame, configuration: configuration)
+    webViewProvider.webView = WKWebView(frame: view.frame, configuration: configuration)
 
-    guard let webView = sdk.webView else { return }
+    guard let webView = webViewProvider.webView else { return }
 
     webView.navigationDelegate = self
     webView.load(request)
 
     if mode == .debug {
-      sdk.parentView?.addSubview(webView)
+      webViewProvider.parentView?.addSubview(webView)
     } else {
       webView.isOpaque = false
       webView.backgroundColor = .clear
@@ -114,9 +110,11 @@ final class ATTNWebViewHandler: NSObject, ATTNWebViewHandling {
   }
 
   func closeCreative() {
-    sdk?.removeWebView()
-    ATTNSDK.isCreativeOpen = false
-    sdk?.triggerHandler?(ATTNCreativeTriggerStatus.closed)
+    webViewProvider?.webView?.removeFromSuperview()
+    webViewProvider?.webView = nil
+
+    isCreativeOpen = false
+    webViewProvider?.triggerHandler?(ATTNCreativeTriggerStatus.closed)
     Loggers.creative.debug("Successfully closed creative")
   }
 }
@@ -151,26 +149,26 @@ extension ATTNWebViewHandler: WKNavigationDelegate {
       in: nil,
       in: .defaultClient
     ) { [weak self] result in
-      guard let self = self, let sdk = self.sdk else { return }
+      guard let self = self, let webViewProvider = self.webViewProvider else { return }
       guard case let .success(statusAny) = result else {
         Loggers.creative.debug("No status returned from JS. Not showing WebView.")
-        self.sdk?.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
+        webViewProvider.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
         return
       }
 
       switch ScriptStatus.getRawValue(from: statusAny) {
       case .success:
         Loggers.creative.debug("Found creative iframe, showing WebView.")
-        if sdk.getMode() == .production {
-          sdk.parentView?.addSubview(webView)
+        if self.mode == .production {
+          webViewProvider.parentView?.addSubview(webView)
         }
-        sdk.triggerHandler?(ATTNCreativeTriggerStatus.opened)
+        webViewProvider.triggerHandler?(ATTNCreativeTriggerStatus.opened)
       case .timeout:
         Loggers.creative.error("Creative timed out. Not showing WebView.")
-        sdk.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
+        webViewProvider.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       case .unknown(let statusString):
         Loggers.creative.error("Received unknown status: \(statusString). Not showing WebView")
-        sdk.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
+        webViewProvider.triggerHandler?(ATTNCreativeTriggerStatus.notOpened)
       default: break
       }
     }
@@ -200,17 +198,40 @@ extension ATTNWebViewHandler: WKNavigationDelegate {
 
 extension ATTNWebViewHandler: WKScriptMessageHandler {
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-    let messageBody = message.body as? String ?? ""
-    Loggers.creative.debug("Web event message: \(messageBody). isCreativeOpen: \(ATTNSDK.isCreativeOpen ? "YES" : "NO")")
+    let messageBody = message.body as? String ?? "'Empty'"
+    Loggers.creative.debug("Web event message: \(messageBody). isCreativeOpen: \(self.isCreativeOpen ? "YES" : "NO")")
 
     if messageBody == "CLOSE" {
       closeCreative()
     } else if messageBody == "IMPRESSION" {
       Loggers.creative.debug("Creative opened and generated impression event")
-      ATTNSDK.isCreativeOpen = true
-    } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), ATTNSDK.isCreativeOpen {
+      isCreativeOpen = true
+    } else if messageBody == String(format: "%@ true", Constants.visibilityEvent), isCreativeOpen {
       Loggers.creative.debug("Nav away from creative, closing")
       closeCreative()
     }
+  }
+}
+
+fileprivate extension ATTNWebViewHandler {
+  var domain: String {
+    webViewProvider?.getDomain() ?? ""
+  }
+
+  var mode: ATTNSDKMode {
+    webViewProvider?.getMode() ?? .production
+  }
+
+  var userIdentity: ATTNUserIdentity {
+    webViewProvider?.getUserIdentity() ?? .init()
+  }
+
+  var skipFatigueOnCreative: Bool {
+    webViewProvider?.skipFatigueOnCreative ?? false
+  }
+
+  var isCreativeOpen: Bool {
+    get { webViewProvider?.isCreativeOpen ?? false }
+    set { webViewProvider?.isCreativeOpen = newValue }
   }
 }
