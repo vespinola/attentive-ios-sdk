@@ -1,3 +1,9 @@
+## [1.0.0-beta.3](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.2...1.0.0-beta.3) (2024-07-08)
+
+### Feature
+* Create documentation for developers that details how to set up the apps locally, test, and release ([108](https://github.com/attentive-mobile/attentive-ios-sdk/pull/108)) ([2b7a08c](https://github.com/attentive-mobile/attentive-ios-sdk/commit/2b7a08cef032942ba4848b662fc86f71453f03dc))
+* Reduce complexity in ATTNSDK ([109](https://github.com/attentive-mobile/attentive-ios-sdk/pull/109)) ([c48edeb](https://github.com/attentive-mobile/attentive-ios-sdk/commit/c48edeb25d3798b0553cc00cd85a17c47e4890bb))
+
 ## [1.0.0-beta.2](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.1...1.0.0-beta.2) (2024-06-27)
 
 ### Bug Fixes
