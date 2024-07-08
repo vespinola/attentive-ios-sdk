@@ -7,6 +7,6 @@
 
 import Foundation
 
-public final class ATTNInfoEvent: NSObject, ATTNEvent {
-  public override init() {}
+final class ATTNInfoEvent: NSObject, ATTNEvent {
+  override init() {}
 }
