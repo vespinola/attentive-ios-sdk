@@ -10,6 +10,7 @@ import Foundation
 @objc(ATTNAddToCartEvent)
 public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
   @objc public let items: [ATTNItem]
+  @objc public var deeplink: String?
 
   @objc
   public init(items: [ATTNItem]) {
@@ -21,3 +22,5 @@ public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
     fatalError("init() has not been implemented")
   }
 }
+
+extension ATTNAddToCartEvent: ATTNDeeplinkHandling { }

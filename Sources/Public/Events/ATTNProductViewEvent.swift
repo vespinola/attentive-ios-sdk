@@ -10,6 +10,7 @@ import Foundation
 @objc(ATTNProductViewEvent)
 public final class ATTNProductViewEvent: NSObject, ATTNEvent {
   @objc public let items: [ATTNItem]
+  @objc public var deeplink: String?
 
   @objc(initWithItems:)
   public init(items: [ATTNItem]) {
@@ -21,3 +22,5 @@ public final class ATTNProductViewEvent: NSObject, ATTNEvent {
     fatalError("init() has not been implemented")
   }
 }
+
+extension ATTNProductViewEvent: ATTNDeeplinkHandling { }

@@ -19,6 +19,11 @@ extension ATTNAddToCartEvent: ATTNEventRequestProvider {
     for item in items {
       var metadata = [String: Any]()
       item.addItem(toDictionary: &metadata, with: priceFormatter)
+
+      if let deeplink {
+        metadata["requestURL"] = deeplink
+      }
+
       eventRequests.append(.init(metadata: metadata, eventNameAbbreviation: ATTNEventTypes.addToCart))
     }
 
