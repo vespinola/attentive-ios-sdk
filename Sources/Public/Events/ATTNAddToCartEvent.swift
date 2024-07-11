@@ -14,7 +14,7 @@ public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
 
   @objc(initWithItems:)
   public convenience init(items: [ATTNItem]) {
-    self.init(items: items)
+    self.init(items: items, deeplink: nil)
   }
 
   @objc(initWithItems:deeplink:)
