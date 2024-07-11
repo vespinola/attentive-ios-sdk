@@ -12,9 +12,15 @@ public final class ATTNAddToCartEvent: NSObject, ATTNEvent {
   @objc public let items: [ATTNItem]
   @objc public var deeplink: String?
 
-  @objc
-  public init(items: [ATTNItem]) {
+  @objc(initWithItems:)
+  public convenience init(items: [ATTNItem]) {
+    self.init(items: items)
+  }
+
+  @objc(initWithItems:deeplink:)
+  public init(items: [ATTNItem], deeplink: String?) {
     self.items = items
+    self.deeplink = deeplink
     super.init()
   }
 

@@ -20,8 +20,7 @@ final class ATTNProductViewEventTests: XCTestCase {
 
   func testProductView_GivenData_ShouldBuildURLWithRequestURL() {
     let item = ATTNTestEventUtils.buildItem()
-    let productView = ATTNProductViewEvent(items: [item])
-    productView.deeplink = "https://www.clientapp.com/flow=payment"
+    let productView = ATTNProductViewEvent(items: [item], deeplink: "https://www.clientapp.com/flow=payment")
     XCTAssertFalse(productView.eventRequests.isEmpty)
     let requestURL = productView.eventRequests.first?.metadata["requestURL"] as? String
     XCTAssertNotNil(requestURL)

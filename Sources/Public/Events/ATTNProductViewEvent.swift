@@ -13,8 +13,14 @@ public final class ATTNProductViewEvent: NSObject, ATTNEvent {
   @objc public var deeplink: String?
 
   @objc(initWithItems:)
-  public init(items: [ATTNItem]) {
+  public convenience init(items: [ATTNItem]) {
+    self.init(items: items, deeplink: nil)
+  }
+
+  @objc(initWithItems:deeplink:)
+  public init(items: [ATTNItem], deeplink: String?) {
     self.items = items
+    self.deeplink = deeplink
     super.init()
   }
 
