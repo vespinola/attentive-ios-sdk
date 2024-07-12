@@ -249,7 +249,24 @@ ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:items 
 ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:items];
 productView.deeplink = @"https://mydeeplink.com/products/32432423";
 [[ATTNEventTracker sharedInstance] recordEvent:productView];
+```
 
+The SDK allows custom events to be sent using `ATTNCustomEvent,` where type is the event name and the properties is a dictionary(`[String: String]`) with the information to populate the message to the subscribers dynamically.
+
+#### Swift
+
+```swift
+// ☝️ Init can return nil if there are issues with the provided data in properties
+guard let customEvent = ATTNCustomEvent(type: "Concert Viewed", properties: ["band": "Myrath"]) else { return }
+ATTNEventTracker.sharedInstance()?.record(event: customEvent)
+```
+
+#### Objective-C
+
+```objective-c
+ATTNCustomEvent* customEvent = [[ATTNCustomEvent alloc] initWithType:@"Concert Viewed" properties:@{@"band" : @"Myrath"}];
+
+[[ATTNEventTracker sharedInstance] recordEvent:customEvent];
 ```
 
 ### Switch to another domain
