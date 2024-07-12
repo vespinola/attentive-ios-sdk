@@ -1,3 +1,8 @@
+## [1.0.0-beta.4](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.3...1.0.0-beta.4) (2024-07-12)
+
+### Feature
+* Add request url to SDK framework ([111](https://github.com/attentive-mobile/attentive-ios-sdk/pull/111)) ([1116ad1](https://github.com/attentive-mobile/attentive-ios-sdk/commit/1116ad1a24d495a22ab06b77c62d11a237cff9d1))
+
 ## [1.0.0-beta.3](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.2...1.0.0-beta.3) (2024-07-08)
 
 ### Feature
