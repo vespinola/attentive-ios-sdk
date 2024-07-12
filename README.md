@@ -223,7 +223,7 @@ ATTNPurchaseEvent* purchase = [[ATTNPurchaseEvent alloc] initWithItems:@[item] o
 
 [[ATTNEventTracker sharedInstance] recordEvent:purchase];
 ```
-
+---
 For `ATTNProductViewEvent` and `ATTNAddToCartEvent,` you can include a `deeplink` in the init method or the property to incentivize the user to complete a specific flow.
 
 #### Swift
@@ -250,6 +250,7 @@ ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:
 productView.deeplink = @"https://mydeeplink.com/products/32432423";
 [[ATTNEventTracker sharedInstance] recordEvent:productView];
 ```
+---
 
 The SDK allows custom events to be sent using `ATTNCustomEvent,` where type is the event name and the properties is a dictionary(`[String: String]`) with the information to populate the message to the subscribers dynamically.
 
