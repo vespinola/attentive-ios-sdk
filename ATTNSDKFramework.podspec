@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ATTNSDKFramework'
-  s.version          = '1.0.0-beta.3'
+  s.version          = '1.0.0-beta.4'
   s.summary          = 'Attentive IOS SDK'
 
 # This description is used to generate tags and improve search results.
