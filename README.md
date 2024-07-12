@@ -88,12 +88,12 @@ ATTNEventTracker.setup(with: sdk)
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 #import "ATTNSDKFramework-Swift.h"
 #import "ATTNSDKFramework-umbrella.h"
 ```
 
-```objectiveC
+```objective-c
 
 ATTNSDK *sdk = [[ATTNSDK alloc] initWithDomain:@"myCompanyDomain"];
 
@@ -117,7 +117,7 @@ sdk.identify([
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 [sdk identify:@{
   ATTNIdentifierType.clientUserId: @"myAppUserId",
   ATTNIdentifierType.phone: @"+15556667777"
@@ -162,7 +162,7 @@ sdk.trigger(view) { status in
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 // Load the creative with a completion handler.
 [sdk trigger:self.view
      handler:^(NSString *triggerStatus) {
@@ -186,7 +186,7 @@ sdk.trigger(view)
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 [sdk trigger:self.view];
 ```
 
@@ -214,7 +214,7 @@ ATTNEventTracker.sharedInstance().record(event: purchase)
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 ATTNItem* item = [[ATTNItem alloc] initWithProductId:@"222" productVariantId:@"55555" price:[[ATTNPrice alloc] initWithPrice:[[NSDecimalNumber alloc] initWithString:@"15.99"] currency:@"USD"]];
 
 ATTNOrder* order = [[ATTNOrder alloc] initWithOrderId:@"778899"];
@@ -222,6 +222,34 @@ ATTNOrder* order = [[ATTNOrder alloc] initWithOrderId:@"778899"];
 ATTNPurchaseEvent* purchase = [[ATTNPurchaseEvent alloc] initWithItems:@[item] order:order];
 
 [[ATTNEventTracker sharedInstance] recordEvent:purchase];
+```
+
+For `ATTNProductViewEvent` and `ATTNAddToCartEvent,` you can include a `deeplink` in the init method or the property to incentivize the user to complete a specific flow.
+
+#### Swift
+
+```swift
+// Init method
+let addToCart = ATTNAddToCartEvent(items: items, deeplink: "https://mydeeplink.com/products/32432423")
+ATTNEventTracker.sharedInstance()?.record(event: addToCart)
+
+// Property
+let productView = ATTNProductViewEvent(items: items)
+productView.deeplink = "https://mydeeplink.com/products/32432423"
+ATTNEventTracker.sharedInstance()?.record(event: productView)
+```
+
+#### Objective-C
+```objective-c
+// Init Method
+ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:items deeplink:@"https://mydeeplink.com/products/32432423"];
+  [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
+
+// Property
+ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:items];
+productView.deeplink = @"https://mydeeplink.com/products/32432423";
+[[ATTNEventTracker sharedInstance] recordEvent:productView];
+
 ```
 
 ### Switch to another domain
@@ -237,7 +265,7 @@ sdk.update(domain: "differentDomain")
 
 #### Objective-C
 
-```objectivec
+```objective-c
 ATTNSDK *sdk = [[ATTNSDK alloc] initWithDomain:@"domain"];
 [sdk updateDomain: @"differentDomain"];
 ```
@@ -276,7 +304,7 @@ sdk.clearUser()
 
 #### Objective-C
 
-```objectiveC
+```objective-c
 [sdk clearUser];
 ```
 
