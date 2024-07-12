@@ -13,18 +13,14 @@
 @end
 
 @implementation ProductViewController
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
 
   ATTNItem* item = [self buildItem];
   ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:@[ item ]];
+  productView.deeplink = @"https://mydeeplink.com/products/32432423";
 
   [[ATTNEventTracker sharedInstance] recordEvent:productView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
 
   [self showToast:@"Product View event sent" duration:2];
 }
@@ -42,7 +38,7 @@
 - (IBAction)addToCartWithDeeplinkButtonPressed:(id)sender {
   ATTNItem* item = [self buildItem];
   ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:@[ item ]];
-  addToCart.deeplink = @"https://www.clientapp.com/flow=payment";
+  addToCart.deeplink = @"https://mydeeplink.com/products/32432423";
 
   [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
   [self showToast: [NSString stringWithFormat:@"Add To Cart event sent with requestURL(pd): '%@'", addToCart.deeplink] duration:4];

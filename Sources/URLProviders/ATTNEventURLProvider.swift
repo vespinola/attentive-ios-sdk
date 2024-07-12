@@ -39,6 +39,10 @@ struct ATTNEventURLProvider: ATTNEventURLProviding {
     queryParams["m"] = try? ATTNJsonUtils.convertObjectToJson(combinedMetadata) ?? "{}"
     queryParams["t"] = eventRequest.eventNameAbbreviation
 
+    if let deeplink = eventRequest.deeplink {
+      queryParams["pd"] = deeplink
+    }
+
     urlComponents.queryItems = queryParams.map { .init(name: $0.key, value: $0.value) }
     return urlComponents.url
   }
