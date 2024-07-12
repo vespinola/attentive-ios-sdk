@@ -45,7 +45,7 @@
   addToCart.deeplink = @"https://www.clientapp.com/flow=payment";
 
   [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
-  [self showToast: [NSString stringWithFormat:@"Add To Cart event sent with requestURL: '%@'", addToCart.deeplink] duration:4];
+  [self showToast: [NSString stringWithFormat:@"Add To Cart event sent with requestURL(pd): '%@'", addToCart.deeplink] duration:4];
 }
 
 - (IBAction)purchaseButtonPressed:(id)sender {

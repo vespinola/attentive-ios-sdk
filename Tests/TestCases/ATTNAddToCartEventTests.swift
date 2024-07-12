@@ -13,15 +13,15 @@ final class ATTNAddToCartEventTests: XCTestCase {
     let item = ATTNTestEventUtils.buildItem()
     let addToCart = ATTNAddToCartEvent(items: [item])
     XCTAssertFalse(addToCart.eventRequests.isEmpty)
-    XCTAssertNil(addToCart.eventRequests.first?.metadata["requestURL"])
+    XCTAssertNil(addToCart.eventRequests.first?.metadata["pd"])
   }
 
   func testAddCart_GivenData_ShouldBuildURLWithRequestURL() {
     let item = ATTNTestEventUtils.buildItem()
     let addToCart = ATTNAddToCartEvent(items: [item])
-    addToCart.deeplink = "https://www.clientapp.com/flow=payment"
+    addToCart.deeplink = "https://mydeeplink.com/products/32432423"
     XCTAssertFalse(addToCart.eventRequests.isEmpty)
-    let requestURL = addToCart.eventRequests.first?.metadata["requestURL"] as? String
+    let requestURL = addToCart.eventRequests.first?.metadata["pd"] as? String
     XCTAssertNotNil(requestURL)
     XCTAssertFalse(requestURL?.isEmpty ?? true)
   }
