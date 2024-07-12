@@ -13,20 +13,16 @@
 @end
 
 @implementation ProductViewController
-
-- (void)viewDidLoad {
-  [super viewDidLoad];
-
-  ATTNItem* item = [self buildItem];
-  ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:@[ item ]];
-
-  [[ATTNEventTracker sharedInstance] recordEvent:productView];
-}
-
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [self showToast:@"Product View event sent"];
+  ATTNItem* item = [self buildItem];
+  ATTNProductViewEvent* productView = [[ATTNProductViewEvent alloc] initWithItems:@[ item ]];
+  productView.deeplink = @"https://mydeeplink.com/products/32432423";
+
+  [[ATTNEventTracker sharedInstance] recordEvent:productView];
+
+  [self showToast:@"Product View event sent" duration:2];
 }
 
 
@@ -35,7 +31,16 @@
   ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:@[ item ]];
 
   [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
-  [self showToast:@"Add To Cart event sent"];
+  [self showToast:@"Add To Cart event sent" duration:2];
+}
+
+- (IBAction)addToCartWithDeeplinkButtonPressed:(id)sender {
+  ATTNItem* item = [self buildItem];
+  ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:@[ item ]];
+  addToCart.deeplink = @"https://mydeeplink.com/products/32432423";
+
+  [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
+  [self showToast: [NSString stringWithFormat:@"Add To Cart event sent with requestURL(pd): '%@'", addToCart.deeplink] duration:4];
 }
 
 - (IBAction)purchaseButtonPressed:(id)sender {
@@ -50,7 +55,7 @@
 
   [[ATTNEventTracker sharedInstance] recordEvent:purchase];
 
-  [self showToast:@"Purchase event sent"];
+  [self showToast:@"Purchase event sent" duration:2];
 }
 
 - (ATTNItem*)buildItem {
@@ -67,18 +72,15 @@
 
   [[ATTNEventTracker sharedInstance] recordEvent:customEvent];
 
-  [self showToast:@"Custom event sent"];
+  [self showToast:@"Custom event sent" duration:2];
 }
 
-
-- (void)showToast:(NSString*)message {
+- (void)showToast:(NSString*)message duration:(int)duration {
   UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil
                                                                  message:message
                                                           preferredStyle:UIAlertControllerStyleAlert];
 
   [self presentViewController:alert animated:YES completion:nil];
-
-  int duration = 1; // duration in seconds
 
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
     [alert dismissViewControllerAnimated:YES completion:nil];

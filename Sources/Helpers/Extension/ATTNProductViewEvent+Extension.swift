@@ -19,7 +19,17 @@ extension ATTNProductViewEvent: ATTNEventRequestProvider {
     for item in items {
       var metadata = [String: Any]()
       item.addItem(toDictionary: &metadata, with: priceFormatter)
-      eventRequests.append(.init(metadata: metadata, eventNameAbbreviation: ATTNEventTypes.productView))
+
+      let eventRequest = ATTNEventRequest(
+        metadata: metadata,
+        eventNameAbbreviation: ATTNEventTypes.productView
+      )
+
+      if let deeplink {
+        eventRequest.deeplink = deeplink
+      }
+
+      eventRequests.append(eventRequest)
     }
 
     return eventRequests

@@ -11,6 +11,7 @@ import Foundation
 final class ATTNEventRequest {
   var metadata: [String: Any]
   let eventNameAbbreviation: String
+  var deeplink: String?
 
   init(metadata: [String: Any], eventNameAbbreviation: String) {
     self.metadata = metadata
