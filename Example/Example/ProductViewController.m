@@ -29,7 +29,6 @@
 - (IBAction)addToCartButtonPressed:(id)sender {
   ATTNItem* item = [self buildItem];
   ATTNAddToCartEvent* addToCart = [[ATTNAddToCartEvent alloc] initWithItems:@[ item ]];
-  addToCart.deeplink = @"https://www.clientapp.com/flow=payment";
 
   [[ATTNEventTracker sharedInstance] recordEvent:addToCart];
   [self showToast:@"Add To Cart event sent" duration:2];
