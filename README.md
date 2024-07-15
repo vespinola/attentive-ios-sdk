@@ -252,7 +252,7 @@ productView.deeplink = @"https://mydeeplink.com/products/32432423";
 ```
 ---
 
-The SDK allows custom events to be sent using `ATTNCustomEvent,` where type is the event name and the properties is a dictionary(`[String: String]`) with the information to populate the message to the subscribers dynamically.
+The SDK allows custom events to be sent using `ATTNCustomEvent,` where type is the event name and the properties is a dictionary(`[String: String]`) with the information to populate dynamic content in the message to subscribers.
 
 #### Swift
 
@@ -266,7 +266,6 @@ ATTNEventTracker.sharedInstance()?.record(event: customEvent)
 
 ```objective-c
 ATTNCustomEvent* customEvent = [[ATTNCustomEvent alloc] initWithType:@"Concert Viewed" properties:@{@"band" : @"Myrath"}];
-
 [[ATTNEventTracker sharedInstance] recordEvent:customEvent];
 ```
 
