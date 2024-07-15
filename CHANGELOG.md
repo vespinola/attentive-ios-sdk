@@ -1,3 +1,8 @@
+## [1.0.0-beta.5](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.4...1.0.0-beta.5) (2024-07-15)
+
+### Feature
+* Update README ([113](https://github.com/attentive-mobile/attentive-ios-sdk/pull/113)) ([aabeef1](https://github.com/attentive-mobile/attentive-ios-sdk/commit/aabeef1fe453212df624c5b8f0687c4c87fb571b))
+
 ## [1.0.0-beta.4](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.3...1.0.0-beta.4) (2024-07-12)
 
 ### Feature
