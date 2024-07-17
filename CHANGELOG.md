@@ -1,3 +1,16 @@
+## [1.0.0](https://github.com/attentive-mobile/attentive-ios-sdk/compare/0.6.0...1.0.0) (2024-07-17)
+
+This major release marks the transition from beta to general availability (GA) for the Attentive iOS SDK. The 1.0.0 version incorporates feedback and improvements made during the beta phases, ensuring a stable and robust SDK.
+
+For detailed changes and pull requests, see the individual beta release notes:
+- [Beta.5](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.4...1.0.0-beta.5) (2024-07-15)
+- [Beta.4](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.3...1.0.0-beta.4) (2024-07-12)
+- [Beta.3](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.2...1.0.0-beta.3) (2024-07-08)
+- [Beta.2](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.1...1.0.0-beta.2) (2024-06-27)
+- [Beta.1](https://github.com/attentive-mobile/attentive-ios-sdk/compare/0.6.0...1.0.0-beta.1) (2024-06-27)
+
+Merged changes from all beta versions are now available in the main branch ([PR #106](https://github.com/attentive-mobile/attentive-ios-sdk/pull/106)).
+
 ## [1.0.0-beta.5](https://github.com/attentive-mobile/attentive-ios-sdk/compare/1.0.0-beta.4...1.0.0-beta.5) (2024-07-15)
 
 ### Feature
