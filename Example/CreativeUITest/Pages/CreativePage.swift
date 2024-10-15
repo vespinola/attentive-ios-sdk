@@ -78,7 +78,7 @@ fileprivate extension CreativePage {
   }
 
   static var privacyLink: XCUIElement {
-    app.webViews.links["Privacy"]
+    app.webViews.links["Privacy link will open in a new tab"]
   }
 
   static var debugStaticText: XCUIElement {

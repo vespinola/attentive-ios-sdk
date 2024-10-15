@@ -67,7 +67,7 @@ final class CreativeUITest: XCTestCase, BaseXCTestCase {
     HomePage.tapOnPushMeToCreative()
 
     CreativePage
-      .addDelay(seconds: 1)
+      .addDelay(seconds: 3)
       .tapOnPrivacyLink()
 
     guard canLaunchExternalApps else { return }
