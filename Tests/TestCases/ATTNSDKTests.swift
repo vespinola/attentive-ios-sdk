@@ -108,5 +108,22 @@ final class ATTNSDKTests: XCTestCase {
     XCTAssertTrue(creativeUrlProviderSpy.buildCompanyCreativeUrlWasCalled)
     XCTAssertEqual(creativeUrlProviderSpy.usedCreativeId, creativeId)
   }
+
+  func testIsCreativeOpen_whenThereAreTwoSDKInstancesAndBothTriggersCreative_ShouldNotLaunchASecondCreative() {
+    ATTNSDK._isCreativeOpen = false
+    let secondCreativeUrlProviderSpy = ATTNCreativeUrlProviderSpy()
+    let secondSdk = ATTNSDK(api: apiSpy, urlBuilder: secondCreativeUrlProviderSpy)
+
+    XCTAssertFalse(ATTNSDK._isCreativeOpen, "The value should be false")
+    sut.trigger(UIView())
+    XCTAssertTrue(creativeUrlProviderSpy.buildCompanyCreativeUrlWasCalled, "Creative url should be built")
+
+    secondSdk.trigger(UIView())
+    XCTAssertTrue(secondCreativeUrlProviderSpy.buildCompanyCreativeUrlWasCalled, "Creative url should not be built")
+
+    addTeardownBlock {
+      ATTNSDK._isCreativeOpen = false
+    }
+  }
 }
 
